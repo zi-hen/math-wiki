@@ -1,14 +1,16 @@
 ---
 type: topic
 title: <主题名>
+description: <一句话摘要>   # 可选;推荐填写,与 index.md 条目一致
 aliases: []
 created: 2026-08-11
 updated: 2026-08-11
 sources: [<citekey1>, <citekey2>, <citekey3>]
-status: evolving           # topic 恒为 evolving；随摄取演进
-thesis: <一句话核心论点>   # evolving thesis
+status: in-progress        # 综述页随摄取演进;取值须在 8 值枚举内(见 docs/SCHEMA.md §1),不得用枚举外取值
+thesis: <一句话核心论点>   # 可选;evolving thesis,与正文「论点」区段一致
 tags: []
-space: R^d
+strength: standard
+strength_basis: <强弱判定依据>
 ---
 
 # <主题名>

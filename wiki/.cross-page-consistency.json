@@ -1,0 +1,51 @@
+[
+  {
+    "id": "psf-formula",
+    "name": "Poisson 求和公式",
+    "description": "Poisson summation: sum of f(n) equals sum of f-hat(n)",
+    "pattern": "\\\\sum_\\{n\\\\in\\\\mathbb\\{Z\\}\\}\\s*f\\(n\\)\\s*=\\s*\\\\sum_\\{n\\\\in\\\\mathbb\\{Z\\}\\}\\s*\\\\hat\\{f\\}\\(n\\)",
+    "occurrences": [],
+    "page_count": 0
+  },
+  {
+    "id": "fourier-transform-def",
+    "name": "Fourier 变换定义(Stein 约定)",
+    "description": "Fourier transform with e^{-2pi i xi x} kernel (Stein convention)",
+    "pattern": "\\\\hat\\{f\\}\\(\\\\xi\\)\\s*=\\s*\\\\int[^=]*f\\(x\\).*e\\^\\{-2\\\\pi\\s*i\\s*\\\\xi\\s*x\\}",
+    "occurrences": [
+      {
+        "file": "theorems/paley-wiener-theorem.md",
+        "count": 3
+      },
+      {
+        "file": "theorems/poisson-summation-formula.md",
+        "count": 1
+      }
+    ],
+    "page_count": 2
+  },
+  {
+    "id": "schwartz-space-def",
+    "name": "Schwartz 空间定义",
+    "description": "Schwartz space as mathcal{S}(R^d)",
+    "pattern": "\\\\mathcal\\{S\\}\\s*\\\\?\\(\\\\mathbb\\{R\\}\\^?d?\\?\\)",
+    "occurrences": [],
+    "page_count": 0
+  },
+  {
+    "id": "poisson-kernel-formula",
+    "name": "Poisson 核公式",
+    "description": "Poisson kernel: (1-r^2) / (1-2r cos theta + r^2)",
+    "pattern": "P_r\\(\\\\theta\\)\\s*=\\s*\\\\frac\\{1-r\\^2\\}\\{1\\s*-\\s*2r\\\\cos\\\\theta\\s*\\+\\s*r\\^2\\}",
+    "occurrences": [],
+    "page_count": 0
+  },
+  {
+    "id": "dirichlet-kernel-formula",
+    "name": "Dirichlet 核公式",
+    "description": "Dirichlet kernel D_N(t) = sum e^{2pi i n t}",
+    "pattern": "D_N\\(t\\)\\s*=\\s*\\\\sum_\\{n=-N\\}\\^\\{N\\}\\s*e\\^\\{2\\\\pi\\s*i\\s*n\\s*t\\}",
+    "occurrences": [],
+    "page_count": 0
+  }
+]

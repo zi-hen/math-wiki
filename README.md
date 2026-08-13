@@ -83,7 +83,10 @@ math-wiki/                       ← Obsidian vault 根
 │   ├── papers/                  Zotero Integration 导出，文件名 = citation key
 │   │   └── assets/              PDF 提取的图片
 │   ├── books/                   书籍章节笔记
-│   └── web/                     Web Clipper 剪藏
+│   ├── web/                     Web Clipper 剪藏
+│   └── personal/                个人笔记（人类独立思考产物；NEW 2026-08-11）
+│       ├── notes/               电子笔记的 markdown 化
+│       └── sketches/            草图与图示
 ├── wiki/                        LLM 维护的知识库
 │   ├── topics/                  综述页（evolving thesis）
 │   ├── concepts/                概念实体页
@@ -95,6 +98,7 @@ math-wiki/                       ← Obsidian vault 根
 │   ├── log.md                   时间线日志（仅追加）
 │   └── open-questions.md        矛盾与未决
 ├── scratch/                     人类私有记事本（LLM 不碰）
+├── scripts/                     自动化脚本（lint 等，NEW 2026-08-11）
 └── templates/                   模板
     ├── zotero-import.md         Zotero Integration 导入模板
     ├── source-summary.md
@@ -140,12 +144,27 @@ math-wiki/                       ← Obsidian vault 根
 
 ### 3.3 健检（Lint）—— 维护 wiki 健康
 
-定期对 LLM 说「lint」。检查：
+#### 3.3.1 触发与流程
+
+定期对 LLM 说「lint」，或执行 `scripts/lint-wiki.ps1`（PowerShell）/`lint-wiki.sh`（Bash）。自动检测：
+
+- 悬空 wikilink（如本次发现的 `dirichlet-theorem-on-primes-on-primes` 文件名重复）。
+- Stein 记号一致性（全文禁止 $1/(2\pi)^d$、$(2\pi)^{-d/2}$ 等非 Stein 约定）。
+- frontmatter 完整性（type/title/status/sources/strength）。
+- status 流转合法性（仅允许 §3.3 AGENTS.md 所列路径）。
+- sources 可回溯性（每页 sources 必须在 raw/ 或 wiki/sources/ 中存在）。
+
+LLM 收到报告 → 你确认 → 修复 → 追加 log。
+
+#### 3.3.2 巡检清单（人工 lint）
+
 - 页面间矛盾（同一量在不同页不同陈述）。
-- 被新源取代的陈旧主张（`status: superseded` 却仍被引用）。
+- 被新源取代的陈旧主张（`status: superseded` 却被引用）。
 - 无入链的孤儿页。
 - 被多处提及却无独立页的重要概念。
 - 缺失交叉引用。
+- 强弱关系标注（`strength` 字段）。
+- 工作空间声明（「陈述」/「定义」区段须含 $\mathbb{R}^d$、$\mathbb{T}$、$G$ 等）。
 - 可经 web 搜索填补的缺口。
 
 LLM 出报告 → 你确认 → 修复 → 追加 log。

@@ -1,9 +1,13 @@
 # Obsidian 运行时状态（每个用户本机不同，不入库）
+.obsidian/
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 .obsidian/workspace.json.bak
 .obsidian/cache
 .obsidian/plugins/*/data.bak
+
+# scratch/ 人类私有空间（排除在一切工作流之外，不入库）
+scratch/
 
 # 操作系统垃圾文件
 .DS_Store

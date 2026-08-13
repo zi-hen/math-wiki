@@ -10,6 +10,8 @@ updated: 2026-08-11
 sources: []
 status: verified
 tags: []
+strength: standard
+strength_basis: <强弱判定依据>
 ---
 
 # <人物名>

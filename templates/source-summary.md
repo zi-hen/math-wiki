@@ -6,7 +6,8 @@ authors: []
 year:
 created: 2026-08-11
 updated: 2026-08-11
-status: verified          # verified | unverified
+sources: [<citekey>]       # lint §4 必填;与 citekey 一致
+status: verified          # verified | unverified | pending-verification | superseded
 raw: "[[<citekey>]]"      # 指向 raw/papers/<citekey>.md
 tags: []
 ---
