@@ -13,7 +13,7 @@ strength_basis: 弱条件 + 强结论。条件：$f$ 满足阶 $\alpha > 1/2$ �
 
 # Bernstein 定理（Hölder 条件与绝对收敛）
 
-> **工作空间**：圆群 $\mathbb{T}$。
+
 
 ## What — 陈述
 
