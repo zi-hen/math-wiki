@@ -23,8 +23,8 @@ strength_basis: 弱条件 + 强结论。条件：$f$ 满足阶 $\alpha > 1/2$ �
 > $$
 > 若 $\alpha > 1/2$，则 $f$ 的 Fourier 系数绝对可和：
 > $$
-> \sum_{n \in \mathbb{Z}} |\hat f(n)| < \infty.
-> $$
+\sum_{n \in \mathbb{Z}} |\hat f(n)| < \infty.
+$$
 > 特别地，$f$ 的 Fourier 级数绝对收敛，从而一致收敛。
 
 依据 [[steinFourierAnalysisIntroduction2003a|Stein & Shakarchi (2003), Ch. 3, 习题（Bernstein 定理）, p.110]]。
@@ -52,7 +52,9 @@ $$
 \sum_{n\in\mathbb{Z}} |e^{inh} - 1|^2|\hat f(n)|^2 = \frac{1}{2\pi}\int_0^{2\pi}|f(\theta+h)-f(\theta)|^2\,d\theta \le K^2|h|^{2\alpha}.
 $$
 
-*证明.* 平移 $f(\theta+h)$ 的 Fourier 系数为 $e^{inh}\hat f(n)$（由 $f \mapsto f(\cdot+h)$ 与核 $e^{-in\theta}$ 的乘积），故 $f(\theta+h) - f(\theta)$ 的系数为 $(e^{inh}-1)\hat f(n)$。由 [[parseval-identity|Parseval 恒等式]]，
+*证明.* 平移 $f(\theta+h)$ 的 Fourier 系数为 $e^{inh}\hat f(n)$（由 $f \mapsto f(\cdot+h)$ 与核 $e^{-in\theta}$ 的乘积），故 $f(\theta+h) - f(\theta)$ 的系数为 $(e^{inh}-1)\hat f(n)$。
+
+由 [[parseval-identity|Parseval 恒等式]]，
 $$
 \frac{1}{2\pi}\int|f(\theta+h)-f(\theta)|^2\,d\theta = \sum_n |e^{inh}-1|^2|\hat f(n)|^2,
 $$
@@ -63,7 +65,8 @@ $$
 \sum_{2^{p-1}<|n|\le 2^p} |\hat f(n)|^2 \le \frac{K^2}{2}\left(\frac{\pi}{2^p}\right)^{2\alpha}.
 $$
 
-*证明.* 对块内 $|n| \le 2^p$ 有 $|nh_p/2| \le \pi/2$；对 $|n| > 2^{p-1}$ 有 $|nh_p/2| > \pi/4$，故 $|e^{inh_p} - 1| = 2|\sin(nh_p/2)| \ge \sqrt{2}$。由 Claim 1 中每项非负，块内项之和不超过总量：
+*证明.* 对块内 $|n| \le 2^p$ 有 $|nh_p/2| \le \pi/2$；对 $|n| > 2^{p-1}$ 有 $|nh_p/2| > \pi/4$，故 $|e^{inh_p} - 1| = 2|\sin(nh_p/2)| \ge \sqrt{2}$。
+由 Claim 1 中每项非负，块内项之和不超过总量：
 $$
 2\sum_{2^{p-1}<|n|\le 2^p}|\hat f(n)|^2 \le \sum_{2^{p-1}<|n|\le 2^p}|e^{inh_p}-1|^2|\hat f(n)|^2 \le K^2h_p^{2\alpha}.
 $$
