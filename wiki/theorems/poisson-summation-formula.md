@@ -311,7 +311,7 @@ $$
 ## 关联
 
 - 概念：[[schwartz-space|$\mathcal{S}(\mathbb{R})$]]、[[good-kernel]]（离散化的"好核逼近"前身）、[[character|字符展开]]、[[f_a-class|$\mathscr{F}_a$ 类]]（证明二工作空间）、[[shift-of-line|水平线移位引理]]（证明二核心工具）
-- 定理：[[fourier-inversion]]（PSF 证明中须用反演定理）、[[sampling-theorem]]（作为推论）
+- 定理：[[fourier-inversion]]（反演链与 PSF 相互独立：PSF 主证明只用 Fourier 系数唯一性（Ch. 2 Thm 2.1），不调用反演定理，见「详细证明」依赖关系小结）、[[sampling-theorem]]（作为推论）
 - 方法：[[approx-by-good-kernel]]（周期化是离散版好核逼近）、[[fubini-tonelli]]（积分与求和交换 —— Claim 2 关键）、[[residue-calculus]]（证明二围道积分法）
 - 引理：[[integer-periodicity-of-exponential]]（Claim 2 中 $e^{2\pi i m n} = 1$）、[[residue-by-taylor-coeff]]（证明二 Claim 1 残部公式）
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 5, Theorem 3.1；Ch. 5 Exercise 20；Ch. 6 §3 推广）、[[steinComplexAnalysis]]（Ch. 4, Theorem 2.4）

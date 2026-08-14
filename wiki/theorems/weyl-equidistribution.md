@@ -64,13 +64,25 @@ $$
 \lim_{N \to \infty} \frac{1}{N} \sum_{n=1}^N e^{2\pi i k \xi_n} = 0. \tag{$*$}
  $$
 
-*证明.* ($\Leftarrow$) 对任意 Riemann 可积函数 $f: [0, 1) \to \mathbb{R}$，由 [[fourier-series|Fourier 级数]]，$f(\xi) = \sum_k c_k e^{2\pi i k \xi}$。若判据 $(*)$ 成立，则
-$$
-\frac{1}{N} \sum_{n=1}^N f(\xi_n) = \sum_k c_k \cdot \frac{1}{N} \sum_{n=1}^N e^{2\pi i k \xi_n} \to c_0 = \int_0^1 f(\xi) d\xi,
-$$
-（其中 $c_0 = \int f(\xi) d\xi$，对 $k \neq 0$ 项由 $(*)$ 趋于零，$k = 0$ 项为 $\frac{1}{N} \sum 1 \cdot c_0 \to c_0$）。故 $\frac{1}{N}\sum f(\xi_n) \to \int f$。
+*证明.* ($\Leftarrow$) 按 Weyl 标准论证分四步递推（注意：一般 Riemann 可积函数的 Fourier 级数并不点态收敛到自身，故不能直接写 $f = \sum c_k e^{2\pi i k \xi}$ 逐项求和）。
 
-特别地取 $f = \chi_{(a, b)}$（区间指示函数），由 Riemann 可积性得
+- **三角多项式**：若 $P = \sum_{|k|\le K} c_k e^{2\pi i k \xi}$，判据 $(*)$（$k \neq 0$）与 $k = 0$ 项（等于 $c_0$）给出
+$$
+\frac{1}{N}\sum_{n=1}^N P(\xi_n) \to \sum_k c_k\,\delta_{k,0} = c_0 = \int_0^1 P(\xi)\,d\xi.
+$$
+- **连续函数**：由 [[weierstrass-approximation-trig|Weierstrass 三角逼近定理]]，对 $\varepsilon > 0$ 取三角多项式 $P$ 使 $\|f - P\|_\infty < \varepsilon$。则
+$$
+\limsup_{N\to\infty}\left|\frac{1}{N}\sum_{n=1}^N f(\xi_n) - \int_0^1 f\right| \le \limsup_N \frac{1}{N}\sum_{n=1}^N |f-P|(\xi_n) + \limsup_N\left|\frac{1}{N}\sum_{n=1}^N P(\xi_n) - \int_0^1 P\right| + \left|\int_0^1 (P - f)\right| < 3\varepsilon,
+$$
+由 $\varepsilon$ 任意，$\frac{1}{N}\sum f(\xi_n) \to \int f$。
+- **阶梯函数**：有限个区间指示函数的线性组合；区间指示函数 $\chi_{(a,b)}$ 由连续函数上下夹逼（例如以斜边长为 $\delta$ 的线性过渡连续化边界点），故其积分平均亦收敛，再由线性叠加得阶梯函数情形。
+- **Riemann 可积函数**：$f$ 有界且 Riemann 可积，故存在阶梯函数 $f_- \le f \le f_+$ 使 $\int_0^1 (f_+ - f_-) < \varepsilon$（Riemann 可积性的上下和刻画）。由单调性
+$$
+\int_0^1 f_- = \lim_N \frac{1}{N}\sum_{n=1}^N f_-(\xi_n) \le \liminf_N \frac{1}{N}\sum_{n=1}^N f(\xi_n) \le \limsup_N \frac{1}{N}\sum_{n=1}^N f(\xi_n) \le \lim_N \frac{1}{N}\sum_{n=1}^N f_+(\xi_n) = \int_0^1 f_+,
+$$
+故 $\int f - \varepsilon \le \liminf_N \cdots \le \limsup_N \cdots \le \int f + \varepsilon$；由 $\varepsilon$ 任意，$\frac{1}{N}\sum f(\xi_n) \to \int f$。
+
+特别地取 $f = \chi_{(a, b)}$（区间指示函数，Riemann 可积），由第四步得
 $$
 \frac{1}{N} \#\{\xi_n \in (a, b)\} \to b - a.
 $$

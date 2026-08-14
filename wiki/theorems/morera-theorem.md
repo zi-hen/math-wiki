@@ -93,9 +93,7 @@ $$
 
 $F$ 是 $D$ 上的实可微函数（其导数 $f$ 连续）。由 [[cauchy-theorem|Cauchy 定理]]：若 $G$ 在 $D$ 上有原函数，则 $G$ 在 $D$ 上全纯。我们已知 $F$ 是 $f$ 的原函数，但 $F$ 本身**不直接**满足 Cauchy-Riemann 方程。
 
-更直接的论证：$F$ 在小圆盘内有原函数 $G$（因 $F$ 路径积分与路径无关），由 Cauchy 定理 $F$ 在该小圆盘内全纯（$F$ 是某全纯函数 $G$ 的导数）。由 [[holomorphic-function|全纯函数自动无穷可微]]（这是 [[lp-space|$L^1$ 空间]] 上 Fourier 分析的对偶性质：原函数存在 $\Rightarrow$ 无穷光滑），$F \in C^\infty(D)$。特别地，$f = F' \in C^1(D)$，且 $f$ 满足 Cauchy-Riemann 方程（这是全纯函数的标准刻画）。
-
-由 [[steinComplexAnalysis|Stein, p.32, Theorem 2.4]]：$f \in C^1$ 且满足 Cauchy-Riemann $\Rightarrow$ $f$ 全纯。 $\blacksquare$
+更直接的论证：$F$ 在小圆盘内有原函数 $G$（因 $F$ 路径积分与路径无关），由 Cauchy 定理 $F$ 在该小圆盘内全纯（$F$ 是某全纯函数 $G$ 的导数，且全纯函数的导数仍全纯，这是幂级数理论的标准性质）。特别地 $f = F'$ 在小圆盘内全纯；由 $z \in D$ 任意，$f$ 在 $D$ 上全纯。 $\blacksquare$
 
 > **依赖关系小结**: 本证明依赖链为「三角闭曲线积分为零（假设条件）⇒ 三角剖分 ⇒ 路径无关 ⇒ 原函数 $F$ 存在 ⇒（$f$ 连续）$F' = f$ ⇒ $F$ 全纯 ⇒ $f$ 全纯」。其中「$F$ 全纯」一步引用 [[cauchy-theorem|Cauchy 定理]]的推论「有原函数 ⇒ 全纯」（$F$ 在小圆盘内有原函数）与[[holomorphic-function|全纯函数自动无穷可微]]；「$f$ 全纯」一步引用 $C^1$ + Cauchy-Riemann 的刻画（Stein Theorem 2.4）。注意 Morera 虽是 Cauchy 定理的逆命题，但本证明所用的是 Cauchy 定理方向的既有推论（「有原函数 ⇒ 全纯」与 $C^1$ + Cauchy-Riemann 刻画均由独立论证建立），不依赖 Morera 定理自身，依赖图无环。
 
@@ -114,7 +112,7 @@ $F$ 是 $D$ 上的实可微函数（其导数 $f$ 连续）。由 [[cauchy-theor
 ### 边界情形
 
 - **$D$ 非圆盘**：Morera 定理可推广至任意开凸集（甚至单连通开集）。Stein 表述限制为圆盘以简化证明。
-- **$f \in L^1$ 推广**：将 $f$ 连续性减弱为 $L^1_{loc}$ + Morera 积分条件，结论仍成立（这是 Vitali 收敛定理的核心）。
+- **$f \in$ [[lp-space|$L^1$]] 推广**：将 $f$ 连续性减弱为 $L^1_{loc}$ + Morera 积分条件，结论仍成立（这是 Vitali 收敛定理的核心）。
 
 ### 等价叙述
 

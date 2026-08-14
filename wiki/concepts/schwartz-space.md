@@ -62,7 +62,7 @@ $$
 \xi^\alpha \partial^\beta_\xi \hat f(\xi) = (2\pi i)^{|\alpha|} (-1)^{|\beta|} \widehat{x^\alpha \partial^\beta_x f}(\xi).
 $$
 
-右侧: $x^\alpha \partial^\beta_x f \in \mathcal{S}$（由 Claim 2 (a)(b)）, 故 $\widehat{x^\alpha \partial^\beta_x f}$ 是**有界连续函数**（因 $\mathcal{S} \subset$ [[lp-space|$L^1$]]（[[lp-space]] Claim 3 证）, Fourier 变换连续且 $|g(x)| \le \|g\|_{L^1}$）. 特别地
+右侧: $x^\alpha \partial^\beta_x f \in \mathcal{S}$（由 Claim 2 (a)(b)）, 故 $\widehat{x^\alpha \partial^\beta_x f}$ 是**有界连续函数**（因 $\mathcal{S} \subset$ [[lp-space|$L^1$]]（由 $\mathcal{S}$ 定义直接可得：$|g(x)| \le C(1+|x|)^{-(d+1)}$ 可积; 注意 [[lp-space]] Claim 3 是「$\mathcal{S}$ 在 $L^p$ 中稠密」, 不用于此处）, Fourier 变换连续且 $|g(x)| \le \|g\|_{L^1}$）. 特别地
 $$
 |\xi^\alpha \partial^\beta_\xi \hat f(\xi)| \le (2\pi)^{|\alpha|+|\beta|} \|x^\alpha \partial^\beta_x f\|_{L^1} < \infty.
 $$

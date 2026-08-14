@@ -90,7 +90,7 @@ $$|E_p(z/a_n) - 1| \leq 2 |z/a_n|^{p+1} \leq 2R^{p+1}/|a_n|^{p+1}.$$
 
 由一致收敛性 + 每个 $E_p(z/a_n)$ 整，$f$ 在整个 $\mathbb{C}$ 上整（Weierstrass + Morera 定理，[[morera-theorem]]）。
 
-零点验证：$E_p(z/a_n)$ 在 $z = a_n$ 处有简单零点；对其他 $m \neq n$，$E_p(z/a_m)$ 在 $z = a_n$ 处 $\neq 0$（因 $|a_n/a_m| > 1/2$ 不成立，但 $|z/a_m|$ 在 $z = a_n$ 处为 $|a_n/a_m|$；若 $|a_n/a_m| < 1/2$ 则 $E_p(1) = 0$——但 $a_n \neq a_m$ 时 $|a_n/a_m|$ 可在 $[1/2, \infty)$ 间；细节需更精细构造）。Stein 的实际构造用 Blashke 因子避免此问题。
+零点验证：$E_p(w) = (1-w)\exp\!\left(w + \tfrac{w^2}{2} + \cdots + \tfrac{w^p}{p}\right)$，指数因子处处非零，故 $E_p(w) = 0 \iff w = 1$。因此 $E_p(z/a_n)$ 在 $z = a_n$ 处有简单零点；对 $m \neq n$，$E_p(z/a_m)$ 在 $z = a_n$ 处取值 $E_p(a_n/a_m)$，非零当且仅当 $a_n \neq a_m$。故 $f$ 在 $z = a_n$ 处的零点重数恰为序列中等于 $a_n$ 的项数（若 $\{a_n\}$ 含重复项，即该零点重数 $> 1$）；对任意 $z \ne a_n$（所有 $n$），每个因子均非零，故 $f(z) \ne 0$。
 
 **第四阶段：唯一性**。
 

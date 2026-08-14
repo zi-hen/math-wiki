@@ -30,7 +30,7 @@ strength_basis: 弱条件 + 强结论。条件：$f \in L^2(\mathbb{R})$ 且 $\o
 §3, Theorem 3.3: Paley-Wiener 逆向（F̂ 紧支集 ⇒ 全纯延拓为指数型整函数）  ← 本页
 ```
 
-Theorem 3.3 的证明依赖 [[phragmen-lindelof-theorem|Phragmén-Lindelöf 定理]]（Theorem 3.4）作为关键工具。
+Stein 原书 Theorem 3.3 的证明以 [[phragmen-lindelof-theorem|Phragmén-Lindelöf 定理]]（Theorem 3.4）为关键工具（用于无界区域上控制增长）；本页「详细证明」改用 $L^2$ 框架（Plancherel + Fourier 逆变换公式 + Cauchy-Schwarz + 一致收敛积分号下求导）直接给出整函数延拓与指数型界，不调用 Phragmén-Lindelöf（见「详细证明」末尾依赖关系小结）。
 
 ## What — 定理陈述
 
@@ -103,7 +103,7 @@ $$
 
 1. **整函数延拓**：由 $f \in L^2(\mathbb{R})$ 与 $\operatorname{supp}(\hat{f}) \subset [-M,M]$，利用 Plancherel 定理得 $\hat{f} \in L^2([-M,M]) \subset L^1([-M,M])$（因 $[-M,M]$ 测度有限）。从而积分 $f(z) = \int_{-M}^{M} \hat{f}(\xi) e^{2\pi i \xi z} d\xi$ 绝对收敛，定义整函数，且增长估计 $|f(z)| \leq \|\hat{f}\|_{L^1} e^{2\pi M|\operatorname{Im}(z)|}$ 直接成立。
 
-2. **利用 Phragmén-Lindelöf 控制增长**：证明中需要更精细地控制全纯函数在无界区域（如上半平面）上的增长，以验证指数型 $2\pi M$ 的界是最优的。此时最大模原理不可直接应用于无界区域，[[phragmen-lindelof-theorem|Phragmén-Lindelöf 定理]]（Theorem 3.4）恰好提供了在无界区域上控制全纯函数的工具——只需验证指数增长条件即可。
+2. **利用 Phragmén-Lindelöf 控制增长**：Stein 原书证明中需要更精细地控制全纯函数在无界区域（如上半平面）上的增长，以验证指数型 $2\pi M$ 的界是最优的。此时最大模原理不可直接应用于无界区域，[[phragmen-lindelof-theorem|Phragmén-Lindelöf 定理]]（Theorem 3.4）恰好提供了在无界区域上控制全纯函数的工具——只需验证指数增长条件即可。本页「详细证明」不沿此路线，而由 $\|\hat f\|_{L^1} < \infty$ 与三角不等式直接得到指数型界 $|f(z)| \le \|\hat f\|_{L^1}\, e^{2\pi M|\operatorname{Im}(z)|}$。
 
 ### Remark（p.146）：与圆盘结果的类比
 
@@ -240,6 +240,8 @@ $$
 $$
 |f(z)| \leq A\, e^{2\pi M |\operatorname{Im}(z)|}, \qquad \forall\, z \in \mathbb{C}. \qquad \blacksquare
 $$
+
+> **依赖关系小结**: Theorem 3.3（逆向）详细证明的依赖链为「[[plancherel-theorem|Plancherel 定理]]（$\hat f \in L^2$）⇒ [[cauchy-schwarz-inequality|Cauchy-Schwarz 不等式]]（Claim 3：$L^2([-M,M]) \subset L^1([-M,M])$）⇒ [[fourier-inversion|Fourier 逆变换公式]]（$f(x) = \int \hat f(\xi) e^{2\pi i \xi x}\, d\xi$ 在 $x \in \mathbb R$ 成立）⇒ 一致收敛积分号下求导（Weierstrass 判别法，得整函数延拓）⇒ 三角不等式（指数型界）」。全部前向依赖，无环；未调用 [[phragmen-lindelof-theorem|Phragmén-Lindelöf 定理]]（原书证法用其控制无界区域增长，本页改走 $L^2$ 路线，见页首「证明依赖关系」说明）。
 
 ## What-if — 反例与边界
 

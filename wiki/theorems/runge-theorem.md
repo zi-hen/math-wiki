@@ -71,21 +71,23 @@ $$f(z) = \frac{1}{2\pi i} \int_{|w - z_0| = \delta} \frac{f(w)}{w - z}\,dw.$$
 
 设 $\gamma = [a, b]$ 为线段，$z \in K$。对 $\zeta \in \gamma$，$\zeta - z \neq 0$（因 $z \in K, \gamma \subset \Omega - K$）。将 $\gamma$ 等分为 $N$ 段，每段上用 $\zeta$ 的某个值（如中点）近似 $f(\zeta)/(\zeta - z)$。当 $N \to \infty$ 时，黎曼和逼近积分。
 
-**Lemma 5.10 的证明思路**：
+**Lemma 5.10 的证明思路**（Stein 原书的「有限链」论证）：
 
-因 $K^c$ 连通，可构造连接 $z_0$ 与 $\infty$ 的连续路径 $\Gamma \subset K^c$（其中 $\infty$ 视为 $\hat{\mathbb{C}}$ 中的点）。参数化 $\Gamma$ 为 $\Gamma(t)$（$t \in [0, 1]$，$\Gamma(0) = z_0$，$\Gamma(1) = \infty$）。
+因 $K^c$ 连通，取连接 $z_0$ 与 $\infty$ 的连续路径 $\Gamma \subset K^c$，并在其上取有限链 $z_0 = w_0, w_1, \ldots, w_N = \infty$，使相邻两点满足 $|\Delta_j| < \operatorname{dist}(w_j, K)$，其中 $\Delta_j = w_j - w_{j-1}$（$K$ 紧、$K^c$ 开且连通，路径可细分使相邻点充分靠近并均落在 $K^c$ 中）。
 
-对 $z \in K$，$|z/\Gamma(t)| < 1$ 对 $t$ 充分大；取 $T_0$ 使 $t > T_0$ 时 $|\Gamma(t)| > 2\|z\|$。
+**递推步**：由 $z - w_{j-1} = (z - w_j) + \Delta_j$，
+$$
+\frac{1}{z - w_{j-1}} = \frac{1}{z - w_j} \cdot \frac{1}{1 + \Delta_j/(z - w_j)} = \frac{1}{z - w_j}\sum_{n=0}^\infty \left(-\frac{\Delta_j}{z - w_j}\right)^{n},
+$$
+在 $K$ 上一致收敛（因 $\sup_{z \in K}|z - w_j| \ge \operatorname{dist}(w_j, K) > |\Delta_j|$，公比的模 $\le$ 常数 $< 1$）。部分和是关于 $1/(z - w_j)$ 的多项式，故 $1/(z - w_{j-1})$ 被「$1/(z - w_j)$ 的多项式」一致逼近。
 
-对 $t > T_0$ 部分的几何级数：
-$$\frac{1}{z - \Gamma(t)} = -\frac{1}{\Gamma(t)} \cdot \frac{1}{1 - z/\Gamma(t)} = -\sum_{n=0}^\infty \frac{z^n}{\Gamma(t)^{n+1}},$$
-其中 $|z/\Gamma(t)| < 1$ 保证收敛。
+**递推复合**：沿链 $j = 1, 2, \ldots, N$ 逐级复合，$1/(z - z_0) = 1/(z - w_0)$ 被「$1/(z - w_N)$ 的多项式」一致逼近。终端取 $|w_N| > 2\sup_{z \in K}|z|$，几何级数
+$$
+\frac{1}{z - w_N} = -\sum_{n=0}^\infty \frac{z^n}{w_N^{n+1}} \qquad (|z/w_N| \le 1/2)
+$$
+是普通多项式的一致收敛展开。复合有限步即得：$1/(z - z_0)$ 在 $K$ 上被多项式一致逼近。 $\blacksquare$
 
-对 $t \leq T_0$ 部分，直接用 Weierstrass 逼近（$[0, T_0]$ 紧）处理。
-
-由 $\Gamma$ 的适当选取，使级数一致收敛。 $\blacksquare$
-
-> **依赖关系小结**: 本证明依赖链为「[[cauchy-theorem|Cauchy 定理]] ⇒ [[cauchy-integral-formula|Cauchy 积分公式]] ⇒ Runge 定理」，由三个引理构成：Lemma 5.8 用网格 + 矩形 keyhole（Cauchy 积分公式）得 $f$ 的围道积分表示；Lemma 5.9 用黎曼和逼近每个围道积分（初等），得有理函数一致逼近；Lemma 5.10 用几何级数展开（$|z/\Gamma(t)| < 1$）与实 Weierstrass 逼近定理处理 $1/(z - z_0)$ 的多项式逼近。本证明不依赖留数定理、辐角原理等，依赖图无环。
+> **依赖关系小结**: 本证明依赖链为「[[cauchy-theorem|Cauchy 定理]] ⇒ [[cauchy-integral-formula|Cauchy 积分公式]] ⇒ Runge 定理」，由三个引理构成：Lemma 5.8 用网格 + 矩形 keyhole（Cauchy 积分公式）得 $f$ 的围道积分表示；Lemma 5.9 用黎曼和逼近每个围道积分（初等），得有理函数一致逼近；Lemma 5.10 用沿路径 $\Gamma$ 的有限链展开（$1/(z - w_{j-1}) = \frac{1}{z - w_j}\sum_n (-\Delta_j/(z - w_j))^n$，条件 $|\Delta_j| < \operatorname{dist}(w_j, K)$）与终端几何级数（$|z/w_N| \le 1/2$）处理 $1/(z - z_0)$ 的多项式逼近。本证明不依赖留数定理、辐角原理等，依赖图无环。
 
 ## What-if — 反例与边界
 

@@ -115,7 +115,7 @@ $$
 
 #### 证明二：自相关–卷积法（$\mathcal{S}$）+ Gauss 磨光 $L^2$ 延拓
 
-**来源与录入**。定理陈述依据 [[steinFourierAnalysisIntroduction2003a|Stein & Shakarchi (2003), Ch. 5, Theorem 1.12]]。本证法的 $\mathcal{S}$ 部分走「自相关–卷积 + 反演在原点取值」路线，未用主证明的乘法公式（Proposition 1.8），属标准教材技巧〔非书内证明，标准结果〕；$L^2$ 延拓部分用 Gauss 磨光 + 单调收敛，是 Stein 所述留待实分析卷的标准做法〔非书内证明，标准结果〕。录入日期：2026-08-13（修订：2026-08-14）。
+**来源与录入**。定理陈述依据 [[steinFourierAnalysisIntroduction2003a|Stein & Shakarchi (2003), Ch. 5, Theorem 1.12]]。本证法的 $\mathcal{S}$ 部分走「自相关–卷积 + 反演在原点取值」路线，未用主证明的乘法公式（Proposition 1.8），属标准教材技巧〔非书内证明，标准结果〕；$L^2$ 延拓部分用 Gauss 磨光 + 单调收敛，是 Stein 所述留待实分析卷的标准做法〔非书内证明，标准结果〕。录入日期：2026-08-13（更新：2026-08-14）。
 
 **动机**。主证明的核心机制是 [[multiplication-formula-trick|乘法公式]] $\int f\bar g = \int \hat f\overline{\hat g}$ 与配对 $g = \hat f$。证明二换一个视角：把范数平方 $\|f\|_2^2$ 写成自相关卷积 $h = f * \tilde f$（其中 $\tilde f(x) = \overline{f(-x)}$）在原点之值，把 $\|\hat f\|_2^2$ 写成 $\hat h = |\hat f|^2$ 的 [[fourier-inversion|反演]] 积分在原点之值——两个范数恒等归结为同一次反演在 $x = 0$ 处取值，机制与乘法公式完全不同。核心困难在 $L^2$ 延拓：Fourier 变换尚未定义于一般 $L^2$ 函数。关键观察有二：(i) $\mathcal{S}$ 在 $L^2$ 稠密，等距恒等沿稠密子空间建立后可按 Cauchy 列完备化并定义 $L^2$ 意义下的 $\hat f$；(ii) Gauss 核 $K_\delta$ 的 Fourier 显式形式 $\hat K_\delta(\xi) = e^{-\pi\delta\xi^2}$ 给出 $L^2$ 收敛的单调控制——磨光后 $f * K_\delta$ 的范数恒等来自 $\mathcal{S}$ 部分，再取 $\delta \to 0$ 即完成延拓。
 

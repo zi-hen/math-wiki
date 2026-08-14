@@ -5,6 +5,45 @@
 
 ---
 
+## [2026-08-14] audit-dependency | 全库证明依赖链审计：依赖关系小结补充与环路排查
+
+### 动因
+
+用户要求「检查所有证明的证明链条，依赖什么要写清楚，如果出现环路就要重写证明」。全库枚举 37 个 theorems/ + 22 个 lemmas/ 页面，逐一审计证明的依赖方向，并为所有含「详细证明」区段的页面补充显式「依赖关系小结」。
+
+### 1. 依赖关系小结补充（约 40 个页面）
+
+在各页「详细证明」区段 $\blacksquare$ 之后插入引用块 `> **依赖关系小结**: …`，写明依赖链（wikilink）、关键依赖方向与「不依赖 X/Y」声明，确认依赖图无环：
+
+- **复分析定理页（16）**：cauchy-theorem（Goursat 自足）、cauchy-integral-formula（Cauchy ⇒ 积分公式 ⇒ 高阶导数 ⇒ Cauchy 不等式）、morera、liouville、maximum-modulus（开映射主线 + 自足直接证）、open-mapping（Cauchy ⇒ 留数 ⇒ 辐角，不用最大模）、rouche、argument-principle、residue-theorem、jensen（Blaschke + 对数分支）、schwarz-reflection（Morera）、runge（Cauchy ⇒ 积分公式 ⇒ 三引理）、weierstrass-product、phragmen-lindelof、bernstein、dalembert（自足）。
+- **Fourier 定理页（12）**：sampling-theorem（Schwartz ⇒ 反演）、riemann-lebesgue（自足）、mean-square-convergence、fejer、euler-fourier-formulas、riemann-localization、gibbs-phenomenon、poisson-summation（主证明用系数唯一性，**不用反演**）、weierstrass-approximation-trig、wirtinger（Parseval）、weyl-equidistribution、dirichlet-theorem-on-primes。
+- **其他定理/引理页（10）**：isoperimetric、legendre-polynomials、hermite-functions、heisenberg（Plancherel 应用于 $\psi'$）、finite-abelian-decomposition、paley-wiener（Theorem 3.3 依赖小结：Plancherel + Cauchy-Schwarz + 逆变换，**不调用 Phragmén-Lindelöf**）、integrable-l1-approximation-by-continuous、fourier-coefficient-decay、multiplication-formula-trick、orthogonal-best-approximation、modulus-of-complex-exponential。
+- **概念/方法页**：good-kernel（好核三条件 ⇒ 一致连续 ⇒ 质量集中）、hermite-operator；lp-space/ellp-space/fourier-series/fourier-coefficient/fourier-transform/schwartz-space 已有等价声明，跳过；parseval-identity 补小结（正交性 ⇒ Bessel ⇒ 稠密性，**不依赖反演/Plancherel**）。
+
+### 2. 环路排查结论
+
+**未发现任何环路**。核心链 `Thm 1.4 ⇒ Prop 1.2 ⇒ Cor 1.5 ⇒ Thm 1.6 ⇒ Cor 1.7 ⇒ Thm 1.9 ⇒ Thm 1.12 ⇒ Prop 1.8` 前向无环；复分析链 `Cauchy ⇒ 积分公式 ⇒ Morera ⇒ Liouville ⇒ 最大模 ⇒ …`、`Cauchy ⇒ 留数 ⇒ 辐角 ⇒ Rouché/开映射` 均无环。paley-wiener 的「原书用 Phragmén-Lindelöf vs 本页详细证明走 $L^2$ 路线」差异已在页首与依赖小结中显式区分。
+
+### 3. 依赖声明与证明缺陷修复（子代理审计发现）
+
+| 文件 | 问题 | 修复 |
+|------|------|------|
+| concepts/schwartz-space.md | $\mathcal{S} \subset L^1$ 误引 lp-space Claim 3（实为稠密性） | 改为由 $\mathcal{S}$ 定义（快速衰减）直接得出，注明不引用该 Claim |
+| theorems/poisson-summation-formula.md | 「关联」区声称证明用反演定理（正文实际用系数唯一性） | 改为「反演链与 PSF 相互独立」，与依赖小结一致 |
+| theorems/paley-wiener-theorem.md | 页首声称 Theorem 3.3 依赖 Phragmén-Lindelöf（详细证明实际未用） | 区分原书证法与本页 $L^2$ 路线，补详细证明依赖小结 |
+| theorems/morera-theorem.md | 第三阶段混入 [[lp-space]] 误链、论证绕行 | 删除误链，改为「$F$ 小圆盘内有原函数 ⇒ $F$ 全纯 ⇒ $f=F'$ 全纯」直接论证 |
+| theorems/weyl-equidistribution.md | Claim 1 断言一般 Riemann 可积函数 Fourier 级数点态收敛（错误） | 改写为 Weyl 标准四步递推（三角多项式 ⇒ 连续 ⇒ 阶梯 ⇒ 可积夹逼） |
+| theorems/weierstrass-product-theorem.md | 零点验证表述混乱且自认「细节需更精细构造」 | 改为 $E_p(w)=0 \iff w=1$ 的正确论证，零点重数 = 序列重复项数 |
+| theorems/runge-theorem.md | Lemma 5.10 思路跳跃（参数化 + Weierstrass 不严谨） | 改为 Stein 原书「有限链」论证（$|\Delta_j|<\operatorname{dist}(w_j,K)$ + 终端几何级数），依赖小结同步 |
+
+### 4. lint 清理与验证
+
+- 修复 lint WARNING：bernstein 跳步词「显然/修订/修正」（含 revision_note 措辞）与 `e^{-i\theta}` kernel 误检（改写为 $\operatorname{Re}$ 论证）、plancherel「修订」、morera $L^1$ 未链接。
+- `scripts/lint-wiki.ps1` 最终 **0 ERROR / 0 WARNING / 0 INFO**（16 节全 PASS）。
+- 不变量：`raw/`、`scratch/` 未触碰（lint 报告目录临时指向 `%TEMP%`）。
+
+---
+
 ## [2026-08-14] supplement-link | 概念页性质证明补 wikilink
 
 ### 动因

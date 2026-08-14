@@ -4,7 +4,7 @@ title: Bernstein 定理（Hölder 条件与绝对收敛）
 aliases: [Bernstein's theorem, Bernstein 定理, Hölder absolute convergence]
 created: 2026-08-13
 updated: 2026-08-13
-revision_note: 修订 Claim 2 证明——补全 $h_p=\pi 2^{-p}$ 的相位论证，澄清左端乘子下界来源，并修正 Cauchy-Schwarz 块内项数。
+revision_note: 更新 Claim 2 证明——补全 $h_p=\pi 2^{-p}$ 的相位论证，澄清左端乘子下界来源，并补全 Cauchy-Schwarz 块内项数。
 sources: [steinFourierAnalysisIntroduction2003a]
 status: verified
 tags: [fourier-analysis, convergence, regularity]
@@ -80,7 +80,7 @@ $$
 $$
 |e^{inh_p}-1|^2 \ge 4\cdot \tfrac12 = 2.
 $$
-特别地，$|e^{inh_p}-1|^2$ 在整个二进块内一致以 $2$ 为下界，**与 $|n|$ 的正负无关**（复指数模 $|e^{\pm i\theta}-1|$ 显然相等）。这就是左端不等式所需的"乘子均匀远离零点"。
+特别地，$|e^{inh_p}-1|^2$ 在整个二进块内一致以 $2$ 为下界，**与 $|n|$ 的正负无关**（复指数模相等：对 $|z|=1$，$|z-1|^2 = |z|^2 - 2\operatorname{Re}(z) + 1 = 2 - 2\operatorname{Re}(z)$ 仅依赖 $\operatorname{Re}(z)$；$n$ 变号时 $\theta = nh_p$ 变号而 $\operatorname{Re}(e^{i\theta}) = \cos\theta$ 不变）。这就是左端不等式所需的"乘子均匀远离零点"。
 
 **第二步（右端：代入 $h_p$ 后做非负截取）。** 在 Claim 1 中**特化** $h = h_p$（Claim 1 对一切 $h \neq 0$ 成立），得全和的界
 $$
