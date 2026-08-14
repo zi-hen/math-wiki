@@ -100,6 +100,8 @@ $$
 $$
 这是半径为 $\sqrt{a^2 + b^2} = 1$ 的圆。回代放缩，$A = L^2/(4\pi)$ 当且仅当 $\Gamma$ 是圆。$\blacksquare$
 
+> **依赖关系小结**：本证明依赖链为「微积分基本事实（放缩、弧长参数化、Green 公式、分部积分）⇒ 面积公式与关键恒等式 ⇒ [[wirtinger-inequality|Wirtinger 不等式]]（应用于均值零的 $2\pi$-周期函数 $y$）⇒ 非负性 $A \le \pi$ ⇒ 回代放缩 $A \le L^2/(4\pi)$」。核心定理级依赖仅 [[wirtinger-inequality|Wirtinger 不等式]]（第五、六阶段），其余为 Green 公式与初等积分估计；等号条件由 Wirtinger 取等（$y$ 为基波）与一阶微分方程 $x' = -y$ 联合给出，不再引入新依赖。本证明**不依赖** Parseval 恒等式或 Cauchy-Schwarz 不等式的显式调用（难度表中的「Parseval + Wirtinger」是对证法的方法学概括，详细证明实际仅用 Wirtinger）。依赖图无环：Wirtinger 不等式独立于本页建立。
+
 ## What-if — 反例、等价叙述与推广
 
 ### 等价叙述

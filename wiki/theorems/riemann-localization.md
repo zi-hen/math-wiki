@@ -144,6 +144,8 @@ $$
 S_N(f)(\theta_0) - S_N(g)(\theta_0) \to 0 \quad (N \to \infty). \qquad \blacksquare
 $$
 
+> **依赖关系小结**: 本证明依赖链为「Dirichlet 核的显式公式与卷积表示（第二阶段，直接代入定义；$\frac{1}{2\pi}\int D_N = 1$）⇒ [[fourier-coefficient|Fourier 系数]] 的线性性归约（第一阶段，$h = f - g$）⇒ $tD_N(t) = \frac{t}{\sin(t/2)}\sin((N+\frac12)t)$ 的分解（第四阶段，Claim 1 用 Taylor 展开证 $\frac{t}{\sin(t/2)}$ 有界延拓）⇒ $\Phi = F\cdot g \in L^1$（第五阶段，Claim 2）⇒ [[riemann-lebesgue-lemma|Riemann-Lebesgue 引理]]（第六阶段，Stein Ch. 3 Theorem 1.4，控制 $\sin((N+\frac12)t)$ 的振荡）⇒ 局部化结论」。除 Riemann-Lebesgue 引理外各阶段均为定义代入与初等估计（Stein 书中 Theorem 2.1 的论证在本页完整重述，未引用其他定理页）。依赖图无环。
+
 ## 深层含义
 
 - **全局 vs 局部**：[[fourier-coefficient|Fourier 系数]] $\hat{f}(n)$ 是**全局**积分（依赖 $f$ 在整个圆上的值），但 Fourier 级数的点态收敛是**局部**现象——$\theta_0$ 处 $S_N(f)(\theta_0)$ 是否收敛到 $f(\theta_0)$，**完全取决于** $f$ 在 $\theta_0$ 附近的行为。

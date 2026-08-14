@@ -96,6 +96,8 @@ $$
 $$
 即得结论。$\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「[[fourier-coefficient|Fourier 系数]] 的含参计算（Claim 1，和差化积 + 端点三角函数值 $\sin((\alpha\pm n)\pi) = (-1)^n\sin(\alpha\pi)$）⇒ [[fourier-series|Fourier 级数]] 逐点收敛（$\cos(\alpha x)$ 光滑，级数收敛到自身）⇒ 端点取值 (ii)(iii) ⇒ 部分分式合并 (iv)」。步骤 (iv) 另用几何级数展开 $1/(1+t)$（$[0,1]$ 上一致收敛，可逐项积分）并把积分拆为 $\int_0^1 + \int_1^\infty$。除 Fourier 系数定义与级数逐点收敛基本事实外无定理级依赖（不依赖复分析留数路线）。依赖图无环。
+
 ## What-if — 反例、等价叙述与推广
 
 ### 等价叙述

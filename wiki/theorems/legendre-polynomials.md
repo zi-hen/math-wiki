@@ -75,6 +75,8 @@ $\int_{-1}^1(1-x^2)^n\,dx = \frac{2^{2n+1}(n!)^2}{(2n+1)!}$（Beta 积分：换�
 
 对 Riemann 可积 $f$：由 [[weierstrass-approximation-trig|Weierstrass 逼近]]（多项式在 $C[-1,1]$ 中稠密，从而在 [[lp-space|$L^2$]] 中稠密），对任意 $\varepsilon > 0$ 存在多项式 $P$ 使 $\|f - P\| < \varepsilon$；$P$ 落在 $\{\widetilde{L_0},\ldots,\widetilde{L_N}\}$ 张成的子空间中（$N$ 充分大），故 $f$ 到该子空间的距离 $\to 0$。由正交投影理论（[[orthogonal-best-approximation|最优逼近]]），Legendre 部分和 $f_N = \sum_{n\le N}\langle f,\widetilde{L_n}\rangle\widetilde{L_n}$ 是最佳逼近，$\|f - f_N\| \le \|f - P\| < \varepsilon$，故 $\|f - f_N\| \to 0$。$\blacksquare$
 
+> **依赖关系小结**：本证明依赖链为「分部积分（边界项由 $(x^2-1)^n$ 在 $\pm 1$ 处的零点消失）⇒ Claim 1 ⇒ 正交性与范数（Beta 型积分）⇒ 唯一性（线性代数：$n$ 个线性条件 ⇒ 解空间一维）⇒ 完备性」。完备性一步的定理级依赖为 [[weierstrass-approximation-trig|Weierstrass 逼近]]（多项式在 $C[-1,1]$ 中稠密，从而在 $L^2$ 中稠密）与 [[orthogonal-best-approximation|正交最佳逼近]]（部分和 $f_N$ 是子空间上的最优投影）；Gram-Schmidt 正交化与 [[lp-space|$L^2$ 空间]] 为基本概念工具。本证明**不依赖** Parseval 恒等式、Fourier 反演或均方收敛定理本身（该页自建收敛论证）。依赖图无环。
+
 ## What-if — 反例、等价叙述与推广
 
 ### 等价叙述

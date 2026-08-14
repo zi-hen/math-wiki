@@ -52,6 +52,8 @@ $\blacksquare$
 
 **跳跃点**：当 $f$ 在 $\theta_0$ 有 jump，$f * F_N(\theta_0) \to \frac{1}{2}(f(\theta_0+) + f(\theta_0-))$ 是标准好核定理的推广（参 [[riemann-localization]] 的同样论证）。
 
+> **依赖关系小结**: 本证明依赖链为「[[good-kernel|好核]]（Claim 1 验证 $F_N$ 的好核三条件，均为直接计算）⇒ [[approx-by-good-kernel|好核逼近]]（主证明，Ch. 2 Theorem 4.1）⇒ 本页定理（Fejér 定理）」。Claim 1 的好核验证只用三角函数恒等式与初等估计（单位质量、$L^1$ 有界、质量集中），无定理级依赖；跳跃点结论（收敛到 $\frac12(f(\theta_0+)+f(\theta_0-))$）借用 [[riemann-localization|Riemann 局部化]] 的同类论证。本证明不依赖本页自身；[[weierstrass-approximation-trig|Weierstrass 三角逼近]] 是其推论而非前提。依赖图无环。
+
 ## What-if — 反例、等价叙述
 
 ### 等价叙述

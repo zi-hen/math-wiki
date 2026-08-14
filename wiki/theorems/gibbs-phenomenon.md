@@ -61,6 +61,8 @@ $$
 
 **最大值位置**。$S_N(f)$ 在 $(0, \pi/N]$ 上单调上升（其导数 $\sum_{n=1}^N\cos(nx)$ 在 $(0, \pi/N]$ 内为正，或由部分和与原点的几何直观），故最大值在 $x = \pi/N$ 处取得；由 Claim 1–2 即得定理。$\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「Riemann 和（Claim 1：$S_N(\pi/N)$ 是 $t \mapsto \sin t/t$ 在 $[0,\pi]$ 上的 Riemann 和）⇒ Dirichlet 积分 $\int_0^\infty \sin t/t\,dt = \pi/2$（[[ch4-ex12-feynman|Ch.4 Ex.12]] 的边界值 $I(0)$）⇒ 过冲量 $\int_\pi^\infty \sin t/t\,dt$（Claim 2，交错积分逐项估计）⇒ 最大值位置（$S_N$ 在 $(0, \pi/N]$ 上单调，由导数符号或几何直观）⇒ 过冲公式」。除 Dirichlet 积分值（标准积分）与 Riemann 和、交错级数的初等事实外无定理级依赖。本证明不依赖本页自身。依赖图无环。
+
 ## What-if — 反例、等价叙述与推广
 
 ### 等价叙述

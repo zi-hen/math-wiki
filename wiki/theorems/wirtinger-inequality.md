@@ -63,6 +63,8 @@ f(t) = a_1 e^{2\pi i t/T} + a_{-1} e^{-2\pi i t/T} = A\sin(2\pi t/T) + B\cos(2\p
 $$
 $\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「[[parseval-identity|Parseval 恒等式]]（$\|f\|_2^2 = \sum_n |a_n|^2$；由 [[fourier-coefficient|Fourier 系数]] 的求导规则，$f'$ 的系数为 $a_n \cdot 2\pi i n/T$，故 $\|f'\|_2^2 = \sum_n (\frac{2\pi n}{T})^2 |a_n|^2$）⇒ 逐项比较（$n \neq 0$ 时 $n^{-2} \le 1$）⇒ Wirtinger 不等式」。均值条件 $\int_0^T f = 0$ 给出 $a_0 = 0$，等号条件由系数支撑集（$|n| \ge 2$ 时 $a_n = 0$）直接读出。除 Parseval 外无定理级依赖。依赖图无环。
+
 ## 其他证明
 
 > 本区段按 docs/PROOFS.md §6.5 记录与主证明不同的第二证法;主证明(§「详细证明」)保持不变。

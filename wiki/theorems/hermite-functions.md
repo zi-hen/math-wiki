@@ -86,6 +86,8 @@ $$
 
 **范数**。由生成函数平方并对 $x$ 积分：$\sum_{k,\ell}\frac{t^k s^\ell}{k!\,\ell!}\langle h_k, h_\ell\rangle = \int e^{-(x^2/2-2tx+t^2)}e^{-(x^2/2-2sx+s^2)}dx$，正交性使左端仅保留 $k = \ell$ 项；右端为 $e^{2ts}\cdot(\text{常数})$ 型的 Gauss 积分，比较 $t^ks^k$ 系数得 $\int h_k^2 = \pi^{1/2}2^k k!$。$\blacksquare$
 
+> **依赖关系小结**：本证明依赖链为「生成函数 + Taylor 展开 ⇒ 等价形式（Claim 1）⇒ 产生/湮灭算子代数 $A^*A = L-1$ 与交换子 $[A,A^*]=2$ ⇒ $L$-特征值与正交性 ⇒ [[fourier-transform|Fourier 变换]]基本性质（导数公式 $\widehat{f'}(\xi)=2\pi i\xi\hat f(\xi)$ 与乘法公式 $\widehat{(xf)}(\xi)=\frac{i}{2\pi}\hat f'(\xi)$）与 $e^{-\pi x^2}$ 的不动性 ⇒ Fourier 特征值（Claim 3）⇒ 卷积型恒等式（Ch. 5 Ex. 8）经 Fourier 变换转乘积 ⇒ 完备性（Claim 4）」。除 Fourier 变换的基本性质与 Gauss 积分的初等计算外，无定理级依赖：本证明**不依赖** Plancherel 定理、Parseval 恒等式或正交最佳逼近（完备性由生成函数直接论证）。依赖图无环。
+
 ## What-if — 反例、等价叙述与推广
 
 ### 等价叙述

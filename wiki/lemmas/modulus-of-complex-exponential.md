@@ -31,6 +31,8 @@ $$
 $$
 $\blacksquare$
 
+> **依赖关系小结**：本证明依赖链为「复指数的定义（$e^z = e^x e^{iy}$）+ Euler 公式（$e^{iy}=\cos y+i\sin y$）与三角恒等式 $\cos^2 y + \sin^2 y = 1$ ⇒ $|e^{iy}|=1$ ⇒ [[multiplicativity-of-modulus|模的乘性]] ⇒ $|e^z| = e^{\operatorname{Re}(z)}$」。Euler 公式可视为复指数定义的一部分，[[multiplicativity-of-modulus|模的乘性]] 为独立初等引理（其对本页的引用位于「应用」区段，不构成证明依赖），无定理级依赖，本质自足。依赖图无环。
+
 ## 应用
 
 - [[phragmen-lindelof-theorem]]：估计辅助函数 $|F_\varepsilon(z)| = |F(z)| \cdot |e^{-\varepsilon z^{3/2}}|$ 时，将 $|e^{-\varepsilon z^{3/2}}|$ 化为 $e^{-\varepsilon \operatorname{Re}(z^{3/2})}$。

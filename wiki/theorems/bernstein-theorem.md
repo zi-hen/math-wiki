@@ -122,6 +122,8 @@ $$
 $$
 末项为公比 $2^{1/2-\alpha} < 1$ 的几何级数。故级数绝对收敛；由 [[absolute-convergence-test|Weierstrass M 判别法]]（$|\hat f(n)e^{in\theta}| \le |\hat f(n)|$），一致收敛。$\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「[[parseval-identity|Parseval 恒等式]]（平移系数的 $e^{inh}$ 乘子 + Hölder 条件）⇒ 均值差分能量界（Claim 1）⇒ 二进块能量估计（Claim 2：初等三角估计 $|e^{i\theta}-1|^2 = 4\sin^2(\theta/2) \geq 2$ 于 $|\theta| \in [\pi/2, \pi]$，叠加 Claim 1 的非负截取）⇒ 块内系数和（Claim 3：[[cauchy-schwarz-inequality|Cauchy-Schwarz 不等式]]）⇒ $\ell^1$ 可和（几何级数 + [[absolute-convergence-test|Weierstrass M 判别法]]）」。依赖均为基础工具（Parseval 恒等式、Cauchy-Schwarz、几何级数、M 判别法），无定理级复杂依赖，依赖图无环。
+
 ## What-if — 反例、等价叙述与推广
 
 ### 反例（门槛 $\alpha = 1/2$ 不可越过）

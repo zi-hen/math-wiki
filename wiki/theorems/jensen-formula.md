@@ -97,6 +97,8 @@ $$
 
 由 $|h| = |f|/|B|$，且 $|B(Re^{i\theta})| = 1$（Blashke 乘积在 $C_R$ 上模为 $1$），故 $|h(Re^{i\theta})| = |f(Re^{i\theta})|$。代入得 Jensen 公式。 $\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「Blaschke 乘积 $B$（吸收零点、$|B| = 1$ 于 $C_R$，初等计算）⇒ 单连通域上的对数分支（Stein, Ch. 3, Theorem 6.2, p.119）⇒ $\log h$ 全纯 ⇒ [[cauchy-integral-formula|Cauchy 积分公式]]（取实部）⇒ Jensen 公式」。即「[[cauchy-theorem|Cauchy 定理]] ⇒ Cauchy 积分公式 ⇒ Jensen 公式」主线叠加单连通对数分支定理与 Blaschke 乘积的初等性质。本证明不依赖 Hadamard 因子分解、Nevanlinna 理论等后续内容，依赖图无环。
+
 ## 其他证明
 
 > 主证明之外的另一标准证法，依 docs/PROOFS.md §6.5「多证明记录」规范录入；主证明（「详细证明」，Blaschke 乘积法）保持不变。

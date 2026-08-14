@@ -96,6 +96,8 @@ $$|E_p(z/a_n) - 1| \leq 2 |z/a_n|^{p+1} \leq 2R^{p+1}/|a_n|^{p+1}.$$
 
 设 $f_1, f_2$ 同零点集（按重数），则 $f_1/f_2$ 整且无零点（Stein Theorem 6.2, p.119）——$f_1/f_2$ 在 $\mathbb{C}$ 上可写为 $e^g$（整函数 $g$）。 $\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「典型因子衰减估计（Claim：Taylor 展开，初等）⇒ 无穷乘积一致收敛（Proposition 3.2 的 $\sum c_n < \infty$ 判据）⇒ $f$ 为整函数（一致极限 + [[morera-theorem|Morera 定理]]的 Weierstrass 一致收敛推论）⇒ 唯一性（单连通域对数分支，Stein Theorem 6.2）」。即「[[cauchy-theorem|Cauchy 定理]] ⇒ Morera 定理 ⇒ Weierstrass 乘积定理」主线叠加无穷乘积收敛判据与典型因子的初等估计。本证明不依赖 Hadamard 因子分解、Gamma 函数理论等后续内容，依赖图无环。
+
 ## What-if — 反例与边界
 
 ### 典型例子

@@ -99,6 +99,8 @@ $$
 
 由 Morera 定理，$F$ 在 $\Omega$ 上全纯。 $\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「[[cauchy-theorem|Cauchy 定理]] ⇒ [[morera-theorem|Morera 定理]] ⇒ Schwarz 反射原理」：第一阶段定义 $F$（$\Omega^-$ 上 $F(z) = \overline{f(\bar{z})}$）；第二阶段由复共轭复合保持全纯（初等）得 $F \in \mathcal{O}(\Omega^-)$；第三阶段由 $f$ 在 $I$ 上取实值且连续延拓得 $F$ 在 $I$ 上连续；第四阶段用 Morera 定理验证 $F$ 全纯（三角微扰避开 $I$ 的标准技巧）。本证明不依赖 Cauchy 积分公式、Runge 定理等后续定理，依赖图无环。
+
 ## What-if — 反例与边界
 
 ### 典型例子

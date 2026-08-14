@@ -85,6 +85,8 @@ $$\frac{1}{z - \Gamma(t)} = -\frac{1}{\Gamma(t)} \cdot \frac{1}{1 - z/\Gamma(t)}
 
 由 $\Gamma$ 的适当选取，使级数一致收敛。 $\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「[[cauchy-theorem|Cauchy 定理]] ⇒ [[cauchy-integral-formula|Cauchy 积分公式]] ⇒ Runge 定理」，由三个引理构成：Lemma 5.8 用网格 + 矩形 keyhole（Cauchy 积分公式）得 $f$ 的围道积分表示；Lemma 5.9 用黎曼和逼近每个围道积分（初等），得有理函数一致逼近；Lemma 5.10 用几何级数展开（$|z/\Gamma(t)| < 1$）与实 Weierstrass 逼近定理处理 $1/(z - z_0)$ 的多项式逼近。本证明不依赖留数定理、辐角原理等，依赖图无环。
+
 ## What-if — 反例与边界
 
 ### 典型例子

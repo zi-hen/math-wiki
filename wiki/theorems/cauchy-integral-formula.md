@@ -118,6 +118,8 @@ $$
 
 $|f^{(n)}(z_0)| = \left|\frac{n!}{2\pi i} \int_C \frac{f(\zeta)}{(\zeta - z_0)^{n+1}}\,d\zeta\right| \leq \frac{n!}{2\pi} \cdot \|f\|_C \cdot 2\pi R \cdot \frac{1}{R^{n+1}} = \frac{n! \|f\|_C}{R^n}.$ $\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「[[cauchy-theorem|Cauchy 定理]] ⇒ Cauchy 积分公式 ⇒ 高阶导数公式 ⇒ Cauchy 不等式」：第一阶段在 keyhole 围道上应用 Cauchy 定理（被积函数 $f(\zeta)/(\zeta - z)$ 绕开奇点后无奇点），第二阶段起用一致连续性消去窄条贡献并化简 $C_\varepsilon$ 上的积分；高阶导数公式与 Cauchy 不等式分别依赖前一步的积分表示，再叠加积分号下求导与模估计（均为基础分析）。本证明不依赖 Liouville 定理、留数定理等后续定理，依赖图无环。
+
 ## What-if — 反例与边界
 
 ### 典型例子

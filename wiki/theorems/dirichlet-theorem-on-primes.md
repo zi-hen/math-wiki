@@ -223,6 +223,8 @@ $$
 $$
 级数发散蕴含等差数列 $\ell, \ell + q, \ell + 2q, \dots$ 中含有无穷多个素数。$\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「[[finite-abelian-group|有限阿贝尔群]] 上的 Fourier 分析（Stein Ch. 7 §2：指示函数 $\delta_\ell$ 用 [[character|Dirichlet character]] 展开，Claim 1 得系数 $\hat\delta_\ell(\chi) = \overline{\chi(\ell)}/\phi(q)$）⇒ 素数求和分解（第二阶段）⇒ Euler 乘积（Claim 2：$\chi$ 的乘性 + 唯一分解定理 + 绝对收敛下 Fubini 交换）⇒ $\log L(s,\chi)$ 的对数展开（Taylor 展开 $-\log(1-x)$，第三阶段）⇒ $L(1,\chi) \neq 0$（Claim 3 复特征标：$L(s,\chi)L(s,\bar\chi)$ 与 $\zeta(s)^2$ 比较；Claim 4 实特征标：二次型 $Q(s) = L(s,\chi)\zeta(s)$ 与 $\zeta(2s)$ 下界比较，即 Stein Ch. 8 Proposition 3.13 的双曲线求和法）⇒ 主项发散（Euler 定理 $\sum_p 1/p^s \to \infty$）⇒ 结论」。各 Claim 均前向依赖，未引用本页自身。依赖图无环。
+
 ## 等价叙述
 
 ### 叙述 1（Stein Ch.8 Theorem 3.1）

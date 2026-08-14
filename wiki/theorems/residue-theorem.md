@@ -112,6 +112,8 @@ $$
 
 由第一阶段，$\int_C f = \sum_{k=1}^N 2\pi i \cdot \text{res}_{z_k} f$。 $\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「[[cauchy-theorem|Cauchy 定理]]（多连通版本）⇒ 留数定理」：第一阶段用 Cauchy 定理把大围道 $C$ 上的积分化为各极点 $z_k$ 处小圆 $C_k$ 上的积分之和（复合围道约化）；第二阶段对每个极点作 Laurent 展开，初等计算 $\int_{C_\varepsilon}(z - z_0)^j\,dz$（$j \neq -1$ 时为 $0$，$j = -1$ 时为 $2\pi i$）得单极点贡献 $2\pi i \cdot a_{-1}$；附带的留数公式 Claim 用 Taylor 展开验证。本证明不依赖辐角原理、Rouché 定理等后续定理，依赖图无环。
+
 ## What-if — 反例与边界
 
 ### 典型例子

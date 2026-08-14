@@ -98,6 +98,8 @@ $$
 $$
 故 $\{\hat f(n)\} \in \ell^2$，从而 $\hat f(n) \to 0$（$\ell^2 \subset c_0$）。这与 (a)–(d) 的**逐项** $O(1/\lvert n\rvert)$ 不同：$\ell^2$ 可和只要求平方和有限，不给单项衰减速率——这反映 Riemann 可积（弱条件）vs Hölder / Lipschitz（强条件）的层级。$\blacksquare$
 
+> **依赖关系小结**：本证明含四条独立依赖路径：(a)「[[integration-by-parts|分部积分]]（系数递推 $\hat f(n)=\widehat{f^{(k)}}(n)/(in)^k$）+ [[riemann-lebesgue-lemma|Riemann-Lebesgue 引理]] ⇒ $o(\lvert n\rvert^{-k})$」；(b)(c)「[[fourier-coefficient|Fourier 系数]]平移性质 + Hölder/Lipschitz 估计（取对偶点 $h=\pi/n$）⇒ $O(\lvert n\rvert^{-\alpha})$」；(d)「指示函数直接积分 + Abel 求和（分部求和）⇒ $O(1/\lvert n\rvert)$，一般有界变差由 [[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]] 化归」；(e)「[[parseval-identity|Parseval 恒等式]] ⇒ $\ell^2$ 可和 ⇒ $\hat f(n)\to 0$」。被依赖的 Riemann-Lebesgue、Parseval、Ch. 2 Lemma 3.2 均独立建立且不反向依赖本页，依赖图无环；「Riemann 可积 ⇒ 有界」为 Stein 框架基本事实，不作为独立依赖。
+
 ## 应用
 
 - [[bernstein-theorem|Bernstein 定理]]：Hölder $\alpha > 1/2$ 时由 (b) 的逐项界 $\lvert\hat f(n)\rvert = O(\lvert n\rvert^{-\alpha})$ 仍不可得 $\ell^1$ 可和（因 $\alpha \le 1$ 时 $\sum \lvert n\rvert^{-\alpha} = \infty$），故需要更精细的二进块 $L^2$ 估计。

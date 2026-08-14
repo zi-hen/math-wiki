@@ -203,6 +203,8 @@ $$
 |F(z)| = \lim_{\varepsilon \to 0^+} |F_\varepsilon(z)| \leq 1, \qquad \forall\, z \in S. \qquad \blacksquare
 $$
 
+> **依赖关系小结**: 本证明依赖链为「初等复指数估计（主分支 $z^{3/2}$，Claim 1 的 $\operatorname{Re}(z^{3/2}) \geq r^{3/2}\cos(3\pi/8) > 0$；Claim 2 的一致快速下降）⇒ 有界扇形 $\Omega_R$ 上的 [[maximum-modulus-principle|最大模原理]]（有界区域版本，Stein, Ch. 1, Theorem 4.2）⇒ 令 $R \to \infty$、$\varepsilon \to 0$ 取极限」。即「最大模原理（有界区域）⇒ Phragmén-Lindelöf 定理」，关键机制是辅助函数 $F_\varepsilon = F e^{-\varepsilon z^{3/2}}$ 把无界区域问题化为有界区域问题。本证明不依赖 Paley-Wiener 定理（本定理反而是后者的证明工具），依赖图无环。
+
 ### 反例 $F(z) = e^{z^2}$ 的详细分析
 
 在扇形边界 $\arg z = \pm\pi/4$ 上：

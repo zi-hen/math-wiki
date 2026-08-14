@@ -89,6 +89,8 @@ $$
 f(x) = \sum_{n\in\mathbb{Z}} f(n)\,K(x - n). \qquad \blacksquare
 $$
 
+> **依赖关系小结**: 本证明依赖链为「[[schwartz-space|Schwartz 空间]] ⇒ [[fourier-inversion|Fourier 反演]] ⇒ 采样定理（本页）」：Claim 1 由 Fourier 反演在 $x = -m$ 处的值求出周期化函数 $F$ 的系数 $c_m = f(-m)$，第二阶段再对频域恒等式 (2) 取 Fourier 逆变换并计算特征函数的逆变换得到 sinc 核 $K$。辅助依赖：[[fourier-coefficient|Fourier 系数]]（$c_m$ 的定义）、[[integer-periodicity-of-exponential|复指数的整数周期性]]（$e^{2\pi i mn} = 1$ 使换元后指数不变）、[[dominated-convergence|控制收敛定理]]（Claim 2 交换求和与积分）、[[rolle-mean-value-theorem|均值定理]]（$y = 0$ 处 $K$ 取值 $1$）。周期化阶段由带限假设与反演直接实现，未调用 [[poisson-summation-formula|Poisson 求和公式]] 本身。依赖图无环。
+
 ## What-if — 反例、等价叙述
 
 ### 等价叙述

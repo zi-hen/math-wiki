@@ -102,6 +102,8 @@ $\blacksquare$
 
 **等号情形**：$\langle Af, Af \rangle = 0$ ⇒ $A\psi = 0$ ⇒ $\psi' + x \psi = 0$ ⇒ $\psi(x) = A e^{-x^2/2}$（一阶常微分方程）。归一化 $|A|^2 = \sqrt{2B/\pi}$（其中 $B = 1/2$）得精确常数。
 
+> **依赖关系小结**：主证明（Hermite 算子路线）依赖链为「算子恒等式 $A^*A = L - I$ ⇒ $\langle Lf,f\rangle \ge \langle f,f\rangle$ ⇒ 线性估计 $\int x^2|\psi|^2 + 4\pi^2\int\xi^2|\hat\psi|^2 \ge 1$」；其中二次矩换算使用 [[plancherel-theorem|Plancherel 定理]] **应用于 $\psi'$**（$\int|\psi'|^2 = \int|\widehat{\psi'}|^2 = 4\pi^2\int\xi^2|\hat\psi|^2$，配合 Stein 约定 $\widehat{\psi'}(\xi)=2\pi i\xi\hat\psi(\xi)$），最终乘积下界由 [[cauchy-schwarz-inequality|Cauchy-Schwarz 不等式]] 与算术-几何均值不等式给出。等号条件来自 $\langle A\psi,A\psi\rangle = 0$ 的一阶常微分方程，不引入新依赖。本证明**不依赖** Parseval 恒等式、Fourier 反演或乘法公式技巧（页首「证明思路」预告的乘法公式路线未在主证明中使用，见「其他证明」区段对比）。依赖图无环：Plancherel 与 Cauchy-Schwarz 均独立建立。
+
 ## 其他证明
 
 > 本区段按 docs/PROOFS.md §6.5 记录与主证明不同的第二证法;主证明(§「详细证明」)保持不变。

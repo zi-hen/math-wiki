@@ -105,6 +105,8 @@ $$
 
 **Kronecker 推论**：均匀分布 ⇒ 稠密（因为任何开区间 $(a, b)$ 在 $[0, 1)$ 中**非空**，极限概率为 $b - a > 0$ ⇒ 至少一个 $n$ 落入 $(a, b)$）。
 
+> **依赖关系小结**: 本证明依赖链为「[[fourier-series|Fourier 级数]]（Claim 1：Riemann 可积函数 $f = \sum_k c_k e^{2\pi i k\xi}$，取 $f = \chi_{(a,b)}$ 得计数比例；反向对 $e^{2\pi i k\xi}$ 应用得判据的 (⇒)）⇒ [[geometric-series-bounding|几何级数估计]]（Claim 2：$\left|\sum_{n=1}^N e^{2\pi i k n\gamma}\right| \le 2/|1 - e^{2\pi i k\gamma}|$，与 $N$ 无关）⇒ Weyl 判据 ⇒ 等分布」。$\gamma$ 无理保证 $k\gamma \notin \mathbb{Z}$（公比 $\neq 1$）；Kronecker 推论（稠密）由等分布直接得出，属区段内推演。除 Fourier 级数与几何级数求和外无定理级依赖。依赖图无环。
+
 ## What-if — 反例、等价叙述与推广
 
 ### 等价叙述

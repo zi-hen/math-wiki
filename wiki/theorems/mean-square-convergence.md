@@ -66,6 +66,8 @@ $$
 $$
 对一切充分大的 $N$ 成立。$\varepsilon$ 任意，故 $\|f - S_N(f)\| \to 0$，即均方收敛。$\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「[[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]]（可积函数由一致有界连续函数依 $L^1$ 逼近）⇒ [[fejer-theorem|Fejér 定理]]（连续函数由 Cesàro 平均一致逼近）⇒ [[weierstrass-approximation-trig|Weierstrass 三角逼近]]（三角多项式稠密）⇒ [[orthogonal-best-approximation|最优逼近引理]]（Ch. 3 Lemma 1.2，$S_N(f)$ 是最佳逼近）⇒ 均方收敛」。三段化归（可积 → 连续 → 三角多项式）逐层把 $L^1$ 逼近提升为 $L^2$ 逼近，最后由最优逼近引理闭合。本证明不依赖本页自身；[[riemann-lebesgue-lemma|Riemann-Lebesgue 引理]] 是其推论（经 Parseval/Bessel）而非前提。依赖图无环。
+
 ## What-if — 反例、等价叙述与推广
 
 ### 均方收敛与逐点收敛的独立性（例子）

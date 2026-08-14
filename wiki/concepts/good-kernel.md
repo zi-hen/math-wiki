@@ -65,6 +65,8 @@ $\varepsilon$ 任意, 一致收敛成立. $\blacksquare$
 
 > **附注**: 对 $f \in L^1(\mathbb T)$ 在连续点处成立 (Stein Theorem 4.1 的更强形式). Fourier 反演主证明中, 由 $f \in \mathcal{S} \subset C(\mathbb T) \cap L^1(\mathbb T)$, 一致收敛直接成立.
 
+> **依赖关系小结**: 本证明依赖链为「好核定义三条件 (a) 单位质量 / (b) $L^1$ 有界 / (c) 质量集中（本页「定义」节）⇒ 卷积差分解 $f = f * 1$（条件 (a)）+ [[triangle-inequality-complex|三角不等式]] ⇒ 紧集上连续函数一致连续（Heine–Cantor，模 $\omega_f(\delta) \to 0$）⇒ 积分拆分 $M\omega_f(\eta) + 2\|f\|_\infty \int_{|y| \ge \eta} |K_n(y)|\,dy$ ⇒ (c) 质量集中消去远端质量 + (b) 提供均匀常数 $M$ + $\varepsilon$ 选取 ⇒ 一致收敛」。关键依赖方向：三条件逐层起作用——(a) 给出差分解的起点，(b) 使逐点差可被 $\omega_f$ 均匀控制，(c) 处理远离原点处的质量；中间步骤仅用积分线性/可加性与 $f$ 的一致连续性。不依赖 [[fejer-theorem|Fejér 定理]]、[[riemann-lebesgue-lemma|Riemann–Lebesgue 引理]] 或 [[fourier-inversion|Fourier 反演]]本身（本证明为后者提供前置，而非反向依赖）。依赖图无环。
+
 ## 动机与背景
 
 好核是 Fourier 级数收敛性研究的核心工具。Dirichlet 核 $D_N$ 不是好核（$L^1$ 范数增长），故 Fourier 级数的点态收敛是精细问题；Fejér 核 $F_N$、Poisson 核 $P_r$、热核 $H_t$、Gauss 核 $K_\delta$ 均为好核，提供求和法与逼近工具。

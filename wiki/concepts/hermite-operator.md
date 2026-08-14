@@ -87,6 +87,8 @@ $$
 
 详见 [[ch5-pb9-hermite-eigenfunc|Ch.5 Pb.9]]。
 
+> **依赖关系小结**: 本页证明内容为「$L = A^*A + I$ 的代数分解」（「湮灭算子与产生算子」节）与「Claim 1：$L \ge I$」。依赖链为「算子定义（$L$、$A$、$A^*$，定义域 [[schwartz-space|$\mathcal{S}(\mathbb{R})$]]）⇒ 直接计算 $A^*A = L - I$ ⇒ 形式伴随性 $(Af, g) = (f, A^*g)$（本页「湮灭算子与产生算子」节给出）与 $L^2$ 内积正性 $\|Af\|^2 \ge 0$（内积见 [[lp-space|$L^p$ 空间]]）⇒ $L \ge I$；等号情形依赖初等常微分方程 $f' + xf = 0$（分离变量，解 $f = ce^{-x^2/2}$）」。Claim 2、3 在本页为陈述（未给出证明），其证明分别依赖 Hermite 函数性质与 Fourier 变换特征函数结论（见 [[ch5-pb9-hermite-eigenfunc|Ch.5 Pb.9]]），不属本页证明的依赖链。本证明无定理级依赖，且未调用 [[heisenberg-uncertainty-principle|Heisenberg 原理]]（依赖方向为 Claim 1 ⇒ Heisenberg 算子形式，见 [[ch5-ex23-heisenberg|Ch.5 Ex.23]]，而非反之）；依赖图无环。
+
 ### 基本性质
 
 1. **算子分解**：$L = A^* A + I$，其中 $A$（湮灭）、$A^*$（产生）互为形式伴随。

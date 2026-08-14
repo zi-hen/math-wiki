@@ -41,6 +41,8 @@ Weierstrass 1885 的"任何连续函数可用多项式逼近"是分析学的奠�
 
 $\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「[[fejer-theorem|Fejér 定理]]（Cesàro 平均 $\sigma_N(f)$ 一致收敛到 $f$，Stein Ch. 4 Theorem 5.2）⇒ 本页定理（Weierstrass 三角逼近）」。第一阶段仅用 Cesàro 平均的定义验证 $\sigma_N(f)$ 是三角多项式（最高频 $N-1$），无其他定理级依赖。本证明不依赖本页自身。依赖图无环。
+
 ## What-if — 反例、等价叙述
 
 ### 等价叙述

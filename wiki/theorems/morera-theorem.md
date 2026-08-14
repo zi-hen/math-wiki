@@ -97,6 +97,8 @@ $F$ 是 $D$ 上的实可微函数（其导数 $f$ 连续）。由 [[cauchy-theor
 
 由 [[steinComplexAnalysis|Stein, p.32, Theorem 2.4]]：$f \in C^1$ 且满足 Cauchy-Riemann $\Rightarrow$ $f$ 全纯。 $\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「三角闭曲线积分为零（假设条件）⇒ 三角剖分 ⇒ 路径无关 ⇒ 原函数 $F$ 存在 ⇒（$f$ 连续）$F' = f$ ⇒ $F$ 全纯 ⇒ $f$ 全纯」。其中「$F$ 全纯」一步引用 [[cauchy-theorem|Cauchy 定理]]的推论「有原函数 ⇒ 全纯」（$F$ 在小圆盘内有原函数）与[[holomorphic-function|全纯函数自动无穷可微]]；「$f$ 全纯」一步引用 $C^1$ + Cauchy-Riemann 的刻画（Stein Theorem 2.4）。注意 Morera 虽是 Cauchy 定理的逆命题，但本证明所用的是 Cauchy 定理方向的既有推论（「有原函数 ⇒ 全纯」与 $C^1$ + Cauchy-Riemann 刻画均由独立论证建立），不依赖 Morera 定理自身，依赖图无环。
+
 ## What-if — 反例与边界
 
 ### 典型例子

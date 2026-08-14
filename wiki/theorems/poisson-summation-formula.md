@@ -145,6 +145,8 @@ $$
 \sum_{n \in \mathbb{Z}} f(n) = F_1(0) = F_2(0) = \sum_{n \in \mathbb{Z}} \hat{f}(n). \qquad \blacksquare
 $$
 
+> **依赖关系小结**: 本证明依赖链为「[[schwartz-space|Schwartz 空间]]（快速衰减：Claim 1 保证 $F_1$、$F_2$ 绝对一致收敛；Claim 2 保证积分–求和交换的绝对可积）⇒ Stein Ch. 5 Theorem 1.13（Fourier 变换是 $\mathcal{S}$ 上的自同构，$\hat f \in \mathcal{S}$）⇒ [[fubini-tonelli|Fubini 定理]]（Claim 2）⇒ [[integer-periodicity-of-exponential|复指数的整数周期性]]（$e^{2\pi i mn} = 1$）⇒ Fourier 系数唯一性定理（Stein Ch. 2 Theorem 2.1，$F_1$ 与 $F_2$ 系数相等故 $F_1 = F_2$）⇒ Poisson 求和」。各阶段均前向依赖，未引用本页自身；详细证明实际只用 Fourier 系数唯一性与变换定义，未调用 [[fourier-inversion|Fourier 反演定理]]（关联区所述依赖在正文中由系数唯一性取代）。依赖图无环。
+
 ## 其他证明
 
 > 本区段按 docs/PROOFS.md §6.5 记录与主证明不同的第二证法;主证明(§「详细证明」,Book I 的周期化–Fourier 系数比较法)保持不变。

@@ -73,6 +73,8 @@ $$
 
 设 $P(z) = a_n z^n + \cdots + a_0$（$a_n \neq 0$，$n \geq 1$）无根。则 $1/P(z)$ 在 $\mathbb{C}$ 上全纯。当 $|z| \to \infty$ 时，$|P(z)| \sim |a_n||z|^n \to \infty$，故 $1/P(z) \to 0$。特别地，$|1/P(z)|$ 在某圆 $|z| \geq R$ 外一致有界；在紧集 $\{|z| \leq R\}$ 上，$1/P$ 连续故有界。合并得 $1/P$ 在 $\mathbb{C}$ 上有界。由 Liouville 定理，$1/P$ 为常数，与 $n \geq 1$ 矛盾。故 $P$ 必有根。 $\blacksquare$
 
+> **依赖关系小结**: 本证明依赖链为「[[cauchy-inequalities|Cauchy 不等式]]（Cauchy 积分公式的推论，Stein Corollary 4.3）⇒ $|f'(z_0)| \leq M/R$ ⇒ $R \to \infty$ 得 $f' \equiv 0$ ⇒ Liouville 定理」。代数基本定理的证明依赖本页 Liouville 定理本身（同页递进，非循环）与初等有界性论证（$|P(z)| \sim |a_n||z|^n$ + 紧集上连续）。本证明不依赖最大模原理、Jensen 公式等后续定理，依赖图无环。
+
 ## What-if — 反例与边界
 
 ### 典型例子

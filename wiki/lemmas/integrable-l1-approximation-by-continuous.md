@@ -35,6 +35,8 @@ $\blacksquare$
 
 > **注（Stein 框架的特点）**。Stein 不引入测度论与 Lebesgue 积分。Lemma 3.2 正是用以替代 Lebesgue 框架中"$C(\mathbb{T})$ 在 $L^1(\mathbb{T})$ 中稠密"这条抽象事实——后者在 Lebesgue 理论中由 Lusin 定理或简单函数逼近直接得到，但在 Riemann 框架下需要显式构造。Parseval 与均方收敛的证明中，**这一步不可省略**：它把"任意可积（有界）函数"化归为"连续函数"，再由 Fejér / Weierstrass 三角多项式逼近处理。
 
+> **依赖关系小结**：本证明依赖链为「[[good-kernel|好核]]（Fejér 核）的核性质 ⇒ 卷积 $f * K_N$ 的正则化（连续性）与一致收敛 ⇒ 一致有界性（$|f|\le B$ 与 $K_N$ 非负归一）」。定理级依赖仅 [[good-kernel|好核]] 的定义与逼近性质，其余为卷积与积分的基本估计。本证明**不依赖** Parseval、均方收敛或 Fejér 定理本身（该引理是这些定理的证明工具，而非其推论）。依赖图无环。
+
 ## 应用
 
 - [[parseval-identity]]：在「详细证明」第二阶段使用——化归一般可积函数为连续函数，再由 Fejér / Weierstrass 一致逼近完成 $L^2$ 逼近。
