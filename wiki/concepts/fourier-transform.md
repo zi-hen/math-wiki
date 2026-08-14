@@ -43,6 +43,82 @@ $$
 - **导数**：$\widehat{\partial_j f}(\xi)=2\pi i \xi_j \hat{f}(\xi)$（在分布意义下）。
 - **Plancherel 等式**：若 $f\in$ [[lp-space|$L^2(\mathbb{R}^d)$]]，则 $\int|\hat{f}|^2=\int|f|^2$。
 
+#### 详细证明（Stein Proposition 1.2 + 1.11 (iii)）
+
+以下逐条证明 Fourier 反演（[[fourier-inversion]]）所需的 Fourier 变换基本代数性质, 全部仅依赖 Fourier 变换的**定义**与积分换元（**不依赖 Fourier 反演本身**）, 故可作为后续定理的合法前置.
+
+**Claim 1**（线性）. $\widehat{af + bg} = a\hat{f} + b\hat{g}$（$a, b \in \mathbb C$）.
+
+*证明.* 直接代入定义:
+$$
+\widehat{af + bg}(\xi) = \int (af(x) + bg(x))\,e^{-2\pi i \xi \cdot x}\,dx = a\int f(x)e^{-2\pi i\xi\cdot x}\,dx + b\int g(x)e^{-2\pi i\xi\cdot x}\,dx = a\hat f(\xi) + b\hat g(\xi).
+$$
+线性由积分线性性保证. $\blacksquare$
+
+**Claim 2**（平移, Stein Proposition 1.2(i)）. 对 $a \in \mathbb R^d$,
+$$
+\widehat{f(\cdot - a)}(\xi) = e^{-2\pi i a \cdot \xi}\,\hat f(\xi), \qquad \widehat{e^{2\pi i a \cdot x} f(x)}(\xi) = \hat f(\xi - a).
+$$
+
+*证明.* 对第一个等式, 作换元 $y = x - a$（$dx = dy$）:
+$$
+\widehat{f(\cdot - a)}(\xi) = \int f(x - a)\,e^{-2\pi i \xi\cdot x}\,dx \overset{y = x-a}{=} \int f(y)\,e^{-2\pi i \xi\cdot (y+a)}\,dy = e^{-2\pi i a\cdot \xi} \int f(y)\,e^{-2\pi i\xi\cdot y}\,dy = e^{-2\pi i a\cdot \xi} \hat f(\xi).
+$$
+第二个等式由 Fourier 变换定义直接代入:
+$$
+\widehat{e^{2\pi i a\cdot x} f(x)}(\xi) = \int e^{2\pi i a\cdot x} f(x) e^{-2\pi i \xi\cdot x}\,dx = \int f(x)\,e^{-2\pi i (\xi - a)\cdot x}\,dx = \hat f(\xi - a). \qquad\blacksquare
+$$
+
+**Claim 3**（伸缩, Stein Proposition 1.2(iii)）. 对 $\lambda \in \mathbb R \setminus \{0\}$,
+$$
+\widehat{f(\lambda \cdot)}(\xi) = |\lambda|^{-d} \hat f(\xi/\lambda).
+$$
+
+*证明.* 作换元 $y = \lambda x$（$x = y/\lambda$, $dx = |\lambda|^{-d} dy$）:
+$$
+\widehat{f(\lambda \cdot)}(\xi) = \int f(\lambda x)\,e^{-2\pi i \xi\cdot x}\,dx \overset{y = \lambda x}{=} \int f(y)\,e^{-2\pi i \xi\cdot y/\lambda} |\lambda|^{-d} dy = |\lambda|^{-d} \int f(y)\,e^{-2\pi i (\xi/\lambda) \cdot y}\,dy = |\lambda|^{-d} \hat f(\xi/\lambda). \qquad\blacksquare
+$$
+
+**Claim 4**（反射, Stein Proposition 1.2(ii)）. $\widehat{f(-\cdot)}(\xi) = \hat f(-\xi)$.
+
+*证明.* 换元 $y = -x$:
+$$
+\widehat{f(-\cdot)}(\xi) = \int f(-x)\,e^{-2\pi i \xi\cdot x}\,dx \overset{y=-x}{=} \int f(y)\,e^{2\pi i \xi\cdot y}\,dy = \hat f(-\xi). \qquad\blacksquare
+$$
+
+**Claim 5**（乘 $x$ 与微分的对偶, Stein Proposition 1.2 推论）. 若 $f \in$ [[schwartz-space|$\mathcal S(\mathbb R^d)$]]（Schwartz 类, 保证所有求导与交换次序合法）, 则
+$$
+\widehat{x_j f(x)}(\xi) = \frac{i}{2\pi} \frac{\partial \hat f}{\partial \xi_j}(\xi), \qquad \widehat{\frac{\partial f}{\partial x_j}}(\xi) = 2\pi i \xi_j \hat f(\xi).
+$$
+
+*证明.* **第一个等式**: 在积分号下求导（$f \in \mathcal S$ 保证交换求导与积分合法, 因 $|x_j f(x) e^{-2\pi i\xi\cdot x}| \in L^1$ 对 $\xi$ 在每点局部成立; 此处 [[lp-space|$L^1$]] 为 [[lp-space|$\mathcal S \subset L^1$]] 的特例）:
+$$
+\frac{\partial \hat f}{\partial \xi_j}(\xi) = \frac{\partial}{\partial \xi_j}\int f(x)\,e^{-2\pi i \xi\cdot x}\,dx = \int f(x)\,\frac{\partial}{\partial \xi_j}e^{-2\pi i \xi\cdot x}\,dx = \int f(x)\,(-2\pi i x_j)\,e^{-2\pi i\xi\cdot x}\,dx = -2\pi i \widehat{x_j f}(\xi).
+$$
+整理得 $\widehat{x_j f}(\xi) = \frac{i}{2\pi} \frac{\partial \hat f}{\partial \xi_j}(\xi)$.
+
+**第二个等式**: 分部积分（$f \in \mathcal S$ 保证边界项为零; $f \in \mathcal S \Rightarrow x_j f \in L^1$, [[lp-space|$L^1$ 边界项衰减]]）:
+$$
+\widehat{\partial_{x_j} f}(\xi) = \int \frac{\partial f}{\partial x_j}\,e^{-2\pi i \xi\cdot x}\,dx = \left[f(x)\,e^{-2\pi i \xi\cdot x}\right]_{-\infty}^\infty - \int f(x)\,(-2\pi i \xi_j)\,e^{-2\pi i\xi\cdot x}\,dx = 2\pi i \xi_j \hat f(\xi). \qquad\blacksquare
+$$
+
+**Claim 6**（卷积定理, Stein Proposition 1.11(iii)）. 对 $f, g \in$ [[lp-space|$L^1(\mathbb R^d)$]], $f * g \in L^1(\mathbb R^d)$ 且 $\widehat{f * g} = \hat f \cdot \hat g$.
+
+*证明.* 由 [[fubini-tonelli|Fubini 定理]]（$\iint |f(x-y)g(y)|\,dx\,dy = \|f\|_1 \|g\|_1 < \infty$, 因 $\|f * g\|_1 \le \|f\|_1 \|g\|_1$）:
+$$
+\widehat{f * g}(\xi) = \int \left(\int f(x-y)g(y)\,dy\right) e^{-2\pi i \xi\cdot x}\,dx = \int g(y)\left(\int f(x-y)e^{-2\pi i \xi\cdot x}\,dx\right) dy.
+$$
+对内层积分作换元 $z = x - y$（$dz = dx$）:
+$$
+\int f(x-y)\,e^{-2\pi i \xi\cdot x}\,dx = \int f(z)\,e^{-2\pi i \xi\cdot (z + y)}\,dz = e^{-2\pi i \xi\cdot y}\hat f(\xi).
+$$
+故
+$$
+\widehat{f * g}(\xi) = \int g(y) e^{-2\pi i \xi\cdot y} \hat f(\xi)\, dy = \hat f(\xi) \int g(y) e^{-2\pi i \xi\cdot y}\,dy = \hat f(\xi) \hat g(\xi). \qquad\blacksquare
+$$
+
+> **附注**: 上述全部证明仅依赖 Fourier 变换的**定义**与积分换元, **不依赖 Fourier 反演公式**. 因此它们是 [[fourier-inversion]] 证明中的合法前置, 不构成循环.
+
 ### 典型例子
 
 1. **Gauss 函数**：$f(x) = e^{-\pi |x|^2}$。则 $\hat{f}(\xi) = e^{-\pi |\xi|^2}$——Gauss 函数是 Fourier 变换的特征函数（在 Stein 约定下）。这是 Parseval 与 Plancherel 等式的核心测试函数，也是热核基本解的 Fourier 变换。

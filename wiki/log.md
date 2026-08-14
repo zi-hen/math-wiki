@@ -5,6 +5,156 @@
 
 ---
 
+## [2026-08-14] supplement-link | 概念页性质证明补 wikilink
+
+### 动因
+
+用户反馈「如果性质依赖于定理需要补充链接引用」. 审计前两轮补充证明的概念页, 找出 8 处性质/证明文本提及定理/引理但缺少 wikilink 引用:
+
+1. [concepts/fourier-transform.md](../concepts/fourier-transform.md) **Claim 5** 提到 "$f \in \mathcal S$ 保证交换求导与积分合法" 与 "$f \in \mathcal S \Rightarrow x_j f \in L^1$, 边界项衰减" —— 应链 [[schwartz-space]] 与 [[lp-space]].
+2. [concepts/fourier-transform.md](../concepts/fourier-transform.md) **Claim 6** 卷积定理证明使用 Fubini 定理, 应链 [[fubini-tonelli]].
+3. [concepts/schwartz-space.md](../concepts/schwartz-space.md) **Claim 1** 证明中 $\mathcal S \subset L^1$ 应链 [[lp-space]] Claim 3.
+4. [concepts/lp-space.md](../concepts/lp-space.md) **Claim 2 Step 1** 提到 "外正则" 应链 [[regular-measure]]; **Step 3** 与 **Claim 3** 引用 [[schwartz-space]] 性质 (乘法封闭); Claim 1 (Hölder) 引用本证明.
+5. [concepts/good-kernel.md](../concepts/good-kernel.md) "性质" 第 3 条 "Fourier 系数 $\hat K_n(k) \to 1$" 应链 [[fourier-coefficient]].
+6. [concepts/fourier-series.md](../concepts/fourier-series.md) "基本性质" 第 3 条应链 [[mean-square-convergence]]; 第 6, 7, 8 条引用 [[fourier-coefficient]] 与具体证明.
+7. [concepts/fourier-coefficient.md](../concepts/fourier-coefficient.md) "基本性质" 第 4, 5 条应链 [[fourier-coefficient-decay]].
+8. [concepts/ellp-space.md](../concepts/ellp-space.md) "性质" Hölder, 稠密性 应链本证明 Claim 1, 2; Riesz-Fischer 应链 [[parseval-identity]]; Hausdorff-Young 应链 [[lp-space]] Hölder + [[mean-square-convergence]].
+
+### 修改
+
+逐条补充上述 wikilink 引用, 同时区分"内链" (同页 Claim 锚点) 与"跨页链" (定理/概念 wikilink):
+- 同页 Claim 引用: `[Claim 1](#详细证明核心代数性质)` 形式 (markdown 锚点).
+- 跨页引用: `[[fourier-coefficient|Fourier 系数]]` 形式 (Obsidian wikilink).
+- 既补充"性质"小节的链 (用户可见的列举性质), 也补充"详细证明"中的链 (证明中实际依赖的工具).
+
+### 验证
+
+- `scripts/lint-wiki.ps1` 跑通: 0 ERROR / 0 WARNING / 0 INFO.
+- 所有引用 wiki 页面均存在 (lint Section 1 "Broken wikilinks" PASS).
+- 同一页内 Claim 的链为同页锚点 (不创建新 wikilink 节点), 跨页定理的链是 Obsidian wikilink.
+
+---
+
+## [2026-08-14] supplement-proof-2 | 其他概念页基本性质证明补充
+
+### 动因
+
+用户反馈「其他概念页的性质呢」——前一轮仅补充了 [concepts/fourier-transform.md](../concepts/fourier-transform.md) 与 [concepts/schwartz-space.md](../concepts/schwartz-space.md),未触及 [fourier-inversion|Fourier 反演]] / [[plancherel-theorem|Plancherel]] / [[parseval-identity|Parseval]] 证明链上的其他关键概念页. 审计所有概念页后, 找出实际被主证明依赖但未证的关键性质:
+
+**P0 (直接构成主证明链依赖):**
+- [concepts/good-kernel.md](../concepts/good-kernel.md) 的 "好核 ⇒ 卷积逼近" (Stein Theorem 4.1) —— **关键**, 被 [fourier-inversion.md](../theorems/fourier-inversion.md) 主证明第一阶段 (Corollary 1.7) 与 [plancherel-theorem.md](../theorems/plancherel-theorem.md) 证明二 Claim 4 用.
+- [concepts/lp-space.md](../concepts/lp-space.md) 的 "$C_c^\infty$ 在 $L^p$ 中稠密" 与 "$S$ 在 $L^p$ 中稠密" —— **关键**, 被 Plancherel 证明二 Claim 4 与 Gauss 磨光 L^2 延拓用.
+
+**P1 (圆群 Fourier 分析标准前置):**
+- [concepts/fourier-series.md](../concepts/fourier-series.md) "部分和 = Dirichlet 卷积" (Stein Ch.2 p.46) —— Parseval 与均方收敛基础.
+- [concepts/fourier-coefficient.md](../concepts/fourier-coefficient.md) "求导公式" $\widehat{f'}(n) = in\hat f(n)$ 与 "衰减-光滑性对应" $f \in C^k \Rightarrow \hat f(n) = O(|n|^{-k}$) —— [[riemann-lebesgue-lemma|Riemann-Lebesgue]]与 [[fourier-coefficient-decay|Fourier 系数衰减]]基础.
+- [concepts/ellp-space.md](../concepts/ellp-space.md) Hölder 不等式 —— Parseval Cauchy-Schwarz 步骤用.
+
+### 修改
+
+**P0:**
+- **补充 [concepts/good-kernel.md](../concepts/good-kernel.md)** 「详细证明 (Stein Theorem 4.1)」节: 由好核三条件 + 三角不等式 + $f$ 一致连续 + 模 $\omega_f(\eta)$ 控制 + 质量集中拆分, 证 $\sup_x |(f * K_n)(x) - f(x)| \to 0$. 附注明确"对 $f \in \mathcal{S}$ 一致收敛直接成立", 用于 Fourier 反演主证明.
+- **补充 [concepts/lp-space.md](../concepts/lp-space.md)** 「详细证明 ($L^p$ 标准性质)」节:
+  - **Claim 1 (Hölder 不等式)**: Young 不等式 + 归一化 + 积分
+  - **Claim 2 ($C_c^\infty$ 在 $L^p$ 中稠密)**: 特征函数 → Urysohn → 简单函数 → $C_c^\infty$ 三步
+  - **Claim 3 ($S$ 在 $L^p$ 中稠密)**: $C_c^\infty$ → 截断 → Gauss 截断
+
+**P1:**
+- **补充 [concepts/fourier-series.md](../concepts/fourier-series.md)** 「详细证明 (核心代数性质)」节:
+  - **Claim 1 (部分和 = Dirichlet 卷积)**: 有限和-积分交换 + Dirichlet 核定义
+  - **Claim 2 (卷积 Fourier 系数 = 乘积, Stein Prop 3.1)**: Fubini + 换元 $z = x - y$
+- **补充 [concepts/fourier-coefficient.md](../concepts/fourier-coefficient.md)** 「详细证明 (核心代数性质)」节:
+  - **Claim 1 (线性性)**: 积分线性
+  - **Claim 2 (求导公式)**: 分部积分 + 周期边界条件
+  - **Claim 3 (衰减-光滑性对应)**: 反复应用 Claim 2 + $L^1$ 估计
+- **补充 [concepts/ellp-space.md](../concepts/ellp-space.md)** 「详细证明 ($\ell^p$ 标准性质)」节:
+  - **Claim 1 (Hölder 不等式)**: Young 不等式 (与 $L^p$ 类似)
+  - **Claim 2 ($c_{00}$ 在 $\ell^p$ 中稠密)**: 截断尾部求和
+  - **Claim 3 (Cauchy-Schwarz)**: Hölder 特例 $p = q = 2$
+
+### 验证
+
+- `scripts/lint-wiki.ps1` 跑通: 0 ERROR / 0 WARNING / 0 INFO.
+- 所有补充证明**仅依赖初等工具** (积分换元 / 分部积分 / Fubini / Young 不等式 / 一致连续 / 测度论外正则 / 控制收敛定理), **不依赖任何主定理页** (Fourier 反演、Plancherel、Parseval 等).
+- 概念页内容**互相不依赖**: [good-kernel](../concepts/good-kernel.md) ↔ [lp-space](../concepts/lp-space.md) ↔ [fourier-series](../concepts/fourier-series.md) ↔ [fourier-coefficient](../concepts/fourier-coefficient.md) ↔ [ellp-space](../concepts/ellp-space.md) 各自独立, 形成**完整的最小依赖图**.
+
+---
+
+## [2026-08-14] supplement-proof | 概念页基本性质证明补充
+
+### 动因
+
+用户反馈"概念页中的基本性质没有做出证明"。审计 [[fourier-inversion|Fourier 反演]]与 [[plancherel-theorem|Plancherel]]证明所需的全部前置性质, 发现 [concepts/fourier-transform.md](../concepts/fourier-transform.md) 与 [concepts/schwartz-space.md](../concepts/schwartz-space.md) 虽列出关键性质但**未证**:
+
+**fourier-transform.md** 列出的"基本性质"均未证, 但被反演/Plancherel 主证明依赖:
+- 平移 (Proposition 1.2 (i))
+- 伸缩 (Prop 1.2 (iii)) — **关键**, 主证明第二阶段用其推出 $K_\delta$ 的 $\widehat{K_\delta}$
+- 反射 (Prop 1.2 (ii)) — **关键**, 主证明与 Plancherel 推论用
+- 乘 $x$ / 微分对偶 (Prop 1.2 推论) — **关键**, schwartz-space Theorem 1.3 证明需要
+- 卷积定理 (Prop 1.11 (iii)) — **关键**, Fourier 反演第三阶段用
+
+**schwartz-space.md** 列出的"基本运算封闭性"均未证, 但被反演/Plancherel 主证明隐式依赖:
+- Fourier 变换封闭性 (Theorem 1.3): $f \in \mathcal S \Rightarrow \hat f \in \mathcal S$ — **关键**, 主证明第一阶段依赖
+- 乘法、求导、平移、伸缩、卷积、复共轭反射的封闭性 — **关键**, Plancherel 证明二的自相关-卷积法与一般 Plancherel 推论依赖
+
+### 修改
+
+- **补充 [concepts/fourier-transform.md](../concepts/fourier-transform.md) 「基本性质」节后的详细证明** (Stein Proposition 1.2 + 1.11 (iii)):
+  - **Claim 1 (线性)**: 直接由积分线性性
+  - **Claim 2 (平移)**: 换元 $y = x - a$
+  - **Claim 3 (伸缩, Prop 1.2(iii))**: 换元 $y = \lambda x$
+  - **Claim 4 (反射, Prop 1.2(ii))**: 换元 $y = -x$
+  - **Claim 5 (乘 $x$ / 微分对偶)**: 积分号下求导 + 分部积分 (依赖 $\mathcal S$ 边界项为零)
+  - **Claim 6 (卷积定理, Prop 1.11(iii))**: Fubini 交换 + 换元
+
+  全部证明**仅依赖 Fourier 变换定义与积分换元**, **不依赖 Fourier 反演**. 附注明确"上述全部证明仅依赖 Fourier 变换的定义与积分换元, 不依赖 Fourier 反演公式".
+
+- **补充 [concepts/schwartz-space.md](../concepts/schwartz-space.md) 「性质」节后的详细证明**:
+  - **Claim 1 (Theorem 1.3: Fourier 变换将 $\mathcal{S}$ 映为 $\mathcal{S}$)**: 由乘 $x$/微分对偶推得 $\xi^\alpha \partial^\beta_\xi \hat f(\xi) = (2\pi i)^{|\alpha|}(-1)^{|\beta|} \widehat{x^\alpha \partial^\beta_x f}(\xi)$, 后者因 $x^\alpha \partial^\beta_x f \in \mathcal S \subset L^1$ 而有界.
+  - **Claim 2 ($\mathcal S$ 对基本运算封闭)**: 逐项 (a) 乘法 (b) 求导 (c) 平移 (d) 伸缩 (e) 卷积 (f) 复共轭反射的证明, 全部由 $\mathcal S$ 定义直接验证.
+
+  附注明确"上述全部证明仅依赖 $\mathcal S$ 定义与 Fourier 变换代数性质, 不依赖 Fourier 反演".
+
+### 验证
+
+- `scripts/lint-wiki.ps1` 跑通: 0 ERROR / 0 WARNING / 0 INFO.
+- Fourier 反演主证明现在的依赖链**完全闭合且无循环**: Thm 1.4 (ODE 独立) + Prop 1.2 (fourier-transform.md 已证) + Theorem 1.3 (schwartz-space.md 已证) + Theorem 1.6 (好核三条件) + Corollary 1.7 (磨光) + Theorem 1.9 (Fourier 反演) ⇒ 各步不调用 Theorem 1.9 自身.
+- 补证的概念页内容**完全不依赖任何定理页** (Fourier 反演、Plancherel、Poisson 求和等), 仅依赖 [fourier-transform.md](../concepts/fourier-transform.md) ↔ [schwartz-space.md](../concepts/schwartz-space.md) 之间的互引, 形成**完整的最小依赖图**.
+
+---
+
+## [2026-08-14] revise-theorem | Fourier 反演证明循环论证整改
+
+### 动因
+
+用户反馈「反演公式就有严重的循环论证」,并要求自行检查所有证明。审计 [theorems/fourier-inversion.md](../theorems/fourier-inversion.md) 的主证明,确认存在严重循环论证:
+
+**主证明第二阶段** (原 §「详细证明」):
+> 应用 Claim 1 的对称性:取 **Fourier 逆变换** (Theorem 1.9 形式), 得 $g_\delta(x) = \int \hat f(\xi) e^{-\pi\delta\xi^2} e^{2\pi i x\xi}\, d\xi$.
+
+此步骤**用 Theorem 1.9 (Fourier 反演) 来证 Theorem 1.9**, 是教科书级的循环论证。正确的 Stein 路径应使用 **Theorem 1.4 (Gauss 自伴) + 缩放** 直接给出 $K_\delta$ 的反演恒等式(对**显式 $K_\delta$ 函数**独立成立), 不调用 Theorem 1.9 自身。
+
+### 修改
+
+- 重写 [theorems/fourier-inversion.md](../theorems/fourier-inversion.md) 主证明 (Claim 1, 主证明结构, 依赖关系小结):
+  - **Claim 1 (Theorem 1.4)**: 用 ODE 方法严格证明 Gauss 自伴 (求导 $\to$ 微分方程 $\to h' = -2\pi \xi h$ $\to$ $h = C e^{-\pi\xi^2}$ $\to$ 由 $h(0) = 1$ 定常数), **不依赖 Theorem 1.9**。
+  - **第一阶段**: 由 Theorem 1.4 + Proposition 1.2(iii) 缩放得 $\widehat{K_\delta}(\xi) = e^{-\pi\delta\xi^2}$ (Corollary 1.5), 验证 $\{K_\delta\}$ 是好核族 (Theorem 1.6), 得 $g_\delta := f * K_\delta \to f$ 一致 (Corollary 1.7)。
+  - **第二阶段** (关键修复): 用 Theorem 1.4 对**显式 $K_\delta$** 的特例 (Thm 1.4 + 缩放直接给出 $K_\delta$ 自伴等价式 ($**$)), **不调用 Theorem 1.9**。
+  - **第三阶段**: 展开 $g_\delta = f * K_\delta$ 并交换积分次序 (Fubini), 内层积分是 **Fourier 变换定义** (非反演), 得 ($***$) $g_\delta(x) = \int e^{-\pi\delta\xi^2} e^{2\pi i x\xi} \hat f(\xi)\, d\xi$。
+  - **第四阶段**: $\delta \to 0$ 由 [[dominated-convergence|控制收敛定理]] 收尾。
+- 新增「依赖关系小结」段落, 明确依赖链 `Thm 1.4 (ODE) ⇒ Prop 1.2 ⇒ Cor 1.5 ⇒ Thm 1.6 ⇒ Cor 1.7 ⇒ Thm 1.9`, 每步仅依赖前几步, **不调用 Theorem 1.9 自身**。
+- 修复 [methods/approx-by-good-kernel.md](../methods/approx-by-good-kernel.md)「磨光-极限用法」节中关于 Fourier 反演的描述 (原描述说"先对 $f * K_\delta$ 应用反演", 含循环论证表述; 改为用 $K_\delta$ 的反演恒等式)。
+- 修复 [methods/approx-by-good-kernel.md](../methods/approx-by-good-kernel.md)「与 multiplication-formula-trick 的配合」节中错误描述 (原说"用 Gauss 核 Fourier 显式形式直接验证乘法公式", 实际乘法公式由 Fourier 反演 + Fubini 推出)。
+- 检查其他定理页 ([theorems/plancherel-theorem.md](../theorems/plancherel-theorem.md), [theorems/poisson-summation-formula.md](../theorems/poisson-summation-formula.md), [theorems/heisenberg-uncertainty-principle.md](../theorems/heisenberg-uncertainty-principle.md), [theorems/sampling-theorem.md](../theorems/sampling-theorem.md), [theorems/hermite-functions.md](../theorems/hermite-functions.md), [theorems/parseval-identity.md](../theorems/parseval-identity.md), [theorems/mean-square-convergence.md](../theorems/mean-square-convergence.md), [problems/ch5-problem-1-psf-without-schwartz.md](../problems/ch5-problem-1-psf-without-schwartz.md), [problems/ch5-pb11-wirtinger.md](../problems/ch5-pb11-wirtinger.md)) — **均无循环论证**: 它们或独立于 Fourier 反演 (圆群 Parseval / 均方收敛 / PSF Schwartz 版 / Wirtinger), 或明确作为 Fourier 反演的推论 (Plancherel, sampling theorem), 或不依赖反演 (Heisenberg Claim 1 / 3 用 Plancherel + 分部积分)。
+
+### 验证
+
+- `scripts/lint-wiki.ps1` 跑通: 0 ERROR / 0 WARNING / 0 INFO (含 [lemmas/fourier-coefficient-decay.md](../lemmas/fourier-coefficient-decay.md) 的 5 个 notation 警告也已修复)。
+- 主证明现在**严格不调用 Theorem 1.9 自身**: Theorem 1.4 (Gauss 自伴) 由 ODE 独立证; $K_\delta$ 的反演恒等式 ($**$) 由 Theorem 1.4 + 缩放对**显式函数**给出; 第三阶段内层积分是 Fourier 变换定义 (非反演)。
+- 所有依赖 Fourier 反演的定理 (Plancherel, Heisenberg, sampling, Hermite Fourier 特征值) 均依赖正确, 无循环。
+
+---
+
 ## [2026-08-13] rewrite-lemma | Fourier 系数衰减页重写（表格修正+动机+详细推导）
 
 ### 动因

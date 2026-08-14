@@ -33,67 +33,83 @@ Fourier 变换的逆问题是 Fourier 分析的基本问题：给定 $\hat{f}$�
 
 ### 证明思路
 
-Stein 的证明思路极为巧妙，**完全在 Schwartz 框架内**：
+Stein 的证明思路极为巧妙，**完全在 Schwartz 框架内**，且**严格不依赖反演公式本身**：
 
-1. **第一步**：对 Gauss 函数 $e^{-\pi x^2}$ 验证 $\widehat{e^{-\pi x^2}} = e^{-\pi \xi^2}$（Theorem 1.4）。
-2. **第二步**：利用 Fourier 变换将 $\mathcal{S}$ 映为 $\mathcal{S}$（Proposition 1.1 ⇒ Theorem 1.3）的封闭性 + Gauss 变换的恒等点（自伴性质）。
-3. **第三步**：对一般 $f \in \mathcal{S}$，构造 Gauss 磨光逼近 $f * K_\delta \to f$（统一取极限），用 Theorem 1.4 与 Fubini 交换次序。
+1. **第一步（Theorem 1.4）**：用 ODE 方法直接验证 Gauss 函数 Fourier 变换的恒等点 $\widehat{e^{-\pi x^2}}(\xi) = e^{-\pi \xi^2}$（等价于 Gauss 函数 Fourier 反演——但对 Gauss 而言可由 ODE 独立证）。
+2. **第二步（Corollary 1.5）**：用 Proposition 1.2 的缩放性质 + Theorem 1.4 得 $\widehat{K_\delta}(\xi) = e^{-\pi\delta\xi^2}$（$K_\delta$ 是 Gauss 缩放）。
+3. **第三步（Theorem 1.6 + Corollary 1.7）**：验证 $\{K_\delta\}$ 是好核族，故 $f * K_\delta \to f$ 一致。
+4. **第四步**：对**已知** $K_\delta$ 的反演恒等式（由 Theorem 1.4 + 缩放直接给出，无需 Theorem 1.9）展开 $f * K_\delta$，交换积分次序，再用极限。
+
+**关键反循环要点**: 主证明第二阶段不应"取 Fourier 逆变换 (Theorem 1.9 形式)"——这正是 Theorem 1.9 自身, 构成循环。本证明改用 **$K_\delta$ 的反演恒等式**（独立于 Theorem 1.9 的 Gauss 特例）。
 
 ### 详细证明
 
 **预备：Gauss 自伴引理**。
 
-**Claim 1**（Gauss 函数 Fourier 变换的恒等点）. 设 $f(x) = e^{-\pi x^2}$（Gauss 函数，Stein 约定）。则 $\hat{f}(\xi) = e^{-\pi \xi^2} = f(\xi)$。
+**Claim 1**（Gauss 函数 Fourier 变换的恒等点，Stein Theorem 1.4）. 设 $f(x) = e^{-\pi x^2}$（Gauss 函数，Stein 约定）。则 $\hat{f}(\xi) = e^{-\pi \xi^2} = f(\xi)$。
 
-*证明.* 设 $g(\xi) = \hat{f}(\xi)/f(\xi)$。由 [[schwartz-space|$\mathcal{S}$ 封闭性]]，$\hat{f} \in \mathcal{S}$ 且 $f > 0$，故 $g \in C^\infty$。下面验证 $g$ 满足：
-- $g(\xi) = g(\xi/\delta)/\delta^{1/2}$（缩放性质，Proposition 1.1(iii)）：$\widehat{f(\delta x)}(\xi) = \delta^{-1} \hat{f}(\xi/\delta)$，但 $f(\delta x) = e^{-\pi \delta^2 x^2}$，故 $\hat{f}(\xi) = \delta^{1/2} e^{-\pi \xi^2/\delta^2}$；设 $\delta \to 1$，需 $g(\xi) = g(\xi/\delta)/\delta^{1/2}$。
-- 取 $\delta \to \infty$：$g(\xi/\delta) \to g(0)$，故 $g(\xi) = g(0)/\delta^{1/2}$——此式只在 $\delta$ 固定时成立。具体细节见 [[steinFourierAnalysisIntroduction2003a|Stein, Ch. 5, Theorem 1.4 完整证明]]（用 ODE 方法或变量替换 $\eta = \xi \cdot t$）。
+*证明.*由 [[fourier-transform|Fourier 变换]]定义, 设 $h(\xi) = \hat{f}(\xi) = \int_{\mathbb R} e^{-\pi x^2}\,e^{-2\pi i x\xi}\,dx$。对 $\xi$ 求导（在积分号下微分合法, 由 $|\partial_\xi e^{-\pi x^2} e^{-2\pi i x\xi}| = |2\pi i x| e^{-\pi x^2} \in L^1_x$ 对每个 $\xi$ 局部成立）:
+$$
+h'(\xi) = \int_{\mathbb R} e^{-\pi x^2}\,(-2\pi i x)\,e^{-2\pi i x\xi}\,dx = -2\pi i \int_{\mathbb R} x e^{-\pi x^2}\,e^{-2\pi i x\xi}\,dx.
+$$
+注意 $x e^{-\pi x^2} = -\frac{1}{2\pi}\frac{d}{dx}e^{-\pi x^2} = -\frac{1}{2\pi} f'(x)$, 故
+$$
+h'(\xi) = -2\pi i \cdot \left(-\frac{1}{2\pi}\right) \int_{\mathbb R} f'(x)\,e^{-2\pi i x\xi}\,dx = i\,\widehat{f'}(\xi).
+$$
+由 [[fourier-transform|Fourier 变换]]的微分性质（Proposition 1.2 推论）：$\widehat{f'}(\xi) = 2\pi i \xi \hat{f}(\xi) = 2\pi i \xi h(\xi)$。代入:
+$$
+h'(\xi) = i \cdot 2\pi i \xi h(\xi) = -2\pi \xi h(\xi).
+$$
+故 $h$ 满足常微分方程 $h'(\xi) = -2\pi \xi h(\xi)$, 一般解为 $h(\xi) = C e^{-\pi \xi^2}$。由初值 $h(0) = \int_{\mathbb R} e^{-\pi x^2}\,dx = 1$（Gauss 积分, Stein Proposition 1.2 推论; 此式独立于 Theorem 1.9, 因 $\int e^{-\pi x^2}dx = 1$ 是基本积分）得 $C = 1$。
 
-命题：$g(\xi) = 1$，从而 $\hat{f}(\xi) = f(\xi)$。$\blacksquare$
+故 $\hat{f}(\xi) = e^{-\pi\xi^2} = f(\xi)$。$\blacksquare$
+
+> **注**: Theorem 1.4 给出的 $\widehat{e^{-\pi x^2}} = e^{-\pi\xi^2}$ **等价于** Gauss 函数的 Fourier 反演 $e^{-\pi x^2} = \int e^{-\pi\xi^2} e^{2\pi i x\xi} d\xi$（两边对 $\xi$ Fourier 变换等价），属于"已知显式函数的反演", 不构成对一般 $\mathcal S$ 函数反演公式的循环。
 
 **主证明**（对 $f \in \mathcal{S}$）：
 
-**第一阶段**：回代。取 $\hat{f} \in \mathcal{S}$（Theorem 1.3），目标是证明 $\hat{f}$ 的 Fourier 变换在 $-x$ 处恢复 $f$，即 $\hat{\hat{f}}(x) = f(-x)$。
-
-**Claim 2**（Gauss 磨光构造）. 设 $f \in \mathcal{S}$。由 Theorem 1.4，$\widehat{e^{-\pi x^2}} = e^{-\pi \xi^2}$。定义 Gauss 磨光族 $K_\delta(x) = \delta^{-1/2} e^{-\pi x^2/\delta}$（$\delta > 0$）。由缩放性质（Corollary 1.5），$\hat{K}_\delta(\xi) = e^{-\pi \delta \xi^2}$。
-
-*证明要点.* 由 [[good-kernel|好核性质]]（Theorem 1.6），$\{K_\delta\}_{\delta > 0}$ 是好核族（$\delta \to 0$）。对 $f \in \mathcal{S}$，取 $g_\delta(x) = (f * K_\delta)(x) = \int f(y) K_\delta(x - y) dy$。
-
-由 Bessel 不等式或 [[schwartz-space|$\mathcal{S}$ 封闭性]]，$g_\delta \in \mathcal{S}$。
-
-**第二阶段**：Fourier 反演关键等式。
-
-对 $g_\delta$，**直接计算** $\hat{g}_\delta$：
+**第一阶段**: Gauss 磨光族构造. 由 Theorem 1.4 + Proposition 1.2(iii) 缩放性质（Corollary 1.5）, 对 $\delta > 0$ 定义 $K_\delta(x) = \delta^{-1/2} e^{-\pi x^2/\delta}$, 得
 $$
-\hat{g}_\delta(\xi) = \hat{f}(\xi) \cdot \hat{K}_\delta(\xi) = \hat{f}(\xi)\, e^{-\pi \delta \xi^2}.
+\widehat{K_\delta}(\xi) = e^{-\pi\delta\xi^2}. \tag{*}
 $$
-（由 [[fourier-transform|Fourier 变换]]的卷积定理，Proposition 1.11(iii)：$\widehat{f * g} = \hat{f} \hat{g}$。）
+由 [[good-kernel|好核性质]]（Theorem 1.6, 通过直接计算三条件验证: $\int K_\delta = 1$, $\int |K_\delta| = 1$, $\int_{|x|>\eta} |K_\delta| \to 0$）, $\{K_\delta\}_{\delta > 0}$ 是好核族; 由 Corollary 1.7, 对 $f \in \mathcal{S}$ 有 $g_\delta := f * K_\delta \to f$ 一致（$\delta \to 0$）。
 
-应用 Claim 1 的对称性：取 **Fourier 逆变换**（Theorem 1.9 形式），得
+**第二阶段**: $K_\delta$ 的 Fourier 反演（独立于 Theorem 1.9）. 由 Theorem 1.4 + 缩放, 对**显式 $K_\delta$ 函数**有
 $$
-g_\delta(x) = \int \hat{f}(\xi)\, e^{-\pi \delta \xi^2}\, e^{2\pi i x \xi}\, d\xi.
+K_\delta(x) = \int_{\mathbb R} e^{-\pi\delta\xi^2}\, e^{2\pi i x\xi}\, d\xi \qquad (x \in \mathbb R). \tag{**}
+$$
+此式是定理 1.4（Gauss 自伴, $\delta = 1$）+ Proposition 1.2(iii) 缩放 + Proposition 1.2(ii) 反射的复合, 对**显式 $K_\delta$ 函数**独立成立, 不需对一般 $\mathcal S$ 函数的 Fourier 反演公式。**这是反循环的关键**: Theorem 1.4 证明的 Gauss 自伴与一般 $\mathcal S$ 反演是**不同的命题**——前者是 ODE 验证的特例, 后者是 $\mathcal S$ 上的全局定理。
+
+**第三阶段**: 展开 $g_\delta = f * K_\delta$ 并交换积分次序. 由卷积定义与 ($**$):
+$$
+g_\delta(x) = \int_{\mathbb R} f(y) K_\delta(x - y)\, dy
+= \int_{\mathbb R} f(y) \Big(\int_{\mathbb R} e^{-\pi\delta\xi^2}\, e^{2\pi i (x-y)\xi}\, d\xi\Big) dy.
+$$
+交换积分次序（由 [[fubini-tonelli|Fubini 定理]]保证：$|f(y)|e^{-\pi\delta\xi^2}$ 在 $\mathbb R^2$ 上绝对可积, 因 $f \in \mathcal S \subset L^1$, $e^{-\pi\delta\xi^2} \in L^1$）:
+$$
+g_\delta(x) = \int_{\mathbb R} e^{-\pi\delta\xi^2}\, e^{2\pi i x\xi} \Big(\int_{\mathbb R} f(y) e^{-2\pi i y\xi}\, dy\Big) d\xi
+= \int_{\mathbb R} e^{-\pi\delta\xi^2}\, e^{2\pi i x\xi}\, \hat f(\xi)\, d\xi. \tag{***}
 $$
 
-**第三阶段**：取 $\delta \to 0$。
+这里内层积分 $\int f(y) e^{-2\pi i y\xi} dy$ 正是 **$\hat f(\xi)$ 的 Fourier 变换定义**, 不依赖反演。
 
-**Claim 3**（极限一致收敛）. 由 $f \in \mathcal{S}$ 的速降性与 $|\hat{f}(\xi)| \leq C_N(1 + |\xi|)^{-N}$，对任意 $\varepsilon > 0$，存在 $M$ 使 $|\xi| > M$ 时 $|\hat{f}(\xi)| < \varepsilon$。将积分拆为
+**第四阶段**: 取 $\delta \to 0$. 由 $g_\delta \to f$ 一致（第一阶段）, 我们只需证
 $$
-\int = \int_{|\xi| \leq M} + \int_{|\xi| > M}.
+\lim_{\delta \to 0} \int_{\mathbb R} \hat f(\xi)\, e^{-\pi\delta\xi^2}\, e^{2\pi i x\xi}\, d\xi = \int_{\mathbb R} \hat f(\xi)\, e^{2\pi i x\xi}\, d\xi.
 $$
-第一项中 $e^{-\pi \delta \xi^2} \to 1$（$\delta \to 0$）一致收敛（因积分区域紧），第二项由 $\hat{f}$ 衰减受控。
 
-更精确地：
+**Claim 2**（极限控制）. 由 $f \in \mathcal S$ 的速降性, $\hat f \in \mathcal S \subset L^1$（$\mathcal S$ 对 Fourier 变换封闭 + Schwartz 函数可积）, 故 $\int |\hat f(\xi)|\, d\xi < \infty$。对每个 $\delta > 0$,
 $$
-\left| \int \hat{f}(\xi)\, e^{2\pi i x \xi}\, d\xi - \int \hat{f}(\xi)\, e^{-\pi \delta \xi^2}\, e^{2\pi i x \xi}\, d\xi \right| \leq \int |\hat{f}(\xi)|\, (1 - e^{-\pi \delta \xi^2})\, d\xi.
+\Big|\hat f(\xi)\, e^{-\pi\delta\xi^2}\Big| \le |\hat f(\xi)| \quad \text{且} \quad \hat f(\xi)\, e^{-\pi\delta\xi^2} \to \hat f(\xi) \quad (\delta \to 0).
 $$
-由 $|\hat{f}(\xi)| \leq C_N (1+|\xi|)^{-N}$ 取 $N = 2$，$1 - e^{-\pi \delta \xi^2} \leq \pi \delta \xi^2 \leq \pi \delta (1 + |\xi|^2)$——积分为 $O(\delta)$。
+由 [[dominated-convergence|控制收敛定理]]（控制函数 $|\hat f(\xi)| \in L^1$）, 积分收敛到 $\int \hat f(\xi) e^{2\pi i x\xi} d\xi$。
 
-故 $\delta \to 0$ 时 $g_\delta(x) \to \int \hat{f}(\xi) e^{2\pi i x \xi} d\xi$。
+**结论**. 由 $g_\delta(x) \to f(x)$（第一阶段）与 $g_\delta(x) \to \int \hat f(\xi) e^{2\pi i x\xi} d\xi$（第四阶段）,
+$$
+f(x) = \lim_{\delta \to 0} g_\delta(x) = \int_{\mathbb R} \hat f(\xi)\, e^{2\pi i x\xi}\, d\xi. \qquad\blacksquare
+$$
 
-但 $g_\delta = f * K_\delta \to f$（由 [[good-kernel|好核逼近]]，Theorem 1.6 ⇒ Corollary 1.7）。两边取极限：
-$$
-f(x) = \int \hat{f}(\xi)\, e^{2\pi i x \xi}\, d\xi. \qquad \blacksquare
-$$
+> **依赖关系小结**: 本证明严格依 Stein 命题链 `Thm 1.4 (Gauss 自伴, ODE 证) ⇒ Prop 1.2 (缩放/反射) ⇒ Cor 1.5 ($\hat K_\delta$) ⇒ Thm 1.6 (好核三条件) ⇒ Cor 1.7 (磨光一致) ⇒ Thm 1.9 (Fourier 反演)`, 每步仅依赖前几步, 不调用 Theorem 1.9 自身。第二阶段的关键 ($**$) 是 **Theorem 1.4 对 $K_\delta$ 的特例**（ODE 已证 Gauss 自伴, 缩放直接给出 $K_\delta$ 自伴等价式）, 不构成对一般 $\mathcal S$ 函数反演的循环。第三阶段的内层积分是 **Fourier 变换定义**（非反演）, 不构成循环。
 
 ## 其他证明
 

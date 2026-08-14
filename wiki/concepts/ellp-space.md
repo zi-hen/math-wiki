@@ -63,13 +63,40 @@ $\ell^p$ 在 Fourier 分析中的角色有两层：
 $$
 \sum_n |a_n b_n| \leq \|a\|_p \|b\|_q.
 $$
+（详见 [Claim 1](#详细证明ellp-标准性质)。）
 - **稠密性**：
-  - 有限支撑序列 $c_{00}(\mathbb{Z})$ 在 $\ell^p$ 中稠密（$1 \leq p < \infty$）。
+  - 有限支撑序列 $c_{00}(\mathbb{Z})$ 在 $\ell^p$ 中稠密（$1 \leq p < \infty$，详见 [Claim 2](#详细证明ellp-标准性质)）。
   - $\mathbb{Z}$ 上的 Schwartz 序列 $s(\mathbb{Z}) = \{a \in \mathbb{C}^\mathbb{Z} : \sup_n |n|^k |a_n| < \infty \text{ 对所有 } k \geq 0\}$ 在 $\ell^p$ 中稠密（$1 \leq p < \infty$）。
-- **Riesz–Fischer 定理**：映射 $f \in L^2(\mathbb{T}) \mapsto \{\hat{f}(n)\}_{n \in \mathbb{Z}} \in \ell^2(\mathbb{Z})$ 是等距同构。
-- **Hausdorff–Young 不等式**：若 $f \in L^p(\mathbb{T})$（$1 \leq p \leq 2$），则 $\hat{f} \in \ell^{p'}(\mathbb{Z})$，$\frac{1}{p} + \frac{1}{p'} = 1$。
+- **Riesz–Fischer 定理**：映射 $f \in L^2(\mathbb{T}) \mapsto \{\hat{f}(n)\}_{n \in \mathbb{Z}} \in \ell^2(\mathbb{Z})$ 是等距同构。见 [[parseval-identity|Parseval 恒等式]]（两者等价, Ch. 3 Theorem 1.3）。
+- **Hausdorff–Young 不等式**：若 $f \in L^p(\mathbb{T})$（$1 \leq p \leq 2$），则 $\hat{f} \in \ell^{p'}(\mathbb{Z})$，$\frac{1}{p} + \frac{1}{p'} = 1$（依赖 [[lp-space|Claim 1 (Hölder)]] + [[mean-square-convergence|均方收敛]] + 复插值）。
 
 依据 [[steinFourierAnalysisIntroduction2003a|Stein & Shakarchi (2003), Ch. 3 §1.2（Parseval 与 Riesz-Fischer），Ch. 4 §1（Hausdorff-Young）]]。
+
+### 详细证明（$\ell^p$ 标准性质）
+
+以下逐条证明 [[parseval-identity|Parseval]] 与 [[mean-square-convergence|均方收敛]]所依赖的 $\ell^p$ 关键事实, 仅依赖非负项求和与初等不等式, **不依赖 Parseval 或 Fourier 反演本身**.
+
+**Claim 1**（Hölder 不等式）. 对 $1 \le p, q \le \infty$, $\frac{1}{p} + \frac{1}{q} = 1$, $a \in \ell^p$, $b \in \ell^q$, 有
+$$
+\sum_n |a_n b_n| \le \|a\|_p \|b\|_q.
+$$
+
+*证明.* 不妨 $\|a\|_p, \|b\|_q > 0$. 由 Young 不等式 $uv \le u^p/p + v^q/q$（$u, v \ge 0$）, 取 $u = |a_n|/\|a\|_p$, $v = |b_n|/\|b\|_q$:
+$$
+\frac{|a_n b_n|}{\|a\|_p \|b\|_q} \le \frac{|a_n|^p}{p \|a\|_p^p} + \frac{|b_n|^q}{q \|b\|_q^q}.
+$$
+对 $n$ 求和: $\sum_n \frac{|a_n b_n|}{\|a\|_p \|b\|_q} \le \frac{1}{p} + \frac{1}{q} = 1$. 故 $\sum_n |a_n b_n| \le \|a\|_p \|b\|_q$. $\blacksquare$
+
+**Claim 2**（$c_{00}$ 在 $\ell^p$ 中稠密, $1 \le p < \infty$）. 对任意 $a \in \ell^p$ 与 $\varepsilon > 0$, 存在 $b \in c_{00}(\mathbb Z)$（有限支撑序列）使 $\|a - b\|_{\ell^p} < \varepsilon$.
+
+*证明.* 因 $a \in \ell^p$, $\sum |a_n|^p < \infty$. 取 $N$ 充分大使 $\sum_{|n| > N} |a_n|^p < \varepsilon^p$. 令 $b_n = a_n$ 对 $|n| \le N$, $b_n = 0$ 对 $|n| > N$. 则 $b \in c_{00}$ 且
+$$
+\|a - b\|_p^p = \sum_{|n| > N} |a_n|^p < \varepsilon^p. \qquad\blacksquare
+$$
+
+**Claim 3**（$\ell^2$ 内积与内积空间）. $\ell^2$ 在内积 $(a, b) = \sum_n a_n \overline{b_n}$ 下为 Hilbert 空间; Cauchy-Schwarz $|(\a, b)| \le \|a\|_2 \|b\|_2$ 由 Claim 1 取 $p = q = 2$ 立得.
+
+> **附注**: 上述证明仅依赖非负项求和与 Young 不等式, **不依赖 Parseval 或 Fourier 反演**. 圆群 Parseval 与均方收敛依赖这些 $\ell^p$ 性质 + [[fourier-series|Fourier 级数]]基本性质（部分和 = Dirichlet 卷积）+ [[good-kernel|好核逼近]]建立 $\ell^2$ 上的等距性.
 
 ## 与 $L^p$ 的对偶关系
 

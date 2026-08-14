@@ -48,14 +48,14 @@ $$
 
 Gauss 磨光在 Fourier 反演与 Plancherel 中的标准路径是**先磨光、再取极限 $\delta \to 0$**：
 
-- **Fourier 反演**（Ch. 5 Theorem 1.9）：先对 $f * K_\delta$ 应用反演（其 Fourier 变换有显式指数衰减），再令 $\delta \to 0$ 得 $f(x) = \int \hat{f}(\xi) e^{2\pi i x \xi} d\xi$（详见 [[fourier-inversion]]）。
+- **Fourier 反演**（Ch. 5 Theorem 1.9）：用 **$K_\delta$ 的反演恒等式**（由 Theorem 1.4 + 缩放对**显式 $K_\delta$** 独立给出, 不依赖 Theorem 1.9）展开 $f * K_\delta = \int e^{-\pi\delta\xi^2} e^{2\pi i x\xi} \hat f(\xi) d\xi$（Fubini 交换），再令 $\delta \to 0$ 得 $f(x) = \int \hat f(\xi) e^{2\pi i x\xi} d\xi$（详见 [[fourier-inversion]]）。**关键**: 第二阶段的内层积分是 **Fourier 变换定义**（非反演）, 不构成对 Theorem 1.9 的循环。
 - **Plancherel 定理**（Ch. 5 Theorem 1.12）：将 $\mathcal{S}$ 上的等距结果经 $L^2$ 稠密性 + 磨光延拓至 $L^2$（详见 [[plancherel-theorem]]）。
 - **$\hat{\mathcal{S}} = \mathcal{S}$ 封闭性**（Ch. 5 Theorem 1.3）：Fourier 变换保持 [[schwartz-space|Schwartz 类]]，磨光核的显式 Fourier 形式支撑该证明。
 - **半平面调和方程**（Ch. 5 Theorem 2.6）：$\mathbb{R}$ 版 Poisson 核是好核（更优的磨光），用于解 Dirichlet 问题。
 
 ### 与 multiplication-formula-trick 的配合
 
-用 Gauss 核的 Fourier 显式形式 $\hat{K}_\delta(\xi) = e^{-\pi \delta \xi^2}$ 可避开抽象展开，直接验证乘法公式——见 [[multiplication-formula-trick]]。
+用 Gauss 核的 Fourier 显式形式 $\hat K_\delta(\xi) = e^{-\pi\delta\xi^2}$ 可辅助构造 $g_\delta = f * K_\delta$ 的 Fourier 表示, 但 **Plancherel 本身的证明**走的是 Fourier 反演（Theorem 1.9）+ Fubini 交换路线（见 [[plancherel-theorem]] 主证明）, 不是直接靠 Gauss 核验证. 见 [[multiplication-formula-trick]] lemma 页.
 
 ## Stein 出现位置
 

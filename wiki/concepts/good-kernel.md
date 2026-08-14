@@ -27,14 +27,43 @@ $$
 $$
 
 **Stein 定理**：若 $\{K_n\}$ 是好核，则对任意 $f \in L^1(\mathbb{T})$，
-
 $$
 (f * K_n)(x) \to f(x), \quad n \to \infty
 $$
-
 在 $f$ 的连续点处成立；若 $f$ 处处连续则一致收敛。
 
 依据 [[steinFourierAnalysisIntroduction2003a|Stein & Shakarchi (2003), Ch. 2 §5, Theorem 4.1]]。
+
+#### 详细证明（Stein Theorem 4.1）
+
+以下证明[[fourier-inversion|Fourier 反演]]（Corollary 1.7）与 [[plancherel-theorem|Plancherel]]证明二（Claim 4）所依赖的好核逼近定理, 仅依赖好核定义三条件 (a)(b)(c) 与 Riemann 积分标准性质, **不依赖 Fourier 反演本身**.
+
+**Claim 1**（好核逼近, Stein Theorem 4.1）. 设 $\{K_n\}$ 是 $\mathbb{T}$ 上的好核族（满足 (a) 单位质量, (b) $L^1$ 有界, (c) 质量集中）, $f \in C(\mathbb{T})$ 为连续函数. 则
+$$
+\sup_{x \in \mathbb{T}} |(f * K_n)(x) - f(x)| \to 0 \qquad (n \to \infty).
+$$
+
+*证明.* 由 (a) 单位质量, $f = f * 1 = \int_{\mathbb T} f(x - y) \cdot 1\,dy = \int f(x-y)\,dy$. 故
+$$
+(f * K_n)(x) - f(x) = \int_{\mathbb T} \big[f(x - y) - f(x)\big] K_n(y)\,dy.
+$$
+由三角不等式与 (b) $L^1$ 有界 $\int |K_n| \le M$:
+$$
+|(f * K_n)(x) - f(x)| \le \int_{\mathbb T} |f(x - y) - f(x)| \cdot |K_n(y)|\,dy \le M \sup_y |f(x - y) - f(x)|.
+$$
+因 $f \in C(\mathbb T)$ 一致连续, 故 $\omega_f(\delta) := \sup_{|y| \le \delta} \sup_x |f(x - y) - f(x)| \to 0$ ($\delta \to 0$).
+
+将积分拆为 $|y| < \eta$ 与 $|y| \ge \eta$:
+$$
+|(f * K_n)(x) - f(x)| \le M\omega_f(\eta) + 2\|f\|_\infty \int_{|y| \ge \eta} |K_n(y)|\,dy.
+$$
+由 (c) 质量集中, 取 $\eta$ 固定, 选 $N$ 充分大使 $n \ge N$ 时 $\int_{|y| \ge \eta} |K_n(y)|\,dy < \varepsilon/M\|f\|_\infty$. 由 $\omega_f(\eta) \to 0$ ($\eta \to 0$), 选 $\eta$ 充分小使 $M \omega_f(\eta) < \varepsilon$. 故
+$$
+\sup_x |(f * K_n)(x) - f(x)| < 2\varepsilon \qquad (n \ge N).
+$$
+$\varepsilon$ 任意, 一致收敛成立. $\blacksquare$
+
+> **附注**: 对 $f \in L^1(\mathbb T)$ 在连续点处成立 (Stein Theorem 4.1 的更强形式). Fourier 反演主证明中, 由 $f \in \mathcal{S} \subset C(\mathbb T) \cap L^1(\mathbb T)$, 一致收敛直接成立.
 
 ## 动机与背景
 
@@ -42,9 +71,9 @@ $$
 
 ## 性质
 
-- **卷积逼近**：$(f * K_n)(x) = \int f(x-y) K_n(y)\,dy$。
+- **卷积逼近**：$(f * K_n)(x) = \int f(x-y) K_n(y)\,dy$（详见 [Claim 1](#详细证明stein-theorem-41)）。
 - **收敛保证**：好核条件 (c) 排除质量从原点扩散。
-- **与 Fourier 级数关系**：若 $K_n$ 的 Fourier 系数 $\hat{K}_n(k) \to 1$（$n \to \infty$，$\forall k$），则 $K_n$ 是好核。
+- **与 Fourier 级数关系**：若 $K_n$ 的 [[fourier-coefficient|Fourier 系数]] $\hat{K}_n(k) \to 1$（$n \to \infty$，$\forall k$），则 $K_n$ 是好核（用 [fourier-coefficient|线性性]] + [dominated-convergence|控制收敛]]验证 $\int K_n = 1$ 等）。
 
 依据 [[steinFourierAnalysisIntroduction2003a|Stein & Shakarchi (2003), Ch. 2 §5, Theorem 4.1]]。
 

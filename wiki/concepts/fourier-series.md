@@ -35,14 +35,43 @@ $$
 
 ### 基本性质
 
-1. **部分和 = 与 Dirichlet 核的卷积**：$S_N(f)(x) = \sum_{|n| \le N} \hat f(n) e^{2\pi i n x} = (f * D_N)(x)$，其中 $D_N$ 为 Dirichlet 核（Ch. 2, p.46）。
-2. **卷积的 Fourier 系数**：$\widehat{f * g}(n) = \hat f(n)\hat g(n)$（Ch. 2, Proposition 3.1）。
-3. **均方收敛**：$\|f - S_N(f)\|_{L^2} \to 0$（$f \in L^2$，Ch. 3, Theorem 1.1）。
+1. **部分和 = 与 Dirichlet 核的卷积**：$S_N(f)(x) = \sum_{|n| \le N} \hat f(n) e^{2\pi i n x} = (f * D_N)(x)$，其中 $D_N$ 为 Dirichlet 核（Ch. 2, p.46）。详见 [Claim 1](#详细证明核心代数性质)。
+2. **卷积的 Fourier 系数**：$\widehat{f * g}(n) = \hat f(n)\hat g(n)$（Ch. 2, Proposition 3.1）。详见 [Claim 2](#详细证明核心代数性质)。
+3. **均方收敛**：$\|f - S_N(f)\|_{L^2} \to 0$（$f \in L^2$，Ch. 3, Theorem 1.1）。见 [[mean-square-convergence|均方收敛定理]]。
 4. **Parseval 恒等式**：$\sum_{n \in \mathbb{Z}} |\hat f(n)|^2 = \int_0^1 |f(x)|^2\, dx$（Ch. 3, Theorem 1.3）。见 [[parseval-identity]]。
 5. **Riemann–Lebesgue 引理**：$\hat f(n) \to 0$（$|n| \to \infty$，Ch. 3, Theorem 1.4）。见 [[riemann-lebesgue-lemma]]。
-6. **逐点收敛**：若 $f$ 在 $x_0$ 可微，则 $S_N(f)(x_0) \to f(x_0)$（Ch. 3, Theorem 2.1）。
+6. **逐点收敛**：若 $f$ 在 $x_0$ 可微，则 $S_N(f)(x_0) \to f(x_0)$（Ch. 3, Theorem 2.1）。证明用 [fourier-coefficient|求导公式]] + 分部积分.
 7. **Riemann 局部化**：$f$ 与 $g$ 在 $x_0$ 邻域相等 ⇒ $S_N(f)(x_0) = S_N(g)(x_0) + o(1)$（Ch. 3, Theorem 2.2）。见 [[riemann-localization]]。
-8. **光滑性–衰减对应**：$f \in C^k \Rightarrow \hat f(n) = O(|n|^{-k})$（[[fourier-coefficient]] 页性质 4）。
+8. **光滑性–衰减对应**：$f \in C^k \Rightarrow \hat f(n) = O(|n|^{-k})$（[[fourier-coefficient]] 页性质 4 + [Claim 3](#详细证明核心代数性质)）。
+
+#### 详细证明（核心代数性质）
+
+以下逐条证明 [[parseval-identity|Parseval]] 与 [[fourier-inversion|Fourier 反演]]（圆群版）证明链所依赖的基本性质, 仅依赖 Fourier 系数定义与积分换元, **不依赖 Fourier 反演或 Parseval 本身**.
+
+**Claim 1**（部分和 = Dirichlet 卷积）. $S_N(f)(x) = (f * D_N)(x)$, 其中 Dirichlet 核 $D_N(x) = \sum_{|n| \le N} e^{2\pi i n x}$.
+
+*证明.* 由 Fourier 系数定义:
+$$
+S_N(f)(x) = \sum_{|n| \le N} \hat f(n)\, e^{2\pi i n x} = \sum_{|n| \le N} \left(\int_0^1 f(y) e^{-2\pi i n y}\, dy\right) e^{2\pi i n x}.
+$$
+交换有限和与积分（合法, 因有限项）:
+$$
+= \int_0^1 f(y) \sum_{|n| \le N} e^{2\pi i n (x - y)}\, dy = \int_0^1 f(y) D_N(x - y)\, dy = (f * D_N)(x). \qquad\blacksquare
+$$
+
+**Claim 2**（卷积的 Fourier 系数 = 乘积, Ch. 2 Proposition 3.1）. 对 $f, g \in L^1(\mathbb T)$, $f * g \in L^1(\mathbb T)$ 且 $\widehat{f * g}(n) = \hat f(n) \hat g(n)$.
+
+*证明.* 由 Fourier 系数定义 + Fubini（$|f(x - y)g(y)| \in L^1$ 因 $f, g \in L^1$）:
+$$
+\widehat{f * g}(n) = \int_0^1 \left(\int_0^1 f(x - y) g(y)\, dy\right) e^{-2\pi i n x}\, dx = \int_0^1 g(y)\left(\int_0^1 f(x - y) e^{-2\pi i n x}\, dx\right) dy.
+$$
+对内层积分作换元 $z = x - y$（$dz = dx$, 区间 $[0, 1]$ 经周期延拓等价于 $[-y, 1 - y]$, 由 $D_N$ 周期性回到 $[0, 1]$）:
+$$
+\int_0^1 f(x - y) e^{-2\pi i n x}\, dx = \int_0^1 f(z) e^{-2\pi i n (z + y)}\, dz = e^{-2\pi i n y} \hat f(n).
+$$
+故 $\widehat{f * g}(n) = \hat f(n) \int_0^1 g(y) e^{-2\pi i n y}\, dy = \hat f(n) \hat g(n)$. $\blacksquare$
+
+> **附注**: 上述证明仅依赖 Fourier 系数定义与积分换元 + Fubini, **不依赖 Fourier 反演**. Parseval 证明与均方收敛（[[mean-square-convergence]]）用 Claim 1, 2 把 Fourier 部分和写为 Dirichlet 卷积形式.
 
 ### 典型例子
 

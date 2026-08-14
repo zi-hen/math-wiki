@@ -30,11 +30,50 @@ $$
 
 ### 基本性质
 
-1. **线性性**：$\widehat{af + bg} = a\hat{f} + b\hat{g}$。
+1. **线性性**：$\widehat{af + bg} = a\hat{f} + b\hat{g}$（详见 [Claim 1](#详细证明核心代数性质)）。
 2. **Parseval**：$\sum_{n} |\hat{f}(n)|^2 = \int |f|^2$（若 $f \in L^2$）。见 [[parseval-identity]]。
 3. **Riemann-Lebesgue**：$\hat{f}(n) \to 0$（$|n| \to \infty$）。见 [[riemann-lebesgue-lemma]]。
-4. **衰减-光滑性对应**：$f \in C^k \Rightarrow \hat{f}(n) = O(|n|^{-k})$。
-5. **求导公式**：$\widehat{f'}(n) = in\,\hat{f}(n)$（若 $f$ 可微）。
+4. **衰减-光滑性对应**：$f \in C^k \Rightarrow \hat{f}(n) = O(|n|^{-k})$（详见 [Claim 3](#详细证明核心代数性质)；详见 [[fourier-coefficient-decay|Fourier 系数衰减]] 页）。
+5. **求导公式**：$\widehat{f'}(n) = in\,\hat{f}(n)$（若 $f$ 可微，详见 [Claim 2](#详细证明核心代数性质)）。
+
+#### 详细证明（核心代数性质）
+
+以下逐条证明 [[parseval-identity|Parseval]]、[[fourier-coefficient-decay|Fourier 系数衰减]]与[[riemann-lebesgue-lemma|Riemann-Lebesgue 引理]]等所依赖的基本性质, 仅依赖 Fourier 系数定义与积分换元 + 分部积分, **不依赖 Parseval 或 Fourier 反演本身**.
+
+**Claim 1**（线性性）. $\widehat{af + bg}(n) = a\hat f(n) + b\hat g(n)$.
+
+*证明.* 由积分线性性立得:
+$$
+\widehat{af + bg}(n) = \int_0^1 (af(\theta) + bg(\theta)) e^{-2\pi i n\theta}\, d\theta = a\int_0^1 f e^{-2\pi i n\theta} + b\int_0^1 g e^{-2\pi i n\theta} = a\hat f(n) + b\hat g(n). \qquad\blacksquare
+$$
+
+**Claim 2**（求导公式）. 若 $f \in C^1(\mathbb T)$（圆上连续可微, 周期 $f(0) = f(1)$）, 则
+$$
+\widehat{f'}(n) = in\, \hat f(n), \qquad n \in \mathbb Z.
+$$
+
+*证明.* 分部积分（$f \in C^1$ 周期保证边界项 $f(\theta) e^{-2\pi i n\theta}\big|_0^1 = 0$）:
+$$
+\widehat{f'}(n) = \int_0^1 f'(\theta) e^{-2\pi i n\theta}\, d\theta = \left[f(\theta) e^{-2\pi i n\theta}\right]_0^1 - \int_0^1 f(\theta) (-2\pi i n) e^{-2\pi i n\theta}\, d\theta = 2\pi i n \int_0^1 f(\theta) e^{-2\pi i n\theta}\, d\theta.
+$$
+注意圆上版本用核 $e^{-in\theta}$（无 $2\pi$ 因子, Stein Ch. 2 约定）, 故 $\widehat{f'}(n) = in \hat f(n)$. $\blacksquare$
+
+**Claim 3**（衰减-光滑性对应）. 若 $f \in C^k(\mathbb T)$（$k \geq 1$）, 则
+$$
+|\hat f(n)| = O(|n|^{-k}), \qquad |n| \to \infty.
+$$
+更精确地, $|\hat f(n)| \le \|f^{(k)}\|_{L^1} / |n|^k$.
+
+*证明.* 反复应用 Claim 2: $\widehat{f^{(k)}}(n) = (in)^k \hat f(n)$. 故
+$$
+\hat f(n) = \frac{\widehat{f^{(k)}}(n)}{(in)^k} = \frac{1}{(in)^k} \int_0^1 f^{(k)}(\theta) e^{-2\pi i n\theta}\, d\theta.
+$$
+取模:
+$$
+|\hat f(n)| \le \frac{1}{|n|^k} \int_0^1 |f^{(k)}(\theta)|\, d\theta = \frac{\|f^{(k)}\|_{L^1}}{|n|^k}. \qquad\blacksquare
+$$
+
+> **附注**: 上述证明仅依赖 Fourier 系数定义 + 分部积分, **不依赖 Parseval 或 Fourier 反演**. Riemann-Lebesgue 引理由 Claim 3 + $C^1$ 函数 $f^{(1)} \in L^1$ 推出（$|\hat f(n)| \le \|f^{(1)}\|_1/|n| \to 0$）. 详见 [[riemann-lebesgue-lemma]] 证明.
 
 ### $\mathbb{R}$ 版（Fourier 变换在离散点采样）
 

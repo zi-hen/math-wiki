@@ -59,6 +59,44 @@ $$
 
 依据 [[steinFourierAnalysisIntroduction2003a|Stein & Shakarchi (2003), Ch. 3 §1, Theorem 1.1（均方收敛）]]。
 
+### 详细证明（$L^p$ 标准性质）
+
+以下逐条证明 [[plancherel-theorem|Plancherel 证明二]]与 [[parseval-identity|Parseval]] 所必需的 $L^p$ 关键事实, 仅依赖 [[fourier-transform|Fourier 变换]]基本性质与测度论标准工具, **不依赖 Plancherel 本身**.
+
+**Claim 1**（Hölder 不等式）. 对 $1 \leq p, q \leq \infty$, $\frac{1}{p} + \frac{1}{q} = 1$, $f \in L^p$, $g \in L^q$, 有
+$$
+\int |fg| \le \|f\|_p \|g\|_q.
+$$
+
+*证明.* 不妨设 $\|f\|_p, \|g\|_q > 0$. 由 Young 不等式 $ab \le \frac{a^p}{p} + \frac{b^q}{q}$（$a, b \ge 0$, 由指数函数凸性立得）, 取 $a = |f(x)|/\|f\|_p$, $b = |g(x)|/\|g\|_q$:
+$$
+\frac{|f(x)g(x)|}{\|f\|_p\|g\|_q} \le \frac{|f(x)|^p}{p\|f\|_p^p} + \frac{|g(x)|^q}{q\|g\|_q^q}.
+$$
+对 $x$ 积分: $\int \frac{|fg|}{\|f\|_p\|g\|_q}\,dx \le \frac{1}{p} + \frac{1}{q} = 1$. 故 $\int |fg| \le \|f\|_p\|g\|_q$. $\blacksquare$
+
+**Claim 2**（$C_c^\infty$ 在 $L^p$ 中稠密, $1 \le p < \infty$）. 对任意 $f \in L^p(\mathbb R^d)$ 与 $\varepsilon > 0$, 存在 $\varphi \in C_c^\infty(\mathbb R^d)$ 使 $\|f - \varphi\|_{L^p} < \varepsilon$.
+
+*证明.* **Step 1（特征函数逼近 $L^\infty$ 函数）**. 若 $f = \chi_E$（$E$ 有界可测）, 构造开集 $U \supset E$ 使 $|U \setminus E| < \delta$（**外正则**, 见 [[regular-measure|正则测度]]; $\delta$ 待选）, 由 Urysohn 引理得 $\varphi \in C_c^\infty$ 使 $\chi_E \le \varphi \le \chi_U$. 则
+$$
+\|f - \varphi\|_p^p \le \|\chi_U - \chi_E\|_p^p = |U \setminus E| < \delta.
+$$
+
+**Step 2（$L^p$ 函数由简单函数逼近）**. 由 Lebesgue 测度的 $\sigma$-有限性, $f = \sum_n c_n \chi_{E_n}$（简单函数极限, 对 $f \ge 0$）. 由三角不等式与简单函数逼近: 对任意 $\varepsilon > 0$, 存在有界可测集 $E$ 上取值的简单函数 $g = \sum_{k=1}^N c_k \chi_{E_k}$ 使 $\|f - g\|_p < \varepsilon/2$.
+
+**Step 3（每个 $\chi_{E_k}$ 由 $C_c^\infty$ 逼近）**. 由 Step 1, 对每个 $k$ 选 $\varphi_k \in C_c^\infty$ 使 $\|\chi_{E_k} - \varphi_k\|_p < \varepsilon/(2N|c_k|)$, 取 $\varphi = \sum c_k \varphi_k \in C_c^\infty$. 由 [[lp-space|Claim 1 (Hölder 不等式)]]（用 $|c_k|$ 乘 $\chi_{E_k}$）:
+$$
+\|g - \varphi\|_p \le \sum |c_k| \|\chi_{E_k} - \varphi_k\|_p < \varepsilon/2.
+$$
+故 $\|f - \varphi\|_p \le \|f - g\|_p + \|g - \varphi\|_p < \varepsilon$. $\blacksquare$
+
+**Claim 3**（$\mathcal{S}$ 在 $L^p$ 中稠密, $1 \le p < \infty$）. 对任意 $f \in L^p(\mathbb R^d)$ 与 $\varepsilon > 0$, 存在 $\varphi \in$ [[schwartz-space|$\mathcal{S}(\mathbb R^d)$]] 使 $\|f - \varphi\|_{L^p} < \varepsilon$.
+
+*证明.* 由 Claim 2, 取 $\psi \in C_c^\infty$ 使 $\|f - \psi\|_p < \varepsilon/2$. 取截断 $\tilde\psi(x) = \psi(x) \chi_{|x| \le R}(x)$, 则 $\|\psi - \tilde\psi\|_p \to 0$（$R \to \infty$, 由 [[dominated-convergence|控制收敛]]）, 选 $R$ 充分大使 $\|\psi - \tilde\psi\|_p < \varepsilon/2$. **关键**: $\tilde\psi$ 仍 $C^\infty$ 但**不一定** 速降, 故需磨光. 取 Gauss 截断 $\tilde\psi_\delta = \tilde\psi \cdot e^{-\delta |x|^2}$（由 [[schwartz-space|$\mathcal S$ 性质]] Claim 2 (a) 乘法封闭, $\tilde\psi_\delta \in \mathcal S$）. 由 $|\tilde\psi_\delta(x) - \tilde\psi(x)| \le |\tilde\psi(x)| (1 - e^{-\delta|x|^2}) \le |\tilde\psi(x)|$, 由 [[dominated-convergence|控制收敛定理]]（$|\tilde\psi|$ 紧支集有界）, $\|\tilde\psi_\delta - \tilde\psi\|_p \to 0$（$\delta \to 0$）, 选 $\delta$ 充分小使 $\|\tilde\psi_\delta - \tilde\psi\|_p < \varepsilon/2$.
+
+由三角不等式 $\|f - \tilde\psi_\delta\|_p \le \|f - \psi\|_p + \|\psi - \tilde\psi\|_p + \|\tilde\psi - \tilde\psi_\delta\|_p < 3\varepsilon/2 < 2\varepsilon$. 故 $\tilde\psi_\delta \in \mathcal{S}$ 给出所需逼近. $\blacksquare$
+
+> **附注**: 上述全部证明仅依赖 $L^p$ 定义、Hölder 不等式、控制收敛定理与 [[fourier-transform|Fourier 变换]]基本代数, **不依赖 Plancherel 本身**. Plancherel 证明二的 Claim 4 用此稠密性 + [[good-kernel|好核逼近]]建立 $L^2$ 延拓.
+
 ## 关联
 
 - 概念：[[schwartz-space]]（$\mathcal{S}(\mathbb{R}^d) \subset L^p$）。
