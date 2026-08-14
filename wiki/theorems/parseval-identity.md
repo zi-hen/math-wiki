@@ -87,6 +87,14 @@ $$
 $$
 即 Parseval 恒等式。$\blacksquare$
 
+**依赖关系小结**。本证明的依赖链为「正交性 ⇒ Bessel 不等式 ⇒ 均方收敛 ⇒ 取极限」，其中均方收敛一步（叙述 (i)，即 [[mean-square-convergence|均方收敛定理]]）依次依赖：
+
+1. **正交投影性质**（[[orthogonal-best-approximation|最优逼近引理]]，Ch. 3 Lemma 1.2）：$S_N(f)$ 是 $f$ 在 $\{e_n\}_{|n|\le N}$ 张成子空间中的最佳逼近，故「三角多项式稠密」足以推出 $\|f - S_N(f)\| \to 0$；
+2. **三角多项式稠密（连续函数）**：[[fejer-theorem|Fejér 定理]]（Cesàro 平均一致收敛）与 [[weierstrass-approximation-trig|Weierstrass 三角逼近定理]]；
+3. **三角多项式稠密（一般可积函数）**：[[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]] 的 $L^1$ 逼近 + 有界性提升。
+
+**本证明不依赖 [[fourier-inversion|Fourier 反演]] 或 [[plancherel-theorem|Plancherel 定理]]**：圆群上的 Parseval 恒等式（Ch. 3 Thm 1.3）独立于 $\mathbb{R}$ 上的 Fourier 反演链（Ch. 3 Thm 1.9 ⇒ Thm 1.12），二者是平行结论，Plancherel 定理以 Parseval 的思想在 $\mathbb{R}$ 上重述同一等距关系（见 [[plancherel-theorem]] 页的「依赖关系小结」）。故依赖图中无环：正交性 ⇐ 最优逼近 ⇐ 稠密性（Fejér / Weierstrass / $L^1$ 逼近），每一环均不回指 Parseval 本身。
+
 **与纯 Hilbert 空间证明的差异（对照 Stein）**。抽象 $L^2$ 框架把「三角多项式稠密」当作 Lebesgue 理论的自然结果；Stein 的 Riemann 框架不引入测度论，故密度必须显式构造：连续函数用 Fejér / Weierstrass，一般可积函数用 [[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]] 的 $L^1$ 逼近 + 有界性提升。因此 Stein 的证明比抽象证明多出「构造性」一步，本 wiki 按 Stein 写法重排证明。
 
 ## What-if — 反例、等价叙述与推广
