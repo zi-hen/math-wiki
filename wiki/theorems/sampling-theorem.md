@@ -116,6 +116,7 @@ $$
 ## 关联
 
 - 定理：[[fourier-inversion]]、[[poisson-summation-formula]]
+- 引理：[[fourier-coefficient-decay|Fourier 系数衰减]]（$\mathcal{S}$ 函数 ⇒ 系数任意快速衰减 ⇒ Claim 2 的 $\{f(n)\}$ 绝对可和）
 - 概念：[[character|特征标]]（$e^{-2\pi i n \xi}$ 是 $\mathbb{R}/\mathbb{Z}$ 上的特征标）
 - 方法：[[integral-truncation]]
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 5 Exercise 20）

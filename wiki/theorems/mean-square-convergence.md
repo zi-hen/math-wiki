@@ -42,14 +42,14 @@ $$
 证明分三步（详见 [[parseval-identity]] 的详细证明，二者同源）：
 
 1. **最优逼近**：由 [[orthogonal-best-approximation|最优逼近引理]]（Ch. 3 Lemma 1.2），$S_N(f)$ 是 $f$ 在 $\{e_n\}_{|n|\le N}$ 张成子空间中的最佳逼近，故 $S_N(f)$ 的逼近误差不超过任何三角多项式的逼近误差；
-2. **三角多项式稠密**：连续函数被三角多项式一致逼近（[[fejer-theorem]] / [[weierstrass-approximation-trig]]），可积（有界）函数被一致有界连续函数依 $L^1$ 平均逼近（Ch. 2 Lemma 3.2），再由有界性把 $L^1$ 逼近提升为 $L^2$ 逼近；
+2. **三角多项式稠密**：连续函数被三角多项式一致逼近（[[fejer-theorem]] / [[weierstrass-approximation-trig]]），可积（有界）函数被一致有界连续函数依 $L^1$ 平均逼近（[[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]]），再由有界性把 $L^1$ 逼近提升为 $L^2$ 逼近；
 3. **结合**：$f$ 可被三角多项式依 $\|\cdot\|$ 任意逼近 ⟹ $S_N(f) \to f$。
 
 ### 详细证明
 
 设 $f$ 圆上可积。**断言（三角多项式稠密）**：对任意 $\varepsilon > 0$ 存在三角多项式 $P$ 使 $\|f - P\| < \varepsilon$。
 
-- **化归为连续函数**。由 Ch. 2 Lemma 3.2，存在连续函数 $g_k$ 使 $\sup|g_k| \le B$ 且 $\int_0^{2\pi}|f - g_k| \to 0$。因 $f$ 可积故有界（设 $|f| \le B$），
+- **化归为连续函数**。由 [[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]]，存在连续函数 $g_k$ 使 $\sup|g_k| \le B$ 且 $\int_0^{2\pi}|f - g_k| \to 0$。因 $f$ 可积故有界（设 $|f| \le B$），
 $$
 \|f - g_k\|^2 \le \frac{1}{2\pi}\int|f - g_k|\cdot(|f| + |g_k|) \le \frac{2B}{2\pi}\int_0^{2\pi}|f - g_k| \to 0.
 $$
@@ -116,7 +116,7 @@ $$
 
 | 叙述 | 方法 | 难度 | 代价 |
 |------|------|------|------|
-| 叙述 1（积分）| 最优逼近 + Fejér + Ch.2 Lemma 3.2 | **中** | 需构造性逼近的三段化归 |
+| 叙述 1（积分）| 最优逼近 + Fejér + [[integrable-l1-approximation-by-continuous]]（Ch. 2 Lemma 3.2） | **中** | 需构造性逼近的三段化归 |
 | 叙述 2（系数）| 正交分解 + 极限 | **中** | 等价于叙述 1 |
 | 抽象（$L^2$ 完备化）| 测度论完备化 + 正交基理论 | **高** | 需 Lebesgue 积分 |
 

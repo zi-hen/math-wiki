@@ -49,7 +49,7 @@ Parseval 恒等式把函数（$f$）与其 Fourier 系数（$\{\hat f(n)\}$）�
 与 Stein 原书一致，证明分三步：
 
 1. **正交性 ⇒ Bessel 不等式**：由 $f - S_N(f) \perp S_N(f)$（Pythagoras 恒等式）得 $\sum_{|n|\le N}|\hat f(n)|^2 \le \|f\|^2$；
-2. **均方收敛**（定理 (i)，即 [[mean-square-convergence|均方收敛定理]]）：化归为连续函数（Fejér / Weierstrass 一致逼近）与可积函数（Ch. 2 Lemma 3.2 的 $L^1$ 逼近 + 有界性提升），再由 [[orthogonal-best-approximation|最优逼近引理]] 得到 $S_N(f) \to f$；
+2. **均方收敛**（定理 (i)，即 [[mean-square-convergence|均方收敛定理]]）：化归为连续函数（Fejér / Weierstrass 一致逼近）与可积函数（[[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]] 的 $L^1$ 逼近 + 有界性提升），再由 [[orthogonal-best-approximation|最优逼近引理]] 得到 $S_N(f) \to f$；
 3. **令 $N \to \infty$**：在 Pythagoras 恒等式中取极限，即得 Parseval 等式。
 
 ### 详细证明
@@ -75,7 +75,7 @@ $$
 $$
 \|g - P_N\| \le \|g - P_N\|_\infty \to 0.
 $$
-- *一般可积函数情形*：由 Ch. 2 Lemma 3.2，存在连续函数 $g_k$ 使 $\sup|g_k| \le B$ 且 $\int_0^{2\pi}|f - g_k| \to 0$。因 $f$ 可积故有界（设 $|f| \le B$），
+- *一般可积函数情形*：由 [[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]]，存在连续函数 $g_k$ 使 $\sup|g_k| \le B$ 且 $\int_0^{2\pi}|f - g_k| \to 0$。因 $f$ 可积故有界（设 $|f| \le B$），
 $$
 \|f - g_k\|^2 \le \frac{1}{2\pi}\int|f - g_k|\cdot(|f| + |g_k|) \le \frac{2B}{2\pi}\int_0^{2\pi}|f - g_k| \to 0.
 $$
@@ -87,7 +87,7 @@ $$
 $$
 即 Parseval 恒等式。$\blacksquare$
 
-**与纯 Hilbert 空间证明的差异（对照 Stein）**。抽象 $L^2$ 框架把「三角多项式稠密」当作 Lebesgue 理论的自然结果；Stein 的 Riemann 框架不引入测度论，故密度必须显式构造：连续函数用 Fejér / Weierstrass，一般可积函数用 Ch. 2 Lemma 3.2 的 $L^1$ 逼近 + 有界性提升。因此 Stein 的证明比抽象证明多出「构造性」一步，本 wiki 按 Stein 写法重排证明。
+**与纯 Hilbert 空间证明的差异（对照 Stein）**。抽象 $L^2$ 框架把「三角多项式稠密」当作 Lebesgue 理论的自然结果；Stein 的 Riemann 框架不引入测度论，故密度必须显式构造：连续函数用 Fejér / Weierstrass，一般可积函数用 [[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]] 的 $L^1$ 逼近 + 有界性提升。因此 Stein 的证明比抽象证明多出「构造性」一步，本 wiki 按 Stein 写法重排证明。
 
 ## What-if — 反例、等价叙述与推广
 
@@ -154,4 +154,4 @@ $$
 
 ## Stein 写法备注
 
-Parseval 在 Hilbert 空间语言中是「$L^2 \leftrightarrow \ell^2$ 等距」的最简形式。Stein 选 Riemann 积分框架，不引入抽象 Hilbert 空间与测度论，因此均方收敛的证明必须显式构造三角多项式逼近（Fejér 定理 + Ch. 2 Lemma 3.2）；这一「构造性」风格是本 wiki 重排证明的根据，也是后续学习 [[dominated-convergence|控制收敛]] 时「一致收敛 ⟶ 换序」思想的先导。
+Parseval 在 Hilbert 空间语言中是「$L^2 \leftrightarrow \ell^2$ 等距」的最简形式。Stein 选 Riemann 积分框架，不引入抽象 Hilbert 空间与测度论，因此均方收敛的证明必须显式构造三角多项式逼近（Fejér 定理 + [[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]]）；这一「构造性」风格是本 wiki 重排证明的根据，也是后续学习 [[dominated-convergence|控制收敛]] 时「一致收敛 ⟶ 换序」思想的先导。

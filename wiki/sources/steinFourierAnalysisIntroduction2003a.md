@@ -141,7 +141,7 @@ raw: "[[steinFourierAnalysisIntroduction2003a]]"
 | | 唯一性(系数全零⇒f=0)、峰值多项式技巧、绝对收敛 Cor 2.2/2.3(p.57、p.58×2、p.59×2, 5) | 记录(暂不建页) | — |
 | | 光滑↔衰减、$\widehat{f'}(n)=in\,\hat f(n)$、C²⇒O(1/n²)(p.60×2, 2) | 已覆盖(源页摘录) | 摘录 p.60 |
 | | 卷积定义/性质、加权平均诠释、$S_N = f * D_N$(p.61×2、p.62×2, 4) | 已覆盖(源页摘录) | 摘录 p.61-62 |
-| | 连续函数逼近引理 Lemma 3.2(p.64, 1) | 记录(暂不建页) | — |
+| | 连续函数逼近引理 Lemma 3.2(p.65, 1) | 已建立实体页 | [[integrable-l1-approximation-by-continuous]] |
 | | 好核定义、权重诠释、Dirac δ 极限、逼近恒等(p.65×3、p.66×2, 5) | 已覆盖(源页摘录)+现有实体页 | 摘录 p.65;[[good-kernel]] |
 | | Dirichlet 核违反好核、抵消(cancellation)、收敛微妙(p.67、p.68×2, 3) | 已覆盖(源页摘录) | 摘录 p.46-47 |
 | | Cesàro/Abel 求和、Fejér 定理、Weierstrass 逼近、Poisson 核、Dirichlet 问题(p.69、p.70×4、p.71×3、p.72、p.73×4、p.74, 14) | 已覆盖(源页摘录) | 摘录「第四章(p.69-74)」 |

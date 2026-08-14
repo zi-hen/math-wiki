@@ -1,4 +1,4 @@
-﻿---
+---
 type: theorem
 title: Fourier 反演定理
 aliases: [Fourier inversion formula, Fourier inversion theorem]

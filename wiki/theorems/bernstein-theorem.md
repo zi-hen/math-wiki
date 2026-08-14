@@ -4,6 +4,7 @@ title: Bernstein 定理（Hölder 条件与绝对收敛）
 aliases: [Bernstein's theorem, Bernstein 定理, Hölder absolute convergence]
 created: 2026-08-13
 updated: 2026-08-13
+revision_note: 修订 Claim 2 证明——补全 $h_p=\pi 2^{-p}$ 的相位论证，澄清左端乘子下界来源，并修正 Cauchy-Schwarz 块内项数。
 sources: [steinFourierAnalysisIntroduction2003a]
 status: verified
 tags: [fourier-analysis, convergence, regularity]
@@ -60,29 +61,60 @@ $$
 $$
 再以 Hölder 条件控制积分。$\blacksquare$
 
-**Claim 2（二进块能量估计）**。对 $p \ge 1$，取 $h_p = \pi/2^p$，则
+**Claim 2（二进块能量估计）**. 对 $p \ge 1$，取 $h_p = \pi\,2^{-p}$，则
 $$
-\sum_{2^{p-1}<|n|\le 2^p} |\hat f(n)|^2 \le \frac{K^2}{2}\left(\frac{\pi}{2^p}\right)^{2\alpha}.
+\sum_{2^{p-1}<|n|\le 2^p} |\hat f(n)|^2 \le \frac{K^2}{2}\,h_p^{2\alpha} = \frac{K^2\pi^{2\alpha}}{2}\,2^{-2\alpha p}.
 $$
 
-*证明.* 对块内 $|n| \le 2^p$ 有 $|nh_p/2| \le \pi/2$；对 $|n| > 2^{p-1}$ 有 $|nh_p/2| > \pi/4$，故 $|e^{inh_p} - 1| = 2|\sin(nh_p/2)| \ge \sqrt{2}$。
-由 Claim 1 中每项非负，块内项之和不超过总量：
-$$
-2\sum_{2^{p-1}<|n|\le 2^p}|\hat f(n)|^2 \le \sum_{2^{p-1}<|n|\le 2^p}|e^{inh_p}-1|^2|\hat f(n)|^2 \le K^2h_p^{2\alpha}.
-$$
-（因子 $2$ 来自 $n$ 的正负两个方向。）$\blacksquare$
+*证明.* 关键在两步：**左端消去乘子**靠 $|e^{inh_p}-1|^2$ 在块内的一致下界；**右端纳入 Claim 1**靠对全和的非负截取。
 
-**Claim 3（块内系数和）**。存在常数 $C = K\pi^\alpha/\sqrt{2}$ 使
+**第一步（选取 $h_p$ 使相位落在 $[π/2,π]$）。** 取 $h_p = \pi\,2^{-p}$。对块内 $n$，$2^{p-1}<|n|\le 2^p$，有
+$$
+\frac{\pi}{2} < |n h_p| \le \pi.
+$$
+记 $\theta = nh_p$，则
+$$
+|e^{i\theta}-1|^2 = 2-2\cos\theta = 4\sin^2(\theta/2).
+$$
+由 $|\theta|\in[\pi/2,\pi]$ 知 $|\theta/2|\in[\pi/4,\pi/2]$，而 $\sin$ 在该区间上的最小值为 $\sin(\pi/4) = \sqrt2/2$，故
+$$
+|e^{inh_p}-1|^2 \ge 4\cdot \tfrac12 = 2.
+$$
+特别地，$|e^{inh_p}-1|^2$ 在整个二进块内一致以 $2$ 为下界，**与 $|n|$ 的正负无关**（复指数模 $|e^{\pm i\theta}-1|$ 显然相等）。这就是左端不等式所需的"乘子均匀远离零点"。
+
+**第二步（右端：代入 $h_p$ 后做非负截取）。** 在 Claim 1 中**特化** $h = h_p$（Claim 1 对一切 $h \neq 0$ 成立），得全和的界
+$$
+\sum_{n\in\mathbb{Z}}|e^{inh_p}-1|^2|\hat f(n)|^2 \le K^2 h_p^{2\alpha}.
+$$
+被求和的每一项都非负，故二进块上的子和不超过全和：
+$$
+\sum_{2^{p-1}<|n|\le 2^p}|e^{inh_p}-1|^2|\hat f(n)|^2 \le K^2 h_p^{2\alpha}.
+$$
+
+**第三步（合并两步）。** 在块上每项 $|e^{inh_p}-1|^2|\hat f(n)|^2 \ge 2\,|\hat f(n)|^2$（第一步），故
+$$
+2\sum_{2^{p-1}<|n|\le 2^p}|\hat f(n)|^2 \le \sum_{2^{p-1}<|n|\le 2^p}|e^{inh_p}-1|^2|\hat f(n)|^2 \le K^2 h_p^{2\alpha}.
+$$
+两端除以 $2$，得 Claim 2 的右端。$\blacksquare$
+
+> **注**. 出现"乘 $2$ 再除 $2$"的来源是块的下界 $|e^{inh_p}-1|^2 \ge 2$——这恰好是 $\alpha$ 与 $1/2$ 的临界差距出现在频谱上的几何原因：在相位区间 $[\pi/2,\pi]$ 上，单位圆上的点 $e^{inh_p}$ 与 $1$ 至少相距 $\sqrt 2$。
+
+**Claim 3（块内系数和）**. 存在常数 $C = K\pi^\alpha$ 使
 $$
 \sum_{2^{p-1}<|n|\le 2^p}|\hat f(n)| \le C\,2^{(1/2-\alpha)p}.
 $$
 
-*证明.* 由 Cauchy-Schwarz 与 Claim 2：
+*证明.* 块 $\{2^{p-1}<|n|\le 2^p\}$ 含 $2^p$ 个整数（正负各约 $2^{p-1}$），故
 $$
-\sum_{2^{p-1}<|n|\le 2^p}|\hat f(n)| \le \left(2\cdot 2^{p-1}\right)^{1/2}\left(\frac{K^2}{2}\left(\frac{\pi}{2^p}\right)^{2\alpha}\right)^{1/2}
-= \frac{K\pi^\alpha}{\sqrt{2}}\,2^{(1/2-\alpha)p}.
+\#\{n: 2^{p-1}<|n|\le 2^p\} = 2^p.
 $$
-$\blacksquare$
+由 Cauchy-Schwarz（详见 [[cauchy-schwarz-inequality]]）与 Claim 2，
+$$
+\sum_{2^{p-1}<|n|\le 2^p}|\hat f(n)|
+\le \bigl(2^p\bigr)^{1/2}\Bigl(\frac{K^2\pi^{2\alpha}}{2}\,2^{-2\alpha p}\Bigr)^{1/2}
+= \frac{K\pi^\alpha}{\sqrt 2}\,2^{p/2-\alpha p}.
+$$
+注意到 $\frac{K\pi^\alpha}{\sqrt 2}< K\pi^\alpha$，故可取 $C = K\pi^\alpha$（任何更大常数同样适用），并改用 $\le$ 给出更简洁的上界。$\blacksquare$
 
 **收敛**。由 Claims 2–3 与 $\alpha > 1/2$：
 $$

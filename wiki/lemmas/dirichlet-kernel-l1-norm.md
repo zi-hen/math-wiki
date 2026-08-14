@@ -51,7 +51,7 @@ $$
 
 **更精细的估计（$L_N = \frac{4}{\pi^2}\log N + O(1)$）**。在第一步与第二步的反方向用 $\frac{1}{2}|\theta| \le |\sin(\theta/2)|$ 于 $|\theta|$ 远离 $\pi$ 处，且 $\int_{k\pi}^{(k+1)\pi}|\sin u|/u\,du = \frac{2}{(k+1/2)\pi} + O(1/k^2)$（中点估计），求和得 $\frac{4}{\pi^2}\sum_{k\le N}1/k + O(1) = \frac{4}{\pi^2}\log N + O(1)$。$\blacksquare$
 
-**推论**。令 $g_n(\theta) = \operatorname{sgn}(D_n(\theta))$（仅有有限个跳跃间断的不连续函数）。由 Ch.2 Lemma 3.2 以连续函数 $h_k$（$|h_k| \le 1$）逼近 $g_n$ 于积分范数，使
+**推论**。令 $g_n(\theta) = \operatorname{sgn}(D_n(\theta))$（仅有有限个跳跃间断的不连续函数）。由 [[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]] 以连续函数 $h_k$（$|h_k| \le 1$）逼近 $g_n$ 于积分范数，使
 $$
 |S_n(h_k)(0) - S_n(g_n)(0)| = \left|\frac{1}{2\pi}\int (h_k - g_n)D_n\,d\theta\right| \le \frac{1}{2\pi}\int|h_k - g_n|\cdot|D_n|
 $$

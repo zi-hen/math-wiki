@@ -52,6 +52,7 @@
 ## 引理（Lemmas）
 
 - [[dirichlet-kernel-l1-norm]]：Dirichlet 核的积分范数——$L_N \ge c\log N$，部分和范数无界的定量来源（Ch.3 Ex.2）。状态：`verified`。
+- [[integrable-l1-approximation-by-continuous]]：有界可积函数由一致有界连续函数在 $L^1$ 中逼近——Parseval 与均方收敛证明的桥梁（Ch.2 Lemma 3.2）。状态：`verified`。
 - [[fourier-coefficient-decay]]：Fourier 系数的衰减——$C^k$/Lipschitz/单调/Hölder ⟹ 衰减速率（Ch.3 Ex.17–18）。状态：`verified`。
 - [[multiplication-formula-trick]]：乘法公式——$\int f\bar g = \int\hat f\,\overline{\hat g}$（Ch.5 Prop 1.8）。状态：`unverified`。
 - [[orthogonal-best-approximation]]：正交最佳逼近——闭子空间上最佳逼近元为正交投影（Ch.3 Lemma 1.2）。状态：`unverified`。

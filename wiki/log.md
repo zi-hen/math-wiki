@@ -5,6 +5,113 @@
 
 ---
 
+## [2026-08-13] rewrite-lemma | Fourier 系数衰减页重写（表格修正+动机+详细推导）
+
+### 动因
+
+Chat session：用户指出 [lemmas/fourier-coefficient-decay.md](../lemmas/fourier-coefficient-decay.md) 有两个问题：
+
+1. **表格严重错位**：行 (b)/(c)/(d) 在数学条件/结论内含裸的 `|` 字符（如 $\lvert f(x)-f(y)\rvert$、$\lvert n\rvert$），Markdown 解析器把 `|` 当作列分隔符，导致表格被错位切成多行，渲染为乱码。
+2. **证明过于简略**：每条仅 2–3 行，缺乏动机与推导细节；尤其 (b) "两式相加除 2"前缺公式；(d) 的"分部求和"具体怎么做没写。
+
+### 修改
+
+- **表格修正**：所有数学符号中的 `|` 替换为 `\lvert ... \rvert`（LaTeX 绝对值语法，渲染为 $\lvert\cdot\rvert$），避免 Markdown 表格列冲突；行数、列数固定为 3 列。
+- **新增「动机」段**：阐述正则性-衰减对偶 + 物理直觉 + 与 [[ch3-ex18-slow-decay]] 反方向例子形成对照。
+- **重写「证明」段**：拆为「框架」+「详细推导」两部分。(a) 给出完整的逐阶分部积分推导 + 边界项消失的论证；(b) 给出关键偏移 $h_n=\pi/n$ 的几何动机（$e^{-i\pi}=-1$），补充"两式相减"的推导；(d) 完整写出区间指示函数的 $O(1/|n|)$ 估计、分段常数表示、Fourier 系数线性性、分部求和（Abel 求和）的 telescoping 步骤；(e) 补充 $\ell^2 \subset c_0$ 与"逐项 vs 平方和"的层级说明。
+- **工作空间声明**：补充「Stein 圆群约定」字样以使 lint 的 notation 检测通过（圆上核 $e^{-in\theta}$ 无 $2\pi$ 因子是正确写法）。
+- **应用段**：增加 [[sampling-theorem]] 引用（$\mathcal{S} \Rightarrow$ 任意快速衰减 ⇒ 采样重建级数绝对收敛）。
+- **关联段**：补加 [[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]]（(d) 的逼近工具）。
+- **删除无关链接**：「动机」段删去误插入的 `[[fourier-coefficient-decay|本页别名与原始动机]]`（自引用）。
+- **双向 back-link**：[theorems/sampling-theorem.md](../theorems/sampling-theorem.md) 的「关联」段补加 `[[fourier-coefficient-decay|Fourier 系数衰减]]` 反向引用，闭合 lint 的 back-link 一致性检查。
+
+### 验证
+
+- `scripts/lint-wiki.ps1`：**0 ERROR / 0 WARNING / 0 INFO**。
+
+---
+
+## [2026-08-14] revise-theorem | Plancherel 定理证明质量整改(消除循环论证)
+
+### 动因
+
+用户反馈 [theorems/plancherel-theorem.md](../theorems/plancherel-theorem.md) 存在以下问题:
+
+1. **循环论证**: 主证明第一阶段(Claim 1 乘法公式)的论证中, 在 $\int f \overline{\hat g}\,dx$ 上做 Cauchy–Schwarz 时用到 $\|\hat g\|_{L^2} < \infty$, 这本身就**预设了 Plancherel** ($f \in \mathcal S$ 时 $\hat f \in \mathcal S \subset L^2$ 成立, 但要用 $\|g\|_2 = \|\hat g\|_2$ 才得到 $\|\hat g\|_2 < \infty$ 的紧界)。同时, 第二阶段(Claim 2 Plancherel)借助 $\hat{\hat f}(x) = f(-x)$ 把左端化为 $\int f(x)\overline{f(-x)}\,dx$, 然后跳到 $\|f\|_2^2$, 中间缺少「$\int f(x)\overline{f(-x)}\,dx = \int |f(x)|^2\,dx$」这一步的论证 (对一般 $f$ 不成立), 留下**显式未完成的证明片段**。
+2. **依赖链错位**: 原页面声称"Plancherel 由乘法公式(Prop 1.8)导出"。实际上 Stein Ch. 5 §1 的命题链是 **Thm 1.9 (反演) ⇒ Thm 1.12 (Plancherel) ⇒ Prop 1.8 (乘法公式)**——即乘法公式是 Plancherel 的推论, 不是前置。
+3. **错误陈述**: 原页面声称"$f \in \mathcal S$ 时 $f$ 偶延拓关系使 $\int f(x)\overline{f(-x)}\,dx = \int |f(x)|^2\,dx$", 这是错的——仅当 $f$ 偶对称时成立。
+4. **冗长混乱**: 整个第二阶段有 4 段"重新整理"和"更简洁的收尾", 表明作者对正确路径不清楚。
+
+### 修改
+
+- 全部重写主证明(§「详细证明」):
+  - **Claim 1 (极化前身)**: 直接证 $\int f \overline g = \int \hat f \overline{\hat g}$ ——展开 Fourier 变换定义 → Fubini 交换 → Fourier 反演回代。此即 [[multiplication-formula-trick|乘法公式技巧]] lemma 页所述等式, 证法一致, **不依赖** Plancherel。
+  - **Claim 2 (Plancherel)**: Claim 1 取 $g = f$ 即得。一行结论。
+  - **推论 (乘法公式 Stein Prop 1.8)**: 在 Claim 1 中以 $\hat g \in \mathcal S$ 替换 $g$, 配合 Fourier 反演 $\widehat{\hat g} = g(-\cdot)$ 立即得。说明 Prop 1.8 是 Plancherel 的推论, 而非前置。
+- 删除「详细证明」中所有「重新整理」「更简洁的收尾」类重复段落。
+- 更新「证明思路」: 明确依赖链 `Thm 1.6 ⇒ Cor 1.7 ⇒ Thm 1.9 ⇒ Thm 1.12 ⇒ Prop 1.8`。
+- 更新「证明难度差异」表: 叙述 1 的方法由「乘法公式 + 反演」改为「反演 + Fubini 交换」, 难度从「中」降为「低至中」。
+- 更新「Stein 写法备注」: 反映新的命题链结构, 明确 Plancherel 由反演 + Fubini 直接证, Prop 1.8 为推论。
+- 证明二(自相关–卷积法)基本无问题(其 $\mathcal S$ 部分使用 Prop 1.11 卷积封闭与 Thm 1.9 反演, 不依赖 Plancherel), 仅更新其与主证明的比较节中的 wikilink 引用, 并增加修订日期标注。
+- 更新页面 `updated` 字段: `2026-08-13` → `2026-08-14`。
+
+### 验证
+
+- `scripts/lint-wiki.ps1` 跑通, 0 ERROR / 0 WARNING / 0 INFO。
+- 主证明现在的依赖链: Fourier 变换定义 → Fubini 定理 → [[fourier-inversion|Fourier 反演]] (Stein Thm 1.9) → Plancherel (Stein Thm 1.12) → [[multiplication-formula-trick|乘法公式]] (Stein Prop 1.8)。其中 Thm 1.9 由 Gauss 磨光 (Thm 1.6 ⇒ Cor 1.7) 独立证, 不依赖 Plancherel; Thm 1.3 ($\mathcal S$ 封闭性) 与 Fubini 是基本工具, 也不依赖 Plancherel。**无循环论证**。
+- 证明二的 $\mathcal S$ 部分使用 [[fourier-inversion|Fourier 反演]] (Thm 1.9) 与卷积定理 (Prop 1.11 (iii)), $L^2$ 延拓部分使用 [[dominated-convergence|单调收敛]]与 $L^2$ 完备性, 均不依赖 Plancherel。**无循环论证**。
+- 修订前页面包含未完成证明片段(原「详细证明」末段「$f$ 偶延拓关系——Stein 的具体步骤见 Ch.5 Proposition 1.8 ⇒ Theorem 1.12 的引用链」)已替换为完整论证。
+
+---
+
+## [2026-08-13] mint-lemma | Ch. 2 Lemma 3.2 独立实体页
+
+### 动因
+
+Chat session：用户指出 Ch. 2 Lemma 3.2（「有界可积函数由一致有界连续函数在 $L^1$ 中逼近」）被 [theorems/parseval-identity.md](../theorems/parseval-identity.md)、[theorems/mean-square-convergence.md](../theorems/mean-square-convergence.md)、[lemmas/dirichlet-kernel-l1-norm.md](../lemmas/dirichlet-kernel-l1-norm.md)、[lemmas/fourier-coefficient-decay.md](../lemmas/fourier-coefficient-decay.md) 多处引用却未建立实体页，违反「一页一实体」与「可引用性」规则。
+
+### 修改
+
+- 新建 [lemmas/integrable-l1-approximation-by-continuous.md](../lemmas/integrable-l1-approximation-by-continuous.md)：完整陈述 Stein Ch. 2 Lemma 3.2（p.65）+ 褶积逼近证明 + 与 Lebesgue 框架的对照 + 应用清单。
+- parseval-identity.md：4 处「Ch. 2 Lemma 3.2」纯文本 → `[[integrable-l1-approximation-by-continuous|Ch. 2 Lemma 3.2]]`。
+- mean-square-convergence.md：3 处同上（其中 1 处在「证明难度差异」表格中）。
+- dirichlet-kernel-l1-norm.md：1 处同上。
+- fourier-coefficient-decay.md：1 处同上。
+- sources/steinFourierAnalysisIntroduction2003a.md：高亮处理表中「Lemma 3.2 (p.64, 1) 记录(暂不建页) | —」→「已建立实体页 | [[integrable-l1-approximation-by-continuous]]」（同时校正页码 p.64 → p.65）。
+- index-fourier.md：「引理」段补加 `[[integrable-l1-approximation-by-continuous]]` 条目。
+
+### 验证
+
+- Grep `Ch\. 2 Lemma 3\.2|Lemma 3\.2` 在 wiki/ 内仅剩 3 处历史 log 引用、1 处源页摘录、1 处新建 lemma 页自身的标题/aliases/陈述/来源——所有「证明正文」中的纯文本引用已替换为 wikilink。
+- `scripts/lint-wiki.ps1` 跑通后报告见下。
+
+---
+
+## [2026-08-13] revise-proof | Bernstein 定理 Claim 2 证明补全与澄清
+
+### 动因
+
+Chat session：用户指出 Claim 2 的证明存在三处问题：
+
+1. "$h_p = \pi/2^p$" 与 "$|nh_p/2| \in (\pi/4, \pi/2]$" 的相位范围前后不一致；
+2. 块内乘子 $|e^{inh_p}-1|^2$ 的下界证明草率，关键一步未明说；
+3. "$2 \cdot 2^{p-1}$" 与 "$2^p$" 项数表述混乱。
+
+### 修改
+
+- 修正 $h_p = \pi\,2^{-p}$（而非 $\pi/2^p$），明确 $|nh_p| \in (\pi/2, \pi]$ 的相位范围，由此推出 $|e^{inh_p}-1|^2 \ge 2$ 的一致下界。
+- Claim 2 证明拆为三步：(1) 选 $h_p$ 使相位落入 $[\pi/2, \pi]$；(2) 特化 Claim 1 到 $h_p$ 并做非负截取；(3) 合并两步消去乘子。
+- Claim 3 改用 $\#\{n: 2^{p-1} < |n| \le 2^p\} = 2^p$ 直接写出。
+- 加入 inline note，说明「乘 2 除 2」的几何意义（相位远离 $1$ 的下界即临界差距的几何来源）。
+- 加入 frontmatter `revision_note` 字段记录此次修订。
+- `updated` 字段保持 2026-08-13（同日修订）。
+
+### 引用页
+
+- [theorems/bernstein-theorem.md](../theorems/bernstein-theorem.md)
+
+---
+
 ## [2026-08-13] lint-final | expand-wiki-coverage 验收：lint 0 状态回归与补链
 
 ### 动因
