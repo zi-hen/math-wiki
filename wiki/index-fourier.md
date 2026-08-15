@@ -40,7 +40,7 @@
 - [[bernstein-theorem]]：Bernstein 定理——Hölder 阶 $\alpha > 1/2$ 的 Fourier 级数绝对收敛。状态：`verified`。
 - [[gibbs-phenomenon]]：Gibbs 现象——锯齿函数部分和在跳跃处过冲约 9%（Ch.3 Ex.20）。状态：`verified`。
 - [[legendre-polynomials]]：Legendre 多项式——$[-1,1]$ 上的完备正交系（Ch.3 Ex.2）。状态：`verified`。
-- [[euler-fourier-formulas]]：Euler 部分分式公式——$\cot$ 展开与反射公式（Ch.3 Ex.3）。状态：`verified`。
+- [[euler-fourier-formulas]]：Euler 部分分式公式（Fourier 路线与 Poisson 路线）——$\cot$ 展开、$\csc^2$ 求和、Euler 反射公式的两条互补方法（Ch.3 Ex.3 + Ch.5 Ex.15）。状态：`verified`（已重分类为 method）。
 - [[hermite-functions]]：Hermite 函数——Fourier 变换与 Hermite 算子的完备特征函数系（Ch.5 Ex.7）。状态：`verified`。
 - [[sampling-theorem]]：采样定理（Shannon-Nyquist）——带限信号由整数点采样精确重建（Ch.5 Ex.20）。状态：`unverified`。
 - [[radon-transform]]：Radon 变换——沿超平面的积分变换与显式重建公式（Ch.6 §5）。状态：`unverified`。
@@ -56,6 +56,7 @@
 - [[fourier-coefficient-decay]]：Fourier 系数的衰减——$C^k$/Lipschitz/单调/Hölder ⟹ 衰减速率（Ch.3 Ex.17–18）。状态：`verified`。
 - [[multiplication-formula-trick]]：乘法公式——$\int f\bar g = \int\hat f\,\overline{\hat g}$（Ch.5 Prop 1.8）。状态：`unverified`。
 - [[orthogonal-best-approximation]]：正交最佳逼近——闭子空间上最佳逼近元为正交投影（Ch.3 Lemma 1.2）。状态：`unverified`。
+- [[bessel-inequality]]：Bessel 不等式（一般正交族版）——$\sum |a_n|^2 \le \|f\|^2$，纯线性代数证明（Pythagoras 定理），取等当且仅当正交族完全。状态：`verified`。
 - [[shift-of-line]]：Fourier 反演的水平线移位（围道平移）——$\mathscr{F}_a$ 类下 $\hat f$ 的水平线表示（Ch.4 eq.(1)）。状态：`unverified`。
 - [[geometric-series-bounding]]：几何级数估计——上界与 $N$ 无关（Weyl 等分布判据关键）。状态：`unverified`。
 - [[bump-function]]：bump 函数构造——$C^\infty$ 紧支集函数的显式构造（Ch.5 Ex.4）。状态：`verified`。
@@ -87,7 +88,7 @@
 |------|------|
 | concepts | 16 |
 | theorems | 22 |
-| lemmas | 7 |
+| lemmas | 8 |
 | exercises | 9 |
 | problems | 4 |
 | **合计** | **58** |

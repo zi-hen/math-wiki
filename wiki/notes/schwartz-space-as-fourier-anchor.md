@@ -16,7 +16,7 @@ authors: [人类, AI]
 
 ## 主题与背景
 
-Stein & Shakarchi 的 Fourier 分析卷几乎所有定理（Fourier 逆变换、Plancherel、Poisson 求和、采样定理）都以 Schwartz 空间 [[schwartz-space|$\mathcal{S}(\mathbb{R})$]] 作为基本函数类。为什么不直接用更一般的 $L^1$ 或 $L^2$？
+Stein & Shakarchi 的 Fourier 分析卷几乎所有定理（Fourier 逆变换、Plancherel、Poisson 求和、采样定理）都以 Schwartz 空间 [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$ 作为基本函数类。为什么不直接用更一般的 $L^1$ 或 $L^2$？
 
 这篇笔记试图回答这个问题，并整理 Schwartz 空间在 Fourier 分析中扮演的四种角色。
 
@@ -50,7 +50,7 @@ $$
 
 Paley-Wiener 定理（[[paley-wiener-theorem]]）说：若 $\hat{f}$ 紧支，则 $f$ 整函数且指数型。反之，Schwartz 空间中的 $f$ 通常**不**对应紧支 Fourier 变换（如 Gaussian 的 Fourier 变换仍是 Gaussian）。
 
-但 Schwartz 空间允许通过 [[schwartz-space|$\mathcal{F}$-自同构]]严格证明：若 $\hat{f} \in C_c^\infty \subset \mathcal{S}$，则 $f \in \mathcal{S}$。这是 Paley-Wiener 定理证明中的关键一步。
+但 Schwartz 空间允许通过 [[schwartz-space|Schwartz 空间]] $\mathcal{F}$-自同构严格证明：若 $\hat{f} \in C_c^\infty \subset \mathcal{S}$，则 $f \in \mathcal{S}$。这是 Paley-Wiener 定理证明中的关键一步。
 
 ### 想法 4：Schwartz 空间是分布理论的「种子」
 

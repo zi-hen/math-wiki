@@ -14,7 +14,7 @@ number: Ex.3
 
 ## 陈述
 
-> 设 $f \in$ [[schwartz-space|$\mathcal{S}(\mathbb{R})$]]（Schwartz 空间）。证明
+> 设 $f \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$（Schwartz 空间）。证明
 > $$\widehat{\hat{f}}(\xi) = f(-\xi), \qquad \xi \in \mathbb{R}.$$
 
 依据 [[steinFourierAnalysisIntroduction2003a|Stein & Shakarchi, Fourier Analysis, Ch. 1, §2, Ex. 3]]。

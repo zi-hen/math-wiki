@@ -89,9 +89,9 @@ $$
 $$
 故 $\|f - \varphi\|_p \le \|f - g\|_p + \|g - \varphi\|_p < \varepsilon$. $\blacksquare$
 
-**Claim 3**（$\mathcal{S}$ 在 $L^p$ 中稠密, $1 \le p < \infty$）. 对任意 $f \in L^p(\mathbb R^d)$ 与 $\varepsilon > 0$, 存在 $\varphi \in$ [[schwartz-space|$\mathcal{S}(\mathbb R^d)$]] 使 $\|f - \varphi\|_{L^p} < \varepsilon$.
+**Claim 3**（$\mathcal{S}$ 在 $L^p$ 中稠密, $1 \le p < \infty$）. 对任意 $f \in L^p(\mathbb R^d)$ 与 $\varepsilon > 0$, 存在 $\varphi \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb R^d)$ 使 $\|f - \varphi\|_{L^p} < \varepsilon$.
 
-*证明.* 由 Claim 2, 取 $\psi \in C_c^\infty$ 使 $\|f - \psi\|_p < \varepsilon/2$. 取截断 $\tilde\psi(x) = \psi(x) \chi_{|x| \le R}(x)$, 则 $\|\psi - \tilde\psi\|_p \to 0$（$R \to \infty$, 由 [[dominated-convergence|控制收敛]]）, 选 $R$ 充分大使 $\|\psi - \tilde\psi\|_p < \varepsilon/2$. **关键**: $\tilde\psi$ 仍 $C^\infty$ 但**不一定** 速降, 故需磨光. 取 Gauss 截断 $\tilde\psi_\delta = \tilde\psi \cdot e^{-\delta |x|^2}$（由 [[schwartz-space|$\mathcal S$ 性质]] Claim 2 (a) 乘法封闭, $\tilde\psi_\delta \in \mathcal S$）. 由 $|\tilde\psi_\delta(x) - \tilde\psi(x)| \le |\tilde\psi(x)| (1 - e^{-\delta|x|^2}) \le |\tilde\psi(x)|$, 由 [[dominated-convergence|控制收敛定理]]（$|\tilde\psi|$ 紧支集有界）, $\|\tilde\psi_\delta - \tilde\psi\|_p \to 0$（$\delta \to 0$）, 选 $\delta$ 充分小使 $\|\tilde\psi_\delta - \tilde\psi\|_p < \varepsilon/2$.
+*证明.* 由 Claim 2, 取 $\psi \in C_c^\infty$ 使 $\|f - \psi\|_p < \varepsilon/2$. 取截断 $\tilde\psi(x) = \psi(x) \chi_{|x| \le R}(x)$, 则 $\|\psi - \tilde\psi\|_p \to 0$（$R \to \infty$, 由 [[dominated-convergence|控制收敛]]）, 选 $R$ 充分大使 $\|\psi - \tilde\psi\|_p < \varepsilon/2$. **关键**: $\tilde\psi$ 仍 $C^\infty$ 但**不一定** 速降, 故需磨光. 取 Gauss 截断 $\tilde\psi_\delta = \tilde\psi \cdot e^{-\delta |x|^2}$（由 [[schwartz-space|Schwartz 空间]] $\mathcal{S}$ 性质 Claim 2 (a) 乘法封闭, $\tilde\psi_\delta \in \mathcal S$）. 由 $|\tilde\psi_\delta(x) - \tilde\psi(x)| \le |\tilde\psi(x)| (1 - e^{-\delta|x|^2}) \le |\tilde\psi(x)|$, 由 [[dominated-convergence|控制收敛定理]]（$|\tilde\psi|$ 紧支集有界）, $\|\tilde\psi_\delta - \tilde\psi\|_p \to 0$（$\delta \to 0$）, 选 $\delta$ 充分小使 $\|\tilde\psi_\delta - \tilde\psi\|_p < \varepsilon/2$.
 
 由三角不等式 $\|f - \tilde\psi_\delta\|_p \le \|f - \psi\|_p + \|\psi - \tilde\psi\|_p + \|\tilde\psi - \tilde\psi_\delta\|_p < 3\varepsilon/2 < 2\varepsilon$. 故 $\tilde\psi_\delta \in \mathcal{S}$ 给出所需逼近. $\blacksquare$
 

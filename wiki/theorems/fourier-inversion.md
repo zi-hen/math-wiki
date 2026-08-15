@@ -17,7 +17,7 @@ strength_basis: 弱条件 + 强结论。条件：$f \in \mathcal{S}(\mathbb{R})$
 
 ## What — 陈述
 
-> 设 $f \in$ [[schwartz-space|$\mathcal{S}(\mathbb{R})$]]（Schwartz 空间），则
+> 设 $f \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$（Schwartz 空间），则
 > $$
 > f(x) = \int_{\mathbb{R}} \hat{f}(\xi)\, e^{2\pi i x \xi}\, d\xi, \qquad x \in \mathbb{R}.
 > $$
@@ -178,7 +178,7 @@ $$f(x_0) = \lim_{t\to 0}(f * P_t)(x_0) = \lim_{t\to 0}\int_{\mathbb R}\hat f(\xi
 
 **来源与录入**。本证法为 Stein《Complex Analysis》(Book II)书内证明([[steinComplexAnalysis|Stein & Shakarchi (2003), Ch. 4, Theorem 2.2, p.134-137]]),与主证明、证明二(Book I 路线)相互独立;录入日期:2026-08-13;书内证明,不标「非书内」。
 
-**工作空间声明**。本证明的工作空间**不同于**主证明的 [[schwartz-space|$\mathcal{S}(\mathbb{R})$]]:它在 Book II 定义的函数类
+**工作空间声明**。本证明的工作空间**不同于**主证明的 [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$：它在 Book II 定义的函数类
 $$
 \mathscr{F}_a = \big\{f : f \text{ 在条带 } S_a = \{z \in \mathbb{C} : |\operatorname{Im} z| < a\} \text{ 上全纯, 且 } |f(x+iy)| \le \frac{A}{1+x^2},\ \forall x \in \mathbb{R},\ |y| < a\big\}
 $$
@@ -338,7 +338,7 @@ $$
 ## 关联
 
 - 定理：[[plancherel-theorem]]（$\mathcal{F}$ 在 $L^2$ 上的酉扩张）、[[poisson-summation-formula]]
-- 概念：[[fourier-transform]]、[[schwartz-space|$\mathcal{S}(\mathbb{R})$]]、[[good-kernel]]、[[character|特征标]]、[[fourier-coefficient|Fourier 系数]]、[[f_a-class|$\mathscr{F}_a$ 类]]（证明三工作空间）、[[shift-of-line|水平线移位引理]]（证明三 Claim 2 核心）
+- 概念：[[fourier-transform]]、[[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$、[[good-kernel]]、[[character|特征标]]、[[fourier-coefficient|Fourier 系数]]、[[f_a-class|$\mathscr{F}_a$ 类]]（证明三工作空间）、[[shift-of-line|水平线移位引理]]（证明三 Claim 2 核心）
 - 引理：[[cauchy-schwarz-inequality]]（控制极限的工具）
 - 方法：[[approx-by-good-kernel|Gauss 磨光（好核逼近特例）]]（核心 Gauss 磨光构造 + 极限）、[[approx-by-good-kernel]]（$f * K_\delta$ 的好核性）、[[multiplication-formula-trick]]（Schwartz 框架支撑）
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 5, Theorem 1.9；Ch. 6, Theorem 2.4）

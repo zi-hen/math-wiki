@@ -1,9 +1,9 @@
-﻿---
+---
 type: theorem
 title: Poisson 求和公式
 aliases: [Poisson summation formula, PSF]
 created: 2026-08-11
-updated: 2026-08-13
+updated: 2026-08-15
 sources: [chat-fourier-series-2026-08-11, steinFourierAnalysisIntroduction2003a]
 status: pending-verification
 tags: [fourier-analysis, number-theory]
@@ -16,7 +16,7 @@ strength_basis: 弱条件 + 强结论。条件：$f \in \mathcal{S}(\mathbb{R})$
 
 ## What — 陈述
 
-> 设 $f \in$ [[schwartz-space|$\mathcal{S}(\mathbb{R})$]]（Schwartz 类函数），则
+> 设 $f \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$（Schwartz 类函数），则
 > $$
 > \sum_{n \in \mathbb{Z}} f(n) = \sum_{n \in \mathbb{Z}} \hat{f}(n),
 > $$
@@ -43,7 +43,7 @@ strength_basis: 弱条件 + 强结论。条件：$f \in \mathcal{S}(\mathbb{R})$
 
 Poisson 求和公式连接了函数的逐点值与 [[fourier-coefficient|Fourier 系数]]的和。核心洞察：**两种「周期化」方式殊途同归**——将 $f$ 沿 $\mathbb{Z}$ 周期化得到 $F_1(x) = \sum_n f(x+n)$；将 $\hat{f}$ 的 Fourier 级数展开得到 $F_2(x) = \sum_n \hat{f}(n) e^{2\pi i n x}$。二者相等，在 $x=0$ 处取值即得公式。
 
-该公式在数论（Dirichlet 定理的证明中，theta 函数方程来自 Poisson 求和）、调和分析（采样定理）、表示论（Selberg 迹公式）中反复出现，原因是它表达了**群与商群的对偶性**：$\widehat{G/H} \cong H^\perp$。
+
 
 ### 证明思路（Stein 原表述）
 
@@ -84,7 +84,7 @@ $$
 F_1(x) = \sum_{n \in \mathbb{Z}} f(x + n), \qquad F_2(x) = \sum_{n \in \mathbb{Z}} \hat{f}(n)\, e^{2\pi i n x}.
 $$
 
-**Claim 1**（$F_1$ 与 $F_2$ 的良定义性）. 设 $f \in$ [[schwartz-space|$\mathcal{S}(\mathbb{R})$]]，则 $F_1$ 与 $F_2$ 在 $[0, 1]$ 上绝对一致收敛，从而为 $[0, 1]$ 上的连续函数。
+**Claim 1**（$F_1$ 与 $F_2$ 的良定义性）. 设 $f \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$，则 $F_1$ 与 $F_2$ 在 $[0, 1]$ 上绝对一致收敛，从而为 $[0, 1]$ 上的连续函数。
 
 *证明.* 由 [[schwartz-space|Schwartz 空间]]的定义，对任意 $N \geq 1$，存在常数 $C_N$ 使得 $|f(x)| \leq C_N (1 + |x|)^{-N}$。从而
 $$
@@ -111,7 +111,7 @@ $$
 
 此处须交换积分与求和的次序。此步骤在 Stein 原文中以「由 Schwarz 衰减性保证绝对收敛」概括，须提取为技术性 Claim。
 
-**Claim 2**（积分与求和的可交换性）. 设 $f \in$ [[schwartz-space|$\mathcal{S}(\mathbb{R})$]]，则
+**Claim 2**（积分与求和的可交换性）. 设 $f \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$，则
 $$
 \int_0^1 \sum_{n \in \mathbb{Z}} f(x + n)\, e^{-2\pi i m x}\, dx = \sum_{n \in \mathbb{Z}} \int_0^1 f(x + n)\, e^{-2\pi i m x}\, dx.
 $$
@@ -161,6 +161,12 @@ $$
 $$
 即「条带全纯 + 中等衰减」类(解析条件强于 [[schwartz-space|Schwartz 类]]、衰减条件弱于 Schwartz 类)。Fourier 变换取 Stein 约定 $\hat{f}(\xi) = \int_{\mathbb{R}} f(x)\,e^{-2\pi i x\xi}\,dx$(实直线 $\mathbb{R}$ 情形,非圆群);核 $e^{2\pi i z}$ 为书中复数记号,予以保留。
 
+**陈述（$\mathscr{F}_a$ 工作空间版本）**。工作空间由主定理的 $\mathcal{S}(\mathbb{R})$ 换为 $\mathscr{F}_a$,按项目规则须重新叙述定理:设 $f \in \mathscr{F}_a$([[f_a-class|F_a 类]],条件:条带全纯 + 中等衰减),则
+$$
+\sum_{n \in \mathbb{Z}} f(n) = \sum_{n \in \mathbb{Z}} \hat{f}(n),
+$$
+其中 Fourier 变换取上文 Stein 约定。此为 [[steinComplexAnalysis|Stein & Shakarchi (2003), Ch. 4, Theorem 2.4, p.137]]。两端级数均绝对收敛:左端因 $|f(n)| \le A/(1+n^2)$(衰减条件取 $y = 0$);右端因 $\hat f$ 的指数衰减 $|\hat f(\xi)| \le B e^{-2\pi b|\xi|}$($0 \le b < a$,[[f_a-class|F_a 类]] §基本性质 3)。
+
 **动机**。主证明(Book I,Ch.5 §3)用「周期化 + Fourier 系数比较」在 $\mathcal{S}(\mathbb{R})$ 上证 Poisson 求和。本证明(Book II,Ch.4)换用[[contour-integration|围道积分]]:对被积函数 $f(z)/(e^{2\pi i z}-1)$ 在矩形围道上应用 [[residue-theorem|留数定理]]。关键观察是,$e^{2\pi i z}$ 以 $1$ 为周期且 $e^{2\pi i n} = 1$($n \in \mathbb{Z}$),故核 $1/(e^{2\pi i z}-1)$ 恰在整数处有简单极点、留数 $1/2\pi i$——围道内留数和直接给出 $\sum_{n\in\mathbb{Z}}f(n)$;再对核作几何级数展开并作围道平移回实轴,留数和又给出 $\sum_{n\in\mathbb{Z}}\hat{f}(n)$。此法把 Poisson 求和从 Schwartz 类推广到「条带全纯 + 中等衰减」类 $\mathscr{F}_a$,是 Book I 结果的**更强版本**——呼应「一种方法(围道积分)证明更强结论」。
 
 **证明思路**。
@@ -169,6 +175,12 @@ $$
 2. **矩形围道**:对顶点 $(N+\frac12) \pm ib$、$-(N+\frac12) \pm ib$ 的矩形 $\gamma_N$ 用留数定理,得 $\sum_{|n|\le N} f(n) = \int_{\gamma_N}\frac{f(z)}{e^{2\pi i z}-1}\,dz$。
 3. **取极限**:$N \to \infty$ 时竖直边积分消失、部分和收敛,得 $\sum_{n\in\mathbb{Z}}f(n) = \int_{L_1}\frac{f(z)}{e^{2\pi i z}-1}\,dz - \int_{L_2}\frac{f(z)}{e^{2\pi i z}-1}\,dz$。
 4. **几何级数展开 + 围道平移**:在 $L_1$ 上 $|e^{2\pi i z}| > 1$、在 $L_2$ 上 $|e^{2\pi i z}| < 1$,分别展开核,逐项积分并移回实轴,得 $\sum_{n\ge0}\hat{f}(n+1) + \sum_{n\ge0}\hat{f}(-n) = \sum_{n\in\mathbb{Z}}\hat{f}(n)$。
+
+**围道示意图**。
+
+![Poisson 求和公式证明二的矩形围道](../assets/poisson-contour.svg)
+
+> **图 1**:围道 $\gamma_N$(红色矩形,逆时针)与条带 $S_a$(浅蓝区域)。水平边 $L_1, L_2$ 位于 $\operatorname{Im} z = \pm b$($0 < b < a$);竖直边位于 $x = \pm (N+\frac12)$(虚线),其上的积分随 $N \to \infty$ 趋于零(Claim 3),故围道积分退化为 $\int_{L_1} - \int_{L_2}$,即公式 (2)。× 处为核 $1/(e^{2\pi i z}-1)$ 在整数点的简单极点(Claim 1);由留数定理,$\int_{\gamma_N} = \sum_{|n|\le N} f(n)$(Claim 2)。
 
 **详细证明**。
 
@@ -214,7 +226,11 @@ $$
 
 *证明.* (i) 在 $L_1$ 上,$z = u - ib$,故 $|e^{-2\pi i (n+1)z}| = e^{-2\pi (n+1)b}$ 且 $|f(z)| \le A/(1+u^2)$。于是
 $$\sum_{n\ge0}\int_{L_1}\big|f(z)\,e^{-2\pi i (n+1)z}\big|\,|dz| \le \sum_{n\ge0}e^{-2\pi (n+1)b}\int_{-\infty}^{\infty}\frac{A}{1+u^2}\,du = \pi A\cdot\frac{e^{-2\pi b}}{1 - e^{-2\pi b}} < \infty,$$
-其中用到 $b > 0$ 使几何级数 $\sum_{n\ge0}e^{-2\pi (n+1)b}$ 收敛。$L_2$ 上 $|e^{2\pi i n z}| = e^{-2\pi b n}$,估计相同。由 [[dominated-convergence|控制收敛定理]],(2) 中积分与求和可交换。
+其中用到 $b > 0$ 使几何级数 $\sum_{n\ge0}e^{-2\pi (n+1)b}$ 收敛。$L_2$ 上 $|e^{2\pi i n z}| = e^{-2\pi b n}$,估计相同。此处适用的是 [[fubini-tonelli|Fubini 定理（控制收敛判据）]] 的**一致收敛版本**:上述估计给出,在 $L_1$ 上
+$$
+\sum_{n\ge0}\big|f(z)\,e^{-2\pi i(n+1)z}\big| \le \frac{A}{1+u^2}\sum_{n\ge0}e^{-2\pi (n+1)b},
+$$
+右端为收敛的常值级数,故级数 $\sum_{n\ge0}f(z)\,e^{-2\pi i(n+1)z}$ 在 $L_1$ 上按 Weierstrass M-判别法一致收敛;结合 $\sum_{n\ge0}\int_{L_1}\big|f(z)\,e^{-2\pi i(n+1)z}\big|\,|dz| < \infty$,满足 Fubini 控制收敛判据的假设,得 (2) 中积分与求和可交换。$f \in \mathscr{F}_a$ 仅保证中等衰减(非 Schwartz 速降),此处只能使用上述一致收敛版本,而非经典 [[dominated-convergence|控制收敛定理]] 的单测度陈述;$L_2$ 上的交换同理。
 
 (ii) 函数 $z \mapsto f(z)e^{-2\pi i m z}$ 在 $S_a$ 内全纯。对 $L_c$ 与实轴之间的矩形(水平边在 $\operatorname{Im} z = 0$ 与 $\operatorname{Im} z = c$ 处)应用 [[cauchy-theorem|Cauchy 定理]];竖直边($z = \pm R + iy$,$y$ 介于 $0$ 与 $c$ 之间)上 $|f(z)| \le A/(1+R^2)$ 且 $|e^{-2\pi i m z}| = e^{2\pi m y}$ 有界,积分之模不超过 $O(1/R^2)$,取极限得 (3)。$\blacksquare$
 
@@ -310,7 +326,7 @@ $$
 
 ## 关联
 
-- 概念：[[schwartz-space|$\mathcal{S}(\mathbb{R})$]]、[[good-kernel]]（离散化的"好核逼近"前身）、[[character|字符展开]]、[[f_a-class|$\mathscr{F}_a$ 类]]（证明二工作空间）、[[shift-of-line|水平线移位引理]]（证明二核心工具）
+- 概念：[[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$、[[good-kernel]]（离散化的"好核逼近"前身）、[[character|字符展开]]、[[f_a-class|$\mathscr{F}_a$ 类]]（证明二工作空间）、[[shift-of-line|水平线移位引理]]（证明二核心工具）
 - 定理：[[fourier-inversion]]（反演链与 PSF 相互独立：PSF 主证明只用 Fourier 系数唯一性（Ch. 2 Thm 2.1），不调用反演定理，见「详细证明」依赖关系小结）、[[sampling-theorem]]（作为推论）
 - 方法：[[approx-by-good-kernel]]（周期化是离散版好核逼近）、[[fubini-tonelli]]（积分与求和交换 —— Claim 2 关键）、[[residue-calculus]]（证明二围道积分法）
 - 引理：[[integer-periodicity-of-exponential]]（Claim 2 中 $e^{2\pi i m n} = 1$）、[[residue-by-taylor-coeff]]（证明二 Claim 1 残部公式）

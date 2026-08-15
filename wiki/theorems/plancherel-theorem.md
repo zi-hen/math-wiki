@@ -101,13 +101,13 @@ $$
 \int_{\mathbb{R}} f(x)\,\overline{\hat{g}(x)}\,dx = \int_{\mathbb{R}} \hat{f}(x)\,\overline{g(x)}\,dx. \tag{3}
 $$
 
-*证明.* 由 [[schwartz-space|$\mathcal{S}$ 封闭性]]（Theorem 1.3）知 $\hat{g} \in \mathcal{S}$，故可在 Claim 1 中以 $\hat{g}$ 替换 $g$：
+*证明.* 由 [[schwartz-space|Schwartz 空间]] $\mathcal{S}$ 封闭性（Theorem 1.3）知 $\hat{g} \in \mathcal{S}$，故可在 Claim 1 中以 $\hat{g}$ 替换 $g$：
 $$
 \int f(x)\overline{\hat{g}(x)}\,dx = \int \hat{f}(\xi)\overline{\widehat{\hat{g}}(\xi)}\,d\xi.
 $$
 由 Fourier 反演 $\widehat{\hat{g}}(\xi) = g(-\xi)$，故右端 $= \int \hat{f}(\xi)\overline{g(-\xi)}\,d\xi$。反射变量替换 $\eta = -\xi$（实轴上积分保测）给出右端 $= \int \hat{f}(-\eta)\overline{g(\eta)}\,d\eta = \int \hat{f}(\xi)\overline{g(\xi)}\,d\xi$（因 $g$ 是积分变量，下标 $\eta, \xi$ 等价）。$\blacksquare$
 
-> **依赖关系小结**：本证明依次调用 (i) [[fourier-inversion|Fourier 反演]]（Theorem 1.9），(ii) [[schwartz-space|$\mathcal{S}$ 封闭性]]（Theorem 1.3），(iii) [[fubini-tonelli|Fubini 定理]]。三者皆不依赖 Plancherel：Theorem 1.9 由 Gauss 磨光（Stein Theorem 1.6 ⇒ Cor 1.7）独立证；Theorem 1.3 是 Fourier 变换代数性质的基本结论；Fubini 是测度论基本工具。故主证明**无循环论证**。
+> **依赖关系小结**：本证明依次调用 (i) [[fourier-inversion|Fourier 反演]]（Theorem 1.9），(ii) [[schwartz-space|Schwartz 空间]] $\mathcal{S}$ 封闭性（Theorem 1.3），(iii) [[fubini-tonelli|Fubini 定理]]。三者皆不依赖 Plancherel：Theorem 1.9 由 Gauss 磨光（Stein Theorem 1.6 ⇒ Cor 1.7）独立证；Theorem 1.3 是 Fourier 变换代数性质的基本结论；Fubini 是测度论基本工具。故主证明**无循环论证**。
 
 ## 其他证明
 
@@ -265,7 +265,7 @@ $$
 ## 关联
 
 - 定理：[[parseval-identity]]（圆群版本）、[[fourier-inversion]]（$\mathcal{S}$ 上的反演）、[[poisson-summation-formula]]（用 Plancherel 可证）
-- 概念：[[schwartz-space|$\mathcal{S}(\mathbb{R})$]]、[[lp-space|$L^2(\mathbb{R})$]]、[[ellp-space|$\ell^2(\mathbb{Z})$]]、[[character|特征标]]、[[good-kernel]]
+- 概念：[[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$、[[lp-space|$L^2(\mathbb{R})$]]、[[ellp-space|$\ell^2(\mathbb{Z})$]]、[[character|特征标]]、[[good-kernel]]
 - 引理：[[cauchy-schwarz-inequality]]（核心工具）、[[fubini-tonelli|Fubini 定理]]（乘法公式证明核心）、[[multiplication-formula-trick]]（核心步骤）、[[dominated-convergence|单调/控制收敛]]（$L^2$ 延拓核心）
 - 方法：[[approx-by-good-kernel|Gauss 磨光（好核逼近特例）]]（$L^2$ 延拓预备）
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 5, Theorem 1.12）

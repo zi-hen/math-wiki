@@ -86,7 +86,7 @@ $$
 \widehat{f(-\cdot)}(\xi) = \int f(-x)\,e^{-2\pi i \xi\cdot x}\,dx \overset{y=-x}{=} \int f(y)\,e^{2\pi i \xi\cdot y}\,dy = \hat f(-\xi). \qquad\blacksquare
 $$
 
-**Claim 5**（乘 $x$ 与微分的对偶, Stein Proposition 1.2 推论）. 若 $f \in$ [[schwartz-space|$\mathcal S(\mathbb R^d)$]]（Schwartz 类, 保证所有求导与交换次序合法）, 则
+**Claim 5**（乘 $x$ 与微分的对偶, Stein Proposition 1.2 推论）. 若 $f \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb R^d)$（Schwartz 类, 保证所有求导与交换次序合法）, 则
 $$
 \widehat{x_j f(x)}(\xi) = \frac{i}{2\pi} \frac{\partial \hat f}{\partial \xi_j}(\xi), \qquad \widehat{\frac{\partial f}{\partial x_j}}(\xi) = 2\pi i \xi_j \hat f(\xi).
 $$

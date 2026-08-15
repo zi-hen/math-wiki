@@ -101,4 +101,5 @@ strength_basis: 弱条件 + 强结论。条件：$G$ 为任意有限阿贝尔群
 - 定理：[[parseval-identity]]（$\widehat{G}$ 上的 Fourier 理论）、[[dirichlet-theorem-on-primes]]（特征标的应用）
 - 概念：[[finite-abelian-group]]、[[character|特征标]]、[[haar-measure]]（有限群的计数测度）、[[good-kernel]]（有限群 Dirac 核的类比）
 - 习题：[[ch7-ex5-circle-character|Ch.7 Ex.4/5]]（$\mathbb{Z}(N)$ 与 $S^1$ 特征标的显式分类）
+- 引理：[[bessel-inequality|Bessel 不等式]]（有限和自动完全，故 $\widehat{G}$ 上的 Parseval 是 Bessel 取等——无稠密性论证负担）
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 7, Problems 1–3, p.256–257）

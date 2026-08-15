@@ -17,7 +17,7 @@ strength_basis: 条件：$f \in \mathcal{S}(\mathbb{R})$（或更一般：$f \in
 
 ## What — 陈述
 
-> 设 $f \in$ [[schwartz-space|$\mathcal{S}(\mathbb{R})$]] 使得 $\hat f$ 的支撑含于 $I = [-1/2, 1/2]$。则
+> 设 $f \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$ 使得 $\hat f$ 的支撑含于 $I = [-1/2, 1/2]$。则
 > $$
 > f(x) = \sum_{n \in \mathbb{Z}} f(n) K(x - n), \qquad K(y) = \frac{\sin(\pi y)}{\pi y}.
 > $$

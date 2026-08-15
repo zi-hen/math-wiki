@@ -61,4 +61,5 @@ strength_basis: 条件：有限群 $G$（任一有限阿贝尔群均可分解为
 
 - 概念：[[character]]、[[good-kernel]]（有限群 Dirac 核是连续好核的类比）
 - 定理：[[dirichlet-theorem-on-primes]]（Ch. 8）、[[finite-abelian-decomposition]]
+- 引理：[[bessel-inequality|Bessel 不等式]]（特征标作为有限标准正交族自动完全，故 Parseval 是 Bessel 取等——无稠密性论证负担）
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 7、Ch. 8）

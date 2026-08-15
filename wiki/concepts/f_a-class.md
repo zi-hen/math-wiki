@@ -1,9 +1,9 @@
-﻿---
+---
 type: concept
 title: $\mathscr{F}_a$ 类（中速递降条带全纯函数族）
 aliases: [F_a class, class F_a, $\mathscr{F}_a$]
 created: 2026-08-13
-updated: 2026-08-13
+updated: 2026-08-15
 sources: [steinComplexAnalysis]
 status: unverified
 tags: [complex-analysis, fourier-analysis, holomorphic-functions]
@@ -45,7 +45,7 @@ strength_basis: 条件：$f$ 在水平条带 $S_a$ 上全纯 + 在每条水平�
 ### 基本性质
 
 1. **衰减条件**：$\mathscr{F}_a$ 中每个 $f$ 满足 $|f(x)| \le A/(1+x^2)$ 在 $\mathbb{R}$ 上（$y = 0$），故 $f \in L^1(\mathbb{R}) \cap L^2(\mathbb{R})$（后者由 Cauchy-Schwarz；详见 [[lp-space|$L^p$ 空间]]）。
-2. **解析性**：$f$ 在 $S_a$ 全纯 $\Rightarrow$ $f$ 在 $\mathbb{R}$ 上无穷可微，且 $f$ 在 $\mathbb{R}$ 邻域内可全纯延拓至宽度 $2a$ 的条带。
+2. **解析性**：$f$ 在 $S_a$ 上全纯 $\Rightarrow$ $f$ 在 $\mathbb{R}$ 上无穷可微（参见 [[holomorphic-function|全纯函数]] §What 第 1 条，依据 [[cauchy-integral-formula|Cauchy 积分公式]] 的推论；详见 [[steinComplexAnalysis|Stein, Ch. 2, Corollary 4.2, p.66]]）。此处 $f \in \mathscr{F}_a$ 的全纯域已含 $\mathbb{R}$（$S_a$ 的实轴部分），故延拓部分（宽度 $2a$ 的水平条带）即为 $f$ 自身——即 $f$ 的全纯延拓条带宽度至少为 $2a$。
 3. **$\mathscr{F}_a$ 的 Fourier 变换指数衰减**（Stein Theorem 2.1）：若 $f \in \mathscr{F}_a$，则
    $$
    |\hat f(\xi)| \le B e^{-2\pi b |\xi|}, \quad \forall\, 0 \le b < a.

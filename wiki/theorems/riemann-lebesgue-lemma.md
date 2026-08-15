@@ -171,7 +171,7 @@ $$|\hat f(n)| \le |\hat g(n)| + |\hat f(n) - \hat g(n)| \le \frac{\|g'\|_{L^1}}{
 ## 关联
 
 - 定理：[[parseval-identity]]（通过 Bessel 不等式推出 $L^2$ 版本）、[[poisson-summation-formula]]（$\hat{f}$ 衰减条件）、[[mean-square-convergence|均方收敛]]（由 Parseval/Bessel 取系数趋于零）
-- 引理：[[fourier-coefficient-decay|Fourier 系数衰减]]（正则性 ⟹ 衰减速率：$C^k$、Lipschitz、单调、Hölder 与 $\ell^2$ 可和）
+- 引理：[[fourier-coefficient-decay|Fourier 系数衰减]]（正则性 ⟹ 衰减速率：$C^k$、Lipschitz、单调、Hölder 与 $\ell^2$ 可和）、[[bessel-inequality|Bessel 不等式]]（$L^2$ 路径下取 $g = e^{in\theta}$ 立得 $|\hat f(n)|^2 \to 0$）
 - 概念：[[fourier-series]]、[[lp-space|$L^1$ 空间]]、[[ellp-space|$\ell^2$ 序列空间]]（系数的能量可和性）、[[character|特征标]]
 - 方法：[[fubini-tonelli]]（积分与求和交换 —— 阶梯函数逼近）、[[integration-by-parts|Abel 求和（分部求和）]]（Abel 求和用于光滑性改善版：$f \in C^k \Rightarrow \hat f(n) = o(|n|^{-k})$）
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 3, Theorem 1.4）

@@ -43,6 +43,7 @@
 - [[integration-by-parts|分部积分法]]（`integration-by-parts`）：状态：`unverified`。
 - [[differentiation-under-integral|对参数求导（积分号下求导）]]（`differentiation-under-integral`）：状态：`unverified`。
 - [[fft|快速 Fourier 变换（FFT）]]（`fft`）：状态：`verified`。
+- [[euler-fourier-formulas|Euler 部分分式公式（Fourier 路线与 Poisson 路线）]]（`euler-fourier-formulas`）：cot 展开、csc² 求和、Euler 反射公式的两条互补方法。状态：`verified`。
 
 ## 笔记（Notes）
 
@@ -50,6 +51,7 @@
 - [[notes/fourier-analysis-zh-notes]]：傅里叶分析笔记（参考 Stein–Shakarchi）——两编九章，五个场景、好核与求和法、唯一性、双射性、Poisson 求和、双重跃迁、等周不等式、数论与 PDE 应用。状态：`mature`。
 - [[notes/fourier-three-questions-and-methodology]]：Fourier 卷三大问题与思想方法——等周/等分布/无处可微、遍历诠释、延迟平均与 lacunary 级数、衰减↔光滑对偶（纲领性高亮提炼）。状态：`draft`。
 - [[notes/complex-analysis-rigidity-and-methods]]：复分析方法论——刚性、奇点刻画、表示公式与围道积分三定理同一思想（纲领性高亮提炼）。状态：`draft`。
+- [[notes/finite-abelian-fourier-and-number-theory]]：有限阿贝尔群结构定理与 Fourier 观点在数论中的应用——读第七、八章时的真实思考记录；4 条支持 + 5 条怀疑，最终把"清晰"分成"翻译层清晰"与"难度层不清晰"两层。状态：`draft`。
 
 ## 人物（People）
 
@@ -73,11 +75,11 @@ _（暂无。）_
 | lemmas | 21 |
 | exercises | 10 |
 | problems | 5 |
-| notes | 4 |
+| notes | 5 |
 | methods | 17 |
 | people | 0 |
 | sources | 3 |
-| **合计** | **122** |
+| **合计** | **123** |
 
 按领域划分（不含 method/note/people/sources）：傅里叶分析 **58** 页（[[index-fourier]]）、复分析 **32** 页（[[index-complex]]）、解析数论 **3** 页（[[index-number-theory]]）、通用引理 5 页（本页）。
 

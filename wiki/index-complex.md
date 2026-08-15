@@ -33,6 +33,8 @@
 - [[weierstrass-product-theorem]]：Weierstrass 乘积定理——任意零点集可被整函数实现（Ch.5 Thm 4.1）。状态：`unverified`。
 - [[phragmen-lindelof-theorem]]：Phragmén-Lindelöf 定理（扇形版本）——扇形区域上全纯函数的增长控制。状态：`unverified`。
 - [[paley-wiener-theorem]]：Paley-Wiener 定理——Fourier 变换紧支集与整函数指数型的等价（Complex 卷 Ch.4 §3；跨域页）。状态：`unverified`。
+- [[fourier-coeffs-holomorphic-disc]]：全纯函数的 Fourier 系数（圆盘情形，Theorem 7.1）——$n \ge 0$ 等于 Taylor 系数 $a_n r^{-n}$，$n < 0$ 必为零（Ch.3 p.120–122）。状态：`verified`。
+- [[holomorphic-impl-harmonic]]：全纯函数的实部与虚部调和（Corollary 7.3）——Cauchy-Riemann ⇒ 调和 + 平均值性质（Ch.3 p.122）。状态：`verified`。
 
 ## 引理（Lemmas）
 
@@ -53,6 +55,6 @@
 | 类目 | 数量 |
 |------|------|
 | concepts | 8 |
-| theorems | 15 |
+| theorems | 17 |
 | lemmas | 9 |
-| **合计** | **32** |
+| **合计** | **34** |

@@ -69,6 +69,7 @@ Stein 在 Ch. 7 §2.2 的脚注指出：对**无穷阿贝尔群**上的 characte
 
 - 概念：[[fourier-series]]、[[fourier-transform]]（均为连续群上的字符展开）。
 - 定理：[[poisson-summation-formula]]（处理群到商群的对偶）。
+- 引理：[[bessel-inequality|Bessel 不等式]]（特征标作为标准正交族满足 Bessel；有限阿贝尔群上自动取等即为 Parseval）。
 - 应用：Dirichlet character（$\mathbb{Z}^*(q)$ 上的字符），应用于 [[dirichlet-theorem-on-primes|Dirichlet 定理]]。
 
 ## 等价叙述

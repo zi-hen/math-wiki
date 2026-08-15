@@ -42,4 +42,5 @@ $$
 ## 应用
 
 - [[parseval-identity]]：$S_N(f)$ 在 $\{e_n\}_{|n| \le N}$ 张成子空间中的最优性是 Parseval 反向不等式（$\|f\|_2 \le (\sum|\hat f|^2)^{1/2}$）证明的核心步骤（Ch. 3 Theorem 1.3）。
+- [[bessel-inequality|Bessel 不等式]]：本引理给出的「正交投影」构造 $P_F f$ 与 [[bessel-inequality|Bessel 不等式]]证明中 $\|P_F f\|^2 = \sum |a_n|^2$ 的关键步骤同源。
 - [[mean-square-convergence|均方收敛]]：最优性使 $S_N(f)$ 的均方逼近误差不超过任何三角多项式，是均方收敛定理（Ch. 3 Theorem 1.1）证明的枢纽。

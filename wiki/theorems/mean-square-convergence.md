@@ -127,6 +127,7 @@ $$
 - **Parseval 恒等式**（[[parseval-identity]]）：其证明的核心正是均方收敛（取 $N \to \infty$ 极限）。
 - **Riemann-Lebesgue 引理**（[[riemann-lebesgue-lemma]]）：由 Parseval / Bessel 推出 Fourier 系数趋于零。
 - **最佳逼近**（[[orthogonal-best-approximation]]）：$S_N(f)$ 在均方范数下最优。
+- **Bessel 不等式**（[[bessel-inequality]]）：均方收敛衔接 $\sum |a_n|^2 \to \|f\|^2$，但需附加稠密性论证（不能仅由 Bessel 推出）。
 - **Riesz–Fischer 定理**：$L^2$ 与 $\ell^2$ 的等距同构，依赖均方收敛与 $\ell^2$ 的完备性。
 
 ## 关联

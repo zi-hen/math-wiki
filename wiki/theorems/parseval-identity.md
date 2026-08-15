@@ -3,7 +3,7 @@ type: theorem
 title: Parseval 恒等式
 aliases: [Parseval identity, Parseval's identity]
 created: 2026-08-12
-updated: 2026-08-13
+updated: 2026-08-15
 sources: [steinFourierAnalysisIntroduction2003a]
 status: verified
 tags: [fourier-analysis, L2-theory]
@@ -116,6 +116,8 @@ $$
 #### 叙述 4（推广：Bessel 不等式，任意正交族）
 > 若 $\{\varphi_n\}$ 是标准正交族，$a_n = \langle f, \varphi_n\rangle$，则 $\sum |a_n|^2 \le \|f\|^2$。Parseval 恒等式是 $\{\varphi_n\}$ **完全**（completeness，即正交基）的精确表达。
 
+**证明**：详见 [[bessel-inequality|Bessel 不等式]]——仅依赖内积双线性 + Pythagoras 定理的纯线性代数证明，取等当且仅当 $f \in \overline{\operatorname{span}\{\varphi_n\}}$（对所有 $f$ 成立当且仅当 $\{\varphi_n\}$ 完全，即正交基）。
+
 #### 叙述 5（Riesz–Fischer 推论）
 > $\{a_n\} \in \ell^2(\mathbb{Z})$ 当且仅当存在唯一的 $f \in L^2(\mathbb{T})$ 使 $\hat{f}(n) = a_n$。
 
@@ -128,7 +130,7 @@ $$
 
 ### 推广 / 变体
 
-- **Plancherel 定理**（[[plancherel-theorem]]）：Fourier 变换版本，$\|f\|_2 = \|\hat f\|_2$（$f \in$ [[schwartz-space|$\mathcal{S}(\mathbb{R})$]]）。本质上是 Parseval 在 $\mathbb{R}$ 上的对应。
+- **Plancherel 定理**（[[plancherel-theorem]]）：Fourier 变换版本，$\|f\|_2 = \|\hat f\|_2$（$f \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$）。本质上是 Parseval 在 $\mathbb{R}$ 上的对应。
 - **有限阿贝尔群**（[[finite-abelian-group]]，Ch. 7 Theorem 2.8）：$\|f\|^2 = \sum_{e \in \hat G}|\hat f(e)|^2$，Fourier 级数为有限和，Parseval 化为正交基展开的有限版本。
 - **Wirtinger 不等式**（[[wirtinger-inequality]]，Ch.3 Exercise 11(a)）：若 $f$ 是 $2\pi$-周期、$C^1$、$\int_0^{2\pi} f = 0$，则 $\int |f|^2 \le \int |f'|^2$，由 Parseval 立得（取 $\hat f(n)$ 衰减估计）。
 - **等周不等式**（Hurwitz 证明，[[isoperimetric-inequality]]）：通过参数化 $\gamma(s) = (x(s), y(s))$ 应用 Parseval 得 $\int (x^2+y^2)\le \int ((x')^2+(y')^2)$。
@@ -158,6 +160,7 @@ $$
 ### 此证明新引入 / 补充的 method
 
 - **正交最佳逼近**（[[orthogonal-best-approximation]]）：Ch. 3 Lemma 1.2「$S_N(f)$ 在 $\{e_n\}_{|n| \le N}$ 张成子空间中最优」是 Bessel 不等式与均方收敛衔接的核心。
+- **Bessel 不等式**（[[bessel-inequality]]）：任意标准正交族上的 $\sum |a_n|^2 \le \|f\|^2$，纯线性代数证明（Pythagoras 定理），取等当且仅当正交族完全（即构成 Hilbert 空间基）。本证明中 Bessel 是 Parseval 等号的"$\le$ 方向"。
 - **Fejér / Cesàro 平均**（[[cesaro-summation]]）：均方收敛证明中「三角多项式稠密」的构造性来源。
 
 ## Stein 写法备注

@@ -129,7 +129,7 @@ Paley-Wiener 定理的两个方向分别用不同的方法：
 
 #### Theorem 3.1（正向）的详细证明
 
-**目标**：设 $f \in$ [[schwartz-space|$\mathcal{S}(\mathbb{R})$]]，$f$ 在带域 $\{|\operatorname{Im}(z)| < a\}$ 上全纯，满足中速下降 $|f(x+iy)| \leq C_N (1+|x|)^{-N} e^{2\pi M|y|}$（$\forall\, N \geq 0$，$|y| < a$）。证明 $\hat{f}(\xi) = 0$ 对 $|\xi| > M$ 成立。
+**目标**：设 $f \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$，$f$ 在带域 $\{|\operatorname{Im}(z)| < a\}$ 上全纯，满足中速下降 $|f(x+iy)| \leq C_N (1+|x|)^{-N} e^{2\pi M|y|}$（$\forall\, N \geq 0$，$|y| < a$）。证明 $\hat{f}(\xi) = 0$ 对 $|\xi| > M$ 成立。
 
 **第一阶段：围道变形**。
 

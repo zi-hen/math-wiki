@@ -3,7 +3,7 @@ type: method
 title: 积分截断（积分分拆）
 aliases: [integral truncation, 积分分拆, finite-range truncation]
 created: 2026-08-12
-updated: 2026-08-13
+updated: 2026-08-15
 sources: [steinFourierAnalysisIntroduction2003a]
 status: verified
 tags: [number-theory, fourier-analysis]
@@ -75,7 +75,26 @@ $$
 $$
 - 第一项（结构）：$|y| \le |x|/2$ 时 $|x-y| \ge |x|/2$，由 $f$ 的中等衰减 $f(x-y) = O(1/(1+x^2))$；
 - 第二项（随机）：$|y| \ge |x|/2$ 时 $g(y) = O(1/(1+x^2))$。
-两部分的积分域都只贡献 $O(1/(1+x^2))$——分拆点 $|x|/2$ 使「哪个因子被 $x$ 控制」恰好互换，是「按尺度分拆」的又一实例。
+两部分的积分域都只贡献 $O(1/(1+x^2))$——分拆点 $|x|/2$ 使「哪个因子被 $x$ 控制」恰好互换,是「按尺度分拆」的又一实例。
+
+### 场景 6:Dirichlet 核 $L^1$ 范数的对数增长下界(按周期分拆 + 调和级数)
+
+> **任务**:证明 [[dirichlet-kernel-l1-norm|Dirichlet 核积分范数增长]] $L_N = \frac{1}{2\pi}\int_{-\pi}^{\pi}|D_N|\,d\theta \ge c\log N$。
+> 这是「按振荡周期分拆 + 放缩到调和级数」的最经典示范。
+
+**核心机制**:核 $|D_N|$ 中 $\dfrac{1}{|\sin(\theta/2)|}$ 在零点处无界,但 $|\sin((N+1/2)\theta)|$ 高频振荡;换元 $u=(N+1/2)\theta$ 后变成 $\dfrac{|\sin u|}{u}$,其增长仅由 $1/u$ 的尾部和决定。把 $[0,(N+1/2)\pi]$ 按 $|\sin u|$ 的周期 $\pi$ 切成 $N$ 段,每段上 $|\sin u|$ 积分恒为 $2$,而 $1/u$ 在段上可下界化为常数 $\frac{1}{(k+1)\pi}$,从而每段贡献 $\ge \frac{2}{(k+1)\pi}$,求和得调和级数。
+
+**关键步骤**:
+1. **分母放缩**:$|\theta|\le\pi$ 时 $|\sin(\theta/2)|\le|\theta|/2$,故 $|D_N(\theta)|\ge\dfrac{2|\sin((N+1/2)\theta)|}{|\theta|}$。
+2. **换元**:$u=(N+1/2)\theta$ 把振荡剥离出来:$\displaystyle\int_0^\pi \frac{|\sin((N+1/2)\theta)|}{\theta}\,d\theta = \int_0^{(N+1/2)\pi}\frac{|\sin u|}{u}\,du$。
+3. **按周期分拆**:把区间 $[0,M\pi]$ (其中 $M=N+1/2$) 分成 $N$ 段 $[k\pi,(k+1)\pi]$,$k=0,1,\dots,N-1$。
+4. **段上放缩**:第 $k$ 段上 $u\le(k+1)\pi$,故 $\dfrac{1}{u}\ge\dfrac{1}{(k+1)\pi}$;而 $\displaystyle\int_{k\pi}^{(k+1)\pi}|\sin u|\,du = 2$ 周期不变。
+5. **求和**:$\displaystyle\int_0^{M\pi}\frac{|\sin u|}{u}\,du \ge \sum_{k=0}^{N-1}\frac{2}{(k+1)\pi} = \frac{2H_N}{\pi} \ge \frac{2\log N}{\pi}$,其中 $H_N=\sum_{k=1}^N 1/k$ 为调和数。
+6. **回代**:$L_N \ge \dfrac{4\log N}{\pi^2}$(取 $c=4/\pi^2$)。
+
+**为什么这么分?** 这里的「周期」是 $|\sin u|$ 的周期 $\pi$,不是 $\sin(\theta/2)$ 的周期 $2\pi$,也不是核 $D_N$ 的振荡尺度 $\dfrac{2\pi}{N+1/2}$——而是**放缩后被积函数的结构周期**。「按周期分拆」与「按尺度分拆」的区别:前者利用周期函数在每段上的积分稳定性,后者利用衰减函数在不同尺度上的量级差异。两者都属「积分截断」思想,但分拆点的选取由被积函数的结构性对称性(周期)或尺度层次(主瓣/次瓣)决定。
+
+**深层原因**:$\displaystyle\int_0^\infty \frac{|\sin u|}{u}\,du = +\infty$。这个反常积分的发散性——通过每段贡献 $\dfrac{2}{(k+1)\pi}$、$N\to\infty$ 时求和发散可见——正是 Dirichlet 核 $L^1$ 范数必须增长的「根本原因」。从算子角度看,这等价于「Fourier 部分和算子在 $L^1\to L^1$ 上无界」(Banach-Steinhaus / 均匀有界原理的直接推论),从而**逐点发散反例**(Ch.3 Ex.2(b))与 [[gibbs-phenomenon|Gibbs 现象]]成为可能。
 
 ## 与已有 method 的关系
 
@@ -88,5 +107,6 @@ $$
 
 - 概念：[[good-kernel]]（Fejér 核估计与好核理论）、[[lp-space|$L^1$ 空间]]（可积性框架）、[[fourier-coefficient|Fourier 系数]]、[[finite-abelian-group|有限阿贝尔群]]（Dirichlet 特征标分解）、[[schwartz-space|Schwartz 空间]]（速降尾部）
 - 定理：[[riemann-lebesgue-lemma]]、[[fejer-theorem]]、[[dirichlet-theorem-on-primes]]、[[sampling-theorem]]、[[weyl-equidistribution]]、[[poisson-summation-formula]]
+- 引理：[[dirichlet-kernel-l1-norm]]（场景 6 用按周期分拆与调和级数导出 $L_N \ge c\log N$）
 - 方法：[[structural-randomness-decomposition]]、[[cesaro-summation]]、[[approx-by-good-kernel]]、[[integration-by-parts]]
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 3、Ch. 4、Ch. 7、Ch. 8）

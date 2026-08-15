@@ -17,7 +17,7 @@ strength_basis: 弱条件 + 强结论。条件：$\psi \in \mathcal{S}(\mathbb{R
 
 ## What — 陈述
 
-> 设 $\psi \in$ [[schwartz-space|$\mathcal{S}(\mathbb{R})$]] 满足归一化
+> 设 $\psi \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$ 满足归一化
 > $$
 > \int_{\mathbb{R}} |\psi(x)|^2\, dx = 1.
 > $$
@@ -214,7 +214,7 @@ $$1 \le 2\,\sigma_x \cdot 2\pi\sigma_\xi = 4\pi\,\sigma_x\sigma_\xi,$$
 ## 关联
 
 - 定理：[[plancherel-theorem]]（$\int \xi^2 |\hat\psi|^2 = \|\psi'\|_2^2$ 的关键工具）、[[parseval-identity]]（同等作用）
-- 概念：[[schwartz-space|$\mathcal{S}$]]（定理适用域）、[[lp-space|$L^2$]]（一般化）、[[hermite-operator]]（算子形式 $L \ge I$ 与湮灭/产生算子分解）
+- 概念：[[schwartz-space|Schwartz 空间]] $\mathcal{S}$（定理适用域）、[[lp-space|$L^2$]]（一般化）、[[hermite-operator]]（算子形式 $L \ge I$ 与湮灭/产生算子分解）
 - 引理：[[cauchy-schwarz-inequality]]（证明核心工具）
 - 方法：[[multiplication-formula-trick]]（$A^*A \geq 0$ 形式化）、[[wirtinger-inequality]]（$\mathbb{R}^d$ 推广时可参）
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 5, Theorem 4.1；Ch. 5, Exercise 23）

@@ -1,7 +1,352 @@
 # Log — 时间线
 
 > 仅追加。每条统一前缀 `## [YYYY-MM-DD] <op> | <标题>`，便于
+
+---
+
+## [2026-08-15] fix | Poisson 求和公式证明二：补 Fubini 引用 + 工作空间叙述 + 围道示意图
+
+### 动因
+
+用户反馈 `wiki/theorems/poisson-summation-formula.md` 证明二（复分析留数核法，Book II Ch.4 Thm 2.4）三处问题：
+
+1. **Fubini 定理（控制收敛判据）未引用**：Claim 5(i) 的逐项积分原引用 [[dominated-convergence|控制收敛定理]]，正确依据应为 [[fubini-tonelli|Fubini 定理（控制收敛判据）]]；且工作空间 $\mathscr{F}_a$（条带全纯 + 中等衰减）下只能使用其**一致收敛版本**（Weierstrass M-判别法 + 总质量估计），经典 DCT 的单测度陈述不适用。
+2. **工作空间不同须重新叙述定理**：证明二的工作空间由主定理的 $\mathcal{S}(\mathbb{R})$ 换为 $\mathscr{F}_a$，按项目规则须在「陈述」区段重新叙述定理（Book II 版本）。
+3. **缺围道示意图**：围道积分证明应补充围道示意图。
+
+### 改动
+
+`wiki/theorems/poisson-summation-formula.md`：
+
+- 「工作空间声明」之后新增「**陈述（$\mathscr{F}_a$ 工作空间版本）**」：$f \in \mathscr{F}_a \Rightarrow \sum_{n\in\mathbb{Z}} f(n) = \sum_{n\in\mathbb{Z}} \hat f(n)$，注明 Stein 约定 Fourier 变换、依据 [[steinComplexAnalysis|Stein & Shakarchi (2003), Ch. 4, Theorem 2.4, p.137]]，并给出两端级数绝对收敛依据（左：衰减条件 $y=0$；右：$\hat f$ 指数衰减，[[f_a-class|F_a 类]] §基本性质 3）。
+- Claim 5(i)：引用改为「[[fubini-tonelli|Fubini 定理（控制收敛判据）]] 的一致收敛版本」——补充 $L_1$ 上 $\sum_{n\ge0}|f(z)e^{-2\pi i(n+1)z}| \le \frac{A}{1+u^2}\sum_{n\ge0}e^{-2\pi(n+1)b}$ 的 M-判别法一致收敛论证 + 总质量估计，并说明 $\mathscr{F}_a$ 下经典 DCT 单测度陈述不适用。
+- 「证明思路」之后新增「**围道示意图**」：新文件 `wiki/assets/poisson-contour.svg`（矩形 $\gamma_N$ 逆时针、条带 $S_a$、$L_1/L_2$ 水平边、$x=\pm(N+\frac12)$ 竖直边、整数极点 ×、$a/b$ 标记），markdown 图引用 `![](../assets/poisson-contour.svg)` + 图注。
+- `frontmatter.updated` → 2026-08-15。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；新文件仅 `wiki/assets/poisson-contour.svg`（lint 只扫 .md，不受影响）。
+- wikilink 引用 [[fubini-tonelli]] / [[dominated-convergence]] / [[f_a-class]] 均已有实体页；新增 `[[f_a-class|F_a 类]]` 别名不含 `$...$`（遵守 2026-08-15 别名规则）。
+
+---
+
+## [2026-08-15] fix | 修 `[[schwartz-space|$\mathcal{S}(\cdots)$]]` 别名渲染问题
+
+### 动因
+
+用户反馈 `[[schwartz-space|$\mathcal{S}(\mathbb{R})$]]` 这类写法在 Markdown 中**渲染不出来**——Obsidian wikilink 解析器在遇到 `[[...|...]]` 时会把 `|` 后到第一个 `]]` 之间的所有内容当作「显示文本」,**不**触发行内公式解析;一旦别名里含 `$...$` 与可能的 `]]` 嵌套,显示文本或链接本身就会渲染异常(显示成字面字符、链接截断、公式不解析等)。
+
+### 改动
+
+仓库内共 22 处使用 `[[schwartz-space|$...$]]` 形式别名,涉及 12 个文件。本次统一改为「ASCII 别名 + 公式外置」格式:
+
+```
+旧: [[schwartz-space|$\mathcal{S}(\mathbb{R})$]]
+新: [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R})$
+```
+
+### 影响范围
+
+- [notes/schwartz-space-as-fourier-anchor.md](file:///e:/wikiproject/math-wiki/wiki/notes/schwartz-space-as-fourier-anchor.md) (2 处)
+- [concepts/fourier-transform.md](file:///e:/wikiproject/math-wiki/wiki/concepts/fourier-transform.md) (1 处)
+- [exercises/ch1-ex3-double-fourier-transform.md](file:///e:/wikiproject/math-wiki/wiki/exercises/ch1-ex3-double-fourier-transform.md) (1 处)
+- [concepts/hermite-operator.md](file:///e:/wikiproject/math-wiki/wiki/concepts/hermite-operator.md) (1 处)
+- [theorems/fourier-inversion.md](file:///e:/wikiproject/math-wiki/wiki/theorems/fourier-inversion.md) (3 处)
+- [concepts/lp-space.md](file:///e:/wikiproject/math-wiki/wiki/concepts/lp-space.md) (2 处)
+- [theorems/heisenberg-uncertainty-principle.md](file:///e:/wikiproject/math-wiki/wiki/theorems/heisenberg-uncertainty-principle.md) (2 处)
+- [theorems/paley-wiener-theorem.md](file:///e:/wikiproject/math-wiki/wiki/theorems/paley-wiener-theorem.md) (1 处)
+- [theorems/parseval-identity.md](file:///e:/wikiproject/math-wiki/wiki/theorems/parseval-identity.md) (1 处)
+- [theorems/sampling-theorem.md](file:///e:/wikiproject/math-wiki/wiki/theorems/sampling-theorem.md) (1 处)
+- [theorems/plancherel-theorem.md](file:///e:/wikiproject/math-wiki/wiki/theorems/plancherel-theorem.md) (3 处)
+- [theorems/poisson-summation-formula.md](file:///e:/wikiproject/math-wiki/wiki/theorems/poisson-summation-formula.md) (4 处)
+
+### 渲染规则
+
+今后**所有 wikilink 的别名段( `[[xxx|...]]` 中 `|` 之后至 `]]` 之前)禁止出现 `$...$` 行内公式**;公式须放在 `]]` 之外,以保证 Markdown 行内公式解析器正常工作。该规则可推广到所有 wikilink(不限于 schwartz-space)。
+
+### 验证
+
+`scripts/lint-wiki.ps1` 通过(0 error / 0 warning / 0 info);`Grep \[\[schwartz-space\|\$` 已无残留。
+
+---
+
+## [2026-08-15] supplement | 积分截断：补 Dirichlet 核 $L^1$ 范数下界场景
+
+### 动因
+
+用户对话讨论 Dirichlet 核 $L_N \ge c\log N$ 证明中的经典估计链条（分母放缩 → 换元 → 分段放缩 → 求和得调和级数），要求「补充到 method 中」。该链条是积分截断思想在「按周期分拆 + 调和级数」语境下的最经典实例，目前 [[integral-truncation|积分截断]] 方法页缺这一场景。
+
+### 改动
+
+`wiki/methods/integral-truncation.md`：
+
+- 新增「场景 6:Dirichlet 核 $L^1$ 范数的对数增长下界（按周期分拆 + 调和级数）」，完整给出六步估计：分母放缩、换元、按周期 $[k\pi,(k+1)\pi]$ 分拆、段上放缩（利用 $\int_{k\pi}^{(k+1)\pi}|\sin u|\,du = 2$ 的周期稳定性）、求和得 $H_N$、回代得 $L_N \ge \frac{4\log N}{\pi^2}$。
+- 区分「按周期分拆」（利用周期函数段上积分的稳定性）与「按尺度分拆」（场景 2/5，利用衰减函数不同尺度上的量级差异）——同一思想两种实现,分拆点的选取由被积函数的结构性对称性决定。
+- 指出根本原因：$\int_0^\infty \frac{|\sin u|}{u}\,du = +\infty$,由此推出「Fourier 部分和算子在 $L^1\to L^1$ 上无界」,从而 [[gibbs-phenomenon|Gibbs 现象]]与 Ch.3 Ex.2(b) 的逐点发散反例成为可能。
+- `关联` 区段新增 `引理：[[dirichlet-kernel-l1-norm]]`;`frontmatter.updated` 更新至 `2026-08-15`。
+
+### 影响
+
+- method 页与对应 lemma 页建立了双向 wikilink:lemma 页「关联」节已链向 method(`积分截断（$\int_{k\pi}^{(k+1)\pi}$ 的区间拆分）`),本次反向补齐。
+- `integral-truncation` 的 `status` 由原 `unverified`(index.md)更新为 `verified`(frontmatter 实际为 verified;index.md 滞后,不在本任务修复范围内)。
+
+---
+
+## [2026-08-15] reclassify+supplement | Euler 部分分式公式：重分类 method + 补 Poisson 路线
+
+### 动因
+
+用户反馈：[[euler-fourier-formulas|Euler 部分分式公式]] 当前归类为 theorem 不妥——其陈述动机中已写明「这只是 Fourier 路线的一种方法应用」；此外应补充 [[poisson-summation-formula|Poisson 求和公式]] 路线（Ch.5 Ex.15）推出的 $\sum_n \frac{1}{(n+\alpha)^2} = \frac{\pi^2}{\sin^2(\pi\alpha)}$ 与 $\sum_n \frac{1}{n+\alpha} = \frac{\pi}{\tan(\pi\alpha)}$，并比较两条路线。
+
+### 类型重分类
+
+按 docs/STRUCTURE.md §3.2 决策树：
+
+- 该页**不**断言单一数学命题（有真假），而是描述「由 Fourier / Poisson 系数求和导出 cotangent / 余割 / 反射恒等式」的**论证模式**——属于 method 而非 theorem。
+- 一页一实体原则：Fourier 路线（Ch.3 Ex.3）与 Poisson 路线（Ch.5 Ex.15）共同推出同一族恒等式，统一在 [[euler-fourier-formulas]] 一页记录；两条路线作为「步骤」「详细论证」「对比」三个区段。
+
+`type: theorem` → `type: method`；保留 `strength: standard` 与 `sources: [steinFourierAnalysisIntroduction2003a]`。
+
+### Poisson 路线补充
+
+新增「路线 B（Poisson 路线，Ch.5 Ex.15, p.184）」区段：
+
+- **Claim 2**：位移 Poisson 核 $f_\beta(x) = 1/((x+\alpha)^2 + \beta^2)$（$\beta > 0$ 为正则化参数）∈ $\mathcal{S}(\mathbb{R})$，Fourier 变换 $\hat{f_\beta}(\xi) = (\pi/\beta)\,e^{-2\pi\beta|\xi|}\,e^{2\pi i\alpha\xi}$（围道积分/留数）。
+- **(a) 余割平方和**：PSF + $\beta \to 0^+$ 极限（控制收敛保证交换极限与求和）得 $\sum_n 1/(n+\alpha)^2 = \pi^2/\sin^2(\pi\alpha)$。
+- **(b) 余切求和**：对 (a) 关于 $\alpha$ 在 $(0, \alpha)$ 上积分（紧集上一致有界保证逐项积分），对称主值约定消去 $\sum 1/n$ 的发散，得 $\sum_n 1/(n+\alpha) = \pi/\tan(\pi\alpha)$。
+
+### 两条路线对比表
+
+| 维度 | Fourier 路线（Ch.3 Ex.3） | Poisson 路线（Ch.5 Ex.15） |
+|------|---------------------------|-----------------------------|
+| 母函数 | $\cos(\alpha x)$（$2\pi$-周期，光滑） | $f_\beta(x) = 1/((x+\alpha)^2+\beta^2) \in \mathcal{S}$（正则化） |
+| 核心理论 | Fourier 级数逐点收敛 + 端点取值 | PSF + $\beta \to 0^+$ 极限 |
+| 工作空间 | 圆群 $\mathbb{T}$ | 实直线 $\mathbb{R}$ |
+| 参数范围 | $\alpha \in \mathbb{C}\setminus\mathbb{Z}$（**复参数**） | $\alpha \in \mathbb{R}\setminus\mathbb{Z}$（**实参数**） |
+| 复分析依赖 | 否（仅用三角恒等式与几何级数） | 是（求 $\hat f_\beta$ 须围道积分/留数） |
+| 公式形式 | $\cot$ 部分分式（$n^2 - \alpha^2$ 型） + Euler 反射积分 | $\sum 1/(n+\alpha)^2$ + $\sum 1/(n+\alpha)$（更整齐） |
+
+### 维护记录更新
+
+- [wiki/theorems/euler-fourier-formulas.md](../theorems/euler-fourier-formulas.md)：类型 `theorem → method`；标题加「（Fourier 路线与 Poisson 路线）」；新增「适用场景」「关键思想」「步骤」「陷阱」「实例」「对比」「严格化说明」等 method 页必备区段；保留并强化原 Fourier 路线证明；新增 Poisson 路线完整证明。
+- [wiki/index.md](../index.md)：方法区段新增条目「[[euler-fourier-formulas]]」并标注「cot 展开、csc² 求和、Euler 反射公式的两条互补方法」。
+- [wiki/index-fourier.md](../index-fourier.md)：原定理区段条目更新为「已重分类为 method」，并补充 Ch.5 Ex.15 出处。
+
+### 关联
+
+涉及实体页（wikilink）：[[poisson-summation-formula]] / [[fourier-series]] / [[fourier-coefficient]] / [[schwartz-space]] / [[residue-calculus]] / [[residue-by-taylor-coeff]] / [[dominated-convergence]] / [[approx-by-good-kernel]] / [[integration-by-parts]] / [[differentiation-under-integral]] / [[fourier-inversion]] / [[multiplication-formula-trick]]；引用源 [[steinFourierAnalysisIntroduction2003a]]（Ch.3 Ex.3 p.113–114；Ch.5 §3 末尾动机 p.172；Ch.5 Ex.15 p.184）。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；本变更仅修改 wiki 实体页与其索引。
+- method 页**未含未证明数学断言**：所有数学事实（PSF 在 Schwartz 上的成立、$\hat f_\beta$ 的显式公式、围道积分计算、对称主值约定等）均 wikilink 到既有 lemma/theorem 页或作为技术性 Claim 给出证明。
+- 一页一实体：Fourier 路线与 Poisson 路线统一在 [[euler-fourier-formulas]]，不另立新页（两条路线为同一族恒等式的不同证法）。
+- 依赖图无环：Fourier 路线独立于 Poisson 路线（前者仅依赖 Fourier 级数收敛 + 三角恒等式）；Poisson 路线依赖 PSF 与 [[residue-calculus|留数计算法]]，但 PSF 的证明独立于本页（详见 [[poisson-summation-formula]] 主体证明）。
+
+---
 > `grep "^## \[" wiki/log.md | tail -n 5` 取最近 5 条。
+
+---
+
+## [2026-08-15] new-theorem+supplement | Theorem 7.1 / Corollary 7.2 / 7.3 实体页建立 + 平均值性质双证
+
+### 动因
+
+用户反馈：[[fourier-coefficient-holomorphic|全纯函数的 Fourier 系数]] 概念页引用了 Theorem 7.1（Stein, p.120–122）与 Corollary 7.2（Stein, p.121, 平均值性质），但这两个**重要定理 / 推论没有独立实体页**；且 [[mean-value-property-holomorphic|全纯函数平均值性质]] 引理页仅有复分析证明（通过 Cauchy 积分公式），**未补 Fourier 路线的证明**（通过 Theorem 7.1 在 $n=0$ 情形直接读出）；另外 Corollary 7.3（Stein, p.122, **全纯函数的实部虚部调和 + 实部平均值性质**）也未建立实体页。
+
+### 新增
+
+**[wiki/theorems/fourier-coeffs-holomorphic-disc.md](../theorems/fourier-coeffs-holomorphic-disc.md)**（Theorem 7.1, verified, 2026-08-15）：
+- **What**：圆周 Fourier 系数公式 $\hat f(n) = a_n r^{-n}$（$n \ge 0$）、$\hat f(n) = 0$（$n < 0$）—— 连接 Fourier 级数与 Taylor 展开。
+- **Why**：幂级数代入 + 三角正交性。三步 Claim：① Taylor 展开一致收敛（依赖 Cauchy 积分公式 + Cauchy 不等式）；② 逐项积分 + 正交性给出系数公式；③ 系数上界 $|a_n| \le \rho(r)/r^n$。
+- **What-if**：半平面类比（Theorem 3.5, $\hat f(\xi) = 0$ 当 $\xi < 0$）；反例（仅连续不全纯时负频率非零）；高维圆盘推广。
+
+**[wiki/theorems/holomorphic-impl-harmonic.md](../theorems/holomorphic-impl-harmonic.md)**（Corollary 7.3, verified, 2026-08-15）：
+- **What**：(i) $f = u + iv$ 全纯 ⇒ $\Delta u = \Delta v = 0$；(ii) 实部 $u$ 满足平均值性质。
+- **Why**：Cauchy-Riemann 方程 + 混合偏导对易（$u \in C^\infty \Rightarrow u_{xy} = u_{yx}$）+ 平均值性质由全纯 MVP 取实部。4 个 Claim：$f \in C^\infty$、$\Delta v = 0$、$\Delta u = 0$、$u$ 的平均值性质。
+- **What-if**：反例（$f = \overline{z}$ 仅 $C^0$ 而非 $C^2$ → $\Delta u$ 无意义；$|z|^2$ 实部不调和）；多复变量版（实部仍调和但虚部满足更复杂方程组）；局部反问题（每个调和函数局部上是某全纯函数实部）。
+
+**[wiki/concepts/harmonic-function.md](../concepts/harmonic-function.md)**（concept, unverified, 2026-08-15）：
+- **What**：$\Delta u = 0$ 的实值 $C^2$ 函数；二维调和函数与全纯函数实部局部等价。
+- **基本性质**：光滑性、平均值性质、最大值原理、局部反问题。
+- **典型例子**：常数、线性、$\log|z|$、$\operatorname{Re}(z^n)$、调和多项式。
+
+### 维护记录更新
+
+- **[wiki/lemmas/mean-value-property-holomorphic.md](../lemmas/mean-value-property-holomorphic.md)**：在原有「证法一（Cauchy 积分公式）」之外**新增「证法二（Fourier 路线，由 Theorem 7.1 在 $n = 0$ 情形推出）」**——两段独立证明并列。sources 字段补 `steinFourierAnalysisIntroduction2003a`。
+- **[wiki/index-complex.md](../index-complex.md)**：定理区段新增两条目（[[fourier-coeffs-holomorphic-disc]]、[[holomorphic-impl-harmonic]]）；统计由 32 → 34。
+
+### 关联
+
+涉及实体页（wikilink）：[[holomorphic-function]] / [[fourier-coefficient-holomorphic]] / [[mean-value-property-holomorphic]] / [[cauchy-integral-formula]] / [[cauchy-inequalities]] / [[maximum-modulus-principle]] / [[paley-wiener-theorem]] / [[fourier-coefficient]] / [[power-series]] / [[fourier-series]]；引用源 [[steinComplexAnalysis]]（Ch. 3 §7, p.120–122）。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；本变更仅在 wiki 内部新建与扩写页面。
+- theorem 页**未含未证明数学断言**：所有数学事实（Cauchy-Riemann 二阶推论、混合偏导对易、积分线性性）均作为技术性 Claim 给出证明。
+- 一页一实体：Theorem 7.1（独立定理）、Corollary 7.2（用 lemma 页）、Corollary 7.3（独立定理）、调和函数（独立概念）——四者按 docs/STRUCTURE.md §3.3 实体唯一性原则严格区分，无重复。
+- 依赖图无环：Theorem 7.1 依赖 [[cauchy-integral-formula]] + [[cauchy-inequalities]]；Corollary 7.3 依赖 [[cauchy-integral-formula]] + Cauchy-Riemann + [[mean-value-property-holomorphic]]（后者反过来依赖 Theorem 7.1，但调用方向单向）；调和函数页只调用既有结论。
+- 调和函数页（concept）与[[maximum-modulus-principle]] 之间形成「调和 MVP ⇒ 最大值原理」的标准推论链；不引入循环依赖。
+
+---
+
+## [2026-08-15] new-note | 有限阿贝尔群结构定理与 Fourier 观点在数论中的应用
+
+### 动因
+
+用户提出命题：「有限阿贝尔群结构定理（循环分解与特征标自对偶）能很清晰地说明 Fourier 观点在数论中的应用方式」，要求就此观点展开双向审视（提出有力证据与实质性反驳）。此属笔记页范畴——人类 + AI 共同维护的创作性学习笔记，反映跨章节联系与深度反思。
+
+### 新增
+
+[wiki/notes/finite-abelian-fourier-and-number-theory.md](../notes/finite-abelian-fourier-and-number-theory.md)（draft，2026-08-15）：
+
+- **第一部分：力证**（6 条）：循环分解化归 / 特征标自对偶 / Parseval 能量分离 / 单位根分类锚定 / CRT 与素幂分解的算术镜像 / "标准应用模式"模板。
+- **第二部分：实质性反驳**（5 条）：结构定理只解释翻译层不解释难度层 / $\widehat G \cong G$ 不自然 / 阿贝尔前提限制 / 更深数论结果不依赖结构定理 / Fourier 框架是"重新表达"不创造新算术事实。
+- **第三部分：综合判断**：在两种解读下（"结构清晰"强成立；"应用清晰"部分成立）各有不同成立度；类比 Parseval 在等周不等式证明中的角色——翻译装置而非证明引擎。
+- **4 条开放问题**：自对偶的自然同构 / Fourier 视角在非阿贝尔群上的角色 / 结构定理与 PSF 的代数背景 / $L(1, \chi) \neq 0$ 中 Fourier 视角的潜在作用。
+
+### 重写（2026-08-15）
+
+用户反馈初稿"过于抽象、像名词堆叠"。重写后调整为真实思考过程：每条支持/怀疑用具体例子（$\mathbb{Z}^*(7)$、$\mathbb{Z}^*(8) \cong \mathbb{Z}(2) \times \mathbb{Z}(2)$、双曲线求和法等）展开；最终判断保留"翻译层清晰 / 难度层不清晰"的两层划分，但叙述方式换成第一人称（"我想了一下才意识到"、"我的不安"、"打个比方"），更像读章节时的真实笔记。
+
+### 维护记录更新
+
+[wiki/notes/finite-abelian-fourier-and-number-theory.md](../notes/finite-abelian-fourier-and-number-theory.md) 末尾追加 2026-08-15 重写记录。[wiki/index.md](../index.md) 同步更新条目描述（原描述"双向审视（力证 6 条 + 反驳 5 条 + 综合判断）"调整为"读第七、八章时的真实思考记录；4 条支持 + 5 条怀疑"）。
+
+### 关联
+
+涉及实体页（wikilink）：[[finite-abelian-group]] / [[character]] / [[haar-measure]] / [[finite-abelian-decomposition]] / [[dirichlet-theorem-on-primes]] / [[parseval-identity]] / [[poisson-summation-formula]] / [[weyl-equidistribution]] / [[ch7-pb2-finite-abelian]] / [[ch7-ex5-circle-character]] / [[ch7-ex8-finite-reconstruction]] / [[ch8-ex3-euler-product]] / [[fourier-analysis-zh-notes]] / [[fourier-three-questions-and-methodology]] / [[complex-analysis-rigidity-and-methods]]；引用源 [[steinFourierAnalysisIntroduction2003a]]。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；新增笔记页未触动任何 verified 实体页；笔记页按 schema 不设 `strength` 字段，frontmatter 完整；事实性主张均以 wikilink 回溯到现有实体页。
+
+---
+
+## [2026-08-15] supplement-link | $\mathscr{F}_a$ 解析性条目补 wikilink
+
+### 动因
+
+用户反馈：`wiki/concepts/f_a-class.md` §What「基本性质」第 2 条「解析性」（$f$ 在 $S_a$ 全纯 $\Rightarrow$ $f$ 在 $\mathbb{R}$ 上无穷可微，且 $f$ 在 $\mathbb{R}$ 邻域内可全纯延拓至宽度 $2a$ 的条带）未引用任何实体页——根据「全纯 ⟹ 无穷可微」应 wikilink 到 `[[holomorphic-function]]` 与 `[[cauchy-integral-formula]]`（Stein Ch. 2 Corollary 4.2）。
+
+### 修订
+
+[wiki/concepts/f_a-class.md](../concepts/f_a-class.md)：
+
+- 第 2 条「解析性」改为：先 wikilink 到 `[[holomorphic-function|全纯函数]] §What 第 1 条` 与 `[[cauchy-integral-formula|Cauchy 积分公式]]` 的推论，并附 `[[steinComplexAnalysis|Stein, Ch. 2, Corollary 4.2, p.66]]` 印证。
+- 补充技术说明：$f \in \mathscr{F}_a$ 的全纯域已含 $\mathbb{R}$（$S_a$ 的实轴部分），故延拓部分（宽度 $2a$ 的水平条带）即为 $f$ 自身——即 $f$ 的全纯延拓条带宽度至少为 $2a$（$\mathscr{F}_a$ 类条带宽度 $= 2a$ 的自洽性）。
+- frontmatter：`updated` → 2026-08-15。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；仅在 f_a-class.md 内部补充 wikilink 与源页引用；wikilink 网络增量（新增 → [[holomorphic-function]] / [[cauchy-integral-formula]]，均已在源页追溯表中登记）。
+
+---
+
+## [2026-08-15] bessel-inequality-lemma | Bessel 不等式一般正交族版建页 + 叙述 4 补证
+
+### 动因
+
+用户反馈：`wiki/theorems/parseval-identity.md`「等价叙述」第 4 条「推广：Bessel 不等式，任意正交族」（$\sum |a_n|^2 \le \|f\|^2$，$\{\varphi_n\}$ 完全时取等为 Parseval）只有陈述、无证明、且未引用独立实体页。该证明完全只依赖内积双线性 + Pythagoras 定理（**纯线性代数 / 内积空间**，不依赖测度论或 Fourier 分析），取等条件亦同——应建独立 lemma 页以承载并补证。
+
+### 修订
+
+#### 1. 新建 [wiki/lemmas/bessel-inequality.md](../lemmas/bessel-inequality.md)
+
+- **陈述**：内积空间 $H$ + 标准正交族 $\{\varphi_n\}$ ⟹ $\sum |a_n|^2 \le \|f\|^2$（不必 $H$ 完备）。
+- **证明**（4 步纯线性代数）：
+  1. 构造 $P_F f = \sum_{n \in F} a_n \varphi_n$；
+  2. 由标准正交性验证 $f - P_F f \perp \{\varphi_n : n \in F\}$，特别地 $f - P_F f \perp P_F f$；
+  3. Pythagoras：$\|f\|^2 = \|f - P_F f\|^2 + \|P_F f\|^2 = \|f - P_F f\|^2 + \sum_{n \in F} |a_n|^2$；
+  4. $\|f - P_F f\|^2 \ge 0$ ⟹ $\sum_{n \in F} |a_n|^2 \le \|f\|^2$；$|F| \to \infty$ 单调收敛。
+- **取等条件**（双向证明）：$\sum |a_n|^2 = \|f\|^2$ 当且仅当 $f \in \overline{\operatorname{span}\{\varphi_n\}}$；对**所有** $f$ 取等当且仅当 $\{\varphi_n\}$ 完全（即构成 Hilbert 空间基）。
+- **依赖关系小结**：仅依赖内积代数公理 + Pythagoras 定理。无测度论、无 Fourier 分析、无特殊函数——纯线性代数。
+- **与 Parseval 关系表**：Bessel（任意标准正交族）/ Parseval（完全正交族）；证明成本、所需公理、典型来源逐项对比。
+- **应用区段**：引用本引理的 6 个目标页（含 parseval-identity / orthogonal-best-approximation / riemann-lebesgue-lemma / mean-square-convergence / finite-abelian-group / character）。
+- frontmatter：`type: lemma`、`status: verified`、`description` 已填、`updated` → 2026-08-15。
+
+#### 2. 双向 backlink 补齐
+
+- [parseval-identity.md](../theorems/parseval-identity.md)：叙述 4 末尾补 wikilink `[[bessel-inequality]]` 与简短指向（线性代数证明 + 取等条件）；frontmatter `updated` → 2026-08-15；§关联新增「Bessel 不等式」条目。
+- [orthogonal-best-approximation.md](../lemmas/orthogonal-best-approximation.md)：§应用新增「Bessel 不等式」条目（正交投影构造同源）。
+- [riemann-lebesgue-lemma.md](../theorems/riemann-lebesgue-lemma.md)：§关联新增「Bessel 不等式」条目（$L^2$ 路径下取 $g = e^{in\theta}$ 立得 $|\hat f(n)|^2 \to 0$）。
+- [mean-square-convergence.md](../theorems/mean-square-convergence.md)：§应用新增「Bessel 不等式」条目（Bessel 仅给 $\le$，$\to$ 等号需附加稠密性）。
+- [finite-abelian-decomposition.md](../theorems/finite-abelian-decomposition.md)：§关联新增「Bessel 不等式」条目（有限和自动完全，故 $\widehat{G}$ 上的 Parseval 是 Bessel 取等——无稠密性论证负担）。
+- [finite-abelian-group.md](../concepts/finite-abelian-group.md)：§关联新增「Bessel 不等式」条目（同上语义）。
+- [character.md](../concepts/character.md)：§关联新增「Bessel 不等式」条目（特征标作为标准正交族满足 Bessel）。
+
+#### 3. [index-fourier.md](../index-fourier.md) 索引更新
+
+- 引理区段新增 `[[bessel-inequality]]` 条目（状态 `verified`）；
+- 统计表 `lemmas: 7 → 8`。
+
+### 关于「证明是否有误」的核验
+
+用户提问「这种证明是否有误」——核验：**完全正确**。证明仅使用：
+
+1. 内积双线性性（$\langle f, \varphi_n\rangle$ 线性 + $\langle \varphi_n, f\rangle$ 共轭线性）；
+2. 标准正交性（$\langle \varphi_n, \varphi_m\rangle = \delta_{nm}$）；
+3. Pythagoras 定理（$\|u+v\|^2 = \|u\|^2 + \|v\|^2$ 当 $u \perp v$）。
+
+这三者是 Hilbert 空间理论的代数公理，不依赖完备性、不依赖测度论、不依赖 $L^p$ 框架——故证明适用于任意内积空间。**取等条件**的 $(\Rightarrow)$ 方向直接由 $\|f - P_F f\|^2 = \|f\|^2 - \sum_{n \in F} |a_n|^2$ 的极限论证；$(\Leftarrow)$ 方向由 Fatou 引理（或范数连续性）。两端均严密，无遗漏。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；新建 1 个 lemma 页（[bessel-inequality.md](../lemmas/bessel-inequality.md)）+ 7 处 backlink 补齐；索引计数 +1；wikilink 网络增量均已登记。
+
+---
+
+## [2026-08-14] good-kernel-parameterize | 好核定义参数化抽象
+
+### 动因
+
+用户反馈：好核的第三个条件（质量集中）对 Poisson 核「要求 $r \to 1^-$」的细节是 Stein 不同章节的「灵活性」体现，原页面用 $n \to \infty$ 一刀切的表述对 Poisson 核（参数为 $r$）不准确。
+
+### 修订
+
+[wiki/concepts/good-kernel.md](../concepts/good-kernel.md)：
+
+- **定义参数化为通用形式** $\{K_\lambda\}_{\lambda \in \Lambda}$，$\lambda \to \lambda_0$。条件 (c) 改写为 $\int_{\delta \le |x|} |K_\lambda| \to 0$（$\lambda \to \lambda_0$）。
+- **新增「关于参数的灵活性」节**：列出 4 种典型参数方向——离散求和核 $\lambda = N \in \mathbb{N}, \lambda_0 = +\infty$；Poisson 核 $\lambda = r \in (0,1), \lambda_0 = 1^-$；热核 $\lambda = t > 0, \lambda_0 = 0^+$；Gauss 核 $\lambda = \delta > 0, \lambda_0 = 0^+$。
+- **依据**：标注「Ch.2 §5 Theorem 4.1（$n \to \infty$ 形式）与 Ch.4 §2 Theorem 2.2（$r \to 1^-$ 形式）」。
+- **Claim 1 与证明**：参数 $\lambda \to \lambda_0$，论证对 $\lambda_0$ 的具体形式无依赖（同时覆盖 Fejér/Poisson/热核/Gauss 核）。
+- **依赖关系小结**：补充「证明对 $\lambda_0$ 的具体形式无依赖，故同时覆盖 Fejér 核 ($n \to \infty$)、Poisson 核 ($r \to 1^-$)、热核/Gauss 核 ($t, \delta \to 0^+$) 等所有 Stein 场景」。
+- **性质节**：$\hat{K}_\lambda(k) \to 1$（$\lambda \to \lambda_0$），并注明 Poisson 核 $\hat{P}_r(k) = r^{|k|} \to 1$ 的具体应用。
+- **典型反例/边界节**：Poisson 核条目补充参数方向 $\lambda = r \to 1^-$ 与 Fourier 系数刻画依据。
+- **等价叙述节**：新增「叙述 4（Poisson 核专用，Stein Ch.4 §2）」，显式记录 $\|P_r\|_1 \le 2\pi \frac{1+r}{1-r}$ 的 (b) 估计。
+- **frontmatter**：updated → 2026-08-14，加 `revision_note` 记录本次修订；`strength_basis` 与来源列表同步。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；仅修改好核页的内部表述；wikilink 网络未变化。
 
 ---
 
