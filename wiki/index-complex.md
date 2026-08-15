@@ -15,6 +15,7 @@
 - [[poles-classification]]：极点分类——Ch.3 §1 三类孤立奇点分类与主部展开。状态：`unverified`。
 - [[simply-connected-domain]]：单连通域——任何闭曲线可缩为点的开集。状态：`unverified`。
 - [[order-of-growth]]：增长阶——整函数的复杂度指标，控制零点密度。状态：`unverified`。
+- [[harmonic-function]]：调和函数——满足 Laplace 方程 $\Delta u = 0$ 的函数（二维与全纯函数实部等价）。状态：`unverified`。
 
 ## 定理（Theorems）
 
@@ -54,7 +55,7 @@
 
 | 类目 | 数量 |
 |------|------|
-| concepts | 8 |
+| concepts | 9 |
 | theorems | 17 |
 | lemmas | 9 |
-| **合计** | **34** |
+| **合计** | **35** |

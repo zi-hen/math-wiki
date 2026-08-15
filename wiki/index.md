@@ -13,8 +13,9 @@
 | 傅里叶分析 | [[index-fourier]] | Fourier 级数/变换、$L^p$/Schwartz/好核、有限阿贝尔群（Stein《Fourier Analysis》Ch.1–7） |
 | 复分析 | [[index-complex]] | 全纯函数、Cauchy 定理与积分公式、留数理论、整函数与增长（Stein《Complex Analysis》Ch.1–5） |
 | 解析数论 | [[index-number-theory]] | Dirichlet 定理、Euler 乘积与 $L(s,\chi)$（Stein《Fourier Analysis》Ch.8 数论应用） |
+| 微分方程 | [[index-pde]] | 波动方程与 d'Alembert 显式解（Stein《Fourier Analysis》Ch.1 §3） |
 
-概念、定理、引理、习题、问题页按上述三领域归类；跨领域基础引理与全部方法、笔记保留在本页。
+概念、定理、引理、习题、问题页按上述四领域归类；跨领域基础引理与全部方法、笔记保留在本页。
 
 ## 通用引理（跨领域）
 
@@ -70,18 +71,18 @@ _（暂无。）_
 | 类目 | 数量 |
 |------|------|
 | topics | 0 |
-| concepts | 24 |
+| concepts | 26 |
 | theorems | 38 |
-| lemmas | 21 |
+| lemmas | 23 |
 | exercises | 10 |
 | problems | 5 |
 | notes | 5 |
-| methods | 17 |
+| methods | 18 |
 | people | 0 |
 | sources | 3 |
-| **合计** | **123** |
+| **合计** | **128** |
 
-按领域划分（不含 method/note/people/sources）：傅里叶分析 **58** 页（[[index-fourier]]）、复分析 **32** 页（[[index-complex]]）、解析数论 **3** 页（[[index-number-theory]]）、通用引理 5 页（本页）。
+按领域划分（不含 method/note/people/sources）：傅里叶分析 **58** 页（[[index-fourier]]）、复分析 **35** 页（[[index-complex]]）、解析数论 **3** 页（[[index-number-theory]]）、微分方程 **1** 页（[[index-pde]]）、通用引理 5 页（本页）。
 
 ## 项目治理（2026-08-12 更新）
 

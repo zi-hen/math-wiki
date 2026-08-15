@@ -1,7 +1,8 @@
 # 傅里叶分析索引
 
 > 傅里叶分析主题页面目录（主要源自 Stein《Fourier Analysis: An Introduction》）。由 [index.md](index.md) 分类索引进入。
-> 解析数论页（[[dirichlet-theorem-on-primes]] 等）单列于 [[index-number-theory]]；跨域页（如 [[paley-wiener-theorem]]）归入 [[index-complex]]。
+> 解析数论页（[[dirichlet-theorem-on-primes]] 等）单列于 [[index-number-theory]]；跨域页（如 [[paley-wiener-theorem]]）归入 [[index-complex]]；微分方程页（[[wave-equation]]）单列于 [[index-pde]]。
+> 方法（method）与笔记（note）不参与领域划分，保留在 [index.md](index.md)（如 [[euler-fourier-formulas]] 已在 index.md 方法区段）。
 
 ---
 
@@ -40,11 +41,9 @@
 - [[bernstein-theorem]]：Bernstein 定理——Hölder 阶 $\alpha > 1/2$ 的 Fourier 级数绝对收敛。状态：`verified`。
 - [[gibbs-phenomenon]]：Gibbs 现象——锯齿函数部分和在跳跃处过冲约 9%（Ch.3 Ex.20）。状态：`verified`。
 - [[legendre-polynomials]]：Legendre 多项式——$[-1,1]$ 上的完备正交系（Ch.3 Ex.2）。状态：`verified`。
-- [[euler-fourier-formulas]]：Euler 部分分式公式（Fourier 路线与 Poisson 路线）——$\cot$ 展开、$\csc^2$ 求和、Euler 反射公式的两条互补方法（Ch.3 Ex.3 + Ch.5 Ex.15）。状态：`verified`（已重分类为 method）。
 - [[hermite-functions]]：Hermite 函数——Fourier 变换与 Hermite 算子的完备特征函数系（Ch.5 Ex.7）。状态：`verified`。
 - [[sampling-theorem]]：采样定理（Shannon-Nyquist）——带限信号由整数点采样精确重建（Ch.5 Ex.20）。状态：`unverified`。
 - [[radon-transform]]：Radon 变换——沿超平面的积分变换与显式重建公式（Ch.6 §5）。状态：`unverified`。
-- [[dalembert-formula]]：d'Alembert 公式——一维波动方程 Cauchy 初值问题的行波解（Ch.1 §3）。状态：`unverified`。
 - [[heisenberg-uncertainty-principle]]：Heisenberg 不确定性原理——$\sigma_x \sigma_\xi \geq 1/(4\pi)$（Ch.5 Thm 4.1）。状态：`unverified`。
 - [[wirtinger-inequality]]：Wirtinger 不等式——$\int_0^T |f|^2 \le (T/2\pi)^2 \int_0^T |f'|^2$。状态：`unverified`。
 - [[finite-abelian-decomposition]]：有限阿贝尔群结构定理——循环群直积分解与特征标自对偶（Ch.7 Pb.1–3）。状态：`verified`。
@@ -87,8 +86,8 @@
 | 类目 | 数量 |
 |------|------|
 | concepts | 16 |
-| theorems | 22 |
-| lemmas | 8 |
+| theorems | 20 |
+| lemmas | 9 |
 | exercises | 9 |
 | problems | 4 |
 | **合计** | **58** |

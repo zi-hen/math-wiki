@@ -43,5 +43,5 @@ $$
 
 ## 关联
 
-- 方法：[[dalembert-formula]]、[[local-to-global]]
+- 方法：[[wave-equation|d'Alembert 公式]]、[[local-to-global]]
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 1 §2、Ch. 4 §3）

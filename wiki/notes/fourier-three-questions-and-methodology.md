@@ -81,7 +81,7 @@ $$\lim_{N\to\infty}\frac{1}{N}\sum_{n=1}^N f(\rho^n(\theta)) = \frac{1}{2\pi}\in
 ## 与现有 wiki 的关联
 
 - 涉及的概念:[[fourier-series]]、[[fourier-transform]]、[[schwartz-space]]、[[good-kernel]]、[[lp-space]]、[[fourier-coefficient]]
-- 涉及的定理:[[isoperimetric-inequality]]、[[weyl-equidistribution]]、[[parseval-identity]]、[[wirtinger-inequality]]、[[dalembert-formula]]、[[heisenberg-uncertainty-principle]]、[[poisson-summation-formula]]
+- 涉及的定理:[[isoperimetric-inequality]]、[[weyl-equidistribution]]、[[parseval-identity]]、[[wirtinger-inequality]]、[[wave-equation]]、[[heisenberg-uncertainty-principle]]、[[poisson-summation-formula]]
 - 涉及的方法:[[cesaro-summation]]、[[separation-of-variables]]、[[approx-by-good-kernel]]、[[symmetry-breaking]]
 - 引用的源:[[steinFourierAnalysisIntroduction2003a]]
 - 相关笔记:[[fourier-analysis-zh-notes]]、[[schwartz-space-as-fourier-anchor]]

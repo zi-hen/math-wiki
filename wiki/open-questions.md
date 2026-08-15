@@ -48,7 +48,14 @@
 
 ---
 
-### [2026-08-11] AI 对话笔记的待核验主张（chat-fourier-series-2026-08-11）
+### [2026-08-15] 双重 Fourier 变换习题出处不一致：Ch.1 §2 Ex.3 vs p.255 Ex.6（Ch.7）
+
+- **状态**：open
+- **涉及页面**：[[ch1-ex3-double-fourier-transform]]、[[steinFourierAnalysisIntroduction2003a]]
+- **描述**：[[ch1-ex3-double-fourier-transform]] 习题页声明「Ch. 1, §2, Ex. 3」（经既有页沿用），而源页摘录「第七—八章（p.236-257）」记载同式 $\widehat{\hat f}(\xi) = f(-\xi)$ 为 **p.255 Exercise 6**。raw/ 对话笔记中未检索到 Ch.1 §2 Ex.3 的题面原文，无法自行判定二者是否同一习题或页码误记。
+- **建议下一步**：用户对照 Stein 原书 PDF 批注核验：Ch.1 习题集中是否有「双重 Fourier 变换反演」；若否，将习题页出处改为 p.255 Ex.6（Ch.7 语境，有限 Fourier/$\mathbb{Z}(N)$ 前奏）或标注为 Ch.5 Ex./Thm 相关题。
+
+
 
 - **状态**：open
 - **涉及页面**：`wiki/sources/chat-fourier-series-2026-08-11.md`
