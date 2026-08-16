@@ -54,6 +54,7 @@
 - [[notes/complex-analysis-rigidity-and-methods]]：复分析方法论——刚性、奇点刻画、表示公式与围道积分三定理同一思想（纲领性高亮提炼）。状态：`draft`。
 - [[notes/finite-abelian-fourier-and-number-theory]]：有限阿贝尔群结构定理与 Fourier 观点在数论中的应用——读第七、八章时的真实思考记录；4 条支持 + 5 条怀疑，最终把"清晰"分成"翻译层清晰"与"难度层不清晰"两层。状态：`draft`。
 - [[notes/integral-splitting-how-to-choose]]：积分分拆的分拆点选择——由散落想法成文（12 节）：分拆为何不可避免、分拆点三类来源、六类选择谱系、两阶段极限（epsilon of room）、二进 vs 等距、软 vs 硬截断、与局部到整体原理的关系、「唯一最优」为何不存在。状态：`in-progress`。
+- [[notes/weyl-equidistribution-fourier-three-steps|notes/weyl-equidistribution-fourier-three-steps]]：Weyl 等分布判据的 Fourier 生成法——按「§1 三步核心（基函数正交 → 线性子空间稠密 → Darboux 上下和夹逼）→ §2 推广一（分段连续函数 + 朴素 ε-room）→ §3 推广二（$L^1$ 可积函数 + 抽象 ε-room）」三层结构展开，明确朴素 ε-room 与抽象 ε-room 的边界。状态：`draft`。
 
 ## 人物（People）
 
@@ -77,10 +78,11 @@ _（暂无。）_
 | lemmas | 23 |
 | exercises | 10 |
 | problems | 5 |
-| notes | 6 |
+| notes | 7 |
 | methods | 18 |
 | people | 0 |
 | sources | 3 |
+| formal_proofs | 0(试点基础设施已就绪,见 [docs/formal-verification/README.md](../docs/formal-verification/README.md)) |
 | **合计** | **129** |
 
 按领域划分（不含 method/note/people/sources）：傅里叶分析 **58** 页（[[index-fourier]]）、复分析 **35** 页（[[index-complex]]）、解析数论 **3** 页（[[index-number-theory]]）、微分方程 **1** 页（[[index-pde]]）、通用引理 5 页（本页）。
@@ -91,8 +93,10 @@ _（暂无。）_
 - 上下文加载策略与配置层级：[docs/CONTEXT.md](../docs/CONTEXT.md)。
 - 稳定区/灰区/自由区分类：[docs/STABLE.md](../docs/STABLE.md)。
 - 语义回归审计清单：[docs/REGRESSION.md](../docs/REGRESSION.md)。
-- Trae 命令系统说明（触发词、五段式、autonomy 三级）：[docs/COMMANDS.md](../docs/COMMANDS.md)。
-- 最近 lint 摘要：[`.lint-last.md`](.lint-last.md)（由 lint 脚本自动生成）。
+- Trae 命令系统说明(触发词、五段式、autonomy 三级):[docs/COMMANDS.md](../docs/COMMANDS.md)。
+- Lean 4 形式化验证(试点中):[docs/formal-verification/README.md](../docs/formal-verification/README.md)、方案 [2026-08-16-lean-formalization-pilot.md](../docs/formal-verification/2026-08-16-lean-formalization-pilot.md)
+- 最近 lint 摘要:[`.lint-last.md`](.lint-last.md)(由 lint 脚本自动生成)。
+- 最近 Lean↔wiki 同步摘要:[`.lint-sync-last.md`](.lint-sync-last.md)(由 sync 脚本自动生成)。
 
 Dataview 动态计数：
 

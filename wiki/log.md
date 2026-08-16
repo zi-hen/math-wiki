@@ -4,6 +4,48 @@
 
 ---
 
+## [2026-08-16] scaffolding | Lean 4 形式化试点基础设施落地(verified 判定可由机器核验)
+
+### 动因
+
+用户要求把 theorem 页的 `status: verified` 判定从字面提升为可机器核验(Lean 4 形式化)。本轮先打通**基础设施**(Lean 项目骨架 + schema 扩展 + lint 校验 + 同步校验脚本 + ReasLab 工作流),三个 theorem 的完整战术链留待 ReasLab 环境就绪后补。
+
+### 改动
+
+- **新增文件**
+  - `lean/.gitignore`、`lean/README.md`、`lean/lean-toolchain`、`lean/lakefile.lean`、`lean/MathWIKI.lean`
+  - `lean/MathWIKI/Defs.lean`、`lean/MathWIKI/CauchyGoursat.lean`、`lean/MathWIKI/WeierstrassApprox.lean`、`lean/MathWIKI/FourierInversion.lean`(三个 theorem 占位,带正确的 WIKI_SOURCE/WIKI_STATUS 标记)
+  - `lean/.reaslab/README.md`(ReasLab 接入指南)
+  - `docs/formal-verification/README.md`(形式化验证文档目录说明)
+  - `docs/formal-verification/2026-08-16-lean-formalization-pilot.md`(实施方案)
+  - `scripts/check-lean-wiki-sync.ps1`(Lean ↔ wiki 同步校验)
+- **schema 扩展**
+  - `docs/SCHEMA.md` 新增 §12 `formal_proof` 字段(path / commit / verifier / verified_on / status)
+  - `docs/STRUCTURE.md` §3.1 theorem 行新增可选 `formal_proof` 字段说明
+  - `templates/theorem.md` frontmatter 模板加入 `formal_proof` 示例(注释形式)
+- **lint 扩展**
+  - `scripts/lint-wiki.ps1` 新增 §17 "Formal proof anchor" 校验;`verified` theorem 必须有 `formal_proof.status: formalized`
+  - 排除列表新增 `.lint-sync-last.md`(避免 sync 脚本产物触发 frontmatter 警告)
+- **试点范围**:`cauchy-theorem`、`weierstrass-approximation-trig`、`fourier-inversion`(三个 `standard` 定理)
+- **延期**:T5/T6/T7 三个定理的完整 Lean 战术链留待 ReasLab/本机 lake 环境就绪后补;Lean 文件当前为占位(`trivial`/`True`),`formal_proof.status: pending-formalization`
+
+### lint
+
+`ERROR 9 / WARNING 0 / INFO 9` —— 9 个 ERROR 全是 pre-existing Excalidraw 旧 wikilink(与本方案无关);9 个 INFO 是 pre-2026-08-16 verified 定理待迁移至 formal_proof(符合预期,渐进迁移路径)。本方案零新增 ERROR/WARNING。
+
+### sync
+
+`ERROR 0 / WARNING 0 / INFO 0` —— 三个 theorem 均尚未挂 `formal_proof`,sync 脚本正确识别空状态。
+
+### 不变量
+
+- `raw/` 未触碰
+- `scratch/` 未触碰
+- 现有 wiki 页 frontmatter 未修改(待三个 theorem 战术链完成后再补 `formal_proof`)
+- 现有 lint 输出未引入回归
+
+---
+
 ## [2026-08-15] supplement | 分拆笔记四个疑问进一步阐明（结合 Tricki《Create an epsilon of room》）
 
 ### 动因

@@ -10,6 +10,13 @@ status: verified
 tags: []
 strength: standard
 strength_basis: <强弱判定依据>
+# 可选:Lean 4 形式化锚点(详见 docs/SCHEMA.md §12)
+# formal_proof:
+#   path: lean/MathWIKI/<FileName>.lean
+#   commit: <sha 或 uncommitted>
+#   verifier: <human | AI | reaslab | ci>
+#   verified_on: 2026-08-16
+#   status: <pending-formalization | formalized | failed-formalization>
 ---
 
 # <定理名>

@@ -252,3 +252,39 @@ frontmatter 增加字段 `chapter` 与 `number`,不设 `strength` 字段。lint 
 | 2026-08-12 | 新增 `strength_struct` 可选字段 | 提供机器可读的 strength 判定依据 |
 | 2026-08-12 | 新增 `last_proof_audit` 可选字段 | 证明审核签字机制 |
 | 2026-08-13 | 新增可选 `description` 字段 | OKF 对齐(新雇测试/index 同步) |
+| 2026-08-16 | 新增 `formal_proof` 可选字段(§12) | Lean 4 形式化锚点;verified 判定可由机器核验(试点 3 个定理) |
+
+---
+
+## 12. 形式化证明字段(formal_proof,可选)
+
+定理页 frontmatter 可选字段,指向对应的 Lean 4 形式化证明。仅适用于 `type: theorem` 页。
+
+```yaml
+formal_proof:
+  path: lean/MathWIKI/CauchyGoursat.lean   # 相对 math-wiki/ 根的路径
+  commit: <git sha 或 "uncommitted">        # Lean 文件的 git commit;未提交时填 uncommitted
+  verifier: <human | AI | reaslab | ci>      # 谁核验 Lean 文件内容与 wiki 一致
+  verified_on: YYYY-MM-DD                   # 形式化核验完成日期(YYYY-MM-DD)
+  status: pending-formalization | formalized | failed-formalization
+```
+
+### 12.1 status 流转(仅当存在 formal_proof 时使用)
+
+| 取值 | 含义 |
+|------|------|
+| `pending-formalization` | Lean 文件已规划但未完成(允许 `sorry` 占位、未通过 `lake build`) |
+| `formalized` | Lean 文件 `lake build` 成功且与 wiki 主页「详细证明」句段同步 |
+| `failed-formalization` | 形式化过程失败,原因记录于 theorem 页 `audit_notes` |
+
+### 12.2 与 `status` 字段的关系
+
+- theorem 页 `status: verified` **必须**同时存在 `formal_proof.status: formalized`(由 lint Section 17 强制;规则自 2026-08-16 起对新增 verified 页生效,旧页渐进迁移)
+- `status: unverified` / `pending-verification` 可不填 `formal_proof`
+- `formal_proof` 字段缺失时,theorem 页 status 不允许升级到 `verified`
+
+### 12.3 同步约束
+
+- Lean 文件内容**必须**与 wiki 主页「详细证明」区段的数学主线一致(同步性由 `scripts/check-lean-wiki-sync.ps1` 校验)
+- 任何 Lean 文件改动必须同步更新对应 wiki 页 frontmatter 的 `formal_proof.commit` 字段
+- 完整工作流与目录约定见 [docs/formal-verification/README.md](formal-verification/README.md)

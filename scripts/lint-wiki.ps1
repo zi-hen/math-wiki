@@ -13,8 +13,8 @@ $report.Add('Wiki root: ' + $WikiRoot)
 $report.Add(' ')
 
 # Resolve pages
-# 排除 lint 自动生成的元数据文件(.lint-last.md),避免被当作 wiki 页面扫描。
-$allFiles = @(Get-ChildItem -Path $WikiRoot -Recurse -Filter '*.md' | Where-Object { $_.Name -ne '.lint-last.md' })
+# 排除 lint 自动生成的元数据文件(.lint-last.md / .lint-sync-last.md),避免被当作 wiki 页面扫描。
+$allFiles = @(Get-ChildItem -Path $WikiRoot -Recurse -Filter '*.md' | Where-Object { $_.Name -ne '.lint-last.md' -and $_.Name -ne '.lint-sync-last.md' })
 
 # Pages requiring full lint
 $pages = @($allFiles | Where-Object {
@@ -765,6 +765,94 @@ if ($proofAuditIssues -eq 0) {
     $report.Add('- **WARNING (' + $proofAuditIssues + ')**: skip-phrase / recheck phrase detected. Revise offending lines (proofs must be self-contained, no narrative of "重新核算/改正" — write the final computation directly).')
     foreach ($i in $auditIssues) {
         $report.Add('  - ' + $i)
+    }
+}
+$report.Add(' ')
+
+# ============ 17. formal proof anchor (Lean 形式化字段) ============
+$report.Add('### 17. Formal proof anchor')
+$report.Add(' ')
+$formalIssues = 0
+$formalInfo = 0
+$leanRoot = Split-Path $WikiRoot -Parent
+$validFormalStatus = @('pending-formalization','formalized','failed-formalization')
+foreach ($p in $pages) {
+    if ($p.FullName -like '*\sources\*') { continue }
+    $content = Get-Content $p.FullName -Raw -Encoding UTF8
+    $fmMatch = [regex]::Match($content, '(?ms)^---\s*\r?\n(.*?)\r?\n---')
+    if (-not $fmMatch.Success) { continue }
+    $fm = $fmMatch.Groups[1].Value
+    $tm = [regex]::Match($fm, '(?m)^type\s*:\s*(\S+)')
+    if (-not $tm.Success) { continue }
+    $pageType = $tm.Groups[1].Value.Trim()
+    if ($pageType -ne 'theorem') { continue }
+
+    $sm = [regex]::Match($fm, '(?m)^status\s*:\s*(\S+)')
+    $statusVal = ''
+    if ($sm.Success) { $statusVal = $sm.Groups[1].Value.Trim() }
+
+    # Match a YAML block under formal_proof:
+    # formal_proof:
+    #   path: ...
+    #   commit: ...
+    $fpMatch = [regex]::Match($fm, '(?ms)^formal_proof\s*:\s*\r?\n((?:  [^\r\n]+\r?\n)+)')
+    $hasFormalProof = $fpMatch.Success
+
+    $rel = Get-Rel $p.FullName
+
+    if ($statusVal -eq 'verified' -and -not $hasFormalProof) {
+        # For backward compatibility, emit as INFO (not WARNING) for now — schema added 2026-08-16
+        Add-Issue 'formal' 'INFO' $rel 'verified theorem missing formal_proof anchor (migrate by adding Lean file + formal_proof block per SCHEMA.md §12)'
+        $formalInfo++
+        $totals.info++
+        continue
+    }
+
+    if ($hasFormalProof) {
+        $fpBlock = $fpMatch.Groups[1].Value
+        $pathMatch = [regex]::Match($fpBlock, '(?m)^\s*path\s*:\s*(\S+)')
+        if (-not $pathMatch.Success) {
+            Add-Issue 'formal' 'ERROR' $rel 'formal_proof block missing path field'
+            $formalIssues++
+            $totals.errors++
+            continue
+        }
+        $relPath = $pathMatch.Groups[1].Value.Trim()
+        $leanPath = Join-Path $leanRoot $relPath
+        if (-not (Test-Path $leanPath)) {
+            Add-Issue 'formal' 'ERROR' $rel ('formal_proof.path not found on disk: ' + $relPath)
+            $formalIssues++
+            $totals.errors++
+        }
+        $fpStatusMatch = [regex]::Match($fpBlock, '(?m)^\s*status\s*:\s*(\S+)')
+        if ($fpStatusMatch.Success) {
+            $fpStatus = $fpStatusMatch.Groups[1].Value.Trim()
+            if ($validFormalStatus -notcontains $fpStatus) {
+                Add-Issue 'formal' 'ERROR' $rel ('invalid formal_proof.status: ' + $fpStatus + ' (expected: pending-formalization | formalized | failed-formalization)')
+                $formalIssues++
+                $totals.errors++
+            }
+        }
+        # verified theorem must have formal_proof.status = formalized
+        if ($statusVal -eq 'verified') {
+            if (-not $fpStatusMatch.Success -or $fpStatusMatch.Groups[1].Value.Trim() -ne 'formalized') {
+                $gotStatus = 'missing'
+                if ($fpStatusMatch.Success) { $gotStatus = $fpStatusMatch.Groups[1].Value.Trim() }
+                Add-Issue 'formal' 'ERROR' $rel ('verified theorem requires formal_proof.status: formalized (got: ' + $gotStatus + ')')
+                $formalIssues++
+                $totals.errors++
+            }
+        }
+    }
+}
+if ($formalIssues -eq 0 -and $formalInfo -eq 0) {
+    $report.Add('- **PASS**: formal proof anchors consistent.')
+} else {
+    if ($formalInfo -gt 0) {
+        $report.Add('- **INFO (' + $formalInfo + ')**: pre-2026-08-16 verified theorems without formal_proof anchor. See SCHEMA.md §12 for migration path.')
+    }
+    if ($formalIssues -eq 0) {
+        # already shown via ERROR entries below
     }
 }
 $report.Add(' ')

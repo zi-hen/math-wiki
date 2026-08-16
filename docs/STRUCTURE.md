@@ -63,7 +63,7 @@ wiki/
 |------|------|----------------------|----------|---------|
 | `source` | `wiki/sources/<citekey>.md` | type, title, sources, status, created, updated | 摘要、关键摘录、概念清单、定理清单、与现有 wiki 的关系 | 单个源的摘要 + 关键摘录 + 与现有 wiki 的关系 |
 | `concept` | `wiki/concepts/<slug>.md` | type, title, sources, status, tags, strength, strength_basis | 定义、动机、性质、关联定理、关联方法、典型反例、相关习题、What/Why/What-if | 概念实体页:定义 + 性质 + 反例 + 等价叙述 |
-| `theorem` | `wiki/theorems/<slug>.md` | type, title, sources, status, tags, strength, strength_basis | 陈述(Stein 记号)、等价叙述、证明思路(含动机)、详细证明、其他证明(如有)、证明难度差异、推广、应用、反例、相关习题 | 定理实体页:陈述 + 详细证明 + 反例 + 推广 |
+| `theorem` | `wiki/theorems/<slug>.md` | type, title, sources, status, tags, strength, strength_basis;可选 `formal_proof`(详见 SCHEMA.md §12) | 陈述(Stein 记号)、等价叙述、证明思路(含动机)、详细证明、其他证明(如有)、证明难度差异、推广、应用、反例、相关习题 | 定理实体页:陈述 + 详细证明 + 反例 + 推广 |
 | `lemma` | `wiki/lemmas/<slug>.md` | type, title, sources, status, tags(**无** strength) | 陈述、简要证明、应用场景(必填) | 频繁使用的**数学命题**(工具性小性质,如 $\|e^z\| = e^{\operatorname{Re}(z)}$):陈述 + 简要证明 + 应用。**不得收录技巧性(程序性)内容** |
 | `method` | `wiki/methods/<slug>.md` | type, title, sources, status, tags, strength, strength_basis | 适用场景、关键思想(可抽象)、步骤(可选)、陷阱、实例、相关命题 | 一种**技巧/程序**(非命题,无真假可言):适用场景、关键思想、步骤(可选)、陷阱、实例 |
 | `exercise` | `wiki/exercises/<slug>.md` | type, title, chapter, number, sources, status, tags(**无** strength) | 陈述、思路提示、解答、关联 | 教材各章编号练习:陈述 + 思路 + 解答 |
@@ -160,3 +160,4 @@ wiki/
 | 2026-08-13 | method/lemma 真假决策树、实体唯一性、实体页最小原则、相关习题区段、description 字段、OKF 对齐(三强制规则⊂lint、图而非目录、Playbook↔method 同构、Skill/Tools 评估结论不安装) | 规则修订 spec:revise-rules-entity-governance |
 | 2026-08-13 | index.md 增分类层:新增 `wiki/index-fourier.md`、`wiki/index-complex.md` 分类索引(概念/定理/引理/习题/问题按傅里叶分析、复分析归类;method 与 note 不参与划分,保留于 index.md);lint 视 `index-*.md` 为导航文件 | index 冗杂治理 |
 | 2026-08-13 | 数论页单开:新增 `wiki/index-number-theory.md` 解析数论分类索引(dirichlet-theorem-on-primes、ch8-ex3、ch8-pb1 自傅里叶索引移出) | 数论页单开 |
+| 2026-08-16 | theorem 行新增可选 `formal_proof` 字段说明;指向 SCHEMA.md §12 | Lean 4 形式化锚点 |
