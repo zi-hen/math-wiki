@@ -403,7 +403,7 @@ raw: "[[steinComplexAnalysis]]"
 | | 曲线积分:线性/反向/估计、原函数定理、1/z 无原函数(p.39、p.40、p.41×2、p.42×3, 7) | 记录(暂不建页) | — |
 | Ch.2(p.52-82, 43) | 解析延拓的基础性质(p.52, 1) | 已覆盖(现有实体页) | [[analytic-continuation]] |
 | | Goursat→Cauchy 定理链:三角/矩形、圆盘原函数、toy contour、Jordan(p.53×2、p.55、p.56、p.58×4、p.59、p.60, 10) | 已覆盖(源页摘录)+记录 | 摘录 Thm 1.1/2.2;其余记录 |
-| | 围道平移技术(p.63, 1) | 已覆盖(现有实体页) | [[contour-integration|围道平移(积分法变体)]] |
+| | 围道平移技术(p.63, 1) | 已覆盖(现有实体页) | [[contour-integration]]（围道平移(积分法变体)） |
 | | 表示公式思想:从小集合恢复大集合(p.64 之一, 1) | note(纲领性-思想性) | [[complex-analysis-rigidity-and-methods]]§三 |
 | | Cauchy 积分公式、钥匙孔/矩形围道、无穷可微、Cauchy 不等式、幂级数展开、Liouville、FTA、零点孤立/恒等定理(p.64 之二、p.65、p.66×2、p.67、p.68、p.69×3、p.70、p.71×2, 12) | 已覆盖(源页摘录/现有实体页) | 摘录 Thm 4.1/Cor 4.2/4.3/Thm 4.4/Cor 4.5;[[cauchy-integral-formula]]、[[liouville-theorem]] |
 | | Morera、Weierstrass 收敛、导数收敛、级数构造全纯函数、Thm 5.4、全纯刚性 vs 实延拓、对称原理、Schwarz 反射、Runge 逼近(p.72×3、p.73×2、p.74×2、p.75、p.76、p.77、p.79×2、p.80×4、p.81、p.82, 18) | 已覆盖(源页摘录)+note | 摘录 Thm 5.1/5.2/5.6/5.7;刚性反思(p.76) → [[complex-analysis-rigidity-and-methods]]§三 |
@@ -504,7 +504,7 @@ raw: "[[steinComplexAnalysis]]"
 | $\mathscr{F}_a$ 类的定义 | p.132 | ✅ [AI-核验] |
 | Theta 函数变换律 $\theta(t) = t^{-1/2}\theta(1/t)$ | p.139 | ✅ [AI-核验] |
 | Cauchy-Riemann 方程 | p.31 | ✅ [AI-核验] |
-| Hadamard 公式 $1/R = \limsup |a_n|^{1/n}$ | p.34 | ✅ [AI-核验] |
+| Hadamard 公式 $1/R = \limsup \lvert a_n\rvert^{1/n}$ | p.34 | ✅ [AI-核验] |
 | Schwarz 反射原理条件 | p.79 | ✅ [AI-核验] |
 | Runge 逼近定理条件 | p.80 | ✅ [AI-核验] |
 | 留数定理 $\int_C f\,dz = 2\pi i\,\text{res}_{z_0} f$ | p.95 | ✅ [AI-核验] |

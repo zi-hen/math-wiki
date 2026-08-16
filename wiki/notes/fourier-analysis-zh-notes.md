@@ -35,9 +35,9 @@ Stein & Shakarchi《Fourier Analysis: An Introduction》(2003) 通过五个不�
 
 | 群 $G$ | 紧性 | 指数函数 | 频率集 | 正交性形式 | 反演 | Parseval 形式 |
 |--------|------|----------|--------|------------|------|---------------|
-| $\mathbb{T}$ | 紧 | $e_n(\theta) = e^{2\pi i n\theta}$ | $\mathbb{Z}$（离散） | Kronecker $\delta_{nm}$ | 级数 $\sum \hat{f}(n)\,e^{2\pi i n\theta}$ | $\sum |\hat{f}(n)|^2$ |
-| $\mathbb{R}$ | 非紧 | $e_\xi(x) = e^{2\pi i \xi x}$ | $\mathbb{R}$（连续） | Dirac $\delta(\xi-\eta)$ | 积分 $\int \hat{f}(\xi)\,e^{2\pi i \xi x}\,d\xi$ | $\int |\hat{f}(\xi)|^2\,d\xi$ |
-| $\mathbb{R}^d$ | 非紧 | $e_\xi(x) = e^{2\pi i x\cdot\xi}$ | $\mathbb{R}^d$ | Dirac $\delta(\xi-\eta)$ | 积分 $\int \hat{f}(\xi)\,e^{2\pi i x\cdot\xi}\,d\xi$ | $\int |\hat{f}(\xi)|^2\,d\xi$ |
+| $\mathbb{T}$ | 紧 | $e_n(\theta) = e^{2\pi i n\theta}$ | $\mathbb{Z}$（离散） | Kronecker $\delta_{nm}$ | 级数 $\sum \hat{f}(n)\,e^{2\pi i n\theta}$ | $\sum \lvert\hat{f}(n)\rvert^2$ |
+| $\mathbb{R}$ | 非紧 | $e_\xi(x) = e^{2\pi i \xi x}$ | $\mathbb{R}$（连续） | Dirac $\delta(\xi-\eta)$ | 积分 $\int \hat{f}(\xi)\,e^{2\pi i \xi x}\,d\xi$ | $\int \lvert\hat{f}(\xi)\rvert^2\,d\xi$ |
+| $\mathbb{R}^d$ | 非紧 | $e_\xi(x) = e^{2\pi i x\cdot\xi}$ | $\mathbb{R}^d$ | Dirac $\delta(\xi-\eta)$ | 积分 $\int \hat{f}(\xi)\,e^{2\pi i x\cdot\xi}\,d\xi$ | $\int \lvert\hat{f}(\xi)\rvert^2\,d\xi$ |
 | $\mathbb{Z}(N)$ | 紧（有限） | $e_\ell(k) = e^{2\pi i \ell k/N}$ | $\mathbb{Z}(N)$ | Kronecker $\delta_{\ell m}$（有限和） | 有限和 | 有限和 |
 | 有限阿贝尔群 $G$ | 紧（有限） | 特征标 $e: G\to S^1$（[[character]]） | $\hat G$（有限） | Kronecker $\delta_{e,e'}$（有限和） | 有限和 | 有限和 |
 
@@ -244,7 +244,7 @@ $$
 |------|------------|------------|----------|
 | Schwartz 空间 $\mathcal{S}$ | 紧性跃迁（$\mathbb{T} \to \mathbb{R}$） | 无穷远处多项式衰减 | $L^2(\mathbb{R})$（稠密扩张） |
 | 高斯衰减因子 $e^{-\pi\delta\xi^2}$ | $\mathbb{R}$ 上反演证明 | 频率域的衰减参数 $\delta > 0$ | 反演公式（$\delta \to 0$） |
-| 分部积分 $|a_N(n)| \leq c/|n|^2$ | 离散性跃迁 | 级数尾部的多项式控制 | $C^2(\mathbb{T})$ 反演 |
+| 分部积分 $\lvert a_N(n)\rvert \leq c/\lvert n\rvert^2$ | 离散性跃迁 | 级数尾部的多项式控制 | $C^2(\mathbb{T})$ 反演 |
 | 好核（Fejér、Poisson、Gauss） | 离散性跃迁 + $\mathbb{T}$ 上点态收敛 | 频域硬截断处的光滑过渡 | $C(\mathbb{T})$（一致收敛） |
 
 #### §6.2 两个维度的跃迁
@@ -354,7 +354,7 @@ $$
 |------|-----------|--------|
 | 方程类型 | 椭圆型（$\Delta u = 0$） | 抛物型（$\partial_t u = \Delta u$） |
 | 物理直觉 | 平衡态温度不能高于周围平均 | 耗散系统能量递减 |
-| 数学内容 | $\Delta u = 0 \Rightarrow u = $ 球面平均 | $\int u \Delta u = -\int |\nabla u|^2 \leq 0$ |
+| 数学内容 | $\Delta u = 0 \Rightarrow u = $ 球面平均 | $\int u \Delta u = -\int \lvert\nabla u\rvert^2 \leq 0$ |
 | 适用 | 椭圆型 | 抛物型与双曲型（波动方程能量守恒） |
 
 #### §9.2 热扩散方程与好核

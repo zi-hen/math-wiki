@@ -48,10 +48,10 @@ Stein 在 Ch. 4 §1 中引入 $\mathcal{F}$ 类（[[schwartz-space|Schwartz 空�
 |--------|---------------|------|
 | 常数 $c$ | $0$ | $\rho = 0$ 对应「多项式阶」 |
 | 多项式 $p(z)$ | $0$ | 由 Liouville 推广：多项式阶增长 $\Rightarrow$ 多项式 |
-| $e^z$ | $1$ | 指数型：$|e^z| \leq e^{|z|}$，故 $\rho \leq 1$；又 $e^x$ 沿实轴增长 $\Rightarrow \rho \geq 1$ |
-| $\cos z, \sin z$ | $1$ | $|\sin z| \leq e^{|z|}$ |
+| $e^z$ | $1$ | 指数型：$\lvert e^z\rvert \leq e^{\lvert z\rvert}$，故 $\rho \leq 1$；又 $e^x$ 沿实轴增长 $\Rightarrow \rho \geq 1$ |
+| $\cos z, \sin z$ | $1$ | $\lvert\sin z\rvert \leq e^{\lvert z\rvert}$ |
 | $\sin(\pi z)/\pi$ | $1$ | 零点 $\mathbb{Z}$ |
-| $\cos(\sqrt{z})$ | $1/2$ | Stein p.159 例：$|\cos\sqrt{z}| \leq e^{|z|^{1/2}}$ |
+| $\cos(\sqrt{z})$ | $1/2$ | Stein p.159 例：$\lvert\cos\sqrt{z}\rvert \leq e^{\lvert z\rvert^{1/2}}$ |
 | $e^{e^z}$ | $\infty$ | 超指数增长 |
 
 ## Why — 动机与直观

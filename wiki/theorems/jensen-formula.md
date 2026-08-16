@@ -1,4 +1,4 @@
----
+﻿---
 type: theorem
 title: Jensen 公式
 aliases: [Jensen's formula]
@@ -47,6 +47,14 @@ Jensen 公式是整函数理论的「第一基本公式」，将**零点分布**
 1. **零点-增长对偶**：左边（零点对数和）= 右边（对数均值 - $\log|f(0)|$）。增长快 $\Leftrightarrow$ 零点稀疏。
 2. **Hadamard 因子分解**：Jensen 公式是 Hadamard 定理（增长阶 $\rho$ 控制零点密度）的核心工具。
 3. **Nevanlinna 理论**：Jensen 公式是值分布理论（Nevanlinna theory）的起点——后者将零点替换为 $f - a$ 的零点（$a \in \mathbb{C}$）。
+
+![[Excalidraw/jensen-zeros.excalidraw|600]]
+
+> **绘图指引**:在 Obsidian 中打开 Excalidraw/jensen-zeros.excalidraw(如未创建请右键 → New Excalidraw Drawing,文件名用此)绘制 Jensen 公式零点分布。
+> 文本公式请用 **fontFamily: 2**(系统字体),保证数学符号渲染。
+> 可用组件库(打开 Excalidraw → 库面板):data-viz / software-architecture / system-design(已下载至 Excalidraw/Libraries/)。
+
+> **图 1**（零点分布）:圆盘 $D_R$ 内零点 $a_1, a_2, a_3$（o）与原点 $0$;Jensen 公式 $\log|f(0)| = \sum_k \log\frac{|a_k|}{R} + \frac{1}{2\pi}\int_0^{2\pi}\log|f(Re^{i\theta})|\,d\theta$ 联系零点与圆周对数均值。图内公式由 MathJax 渲染,浏览器预览见 `Excalidraw/jensen-zeros-preview.html`。
 
 ### 证明思路
 

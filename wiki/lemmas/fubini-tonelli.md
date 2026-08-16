@@ -51,15 +51,30 @@ $$
 - 若 $f \ge 0$，则重积分与两种累次积分在 $[0, \infty]$ 中相等（Tonelli）；
 - 若 $\iint_{\mathbb{R}^{d_1+d_2}}|f| < \infty$，则 $y \mapsto f(x,y)$ 对几乎处处 $x$ 可积、$x \mapsto f(x,y)$ 对几乎处处 $y$ 可积，且三个积分相等（Fubini）。
 
-**版本 3（一致收敛 / 逐项积分，Stein 实际用法）**. 设函数项级数 $\sum_j F_j(x,y)$ 关于 $y$（在含参数的紧集上）一致收敛，则
+**版本 3（一致收敛 / 逐项积分，Stein 实际用法）**. 设 $K \subset \mathbb{R}^{d_2}$ 为测度有限的紧集，$F_j: K \to \mathbb{C}$ 可积（$j \ge 1$），且部分和 $S_N = \sum_{j=1}^{N}F_j$ 在 $K$ 上一致收敛（即 $\sup_{y\in K}|S_N(y) - S(y)| \to 0$，$N \to \infty$，其中 $S = \sum_{j=1}^{\infty}F_j$）。则 $S$ 在 $K$ 上可积，且
 $$
-\int \sum_j F_j(x,y)\,dy = \sum_j \int F_j(x,y)\,dy.
+\int_K \sum_{j=1}^{\infty} F_j(y)\,dy = \sum_{j=1}^{\infty}\int_K F_j(y)\,dy.
 $$
+
+**版本 3 的证明**. 分三步。
+
+**第一步（$S$ 的可积性）**. 由一致收敛，存在 $N_0$ 使 $\sup_K|S_N - S_{N_0}| \le 1$ 对一切 $N \ge N_0$ 成立；取 $N \to \infty$ 得 $\sup_K|S - S_{N_0}| \le 1$，故 $\|S\|_\infty \le \|S_{N_0}\|_\infty + 1 < \infty$。$K$ 测度有限，有界可测函数 $S$ 在 $K$ 上可积（[[lp-space|$L^1$]] 意义；Riemann 框架下，一致收敛的可积函数列之极限 Riemann 可积，是标准定理）。
+
+**第二步（差的估计）**. 对任意 $N$，由三角不等式与积分保序性，
+$$
+\left|\int_K S_N\,dy - \int_K S\,dy\right| \le \int_K |S_N - S|\,dy \le |K|\cdot\sup_K|S_N - S| \longrightarrow 0 \qquad (N \to \infty),
+$$
+其中 $|K|$ 表示 $K$ 的测度。
+
+**第三步（有限和取极限）**. 对固定 $N$，由有限和的积分线性性 $\int_K S_N\,dy = \sum_{j=1}^{N}\int_K F_j\,dy$。结合第二步，$\sum_{j=1}^{N}\int_K F_j\,dy \to \int_K S\,dy$，即级数 $\sum_j\int_K F_j\,dy$ 收敛且等于 $\int_K S\,dy$。$\blacksquare$
+
+> **参数版（Stein 实际用法）**：若 $F_j(x,y)$ 还含参数 $x$，则对每个固定 $x$ 应用上述结果得逐项积分；若一致收敛关于 $x$ 也一致成立（$\sup_{x\in U}\sup_{y\in K}|S_N(x,y)-S(x,y)| \to 0$，$U$ 为紧集），则第二步对 $x$ 一致成立，从而 $\sum_j\int_K F_j(x,y)\,dy$ 关于 $x$ 一致收敛到 $\int_K S(x,y)\,dy$——这为「先逐项积分再对参数取极限」的次序交换提供依据（[[poisson-summation-formula|Poisson 求和]] 证明二 Claim 5(i)：M-判别法一致收敛 + 总质量估计）。
+
 （[[poisson-summation-formula|Poisson 求和公式]] 证明二 Claim 5(i) 即用此版本；Stein 前四章限于 Riemann 积分，凡交换积分与求和均用此一致收敛版本替代测度论判据。）
 
 **版本 4（Schwartz 试验函数，wiki 默认）**. 设 $f \in$ [[schwartz-space|Schwartz 空间]] $\mathcal{S}(\mathbb{R}^{d_1} \times \mathbb{R}^{d_2})$，则 $f$ 自动满足版本 2 的绝对可积条件，版本 2 无条件适用。wiki 各定理页在 $\mathcal{S}$ 框架下交换积分次序（乘法公式、Poisson 求和、双重 Fourier 变换反演）均引用此版本。
 
-> **四个版本的等价性**：版本 1 ⊂ 版本 2 ⊂ 版本 4（函数类递增）；版本 3 是一致收敛极限过程的特殊情形，可由版本 2 的 Tonelli 部分推出（对 $\sum_j |F_j|$ 应用非负情形）。四个版本共用同一重积分可交换次序的结论，区别只在函数类的正则性要求。
+> **四个版本的关系**：版本 1 ⊂ 版本 2 ⊂ 版本 4（函数类递增）。版本 3 亦可由版本 2 的 Tonelli 部分推出（把 $\sum_j$ 视为对 $\mathbb{Z}_{\ge1}$ 上计数测度的积分，对非负函数应用 Tonelli）；但 Stein 前四章限于 Riemann 框架，乘积测度理论不在其工具内，故版本 3 需要上方「一致收敛」这一初等判据的直接证明（只依赖积分线性性、三角不等式与测度有限）。四个版本共用同一「重积分 / 级数可交换次序」的结论，区别只在函数类的正则性要求。
 
 ## 应用
 

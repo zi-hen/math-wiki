@@ -30,9 +30,9 @@ strength_basis: 条件：$\Omega$ 中允许孤立极点（弱——比全纯函�
 
 | 类型 | 定义 | 行为 |
 |------|------|------|
-| **可去奇点**（removable） | $f$ 在 $z_0$ 邻域有界 | $f$ 可全纯延拓至 $z_0$（[[steinComplexAnalysis|Stein, p.103, Theorem 3.1]]） |
+| **可去奇点**（removable） | $f$ 在 $z_0$ 邻域有界 | $f$ 可全纯延拓至 $z_0$（[[steinComplexAnalysis]]（Stein, p.103, Theorem 3.1）） |
 | **极点**（pole） | $f(z) \to \infty$ 当 $z \to z_0$ | 局部 $f(z) = (z - z_0)^{-n} g(z)$（$g$ 全纯非零） |
-| **本性奇点**（essential） | 既非可去也非极点 | $f$ 在邻域内取值稠密于 $\mathbb{C}$（[[steinComplexAnalysis|Stein, p.105, Theorem 3.3]]） |
+| **本性奇点**（essential） | 既非可去也非极点 | $f$ 在邻域内取值稠密于 $\mathbb{C}$（[[steinComplexAnalysis]]（Stein, p.105, Theorem 3.3）） |
 
 ### 基本性质
 

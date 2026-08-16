@@ -47,7 +47,7 @@ $$
 > u(x, t) = \frac{1}{2}\big(f(x + ct) + f(x - ct)\big) + \frac{1}{2c} \int_{x - ct}^{x + ct} g(s)\,ds.
 > $$
 
-依据 [[steinFourierAnalysisIntroduction2003a|Stein & Shakarchi, Ch. 1, §3, p.28]]。（原 theorems/dalembert-formula 页已并入本页本节。）
+依据 [[steinFourierAnalysisIntroduction2003a|Stein & Shakarchi, Ch. 1, §3, p.28]]。（原定理页「d'Alembert 公式」已并入本页本节。）
 
 #### 动机
 

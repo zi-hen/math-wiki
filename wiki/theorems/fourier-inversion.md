@@ -40,8 +40,6 @@ Stein 的证明思路极为巧妙，**完全在 Schwartz 框架内**，且**严�
 3. **第三步（Theorem 1.6 + Corollary 1.7）**：验证 $\{K_\delta\}$ 是好核族，故 $f * K_\delta \to f$ 一致。
 4. **第四步**：对**已知** $K_\delta$ 的反演恒等式（由 Theorem 1.4 + 缩放直接给出，无需 Theorem 1.9）展开 $f * K_\delta$，交换积分次序，再用极限。
 
-**关键反循环要点**: 主证明第二阶段不应"取 Fourier 逆变换 (Theorem 1.9 形式)"——这正是 Theorem 1.9 自身, 构成循环。本证明改用 **$K_\delta$ 的反演恒等式**（独立于 Theorem 1.9 的 Gauss 特例）。
-
 ### 详细证明
 
 **预备：Gauss 自伴引理**。
@@ -321,7 +319,7 @@ $$
 | 叙述 3（$L^2$）| Plancherel + 扩张 | **极高** | 实分析卷内容 |
 | 叙述 4（圆群）| Fourier 级数 + 一致收敛 | **中** | Ch.2 Corollary 2.3 |
 | 证明二（叙述 1）| Poisson 核（Abel 求和）+ DCT | **中** | 需标准积分（围道/指数积分）与 DCT；无测度论 |
-| 证明三（叙述 1）| 留数定理 + 围道平移 | **中** | 条件改为 $\mathscr{F}_a$（条带全纯 + 中等衰减）；需复分析工具（[[residue-theorem|留数定理]]、[[cauchy-theorem|Cauchy 定理]]）与 Fubini 交换 |
+| 证明三（叙述 1）| 留数定理 + 围道平移 | **中** | 条件改为 $\mathscr{F}_a$（条带全纯 + 中等衰减）；需复分析工具（[[residue-theorem]]（留数定理）、[[cauchy-theorem]]（Cauchy 定理））与 Fubini 交换 |
 
 ## 相关习题
 

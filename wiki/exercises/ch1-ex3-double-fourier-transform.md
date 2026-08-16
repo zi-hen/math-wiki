@@ -121,7 +121,7 @@ $$
 
 ## 关联
 
-- 用到的概念：[[fourier-transform]]、[[schwartz-space]]、[[good-kernel]]
+- 用到的概念：[[fourier-transform]]、[[schwartz-space]]、[[good-kernel]]、[[lp-space|L^p 空间]]
 - 用到的引理：[[fubini-tonelli]]、[[dominated-convergence]]、[[dirichlet-kernel-l1-norm]]
 - 用到的定理：[[fourier-inversion]]（替代证法）、[[hermite-functions]]（谱结构）
 - 用到的方法：[[approx-by-good-kernel]]（好核逼近）

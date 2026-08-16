@@ -216,8 +216,8 @@ $$
 | 维度 | Fourier 路线（Ch.3 Ex.3） | Poisson 路线（Ch.5 Ex.15） |
 |------|---------------------------|-----------------------------|
 | **母函数** | $\cos(\alpha x)$（$2\pi$-周期，光滑） | $g(x) = 1/(x^2+\alpha^2) \in \mathcal{S}(\mathbb{R})$ |
-| **系数计算** | Fourier 系数 $\hat f(n)$（圆群定义 + 积分变量替换） | Fourier 变换 $\hat g(\xi) = \frac{\pi}{\alpha}e^{-2\pi\alpha|\xi|}$（围道积分/留数） |
-| **核心理论** | [[fourier-series|Fourier 级数]]逐点收敛（光滑 ⟹ 自收敛）+ 端点取值 | [[poisson-summation-formula|PSF]]（Schwartz ⟹ 唯一性 + Fubini 交换）|
+| **系数计算** | Fourier 系数 $\hat f(n)$（圆群定义 + 积分变量替换） | Fourier 变换 $\hat g(\xi) = \frac{\pi}{\alpha}e^{-2\pi\alpha\lvert\xi\rvert}$（围道积分/留数） |
+| **核心理论** | [[fourier-series]]（Fourier 级数）逐点收敛（光滑 ⟹ 自收敛）+ 端点取值 | [[poisson-summation-formula]]（PSF：Schwartz ⟹ 唯一性 + Fubini 交换）|
 | **工作空间** | 圆群 $\mathbb{T} = [-\pi,\pi]$ | 实直线 $\mathbb{R}$ |
 | **导出公式** | $\cot$ 部分分式 (ii)、$\alpha\pi/\sin(\alpha\pi)$ 的级数 (iii)、Euler 反射积分 (iv) | $\sum 1/(n+\alpha)^2 = \pi^2/\sin^2(\pi\alpha)$（a）、$\sum 1/(n+\alpha) = \pi/\tan(\pi\alpha)$（b） |
 | **复分析依赖** | 否（仅用三角恒等式与几何级数） | 是（求 $\hat g$ 须围道积分/留数）|

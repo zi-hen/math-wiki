@@ -1,4 +1,4 @@
----
+﻿---
 type: theorem
 title: 等周不等式（Hurwitz 形式）
 aliases: [isoperimetric inequality, Hurwitz isoperimetric inequality]
@@ -30,6 +30,14 @@ strength_basis: 弱条件 + 强结论。条件：$\Gamma$ 为 $\mathbb{R}^2$ 中
 ### 动机
 
 等周问题是几何变分法的开端：在固定周长的曲线中，哪条曲线围出最大面积？自古希腊起被认为答案是圆，但严格证明迟至 19 世纪。**Hurwitz（1901）** 利用 Fourier 级数给出极其优雅的证明，将变分问题转化为 [[fourier-coefficient|Fourier 系数]]估计——这是 Fourier 分析思想进入几何分析的开端。
+
+![[Excalidraw/isoperimetric.excalidraw|600]]
+
+> **绘图指引**:在 Obsidian 中打开 Excalidraw/isoperimetric.excalidraw(如未创建请右键 → New Excalidraw Drawing,文件名用此)绘制 等周不等式。
+> 文本公式请用 **fontFamily: 2**(系统字体),保证数学符号渲染。
+> 可用组件库(打开 Excalidraw → 库面板):data-viz / software-architecture / system-design(已下载至 Excalidraw/Libraries/)。
+
+> **图 1**（等周）:同周长 $L$ 的闭曲线 $\gamma$ 与圆;圆包围面积最大 $A^* = \frac{L^2}{4\pi}$,任意曲线面积 $A \le A^*$,等号当且仅当 $\gamma$ 为圆。图内公式由 MathJax 渲染,浏览器预览见 `Excalidraw/isoperimetric-preview.html`。
 
 ### 证明思路（Hurwitz 1901 / Stein Ch.4 §1）
 

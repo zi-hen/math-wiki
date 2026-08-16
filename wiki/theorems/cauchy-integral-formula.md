@@ -1,4 +1,4 @@
----
+﻿---
 type: theorem
 title: Cauchy 积分公式
 aliases: [Cauchy integral formula]
@@ -49,6 +49,14 @@ Cauchy 积分公式是复分析的核心「表示公式」——它将全纯函�
 1. **全纯函数的刚性**：$f$ 在 $\Omega$ 内的值由其在任意「包围 $z$ 的闭曲线」上的值决定。这是解析延拓唯一性（[[steinComplexAnalysis|Theorem 4.8, p.71]]）的强形式。
 2. **无穷可微性**：高阶导数公式直接给出 $f \in C^\infty(\Omega)$（不需要额外假设）。
 3. **围道积分计算**：很多围道积分可通过 Cauchy 公式化为边界值的显式计算。
+
+![[Excalidraw/keyhole.excalidraw|600]]
+
+> **绘图指引**:在 Obsidian 中打开 Excalidraw/keyhole.excalidraw(如未创建请右键 → New Excalidraw Drawing,文件名用此)绘制 Cauchy 积分公式 keyhole 围道。
+> 文本公式请用 **fontFamily: 2**(系统字体),保证数学符号渲染。
+> 可用组件库(打开 Excalidraw → 库面板):data-viz / software-architecture / system-design(已下载至 Excalidraw/Libraries/)。
+
+> **图 1**（keyhole 围道）:大圆 $C$ 与围绕 $z_0$ 的负向小圆 $C_\varepsilon$ 由走廊 $L_\varepsilon^\pm$ 连接;$\varepsilon \to 0$ 时小圆积分趋于 $2\pi i\, f(z_0)$,得 $f(z_0) = \frac{1}{2\pi i}\int_C \frac{f(\zeta)}{\zeta - z_0}\,d\zeta$。图内公式由 MathJax 渲染,浏览器预览见 `Excalidraw/keyhole-preview.html`。
 
 ### 证明思路
 

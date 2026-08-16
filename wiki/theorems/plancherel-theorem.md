@@ -249,7 +249,7 @@ $$
 
 | 叙述 | 方法 | 难度 | 代价 |
 |------|------|------|------|
-| 叙述 1（Stein 原始）| [[fourier-inversion|Fourier 反演]] + [[fubini-tonelli|Fubini 交换]]（Claim 1 取 $g=f$） | **低至中** | 仅需 Schwartz 框架，回避测度论 |
+| 叙述 1（Stein 原始）| [[fourier-inversion]]（Fourier 反演） + [[fubini-tonelli]]（Fubini 交换）（Claim 1 取 $g=f$） | **低至中** | 仅需 Schwartz 框架，回避测度论 |
 | 叙述 2（$L^2$ 延拓）| 等距扩张 + 完备性 | **高** | 需测度论 |
 | 叙述 3（酉算子）| Cauchy 列完备化 | **高** | 同上 |
 | 叙述 4（$\mathbb{R}^d$）| 单变量情形迭代 + Fubini | **中至高** | 多元 Fubini 需测度论 |

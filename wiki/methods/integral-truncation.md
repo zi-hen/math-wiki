@@ -96,6 +96,33 @@ $$
 
 **深层原因**:$\displaystyle\int_0^\infty \frac{|\sin u|}{u}\,du = +\infty$。这个反常积分的发散性——通过每段贡献 $\dfrac{2}{(k+1)\pi}$、$N\to\infty$ 时求和发散可见——正是 Dirichlet 核 $L^1$ 范数必须增长的「根本原因」。从算子角度看,这等价于「Fourier 部分和算子在 $L^1\to L^1$ 上无界」(Banach-Steinhaus / 均匀有界原理的直接推论),从而**逐点发散反例**(Ch.3 Ex.2(b))与 [[gibbs-phenomenon|Gibbs 现象]]成为可能。
 
+## 分拆选择的谱系：分拆点、依据与所用性质
+
+上述六个场景展示了六种不同的分拆。分拆点「取在哪里、为什么取那里」并非任意——每个分拆点都是**两种互相排斥的估计的适用域边界**。下表系统化各常见选择。
+
+| 分拆类型 | 分拆点 / 分拆域 | 分拆点取在哪 | 为什么取那里 | 主项所用性质 | 余项所用性质 | 代表场景 |
+|----------|-----------------|--------------|--------------|--------------|--------------|----------|
+| **尾部截断** | 指标 $N$ / 积分上限 $N$ | 有限和与无穷和的分界 | 主项有限可显式处理；余项须随 $N\to\infty$ 消失 | 显式求和、代数恒等式、几何级数 | 可积性 / 速降 / 单调性（余项趋于零） | 场景 3、4（Dirichlet、采样、Poisson） |
+| **按尺度分拆**（主瓣-次瓣） | 特征尺度 $1/N$，或几何中点 $\lvert x\rvert/2$ | 被积函数两种渐近行为的分界 | 近端需「有界上界」、远端需「衰减上界」，两种估计各自只在分界一侧有效 | 小角估计（$\sin z \sim z$） | 幂衰减（$\theta^{-2}$ 型） | 场景 2（Fejér）、场景 5（卷积） |
+| **按 $\eta$ 分拆**（局部-全局） | 自由参数 $\eta$（任意小） | 近端连续性行为与远端有界 + 质量集中的交界 | 连续性模 $\omega(\eta)$ 在近端均匀小；远端质量 $\int_{\lvert t\rvert\ge\eta}\lvert K\rvert$ 可估 | 一致连续性 | 好核质量集中 (c) + 函数有界性 | [[good-kernel]]、[[ch1-ex3-double-fourier-transform]]（Claim 2） |
+| **按周期分拆** | 结构周期 $k\pi$ 段（$k=0,\dots,N-1$） | $\lvert\sin u\rvert$ 的周期 $\pi$ | 每段上周期积分稳定（$\int_{k\pi}^{(k+1)\pi}\lvert\sin u\rvert\,du = 2$），$1/u$ 单调可下界 | 周期函数段上积分不变 | $1/u \ge 1/((k+1)\pi)$ 的单调下界 → 调和级数 | 场景 6（Dirichlet 核 $L^1$ 下界） |
+| **二进频段分解** | 二进块 $[2^k, 2^{k+1}]$（或频段） | 量级齐次处（频域倍频） | 每块上单一量级估计，逐块估计后再平方可加 | 每块 $L^2$ / 上界估计 | Cauchy-Schwarz + $\ell^2$ 求和 | [[bernstein-theorem]]（频域版） |
+| **正则化（软截断）** | 阻尼参数 $\epsilon$（无硬边界） | 「硬边界」处的软化替代 | 硬截断破坏光滑性 / 可交换性；软阻尼使被积函数绝对可积 | 阻尼后 Fubini / 交换次序合法 | $\epsilon \to 0^+$ 时好核极限收回 | [[ch1-ex3-double-fourier-transform]]、Fourier 反演 |
+### 分拆点选取的通用判据
+
+1. **主项可算**：分拆点须使结构部分落在可显式处理的区域——阶梯函数、几何级数、有限和、单调函数、可积出的初等函数。分拆点若把「可算区域」截掉一半，主项即失去意义。
+2. **余项可估**：分拆点须使随机部分落在已知估计有效的区域——衰减估计（速降、幂衰减）、振荡抵消（Riemann-Lebesgue、Abel 求和）、质量集中（好核条件 (c)）、或控制收敛。余项若落入「无估计区域」，则整体证明失效。
+3. **两侧平衡**：当两侧估计的量级随分拆点单调变化（一边增大一边减小）时，最优分拆点使两部分的量级相当。典型：Fejér 核在 $1/N$ 处主瓣贡献 $O(1)$、次瓣贡献 $O(1)$；卷积在 $|x|/2$ 处「哪个因子被 $x$ 控制」恰好互换。
+4. **自由参数 + 两阶段极限**：当分拆点是自由参数（$\eta$、$\epsilon$）时，遵循「**先固定参数使操作合法，再令参数趋于极限收回**」的两阶段结构——近端项先取 $\eta$ 充分小（连续性）、远端项再取主参数趋于极限（质量集中 / 衰减）。这与「epsilon of room」正则化思想（见 [[fourier-analysis-zh-notes]] §6.1、[[integral-splitting-how-to-choose|分拆笔记]]）同构：[[ch1-ex3-double-fourier-transform|Ch.1 Ex.3]] 的 $I_\epsilon$ 阻尼、[[fourier-inversion|Fourier 反演]] 的 $\delta \to 0$ 好核逼近皆属此类。
+5. **等距 vs 二进**：目标为「**逼近误差**」时用等距截断（误差随 $N$ 的幂次 $N^{-k}$ 消失，逐项衰减阶 $\alpha>1$ 时直接可和）；目标为「**可和性**」（$\ell^1$ 或更强）且只有中间阶衰减（$1/2<\alpha\le1$）时，非二进不可——二进几何块使块内能量随块指数衰减，可和性归结为几何级数公比（[[bernstein-theorem|Bernstein 定理]]：块内 $\ell^1 \le 2^{p/2}\cdot O(2^{-\alpha p}) = O(2^{(1/2-\alpha)p})$，公比 $2^{1/2-\alpha}<1$ ⇔ $\alpha>1/2$；等距块长固定、无块内能量衰减，$\sum_{|n|\le N}|\hat f(n)|\le N^{1/2}\|f\|_2$ 发散）。判据：「和」用二进，「逼近」用等距。
+6. **硬截断 vs 软截断**：目标性质对边界不敏感（$L^p$ 稠密、积分值逼近、局部化）时用硬截断 $\chi_{[-R,R]}$——简单且 sharp；需保持光滑性 / 谱衰减、需好核性质、需交换积分 / 极限次序且变换可控、或需分布框架时，必须软化——Gauss 阻尼（自对偶、使绝对可积，[[ch1-ex3-double-fourier-transform|Ch.1 Ex.3]]）或 bump 函数（紧支 + $C^\infty$，[[bump-function]]）。判别：**目标性质对哪种扰动连续**——对光滑性 / 谱连续用软，对 $L^1$ / 稠密连续用硬。
+
+### 深层机制：为什么必须分拆
+
+直接整体估计往往要求「同一区域同时满足两种互相排斥的估计」。例如 Fejér 核：$|\sin(N\theta/2)| \le 1$（全局成立但太粗糙）与 $|\sin(N\theta/2)| \le N\theta/2$（小角精细但远处失效）在 $\theta = 1/N$ 处才势均力敌——小于它用小角估计、大于它用全局估计。同理，好核逼近中近端点需要连续性模、远端点需要质量集中；卷积中 $|x-y|$ 与 $|y|$ 谁被 $x$ 控制取决于 $|y|$ 与 $|x|/2$ 的大小关系。
+
+积分分拆的本质因此是：**把「一束互相排斥的估计」转化为「每个子域各用一种有效估计」**——隔离被积函数在不同渐近域（局部 / 远处、主瓣 / 次瓣、低频 / 高频）的行为，再逐域处理、汇总结果。这正是 [[structural-randomness-decomposition|结构-随机性二分法]]（主项 = 结构、余项 = 随机）与 [[local-to-global|局部到整体原理]]（近端局部行为 + 远端全局行为）在「收敛性论证」这一具体语境中的交汇：**哪里换估计，哪里就是分拆点**。
+
 ## 与已有 method 的关系
 
 - **与 [[structural-randomness-decomposition|结构-随机性二分法]]**：积分截断是其积分形式的具体实现——「有限范围主项 = 结构部分」「尾部 = 随机部分」，本方法页可视作二分法在收敛性论证中的专用化。
@@ -105,8 +132,9 @@ $$
 
 ## 关联
 
-- 概念：[[good-kernel]]（Fejér 核估计与好核理论）、[[lp-space|$L^1$ 空间]]（可积性框架）、[[fourier-coefficient|Fourier 系数]]、[[finite-abelian-group|有限阿贝尔群]]（Dirichlet 特征标分解）、[[schwartz-space|Schwartz 空间]]（速降尾部）
+- 概念：[[good-kernel]]（Fejér 核估计与好核理论）、[[lp-space|L^1 空间]]（可积性框架）、[[ellp-space|ell^p 空间]]（二进分解的逐块平方求和）、[[fourier-coefficient|Fourier 系数]]、[[finite-abelian-group|有限阿贝尔群]]（Dirichlet 特征标分解）、[[schwartz-space|Schwartz 空间]]（速降尾部）
 - 定理：[[riemann-lebesgue-lemma]]、[[fejer-theorem]]、[[dirichlet-theorem-on-primes]]、[[sampling-theorem]]、[[weyl-equidistribution]]、[[poisson-summation-formula]]
 - 引理：[[dirichlet-kernel-l1-norm]]（场景 6 用按周期分拆与调和级数导出 $L_N \ge c\log N$）
-- 方法：[[structural-randomness-decomposition]]、[[cesaro-summation]]、[[approx-by-good-kernel]]、[[integration-by-parts]]
+- 方法：[[structural-randomness-decomposition]]、[[cesaro-summation]]、[[approx-by-good-kernel]]、[[integration-by-parts]]、[[local-to-global]]（近端局部行为 + 远端全局行为的交汇）
+- 笔记：[[fourier-analysis-zh-notes]]（「epsilon of room」正则化思想 §6.1）
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 3、Ch. 4、Ch. 7、Ch. 8）

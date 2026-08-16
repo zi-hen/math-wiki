@@ -106,6 +106,7 @@ LLM 启动会话时按需加载,**不一次性读完**:
 | **A/V Notes** (skill) | 音视频笔记 | 数学讲座 / 会议转写 | 转写结果须经人工核验术语 |
 | Obsidian graph view | Obsidian 插件 | 观察 wiki 形态 | 只读 |
 | Dataview 插件 | Obsidian 插件 | 基于 frontmatter 生成动态表 | 只读 |
+| **Excalidraw 绘图**（skill） | `.claude/skills/excalidraw-diagram` + `excalidraw-obsidian` + Obsidian Excalidraw 插件 | **唯一绘图工具**——所有示意图用 Obsidian Excalidraw 插件直接画（用户习惯）；不要新建 SVG 或 .svg 流水线 | 模板库：`Excalidraw/Libraries/*.excalidrawlib`（9 个，由 Obsidian 加载）；脚本：`Excalidraw/Scripts/Downloaded/`（Excalidraw ScriptEngine，8 个脚本）；公式文本用 `fontFamily: 2`（系统字体），保证数学符号渲染；CJK 字体目录 `Excalidraw/CJK Fonts/` |
 
 **路由原则**:
 1. 项目脚本与命令模板优先。

@@ -91,7 +91,7 @@ $$
 | 情形 | 是否适用 |
 |------|---------|
 | $f$ 在闭圆盘上全纯，有限个零点 | ✓（有限 Blashke 乘积） |
-| $f$ 在圆盘内有无穷多零点 | ✓（无穷 Blashke 乘积，需收敛条件 $\sum (1 - |z_k|/R) < \infty$） |
+| $f$ 在圆盘内有无穷多零点 | ✓（无穷 Blashke 乘积，需收敛条件 $\sum (1 - \lvert z_k\rvert/R) < \infty$） |
 | $f$ 在全平面上全纯 | ✗（改用 Weierstrass 典型因子） |
 | $f$ 在多连通域上全纯 | ✗（需 Riemann 球面上的 Mittag-Leffler 型分解） |
 

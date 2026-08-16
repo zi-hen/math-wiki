@@ -1,4 +1,4 @@
----
+﻿---
 type: theorem
 title: Gibbs 现象（锯齿函数过冲）
 aliases: [Gibbs phenomenon, Gibbs 现象, 过冲 9%]
@@ -36,6 +36,14 @@ $$
 ### 动机
 
 锯齿函数在原点有跳跃，其 Fourier 级数在每点收敛（可微点收敛到 $f$，跳跃点收敛到 $f(0^+)+f(0^-)/2 = 0$），但**收敛不是单调的**：部分和在跳跃附近越过极限值并过冲固定比例（约 $9\%$），随后振荡衰减回极限。这直观地说明「级数收敛」与「图形逼近」的差异，是 [[riemann-localization|Riemann 局部化]] 讨论的经典场景。
+
+![[Excalidraw/gibbs-overshoot.excalidraw|600]]
+
+> **绘图指引**:在 Obsidian 中打开 Excalidraw/gibbs-overshoot.excalidraw(如未创建请右键 → New Excalidraw Drawing,文件名用此)绘制 Gibbs 过冲。
+> 文本公式请用 **fontFamily: 2**(系统字体),保证数学符号渲染。
+> 可用组件库(打开 Excalidraw → 库面板):data-viz / software-architecture / system-design(已下载至 Excalidraw/Libraries/)。
+
+> **图 1**（Gibbs 过冲）:方波在跳跃点 $x_0$ 的 Fourier 部分和 $S_N$ 出现约 $8.95\%$ 的过冲(≈ $1.0895$ 倍跳变),且 $N \to \infty$ 不消失——收敛但图形不逼近。图内公式由 MathJax 渲染,浏览器预览见 `Excalidraw/gibbs-overshoot-preview.html`。
 
 ### 证明思路
 

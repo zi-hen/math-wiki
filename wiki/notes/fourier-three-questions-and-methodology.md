@@ -69,7 +69,7 @@ $$\lim_{N\to\infty}\frac{1}{N}\sum_{n=1}^N f(\rho^n(\theta)) = \frac{1}{2\pi}\in
 
 三处纲领性自述:
 
-- **p.35(Ch.1 末尾)**:拨弦问题的初值 $f$ 不是 $C^2$ 的,故 d'Alembert 公式给出的 $u$ 不真正满足波动方程——「它只在适当的广义意义下是解」。Stein 借此预告了「弱解」与「分布」理论(详见 [[dalembert-formula]])。
+- **p.35(Ch.1 末尾)**:拨弦问题的初值 $f$ 不是 $C^2$ 的,故 d'Alembert 公式给出的 $u$ 不真正满足波动方程——「它只在适当的广义意义下是解」。Stein 借此预告了「弱解」与「分布」理论(详见 [[wave-equation|d'Alembert 公式]])。
 - **p.148(Ch.5 开端)**:明确交代方法选择——Fourier 变换部分「刻意」在 [[schwartz-space|Schwartz 空间]] $\mathcal{S}$ 内展开,「为的是迅速、直接而透明地抵达主要结论」;更一般的理论留待 Book III(Lebesgue 积分框架)。这与序言(p.12)「前四章限于 Riemann 可积函数」的策略一脉相承:**先以最小依赖路径建立核心结论,再谈推广**。
 - **p.151**:选择 Schwartz 空间的深层动机是**对偶原则**——$\hat f$ 的衰减与 $f$ 的光滑性互相决定(「the decay of $\hat f$ is tied to the continuity and differentiability of $f$」)。这一原则使 $\mathcal{F}: \mathcal{S} \to \mathcal{S}$ 自同构(见 [[fourier-transform]])成为可能,详见既有笔记 [[schwartz-space-as-fourier-anchor]]。
 

@@ -1,4 +1,4 @@
----
+﻿---
 type: theorem
 title: 留数定理
 aliases: [residue theorem]
@@ -62,6 +62,14 @@ $$
    其中 $C \setminus C_k$ 围成的区域无奇点。
 2. **主部展开**：$f$ 在 $z_k$ 处有 Laurent 展开 $f(z) = \sum_{j=-n}^\infty a_j (z - z_k)^j$。积分 $\int_{C_k} (z - z_k)^j dz = 0$ 对 $j \neq -1$，$\int_{C_k} (z - z_k)^{-1} dz = 2\pi i$。
 3. **求和**：故 $\int_{C_k} f = 2\pi i \cdot a_{-1} = 2\pi i \cdot \text{res}_{z_k} f$。合并所有极点得结论。
+
+![[Excalidraw/residue-multipole.excalidraw|600]]
+
+> **绘图指引**:在 Obsidian 中打开 Excalidraw/residue-multipole.excalidraw(如未创建请右键 → New Excalidraw Drawing,文件名用此)绘制 留数定理多孔围道。
+> 文本公式请用 **fontFamily: 2**(系统字体),保证数学符号渲染。
+> 可用组件库(打开 Excalidraw → 库面板):data-viz / software-architecture / system-design(已下载至 Excalidraw/Libraries/)。
+
+> **图 1**（多孔围道）:大圆 $C$ 内三个极点 $z = -1, 0, 1$,各挖去小圆 $C_k$ 并用走廊连接;由 Cauchy 定理 $\int_C f = \sum_k \int_{C_k} f = 2\pi i \sum_k \operatorname{Res}(f, z_k)$。图内公式由 MathJax 渲染,浏览器预览见 `Excalidraw/residue-multipole-preview.html`。
 
 ### 详细证明
 

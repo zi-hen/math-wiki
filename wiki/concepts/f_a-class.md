@@ -102,7 +102,7 @@ $\mathscr{F}_a$ 是 Stein Ch. 4 的**核心工作空间**，用以在 Book II �
 | 1. Stein 定义（Ch. 4） | $S_a$ 全纯 + $O(x^{-2})$ 衰减 | Stein p.132 |
 | 2. 弱化版本（p.133 Remark） | $S_a$ 全纯 + $O(x^{-(1+\varepsilon)})$ 衰减 | Stein Remark |
 | 3. Book I 类比（Schwartz） | $C^\infty$ + 速降（任意阶多项式衰减） | [[schwartz-space]] |
-| 4. 整函数类比（Paley-Wiener 整） | $\mathbb{C}$ 上整 + $e^{2\pi M|z|}$ 增长 | [[paley-wiener-theorem]] |
+| 4. 整函数类比（Paley-Wiener 整） | $\mathbb{C}$ 上整 + $e^{2\pi M\lvert z\rvert}$ 增长 | [[paley-wiener-theorem]] |
 
 ### 推广 / 变体
 

@@ -77,7 +77,7 @@ $$
 
 ## 关联
 
-- 用到的概念：[[fourier-coefficient]]、[[fourier-series]]
+- 用到的概念：[[fourier-coefficient]]、[[fourier-series]]、[[lp-space|L^p 空间]]
 - 用到的定理：[[riemann-lebesgue-lemma]]（零阶衰减）、[[bernstein-theorem]]（Hölder $\alpha>1/2$ 绝对收敛——慢衰减的反方向）
 - 用到的引理：[[fourier-coefficient-decay]]（(a)–(e) 的正向衰减族，本构造说明其最优性）、[[absolute-convergence-test]]
 - 源：[[steinFourierAnalysisIntroduction2003a]]（Ch. 3 Exercise 18）

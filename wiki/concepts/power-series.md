@@ -53,7 +53,7 @@ $$
 | 幂级数 | 收敛半径 | 性质 |
 |--------|---------|------|
 | $\sum z^n / n!$（指数函数） | $\infty$ | 整函数，$(e^z)' = e^z$ |
-| $\sum z^n$（几何级数） | $1$ | 当 $|z| < 1$ 时 $1/(1-z)$ |
+| $\sum z^n$（几何级数） | $1$ | 当 $\lvert z\rvert < 1$ 时 $1/(1-z)$ |
 | $\sum (-1)^n z^{2n}/(2n)!$（$\cos z$） | $\infty$ | 整函数 |
 | $\sum (-1)^n z^{2n+1}/(2n+1)!$（$\sin z$） | $\infty$ | 整函数 |
 | $\sum z^n$ 在 $\|z\| < 1$ 内全纯 | $1$ | 收敛圆周上点态行为取决于方向 |
@@ -80,9 +80,9 @@ $$
 
 | 叙述 | 公式 | 来源 |
 |------|------|------|
-| Hadamard 公式 | $1/R = \limsup |a_n|^{1/n}$ | Stein Theorem 2.5 |
-| 比值判别法（特例） | $R = \lim |a_n|/|a_{n+1}|$ | Cauchy-Hadamard |
-| Cauchy 根值判别法 | $\sum |a_n| r^n$ 在 $r < R$ 收敛 | Stein Theorem 2.5 |
+| Hadamard 公式 | $1/R = \limsup \lvert a_n\rvert^{1/n}$ | Stein Theorem 2.5 |
+| 比值判别法（特例） | $R = \lim \lvert a_n\rvert/\lvert a_{n+1}\rvert$ | Cauchy-Hadamard |
+| Cauchy 根值判别法 | $\sum \lvert a_n\rvert r^n$ 在 $r < R$ 收敛 | Stein Theorem 2.5 |
 
 ### 反例
 

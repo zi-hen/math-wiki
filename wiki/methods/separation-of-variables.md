@@ -37,7 +37,7 @@ $$
 
 ## 与已有 method 的关系
 
-- **与 [[dalembert-formula]]**：同一 PDE 的两种解法——特征线 vs 纯音分解。
+- **与 [[wave-equation|d'Alembert 公式]]**：同一 PDE 的两种解法——特征线 vs 纯音分解。
 - **与 [[integral-truncation]]**：分离变量解的截断（仅取有限个频率）→ 截断误差控制。
 - **与 [[local-to-global]]**：分离变量是局部解叠加为全局解的代表方法。
 

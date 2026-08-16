@@ -1,4 +1,4 @@
-﻿---
+---
 type: theorem
 title: Paley-Wiener 定理
 aliases: [Paley-Wiener theorem, Theorem 3.1, Theorem 3.3]
@@ -111,7 +111,7 @@ Stein 在 p.146 的 Remark 中指出 Paley-Wiener 定理与第 3 章定理 7.1 �
 
 | | 上半平面（Paley-Wiener） | 圆盘（Ch. 3, Theorem 7.1） |
 |---|---|---|
-| 全纯区域 | $\operatorname{Im}(z) > 0$ | $|z| < 1$ |
+| 全纯区域 | $\operatorname{Im}(z) > 0$ | $\lvert z\rvert < 1$ |
 | 频率性质 | $\hat{f}(\xi) = 0$（$\xi < 0$） | $a_n = 0$（$n < 0$） |
 | 物理对应 | 单侧频谱 $\Leftrightarrow$ 上半平面解析 | 单侧 Fourier 系数 $\Leftrightarrow$ 圆盘内解析 |
 

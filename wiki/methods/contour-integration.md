@@ -57,6 +57,14 @@ $$
 $$
 故 $\int_{\gamma_c} f = \int_{\gamma_0} f$。
 
+![[Excalidraw/contour-shift.excalidraw|600]]
+
+> **绘图指引**:在 Obsidian 中打开 Excalidraw/contour-shift.excalidraw(如未创建请右键 → New Excalidraw Drawing,文件名用此)绘制 围道平移。
+> 文本公式请用 **fontFamily: 2**(系统字体),保证数学符号渲染。
+> 可用组件库(打开 Excalidraw → 库面板):data-viz / software-architecture / system-design(已下载至 Excalidraw/Libraries/)。
+
+> **图 1**（围道平移）:实轴路径 $\gamma_0$ 与水平线路径 $\gamma_c$（$\operatorname{Im} z = c$）加上两侧竖直边构成矩形;竖直边在 $R \to \infty$ 时贡献趋于零,故 $\int_{\gamma_0} f = \int_{\gamma_c} f$(Cauchy 定理)。图内公式由 MathJax 渲染,浏览器预览见 `Excalidraw/contour-shift-preview.html`。
+
 ### 应用：Paley-Wiener 正向定理（Stein Theorem 3.1, p.140）
 
 > 若 $|\hat{f}(\xi)| \leq A e^{-2\pi a|\xi|}$，则 $f$ 可全纯延拓至带状区域 $S_b$（$0 < b < a$）。

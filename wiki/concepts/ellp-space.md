@@ -20,8 +20,8 @@ $\ell^p$（小写 l）与 $L^p$（大写 L）是两个**指称不同**的 Banach
 
 | 空间 | 元素 | 范数 | 适用对象 |
 |------|------|------|----------|
-| $L^p(X, \mu)$ | 测度空间 $(X, \mu)$ 上的可测函数 | $\|f\|_{L^p} = \left(\int_X |f|^p\,d\mu\right)^{1/p}$ | 连续函数空间 |
-| $\ell^p(I)$ | 可数指标集 $I$ 上的序列 $\{a_n\}_{n \in I}$ | $\|(a_n)\|_{\ell^p} = \left(\sum_{n \in I} |a_n|^p\right)^{1/p}$ | 离散指标 |
+| $L^p(X, \mu)$ | 测度空间 $(X, \mu)$ 上的可测函数 | $\|f\|_{L^p} = \left(\int_X \lvert f\rvert^p\,d\mu\right)^{1/p}$ | 连续函数空间 |
+| $\ell^p(I)$ | 可数指标集 $I$ 上的序列 $\{a_n\}_{n \in I}$ | $\|(a_n)\|_{\ell^p} = \left(\sum_{n \in I} \lvert a_n\rvert^p\right)^{1/p}$ | 离散指标 |
 
 详见 [[lp-space|$L^p$ 空间]]。
 

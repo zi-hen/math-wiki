@@ -4,6 +4,615 @@
 
 ---
 
+## [2026-08-15] supplement | 分拆笔记四个疑问进一步阐明（结合 Tricki《Create an epsilon of room》）
+
+### 动因
+
+用户要求对 [[integral-splitting-how-to-choose|分拆笔记]]「待澄清与下一步」的四项（二进 vs 等距、软 vs 硬截断、与 local-to-global 的对应、分拆点最优判据）进一步阐明，并结合用户提供的 Tricki 文章《Create an epsilon of room》（https://www.tricki.org/article/Create_an_epsilon_of_room ）。
+
+### 改动
+
+- `wiki/notes/integral-splitting-how-to-choose.md`：新增「**进一步阐明：四个疑问**」区段（四小节）：
+  1. **二进 vs 等距**：目标为「可和性」用二进（几何块 + 几何级数公比，Bernstein 的 $2^{(1/2-\alpha)p}$ 与临界 $\alpha=1/2$），目标为「逼近误差」用等距（$N^{-k}$）；等距块长固定、无块内能量衰减因而不适用可和性；
+  2. **软 vs 硬截断**：必须软化的四种情形（保持光滑性 / 好核性质 / 交换次序且变换可控 / 分布框架），硬截断足够的情形（$L^p$ 稠密、积分逼近）；结合 Tricki「不需 $P$ 在逼近序列上不变」给出判别；
+  3. **分拆 vs local-to-global**：前者是「局部估计⊕余集估计」的**加总**（不依赖连通性），后者是「局部前提→整体结论」的**传播**（依赖恒等定理）——结构类比而非逻辑蕴含；
+  4. **分拆点唯一最优**：变分表述（边际平衡、幂律 $\lambda^*=(bB/aA)^{1/(a+b)}$），但普遍判据不存在——只有三类退化判据（量级平衡 / 单调充分 / 结构锁定）。
+  - 「待澄清与下一步」更新为三项新未决（收敛强度层级、Littlewood-Paley 对应、有效界形式化）。
+- `wiki/methods/integral-truncation.md`：「分拆点选取的通用判据」新增判据 5（等距 vs 二进）与判据 6（硬截断 vs 软截断），判据 4 链接分拆笔记。
+- 参考标注：Tricki 文章为讨论性参考（用户提供 URL），不作为 wiki 数学事实依据；全部数学断言仍来自库内页面。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`。
+
+### 不变量
+
+`raw/`、`scratch/` 未触碰；wikilink 均指向既有实体页；无新增表格（避免表格 `|` 问题）。
+
+---
+
+## [2026-08-15] fix | 全库既有表格拆列问题一并修复
+
+### 动因
+
+承接上一条表格修复：用户确认「一并修复」全库既有页面中同类拆列问题（wikilink 别名 `|` 与公式裸 `|`）。
+
+### 改动
+
+全库表格逐行扫描（脚本检测 `$...$` 公式内未转义 `|` 与 `[[a|b]]` 别名），修复 7 个既有页面 + 3 个新增扫描发现：
+
+- **wikilink 别名去别名**（显示文本移入括号）：fourier-inversion（residue-theorem/cauchy-theorem）、fourier-coeffs-holomorphic-disc（paley-wiener-theorem）、plancherel-theorem（fourier-inversion/fubini-tonelli）、wirtinger-inequality（parseval-identity）、poles-classification、meromorphic-function×2、steinComplexAnalysis（contour-integration）——均改为 `[[slug]]（显示文本）`。
+- **公式裸 `|` → `\lvert\rvert`**：amplification（`\lvert z\rvert^{p+1}`）、blashke-product（`\lvert z_k\rvert`）、riemann-lebesgue-lemma（`O(1/\lvert n\rvert)`）、f_a-class（`e^{2\pi M\lvert z\rvert}`）、order-of-growth×3（`\lvert e^z\rvert` 等）、steinComplexAnalysis（Hadamard `\lvert a_n\rvert^{1/n}`）、ellp-space×2（`\lvert f\rvert^p`）、power-series×4（`\lvert z\rvert`、`\lvert a_n\rvert`）、paley-wiener-theorem（`\lvert z\rvert`）、fourier-analysis-zh-notes×5（`\lvert\hat{f}(n)\rvert^2` 等）。
+- 保持 `\|`（LaTeX 范数，GFM 表格中为转义形式，安全）不变。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`。
+
+### 不变量
+
+`raw/`、`scratch/` 未触碰。全库再扫描确认表格行零残留（公式裸 `|` 与 wikilink 别名均已清零，log.md 历史记录除外）。
+
+---
+
+## [2026-08-15] fix | 表格渲染失误：wikilink 别名与公式绝对值中的 `|` 拆列
+
+### 动因
+
+用户反馈「表格渲染失误」。根因：Markdown（GFM）表格把单元格内未转义的 `|` 当作列分隔符。本轮新加的两个表格混入了两类 `|`：(1) wikilink 别名 `[[slug|显示文本]]` 的 `|`；(2) 数学公式中的绝对值 `$|x|$`、`$|K|$`、`$|\sin u|$`。另有外部工具（Obsidian 表格格式化）曾将公式与 wikilink 内的 `|` 当列分隔重新对齐，产生大量假列。
+
+### 改动
+
+- `wiki/methods/integral-truncation.md`：「分拆选择的谱系」表整体重建——wikilink 全部去掉别名（`[[good-kernel]]` 等）；公式绝对值改用 `\lvert \rvert`（`$\lvert x\rvert/2$`、`$\int_{\lvert t\rvert\ge\eta}\lvert K\rvert$`、`$\lvert\sin u\rvert$`，KaTeX/MathJax 均支持，且不再含裸 `|`）。
+- `wiki/notes/integral-splitting-how-to-choose.md`：语域表 `[[schwartz-space|Schwartz]]` → `[[schwartz-space]]`。
+- `wiki/methods/euler-fourier-formulas.md`：「两条路线的对比」表 `[[fourier-series|Fourier 级数]]`、`[[poisson-summation-formula|PSF]]` 去别名；`$e^{-2\pi\alpha|\xi|}$` → `$e^{-2\pi\alpha\lvert\xi\rvert}$`。
+- 新约定：**表格单元格内禁用带别名的 wikilink**（如需显示文本，用 `[[slug]]` 加括号说明）与裸 `|` 公式（绝对值用 `\lvert\rvert`）。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`。
+
+### 不变量
+
+`raw/`、`scratch/` 未触碰。既有页面中仍存在同类表格问题（wikilink 别名拆列）约 8 处（fourier-inversion、fourier-coeffs-holomorphic-disc、meromorphic-function、plancherel-theorem、poles-classification、wirtinger-inequality、steinComplexAnalysis 等），待用户决定是否一并修复。
+
+---
+
+## [2026-08-15] supplement | 积分截断补「分拆选择谱系」+ 新建笔记《积分分拆：分拆点选择的思维》
+
+### 动因
+
+用户要求「积分截断中各常见分拆选择、分拆点取在哪里、为什么、分别运用什么性质估计需要进一步阐明，并创作一篇 note」——方法页已有六个场景实例但缺系统化总结，分拆点选取的判据散落在各场景中未被显式化。
+
+### 改动
+
+- `wiki/methods/integral-truncation.md`：新增「**分拆选择的谱系：分拆点、依据与所用性质**」区段——六类分拆总表（尾部截断 / 按尺度 / 按 $\eta$ / 按周期 / 二进频段 / 正则化软截断：分拆点、为什么取那里、主项与余项所用性质）；四条通用判据（主项可算、余项可估、两侧平衡、自由参数两阶段极限）；深层机制（分拆 = 把互相排斥的估计按渐近域隔离，是结构-随机二分与局部到整体在收敛性论证中的交汇）。关联补 [[ellp-space]]、[[local-to-global]]、[[fourier-analysis-zh-notes]]。
+- 新建 `wiki/notes/integral-splitting-how-to-choose.md`（type: note，`draft`）：五个核心想法（分拆化解互斥估计、分拆点三种来源、两阶段极限与 epsilon of room、估计语域表、失败模式）+ 待澄清清单。
+- `index.md`：笔记区段新增条目，统计 notes 5→6、合计 128→129。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`。
+
+### 不变量
+
+`raw/`、`scratch/` 未触碰；wikilink 均指向既有实体页。
+
+---
+
+## [2026-08-15] fix | Fubini-Tonelli 补一致收敛版本（版本 3）证明
+
+### 动因
+
+用户指出「fubini-tonelli 的一致收敛版本证明呢」——上一轮新增的「数学分析版本」节中版本 3（一致收敛 / 逐项积分）只有陈述、无证明，且原表述「关于 $y$（在含参数的紧集上）一致收敛」不够精确。
+
+### 改动
+
+`wiki/lemmas/fubini-tonelli.md`：
+
+- 版本 3 精化为精确陈述：$K$ 为测度有限的紧集、$F_j$ 可积、部分和 $S_N$ 一致收敛 ⇒ $S$ 可积且 $\int_K\sum_j F_j = \sum_j\int_K F_j$。
+- 新增「**版本 3 的证明**」三阶段：第一步 $S$ 的可积性（一致收敛 ⇒ 有界 ⇒ 有限测度集上可积）；第二步差的估计（三角不等式 + $\|S_N - S\|_\infty|K| \to 0$）；第三步有限和取极限（积分线性性）。
+- 补「参数版」说明：一致收敛关于参数也一致时，$\sum_j\int_K F_j(x,y)dy$ 关于 $x$ 一致收敛（Poisson 求和证明二 Claim 5(i) 的完整依据）。
+- 修订「四个版本的关系」：版本 3 亦可由版本 2 的 Tonelli（计数测度乘积）推出，但 Stein 限于 Riemann 框架故需初等直接证明。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`。
+
+### 不变量
+
+`raw/`、`scratch/` 未触碰。
+
+---
+
+## [2026-08-15] fix | Fubini-Tonelli 页补数学分析版本（一致语言）
+
+### 动因
+
+用户要求「fubini-tonelli 补充一致性语言的数学分析版本」——Stein 卷刻意回避测度论（序言 p.12），原书在附录（p.308–309）只证「满足衰减条件的重积分可交换次序」（见 raw 对话笔记核验），wiki 各页引用 Fubini 实际用的都是分析版本，而原页只有测度论陈述，语言与其余页面不一致。
+
+### 改动
+
+`wiki/lemmas/fubini-tonelli.md`：
+
+- 新增「**数学分析版本（Stein 用法，一致语言）**」节：版本 1（紧支集连续函数，Riemann）、版本 2（非负 / 绝对可积，Lebesgue）、版本 3（一致收敛 / 逐项积分，Stein 实际用法）、版本 4（Schwartz 试验函数，wiki 默认）+ 四版本等价性与函数类包含说明 + 术语一致性约定（重积分 / 累次积分 / 绝对可积的统一定义）。
+- 修订「依据」段落：分析版出处改为 Fourier 卷附录 p.308–309，注明原书不用「Fubini」术语；「证明（简要）」与「应用」区段补 [[ch1-ex3-double-fourier-transform|双重 Fourier 变换]] 与卷积定理的使用点。
+- `frontmatter.updated` → 2026-08-15。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`。
+
+### 不变量
+
+`raw/`、`scratch/` 未触碰；wikilink 均指向既有实体页。
+
+---
+
+## [2026-08-15] refactor | d'Alembert 公式并入波动方程概念页 + 新建微分方程索引 index-pde
+
+### 动因
+
+用户要求将 [[dalembert-formula]]（状态 `unverified`）「统一在波动方程的实体页」，并「新建一类 index 微分方程」。经确认：并入新建概念页并删除旧定理页；新索引命名 `index-pde.md`。
+
+### 改动
+
+- 新建 `wiki/concepts/wave-equation.md`（type: concept，`unverified`）：What/Why/What-if 完整，吸收原 d'Alembert 公式页的陈述、动机、详细证明（两阶段验证）、应用与反例，作为「核心解公式」区段；aliases 含 `d'Alembert 公式`。
+- 删除 `wiki/theorems/dalembert-formula.md`；4 处 `[[dalembert-formula]]` 引用改写为 `[[wave-equation]]` / `[[wave-equation|d'Alembert 公式]]`（notes/fourier-three-questions-and-methodology 两处、methods/separation-of-variables 两处）。
+- 新建 `wiki/index-pde.md`「微分方程索引」（concepts 1 页）。
+- `index.md`：分类表增「微分方程」行、统计更新（concepts 26 / theorems 38 / lemmas 23 / methods 18 / 合计 128）；`index-fourier.md` 移除 d'Alembert 条目、补方法页归属说明；`index-complex.md` 补 [[harmonic-function]] 条目（修正既有统计缺口，concepts 9 / 合计 35）。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`。
+
+### 不变量
+
+`raw/`、`scratch/` 未触碰；wikilink 全库无悬空（[[dalembert-formula]] 已清零）。
+
+---
+
+## [2026-08-15] refactor | Euler 部分分式公式归类 method：目录迁移 + 索引更新
+
+### 动因
+
+[[euler-fourier-formulas]] 已重分类为 method（frontmatter `type: method`），但物理文件仍在 `theorems/` 且 `index-fourier.md` 仍列于「定理」区段（用户指出 index 未更新）。经确认：迁移到 `methods/` 目录。
+
+### 改动
+
+- 文件迁移 `wiki/theorems/euler-fourier-formulas.md` → `wiki/methods/euler-fourier-formulas.md`（内容不变，wikilink 按 basename 解析不受影响）。
+- `index-fourier.md`：定理区段移除该条目，引言补「方法页保留于 index.md」说明；统计修正（theorems 22→20、lemmas 8→9，合计 58）。
+- `index.md` 方法区段条目保持；全库统计同步（methods 18）。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`。
+
+### 不变量
+
+`raw/`、`scratch/` 未触碰。
+
+---
+
+## [2026-08-15] fix | Ch.3 Ex.18 任意慢衰减：稀疏子列构造合理化 + 系数 2 修正
+
+### 动因
+
+用户反馈「由 $\epsilon_n \to 0$ 抽出适当稀疏子列」未说明构造的合理性——任何构造性证明均须论证构造合法；且旧稿步骤 4 的 $\delta$ 表达式混乱（暗示不存在的「交叉项」）。
+
+### 改动
+
+`wiki/exercises/ch3-ex18-slow-decay.md`：
+
+- 新增 **Claim 1**（稀疏子列存在性）：递归构造 $n_1 = N_1$、$n_k = \max(n_{k-1}+1, N_k)$ 使 $\epsilon_{n_k} \le 2^{-k}$，$\sum\epsilon_{n_k} \le 1 < \infty$；附「构造合理性说明」——只需「趋于零」性质，与衰减速率无关。
+- 构造改为 $f(\theta) = \sum_k 2\epsilon_{n_k}\cos(n_k\theta)$：**Claim 3** 由正交性给出精确系数 $\hat f(n_k) = \epsilon_{n_k}$（交叉项恒为零，无需稀疏性抑制）；说明系数 2 的必要性（否则 $\epsilon_{n_k}/2 < \epsilon_{n_k}$ 构造失效）。
+- 备注补 Riemann-Lebesgue 最优性（无统一衰减速率）与 Bernstein 定理（Hölder $\alpha>1/2$ 绝对收敛）对照。
+- `frontmatter.updated` → 2026-08-15。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`。
+
+### 不变量
+
+`raw/`、`scratch/` 未触碰。
+
+---
+
+## [2026-08-15] fix | Ch.1 Ex.3 双重 Fourier 变换反演：证明重写 + Fourier 算子联系
+
+### 动因
+
+用户反馈习题页证明质量不高、且未与 Fourier 算子联系。审查确认旧稿有两处数学错误：(1) 称无阻尼双重积分「绝对可积」——实际 $\iint|f(y)|\,dx\,dy = \infty$，Fubini 不适用；(2) 称正弦核 $\sin(2\pi Rt)/(\pi t)$ 为「好核」——其 $L^1$ 范数发散（Dirichlet 核问题），收敛性依赖 Riemann 局部化而非好核性质。
+
+### 改动
+
+`wiki/exercises/ch1-ex3-double-fourier-transform.md`：
+
+- 重写解答为 **Gauss 核正则化路线**：第一步 Gauss 阻尼因子 $e^{-\pi\epsilon x^2}$ 使 $F_\epsilon \in L^1(\mathbb{R}^2)$ 以合法交换积分次序；Claim 1 计算阻尼 Gauss 核的 Fourier 变换；第二步验证 $\{K_\epsilon\}$ 三好核条件并证明好核逼近极限（Claim 2）；第三步控制收敛取下阻尼极限。全程严格、自足，不依赖反演公式。
+- 新增「**算子观点：Fourier 变换的四阶性**」区段：$\mathcal{F}^2 = R$、$\mathcal{F}^4 = \mathrm{Id}$、$\mathcal{F}^{-1} = R\mathcal{F}$、谱结构 $\{1,-1,i,-i\}$（Hermite 函数张成）、信号处理诠释。
+- 备注列出旧稿两处错误；关联补 [[fubini-tonelli]]、[[dominated-convergence]]、[[dirichlet-kernel-l1-norm]]、[[lp-space]]。
+- `open-questions.md` 登记出处疑点（习题页引 Ch.1 §2 Ex.3，源页摘录同式见 p.255 Ex.6，待用户核验）。
+- `frontmatter.updated` → 2026-08-15。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`。
+
+### 不变量
+
+`raw/`、`scratch/` 未触碰。
+
+---
+
+## [2026-08-15] all-line | Poisson 求和图：所有视觉均为 line 几何（零 text）
+
+### 动因
+
+用户反馈"任何都用 line 几何 ok，没有就画"——上一版仍混用 50 个 text 元素（中文/拉丁/数字靠系统字体），需要全部改为手绘。
+
+### 实现
+
+- 字典 [char-dict.mjs](file:///e:/wikiproject/math-wiki/.claude/char-dict.mjs)：100+ 字符手绘笔画
+  - **CJK**：围/道/平/移/积/分/公/式/证/明/二/留/数/定/理/极/点/复/函/条/带/工/作/空/间/竖/直/边/消/失/结/论
+  - **拉丁**：a-z + A-Z（完整字母表）
+  - **数字**：0-9
+  - **希腊字母**：α/β/γ/δ/ε/ζ/η/θ/ι/κ/λ/μ/ν/π/ρ/σ/τ/υ/φ/χ/ψ/ω + 大写
+  - **符号**：→/-/+/=/(/)/[/]/,/.///:////:/ + 各种标点
+  - 每个字符由 `strokesFor(ch)` 返回多笔 polyline（每个 `<line>` 一笔）
+- 生成器 [gen-poisson-allline.mjs](file:///e:/wikiproject/math-wiki/.claude/gen-poisson-allline.mjs)：组合 line几何
+  - 数学符号（∫/Σ/≥/≤）从 `Libraries/mathematical-symbols.excalidrawlib` 复制 line
+  - 所有其他字符从 `char-dict.mjs` 字典逐字绘制
+  - 围道/极点/测量/箭头全部 line
+
+### 校验
+
+- **654 个元素，0 text**：648 line（手绘字符 + 几何）+ 6 rectangle（5 个论证链 box + 条带背景）
+- 全部依赖 Obsidian Excalidraw 插件渲染矢量图，无任何字体回退
+
+### 不变量
+
+- 用户 Excalidraw 目录的 12 个 `.excalidrawlib` 模板库完整保留
+- Lint：ERROR 0 / WARNING 0 / INFO 0
+
+---
+
+## [2026-08-15] redraw | Poisson 求和图：用 Excalidraw 数学符号模板（line几何绘制）
+
+### 动因
+
+用户指出"`Libraries/mathematical-symbols.excalidrawlib` 等模板库中有数学符号模板（用 line几何绘制）"，要求所有数学符号与文本采取**绘制**方式而非系统字体 Unicode。
+
+### 实现
+
+- 新建工具 `.claude/gen-poisson.mjs`：从 `Libraries/mathematical-symbols.excalidrawlib` 读取 15 个数学符号 item（Summation / Integral / Implication / Approaches / Element / Infinity / Natural numbers / Integers / Real numbers / Complex numbers / ≥ / ≤ / ∀ / ∃ / ∂），通过 `placeSymbol(name, x, y, targetH, color)` 缩放并嵌入到 Poisson 图。
+- 生成 `Excalidraw/poisson-contour.excalidraw.md`：**95 个元素**（50 text + 6 rectangle + **39 line**，其中数学符号占 39 个 line geometry）。
+- 数学符号 ∫/Σ/≥/≤ 全部用 library 模板的 line elements 绘制，**不依赖系统字体**。
+- 中文短语（标题、注释、clue 说明）与英文单词（Re z / Im z / γ / N / +1 等）仍用 text + `fontFamily: 2`，因绘制版数学符号模板未覆盖所有汉字 / 拉丁字母。
+- 希腊字母 γ、单字符 a/b/c、阿拉伯数字等仍用 text（不可能逐字符绘 25 字母）；如需全部 line，需另购 Excalidraw 字体库或自画路径。
+
+### 不变量
+
+- 用户 Excalidraw 目录的 12 个 `.excalidrawlib` 模板库 + Scripts/Downloaded 完整保留；
+- Lint：ERROR 0 / WARNING 0 / INFO 0。
+
+---
+
+## [2026-08-15] consolidate | 整合绘图工具：删 SVG 流水线，统一用 Obsidian Excalidraw
+
+### 动因
+
+用户要求"整合 Excalidraw 作为唯一绘图工具，删除其他散落方案；不要动 Excalidraw 文件夹里的东西"。
+
+### 删除的散落工具
+
+- `.claude/skills/excalidraw-diagram/references/math2svg/`（整个目录：build-all / build-v3 / build-contour / tfs / hfs / lib / lib_v3 / node_modules / package.json / package-lock.json）
+- `.claude/skills/excalidraw-diagram/references/render_and_check.py`、`check_svg.py`、`.venv/`
+- `.claude/skills/happy-figure-skill/`（整个目录：SKILL.md + references/）
+- `.claude/skills/thesis-figure-skill/`（整个目录：SKILL.md + references/）
+
+### 保留的绘图栈（用户原有）
+
+- `Excalidraw/Libraries/*.excalidrawlib`（9 个组件模板库）
+- `Excalidraw/Scripts/Downloaded/`（8 个 Excalidraw ScriptEngine 脚本：AddTagsByModalForm、AdjustFontSize、Deconstruct selected elements、ExcalidrawScriptInstallMarket、FrameFloatingOutline、FrameListMindmapLayoutTool、LatexEditor、ZoteroToExcalidraw）
+- `Excalidraw/CJK Fonts/`、`Excalidraw/preamble.sty`（Obsidian Excalidraw 插件自动目录）
+
+### 页面引用切换
+
+9 个页面（旧 v3.svg / poisson-contour.svg 引用）已切回 Obsidian Excalidraw 原生 `.excalidraw.md` 嵌入格式 `![[Excalidraw/<tag>.excalidraw|600]]`：
+
+| 页面 | tag |
+|------|-----|
+| methods/contour-integration | contour-shift |
+| theorems/residue-theorem | residue-multipole |
+| theorems/cauchy-integral-formula | keyhole |
+| theorems/argument-principle | argument-principle |
+| theorems/jensen-formula | jensen-zeros |
+| theorems/gibbs-phenomenon | gibbs-overshoot |
+| theorems/isoperimetric-inequality | isoperimetric |
+| concepts/good-kernel | good-kernel-shape |
+| theorems/poisson-summation-formula | poisson-contour |
+
+页面指引：每张图附「绘图指引」说明——在 Obsidian 中打开对应 `.excalidraw.md` 文件绘制，公式文本用 `fontFamily: 2`，可用 `Excalidraw/Libraries/` 模板库。
+
+### 不变量
+
+- `raw/`、`scrscrte/` 未触碰；8 个页面 markdown 主体内容未改。
+- Excalidraw/ 目录中所有用户已有内容（Libraries、Scripts/Downloaded、CJK Fonts、preamble.sty）原样保留。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+---
+
+## [2026-08-15] redraw-v2 | 8 张图重画：移植 happy-figure-skill 视觉规范
+
+### 动因
+
+用户要求"进一步美观一点，该对齐对齐"，并指定迁移 BAIKEMARK/happy-figure-skill。上游 skill 是面向 AI 绘图 prompt 的路由器；本仓库适配其**视觉规范**（ZONE 布局、视觉层级、统一调色板、标签 whitelist、对齐栅格、Figure Brief 流程）到 MathJax-SVG 流水线。
+
+### 改动
+
+- **新建 skill** `.claude/skills/happy-figure-skill/`：SKILL.md（方法论摘要）+ references/figure-type-masters.md（5 类图的布局规范）。
+- **新建适配层** `math2svg/hfs.mjs`：PALETTE（5 类色 + 背景 + 文本层级）/ GRID（栅格锚点）/ FONT（字号层级）/ header / footer / zone / arrowH / measure。
+- **重写 `build-all.mjs`**：8 图统一采用：
+  - 标题区：h1 26px → 副标题 18px → 横向分割线；
+  - 主体 ZONE：浅色背景圆角矩形 + 统一子 ZONE 标题；
+  - 工程几何：xyz 箭头 + 测量双箭头（不再用 label 手摆位置）；
+  - 公式条带：底部淡灰底矩形 + 居中公式（真正的 LaTeX）；
+  - 统一 5 色彩分类（蓝/红/橙/绿/紫），每个实体一种主色。
+- **优化**：去掉外层冗余 ZONE 标题（防与子 ZONE 标题重叠）。
+
+### 校验
+
+- 8 张图布局校验 OK（构建时精确坐标）：`contour-shift` 12、`residue-multipole` 12、`keyhole` 9、`argument-principle` 12、`jensen-zeros` 9、`gibbs-overshoot` 8、`isoperimetric` 7、`good-kernel-shape` 11 行。
+- 浏览器渲染：`check_svg.py` 公式 path 完整 `empty=0`、use 引用可解析。
+- 采样检查：isoperimetric 与 gibbs-overshoot 视觉效果显著优于 v1（结构清晰、层级分明）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；v1 SVG 已被 v2 覆盖（同名）。
+- 页面引用路径不变，故无需修改各 markdown。
+- AGENTS.md 工具路由表新增 2 行。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+---
+
+## [2026-08-15] figures | 为 8 个页面批量补充 MathJax 示意图
+
+### 动因
+
+用户要求"给所有需要补充图片的页面补充图片"。识别 8 个数学上需要图示辅助的页面，用 `math2svg` 工具链（MathJax tex2svg 公式 + 手绘 SVG 几何）批量生成。
+
+### 新增图片（`Excalidraw/*.svg`，均配 `-preview.html` 浏览器预览）
+
+| 图 | 页面 | 内容 |
+|----|------|------|
+| contour-shift | methods/contour-integration | 围道平移：$\gamma_0 \to \gamma_c$，竖直边 $R\to\infty$ 消失 |
+| residue-multipole | theorems/residue-theorem | 多孔围道：挖去极点的小圆 + 走廊，$\int_C f = 2\pi i\sum_k \operatorname{Res}$ |
+| keyhole | theorems/cauchy-integral-formula | keyhole 围道：$C$ + $C_\varepsilon$ + 走廊 $L_\varepsilon^\pm$ |
+| argument-principle | theorems/argument-principle | 围道内零点（o）/极点（×）计数，$Z-P$ |
+| jensen-zeros | theorems/jensen-formula | 圆盘内零点分布 + 圆周对数均值 |
+| gibbs-overshoot | theorems/gibbs-phenomenon | 方波部分和过冲 ≈8.95% |
+| isoperimetric | theorems/isoperimetric-inequality | 同周长曲线 vs 圆，$A \le L^2/4\pi$ |
+| good-kernel-shape | concepts/good-kernel | Poisson 核 $r\to1^-$ 质量集中 |
+
+- 每张图公式为**真 LaTeX**（MathJax 矢量 path）；构建时布局校验 + 浏览器渲染确认（公式组 path 完整、use 引用可解析）全部通过；`build-all.mjs` 一键重建。
+- 8 个页面在对应区段插入 `![](...)` + 图注（描述图意并链接 preview.html）。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；图片引用为 markdown 语法，lint 不扫描；图注无 wikilink 字面量。
+
+---
+
+## [2026-08-15] redraw | Poisson 求和围道图 MathJax 版：真 LaTeX 公式 + 网页级绘制
+
+### 动因
+
+用户反馈：①图内公式以伪 LaTeX 纯文本（`∫_{γ_N}`、`e^{2πiz}` 等）呈现，**不能正确反映**；②图不够美观，要求参考 HTML 网页的绘制方式（MathJax/KaTeX 公式渲染），并指出 Excalidraw 也可嵌入网页。
+
+### 方案（MathJax tex2svg → 单文件矢量 SVG）
+
+- 新增工具 `references/math2svg/`（npm 依赖 mathjax-full）与 [build-contour.mjs](file:///e:/wikiproject/math-wiki/.claude/skills/excalidraw-diagram/references/math2svg/build-contour.mjs)：
+  - 每个 LaTeX 公式经 MathJax `tex2svg` 渲染为矢量 path（**真正的 LaTeX**）；
+  - 公式以 `<g transform="translate+scale">` 嵌入主 SVG（viewBox y=0 为基线）；
+  - 处理多公式 id 去重（`m0_`/`m1_`…前缀 + `xlink:href="#..."` 修正）；
+  - **构建时布局校验**：42 个内容行（文本+公式）两两重叠/越界检测（公式宽高取 MathJax 精确值）。
+- 输出：
+  - `Excalidraw/poisson-contour.svg`（单文件，Obsidian 页面嵌入，公式为矢量 LaTeX）
+  - `Excalidraw/poisson-contour-preview.html`（浏览器预览包装）
+- 布局沿用 v2 几何并微调（证据块两行公式拉开间距、下方盒子连锁下移）。
+
+### 渲染校验
+
+- XML 良构校验通过；`check_svg.py`（渲染确认模式）：25 个公式组全部有 path 几何、`use` 引用全部可解析（**empty=0**）、17 个文本；截图 `Excalidraw/poisson-contour.render.png`。
+- 调试记录：MathJax width/height 单位为 **ex**（×8）；嵌套 `<svg>` 在独立 SVG 文档中测量/渲染不可靠 → 改用 `<g>` transform；`xlink:href="#..."` 需带 `#` 的前缀修正。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；v1/v2 Excalidraw 可编辑源保留；页面嵌入切换至 `poisson-contour.svg`（MathJax 版）。
+
+---
+
+## [2026-08-15] redraw | Poisson 求和围道图 v2：全新重绘（非删改）
+
+### 动因
+
+用户反馈上一版图仍存在数学符号渲染/字母与线条重叠问题，明确要求**重新绘制**（不在原有基础上删改）。原 `poisson-contour.excalidraw.md`/`.svg` 保留不动。
+
+### 新文件
+
+- `Excalidraw/poisson-contour-v2.excalidraw.md`（64 元素，全部 `fontFamily: 2` 系统字体）
+- `Excalidraw/poisson-contour-v2.excalidraw.svg`（导出，同几何）
+- 渲染产物 `Excalidraw/poisson-contour-v2.render.png`
+
+### 重新设计的布局（解决"字母与线条重叠"）
+
+- 极点 × 移到**实轴上方**（不再跨线）；
+- `a`/`b` 标签与标记线拉开 30–35px；`L₁`/`L₂` 标签与线条留 16px 间距；`L₂` 标签移至左侧端点外（避开 `a` 标记线）；
+- `γ_N` 移入矩形内部；条带标签移到条带顶部居中；
+- 右侧论证链盒子间距加大（box 高 78–100，箭头区 20–24px）。
+
+### 校验
+
+`uv run python render_and_check.py .../poisson-contour-v2.excalidraw.md` → 首轮 2 处小重叠（Re z 与轴箭头、L₂ 与 a 线）→ 微调标签后 **LAYOUT OK**（无文本重叠、无越界、无文本-线条重叠）。
+
+页面图引用已切换至 v2（`../../Excalidraw/poisson-contour-v2.excalidraw.svg`），图注标注 v2。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；原 v1 绘图文件保留；仅删除过时渲染产物 `poisson-contour.render.png`。
+
+---
+
+## [2026-08-15] fix+merge | 数学符号渲染修复 + 模板库合并 + 文本-线条重叠校验
+
+### 动因
+
+用户反馈围道图两个问题：①**数学符号渲染不出来**（∫/Σ/∈/ℤ/→/≤ 显示为空白/豆腐块）；②**字母与线条重叠**。要求利用 `E:\下载\` 中的 Excalidraw 模板库重新绘制并合并进项目。
+
+### 根因与修复
+
+1. **数学符号不渲染**：此前按 axton skill 规则用 `fontFamily: 5`（Excalifont）——Excalifont 仅覆盖拉丁字符，数学符号与中文在 exportToSvg 中无回退。**全部 40 个文本元素改为 `fontFamily: 2`（系统字体，完整 Unicode 覆盖）**。已列入 AGENTS.md 约束。
+2. **字母与线条重叠**：`render_and_check.py` 新增**文本-图形重叠检测**（只对线条状元素判定，容器矩形为合法背景；× 极点标记设计在实轴上故豁免）。首轮即捕获 L₂ 标签与 a 标签重叠并修复；当前 40 文本无文本-文本、无文本-线条重叠、无越界。
+
+### 模板库合并（9 个 `.excalidrawlib`）
+
+- 从 `E:\下载\` 拷贝至 `e:\wikiproject\math-wiki\Excalidraw\Libraries\`（Obsidian Excalidraw 插件库目录，`libraryFolderPath`）：
+  cloud-design-patterns / data-viz / forms / lo-fi-wireframing-kit / software-architecture / system-design-template / system-design / UML-ER-library / web-kit。
+- Obsidian 中打开 Excalidraw → 库面板即可选用组件。
+- 模板库文本默认 `fontFamily: 1/3`（手写/代码体），未直接照搬；本图按数学符号需求用 `fontFamily: 2`。
+
+### 校验
+
+`uv run python render_and_check.py Excalidraw/poisson-contour.excalidraw.md -o Excalidraw/poisson-contour.render.png` → `LAYOUT OK`（无文本重叠、无越界、无文本-线条重叠）；PNG 已更新。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；模板库拷贝自用户目录（`E:\下载\`），原文件未动。
+- 手工 SVG 导出不依赖 Excalifont（本就是系统字体），无需改动。
+
+---
+
+## [2026-08-15] install-skills | 合并 Excalidraw 双 skill 进项目 + Playwright 自动渲染校验
+
+### 动因
+
+用户要求：①启用自动渲染校验（coleam00 skill 的 Playwright 回路）；②将两个社区 skill 合并进项目。
+
+### 1. 安装与合并（`.claude/skills/`）
+
+- `git clone` 两个仓库到 `%TEMP%`，拷贝进 `e:\wikiproject\math-wiki\.claude\skills\`：
+  - `excalidraw-diagram/`（coleam00/excalidraw-diagram-skill 全量：SKILL.md + references/ 渲染管线）
+  - `excalidraw-obsidian/`（axtonliu/axton-obsidian-visual-skills 的 excalidraw-diagram：Obsidian 输出模式 + 手绘体规则）
+- 位置在 wiki/ 之外，lint 不扫描；AGENTS.md 工具路由表已登记。
+
+### 2. 渲染管线配置
+
+- `cd .claude/skills/excalidraw-diagram/references && uv sync`（uv 自动选 CPython 3.13，装 playwright 1.62）+ `uv run playwright install chromium`（含 headless shell）。
+- **本地化修复**：原模板 `import ... from "https://esm.sh/@excalidraw/excalidraw?bundle"` 在浏览器中加载失败（esm.sh 的 `@braintree/sanitize-url` 子模块 404），改为 `https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw/+esm`（诊断脚本验证 moduleReady: TRUE）。
+
+### 3. 自动渲染校验工具（新增 `references/render_and_check.py`）
+
+一条命令完成：`.excalidraw.md` → 提取 JSON → Playwright 渲染 PNG → 布局自动校验（文本两两重叠检测 + 越界检测）。用法：
+`uv run python render_and_check.py <图.excalidraw.md> -o out.png -s 2`；退出码 0 = 渲染 + 布局 OK。
+
+### 4. 首轮校验结果（poisson-contour）
+
+- 初检发现 2 处布局问题：`L₂` 标签与 `a` 标签重叠；`③` 盒公式一行过宽、证据块首行溢出 SVG 右缘。
+- 修复：`a` 标签上移；`③` 盒公式拆两行（盒高 86→88）；证据块首行缩短（去空格/`·`）。
+- 复检通过：40 个文本元素，**无重叠、无越界**；PNG 输出 `Excalidraw/poisson-contour.render.png`。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；skill 位于 `.claude/skills/`（项目根，lint 不扫描）。
+- 手工 SVG 导出已同步（box3 两行、证据首行缩短、a 标签位置）。
+
+---
+
+## [2026-08-15] fix | Poisson 求和公式证明二：围道示意图按双 skill 方法论重绘
+
+### 动因
+
+用户要求改用两个社区 skill 绘制围道示意图：
+1. **coleam00/excalidraw-diagram-skill** —— 「图要论证而非展示」：形状镜像概念、证据工件、自由浮动文字、视觉论证链。
+2. **axtonliu/axton-obsidian-visual-skills**（excalidraw-diagram）—— Obsidian 输出模式、手绘体 `fontFamily: 5`、字号下限 14px、配色表、`boundElements: null` / `updated: 1` / 无 `frameId`·`versionNonce`·`rawText`、手动居中公式、`## Drawing` 结构。
+
+### 改动
+
+`Excalidraw/poisson-contour.excalidraw.md` 全量重绘（52 个元素，1200×800 画布）：
+
+- **左侧（围道几何，形状即含义）**：条带 $S_a$ 填充矩形 + 虚边界、实轴、$L_1/L_2$ 水平箭头（$0<b<a$ 的 $a/b$ 双箭头标记）、红色逆时针矩形 $\gamma_N$、$x=\pm(N+\frac12)$ 竖直虚线（强调：积分 → 0）、整数极点 ×、图注说明核的极点与留数。
+- **右侧（论证链，coleam00 多缩放层级）**：五步流程盒 + 箭头——① 留数定理（∫_{γ_N} = Σ f(n)）→ ② 取极限（竖直边 → 0，围道积分 → ∫_{L₁}−∫_{L₂}）→ ③ 几何级数展开 → **证据工件**（深色代码块给出 $L_1$/$L_2$ 上的两个展开式）→ ④ 逐项积分 + 平移回实轴（Σ f̂(n+1)+Σ f̂(−n)）→ 结论 Σ f(n) = Σ f̂(n)。
+- 遵循 axton 规则：全部文本 `fontFamily: 5`、`lineHeight: 1.25`、字号 14–24px、配色取自其调色板（#a5d8ff/#ffd8a8/#d0bfff/#b2f2bb/#fff3bf + 深色变体文字、证据块 #1e1e1e + #f8f9fa）、无 emoji、`boundElements: null`、`updated: 1`、无多余字段。
+- `Excalidraw/poisson-contour.excalidraw.svg` 同步重绘（同几何，插件 `autoexportSVG` 会在下次保存时以手绘风重新生成）。
+- 页面图注重写：左侧围道几何 + 右侧论证链（①→②→③→④→结论，对应 Claim 1–5）。
+
+### 说明
+
+coleam00 的 Playwright 渲染-校验回路（`uv sync` + `uv run playwright install chromium`）依赖 Python + 浏览器下载，未在本机执行；改以手工坐标校核替代。如需启用该渲染回路可另行配置。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；仅改 `Excalidraw/poisson-contour.excalidraw.md`、`.excalidraw.svg`、页面图注与 log。
+- 图注未出现 `[[...]]` wikilink 字面量。
+
+---
+
+## [2026-08-15] fix | Poisson 求和公式证明二：围道示意图改用 Excalidraw 绘制
+
+### 动因
+
+用户反馈上一轮手工写的 `wiki/assets/poisson-contour.svg` 不够好，要求改用 **Excalidraw 插件**绘制围道示意图（可编辑）。
+
+### 改动
+
+- **新建** `Excalidraw/poisson-contour.excalidraw.md`（vault 根，插件默认目录；`.excalidraw.md` 场景文件，`excalidraw-plugin: parsed`）：含 34 个元素——条带 $S_a$ 填充矩形、$y=\pm a$ 虚边界、$L_1/L_2$ 水平箭头、$x=\pm(N+\frac12)$ 竖直虚线、红色逆时针矩形 $\gamma_N$（四段带端箭头的 arrow）、实轴、$a/b$ 双箭头标记、7 个整数极点 ×、全部中文标签。
+- **新建** `Excalidraw/poisson-contour.excalidraw.svg`（`autoexportSVG` 的 SVG 导出，与场景同几何；Obsidian 打开绘图后由插件自动重新生成）。
+- `wiki/theorems/poisson-summation-formula.md`：「围道示意图」图引用由 `../assets/poisson-contour.svg` 改为 `../../Excalidraw/poisson-contour.excalidraw.svg`；图注补充「图源为 Excalidraw 绘图 poisson-contour.excalidraw（位于 vault 根 Excalidraw/，可编辑；SVG 为其自动导出）」。
+- **删除** `wiki/assets/poisson-contour.svg` 与空目录 `wiki/assets/`。
+- `frontmatter.updated` 保持 2026-08-15。
+
+### lint
+
+`ERROR 0 / WARNING 0 / INFO 0`（16 节全 PASS；Excalidraw 目录位于 `wiki/` 之外，lint 不扫描；页面图引用为 markdown 图片语法，非 wikilink）。
+
+### 不变量
+
+- `raw/`、`scratch/` 未触碰；新文件仅 `Excalidraw/poisson-contour.excalidraw.md` 与 `.excalidraw.svg`。
+- 图注中未出现 `[[...]]` wikilink 字面量（避免 lint 误报 broken link）。
+
+---
+
 ## [2026-08-15] fix | Poisson 求和公式证明二：补 Fubini 引用 + 工作空间叙述 + 围道示意图
 
 ### 动因

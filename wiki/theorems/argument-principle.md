@@ -1,4 +1,4 @@
----
+﻿---
 type: theorem
 title: 辐角原理
 aliases: [argument principle]
@@ -30,6 +30,14 @@ strength_basis: 弱条件 + 强结论。条件：$f$ 在圆周 $C$ 及其内部�
 ### 几何解释
 
 $\frac{1}{2\pi i} \int_C \frac{f'}{f}\,dz$ 是 $f$ 沿 $C$ 的**辐角变化量**除以 $2\pi$。当 $z$ 绕 $C$ 一圈，$f(z)$ 的辐角变化为 $2\pi (Z - P)$。
+
+![[Excalidraw/argument-principle.excalidraw|600]]
+
+> **绘图指引**:在 Obsidian 中打开 Excalidraw/argument-principle.excalidraw(如未创建请右键 → New Excalidraw Drawing,文件名用此)绘制 辐角原理。
+> 文本公式请用 **fontFamily: 2**(系统字体),保证数学符号渲染。
+> 可用组件库(打开 Excalidraw → 库面板):data-viz / software-architecture / system-design(已下载至 Excalidraw/Libraries/)。
+
+> **图 1**（零点-极点计数）:闭曲线 $C$ 内零点（o，$Z = 2$）与极点（×，$P = 1$）;沿 $C$ 的 $f'/f$ 围道积分 = $2\pi i(Z - P)$。图内公式由 MathJax 渲染,浏览器预览见 `Excalidraw/argument-principle-preview.html`。
 
 ## Why — 动机与证明
 

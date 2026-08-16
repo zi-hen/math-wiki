@@ -106,7 +106,7 @@ $$
 | Stein 定理 | 增强参数 | 增强机制 |
 |-----------|---------|---------|
 | Theorem 3.4 (Phragmén-Lindelöf, p.143) | $\varepsilon > 0$（衰减速率） | $F_\varepsilon = F \cdot e^{-\varepsilon z^{3/2}}$ |
-| Theorem 4.1 (Weierstrass 乘积, p.164) | $p \geq 0$（齐次阶） | $E_p$ 的 $|z|^{p+1}$ 衰减 |
+| Theorem 4.1 (Weierstrass 乘积, p.164) | $p \geq 0$（齐次阶） | $E_p$ 的 $\lvert z\rvert^{p+1}$ 衰减 |
 | Theorem 5.4 (参数化全纯, p.75) | $s \in [0, 1]$ | $\int_0^1 F(\cdot, s)\,ds$ |
 | Theorem 5.1 (Morera, p.72) | $h \in \mathbb{C}$（增量） | 路径无关性 $\Rightarrow$ 原函数可微 |
 | Lemma 5.8 (Runge 围道构造, p.80) | $\delta > 0$（网格尺度） | 网格 $\Rightarrow$ 围道覆盖 $K$ |

@@ -135,7 +135,7 @@ $$
 | 1. **Theorem 7.1**（Stein, p.120–122） | $\hat f(n) = a_n r^{-n}$（$n \ge 0$）；$\hat f(n) = 0$（$n < 0$） | Ch. 3 §7 |
 | 2. **Fourier 级数与 Taylor 系数等同** | $c_n = a_n/r^n$，$c_n = 0$（$n < 0$） | 同上（重述）|
 | 3. **负频率消失** | $f$ 在圆盘内全纯 $\Rightarrow$ 圆周 Fourier 系数在 $n < 0$ 时为零 | 同上 |
-| 4. **Theorem 3.5**（Book II, Ch. 4）类比 | $f$ 在上半平面全纯 $\Rightarrow$ $\hat f(\xi) = 0$（$\xi < 0$） | Ch. 4 Thm 3.5, p.145–146；详见 [[paley-wiener-theorem|Paley-Wiener]] 应用 |
+| 4. **Theorem 3.5**（Book II, Ch. 4）类比 | $f$ 在上半平面全纯 $\Rightarrow$ $\hat f(\xi) = 0$（$\xi < 0$） | Ch. 4 Thm 3.5, p.145–146；详见 [[paley-wiener-theorem]]（Paley-Wiener）应用 |
 
 **等价关系**：叙述 1 ≡ 2 ≡ 3（同一定理的不同重述）；叙述 4 是「负频率消失」在半平面情形的对应（Stein Ch. 4 Remark, p.146 显式指出此对比：「Here we are dealing with a function holomorphic in the upper half-plane, and there with a function holomorphic in a disc. In the present case the Fourier transform vanishes when $\xi < 0$, and in the earlier case, the Fourier coefficients vanish when $n < 0$」）。
 

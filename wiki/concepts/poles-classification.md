@@ -28,7 +28,7 @@ $$
 
 | 类型 | Laurent 展开特征 | 行为 |
 |------|------------------|------|
-| **可去奇点**（removable） | $a_k = 0$ 对所有 $k < 0$（即主部为空） | $f$ 在 $z_0$ 邻域有界，可全纯延拓（[[steinComplexAnalysis|Stein Theorem 3.1, p.103]]） |
+| **可去奇点**（removable） | $a_k = 0$ 对所有 $k < 0$（即主部为空） | $f$ 在 $z_0$ 邻域有界，可全纯延拓（[[steinComplexAnalysis]]（Stein Theorem 3.1, p.103）） |
 | **极点**（pole） | 存在 $n \ge 1$ 使 $a_{-n} \ne 0$，$a_k = 0$ 对 $k < -n$ | $\|f(z)\| \to \infty$ 当 $z \to z_0$；$f$ 局部 $f(z) = (z - z_0)^{-n} g(z)$（$g$ 全纯非零） |
 | **本性奇点**（essential） | 无穷多 $a_k \ne 0$（$k < 0$） | 既非可去也非极点；$f$ 在邻域取值稠密于 $\mathbb{C}$（Casorati-Weierstrass） |
 

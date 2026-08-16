@@ -1,4 +1,4 @@
-﻿# Index — 内容目录
+# Index — 内容目录
 
 > wiki 的目录。每次 ingest / query / lint 后由 LLM 更新。
 > 回答问题时，LLM 先读本文件定位相关页，再钻取。
@@ -53,6 +53,7 @@
 - [[notes/fourier-three-questions-and-methodology]]：Fourier 卷三大问题与思想方法——等周/等分布/无处可微、遍历诠释、延迟平均与 lacunary 级数、衰减↔光滑对偶（纲领性高亮提炼）。状态：`draft`。
 - [[notes/complex-analysis-rigidity-and-methods]]：复分析方法论——刚性、奇点刻画、表示公式与围道积分三定理同一思想（纲领性高亮提炼）。状态：`draft`。
 - [[notes/finite-abelian-fourier-and-number-theory]]：有限阿贝尔群结构定理与 Fourier 观点在数论中的应用——读第七、八章时的真实思考记录；4 条支持 + 5 条怀疑，最终把"清晰"分成"翻译层清晰"与"难度层不清晰"两层。状态：`draft`。
+- [[notes/integral-splitting-how-to-choose]]：积分分拆的分拆点选择——由散落想法成文（12 节）：分拆为何不可避免、分拆点三类来源、六类选择谱系、两阶段极限（epsilon of room）、二进 vs 等距、软 vs 硬截断、与局部到整体原理的关系、「唯一最优」为何不存在。状态：`in-progress`。
 
 ## 人物（People）
 
@@ -76,11 +77,11 @@ _（暂无。）_
 | lemmas | 23 |
 | exercises | 10 |
 | problems | 5 |
-| notes | 5 |
+| notes | 6 |
 | methods | 18 |
 | people | 0 |
 | sources | 3 |
-| **合计** | **128** |
+| **合计** | **129** |
 
 按领域划分（不含 method/note/people/sources）：傅里叶分析 **58** 页（[[index-fourier]]）、复分析 **35** 页（[[index-complex]]）、解析数论 **3** 页（[[index-number-theory]]）、微分方程 **1** 页（[[index-pde]]）、通用引理 5 页（本页）。
 

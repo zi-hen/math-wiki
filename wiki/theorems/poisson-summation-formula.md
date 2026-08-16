@@ -178,9 +178,9 @@ $$
 
 **围道示意图**。
 
-![Poisson 求和公式证明二的矩形围道](../assets/poisson-contour.svg)
+![[Excalidraw/poisson-contour.excalidraw|600]]
 
-> **图 1**:围道 $\gamma_N$(红色矩形,逆时针)与条带 $S_a$(浅蓝区域)。水平边 $L_1, L_2$ 位于 $\operatorname{Im} z = \pm b$($0 < b < a$);竖直边位于 $x = \pm (N+\frac12)$(虚线),其上的积分随 $N \to \infty$ 趋于零(Claim 3),故围道积分退化为 $\int_{L_1} - \int_{L_2}$,即公式 (2)。× 处为核 $1/(e^{2\pi i z}-1)$ 在整数点的简单极点(Claim 1);由留数定理,$\int_{\gamma_N} = \sum_{|n|\le N} f(n)$(Claim 2)。
+> **图 1**:左侧为围道几何——围道 $\gamma_N$(红色矩形,逆时针)、条带 $S_a$(浅蓝)、水平边 $L_1, L_2$(位于 $\operatorname{Im} z = \pm b$)、竖直边 $x = \pm (N+\frac12)$(虚线,积分随 $N\to\infty$ 趋于零,Claim 3),× 为核 $1/(e^{2\pi i z}-1)$ 在整数点的简单极点(Claim 1)
 
 **详细证明**。
 

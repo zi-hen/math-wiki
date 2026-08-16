@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 title: 好核
 aliases: [good kernel, approximation to the identity, identity approximation]
@@ -81,6 +81,14 @@ $\varepsilon$ 任意, 一致收敛成立. $\blacksquare$
 ## 动机与背景
 
 好核是 Fourier 级数收敛性研究的核心工具。Dirichlet 核 $D_N$ 不是好核（$L^1$ 范数增长），故 Fourier 级数的点态收敛是精细问题；Fejér 核 $F_N$、Poisson 核 $P_r$、热核 $H_t$、Gauss 核 $K_\delta$ 均为好核，提供求和法与逼近工具。
+
+![[Excalidraw/good-kernel-shape.excalidraw|600]]
+
+> **绘图指引**:在 Obsidian 中打开 Excalidraw/good-kernel-shape.excalidraw(如未创建请右键 → New Excalidraw Drawing,文件名用此)绘制 Poisson 核。
+> 文本公式请用 **fontFamily: 2**(系统字体),保证数学符号渲染。
+> 可用组件库(打开 Excalidraw → 库面板):data-viz / software-architecture / system-design(已下载至 Excalidraw/Libraries/)。
+
+> **图 1**（Poisson 核）:$P_r(\theta) = \frac{1-r^2}{1-2r\cos\theta+r^2}$ 随 $r \to 1^-$ 质量向 $\theta = 0$ 集中($r = 0.5$ vs $r = 0.9$)——好核条件 (c)「质量集中」的直观。图内公式由 MathJax 渲染,浏览器预览见 `Excalidraw/good-kernel-shape-preview.html`。
 
 ## 性质
 
